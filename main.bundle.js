@@ -287,7 +287,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /***/ "./src/app/PrimeCareManager/analytics/analytics/analytics.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\n<div class=\"header\" >\n  <img src=\"../../../../assets/ORBIS.png\" width=\"99%\" height=\"700px\" />\n</div>\n"
+module.exports = "<p></p>\r\n<div class=\"header\" >\r\n  <img src=\"../../../../assets/ORBIS.png\" width=\"99%\" height=\"700px\" />\r\n</div>\r\n"
 
 /***/ }),
 
@@ -337,14 +337,14 @@ var AnalyticsComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-fc-footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\n    <div class=\"row\"> \n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/notadmitted.png\"  alt=\"\" >\n                <span class=\"text2\">Ready for discharge</span>\n        </div>\n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/Preopholding.png\"  alt=\"\" >\n                <span class=\"text2\">Occupied</span>\n        </div> \n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/leftor.png\"  alt=\"\" >\n                <span class=\"text2\">Empty</span>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"footer\">\r\n    <div class=\"row\"> \r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/notadmitted.png\"  alt=\"\" >\r\n                <span class=\"text2\">Ready for discharge</span>\r\n        </div>\r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/Preopholding.png\"  alt=\"\" >\r\n                <span class=\"text2\">Occupied</span>\r\n        </div> \r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/leftor.png\"  alt=\"\" >\r\n                <span class=\"text2\">Empty</span>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/component/app-header/app-fc-footer.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* \n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\n * Use margin-bottom\n*/\n.img-valign {\n  vertical-align: middle;\n  margin: 20px 10px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n"
+module.exports = "/* \r\n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\r\n * Use margin-bottom\r\n*/\n.img-valign {\n  vertical-align: middle;\n  margin: 20px 10px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n"
 
 /***/ }),
 
@@ -388,7 +388,7 @@ var FcFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\" >\r\n    <div class=\"container\">\r\n        <div class=\"section\">\r\n            <span class=\"logo\">Prime care</span> \r\n            <div class=\"time\">{{now}} {{timeDisplay}}</div> \r\n            <div class=\"space text2\">{{globals.currentCounter}}</div>\r\n        </div>  \r\n        <div class=\"section\">\r\n                <div class=\"space text2\">AIC: {{Header.aic}}</div>\r\n                <div class=\"space text2\">Nurse Manager: {{Header.nursemanger}}</div>\r\n                <div class=\"space text2\">PACU Manager: {{Header.pacumanager}}</div>\r\n                <div class=\"text2 subsection\">OR Utilization: {{Header.orutilization}}</div>\r\n                <div class=\"space text2\">PACU Utilization: {{Header.pacuutilization}}</div>\r\n        </div>\r\n        <div class=\"section\">\r\n        <mat-list class=\"app-class\" >\r\n            <div *ngIf=\"alert\">\r\n               <mat-list-item *ngFor=\"let item of alert\"> {{item}} </mat-list-item> \r\n            </div>\r\n        </mat-list>\r\n        </div>\r\n        <div class=\"section\">\r\n                <canvas\r\n                    baseChart\r\n                    [chartType]=\"'bar'\"\r\n                    [datasets]=\"chartData\"\r\n                    [labels]=\"chartLabels\"\r\n                    [options]=\"chartOptions\"\r\n                    [legend]=\"true\"\r\n                    [colors]=\"chartColors\"\r\n                    \r\n                    (chartClick)=\"onChartClick($event)\">\r\n                </canvas>\r\n        </div>\r\n    </div>\r\n   </div>"
+module.exports = "<div class=\"header\" >\r\n    <div class=\"container\">\r\n        <div class=\"section\">\r\n            <span class=\"logo\">Prime care</span> \r\n            <div class=\"time\">{{now}} {{timeDisplay}}</div> \r\n            <div class=\"space text2\">{{globals.currentCounter}}</div>\r\n        </div>  \r\n        <div class=\"section\">\r\n                <div class=\"space text2\">AIC: {{Header.aic}}</div>\r\n                <div class=\"space text2\">Nurse Manager: {{Header.nursemanger}}</div>\r\n                <div class=\"space text2\">PACU Manager: {{Header.pacumanager}}</div>\r\n                <div class=\"text2 subsection\">OR Utilization: {{Header.orutilization}}</div>\r\n                <div class=\"space text2\">PACU Utilization: {{Header.pacuutilization}}</div>\r\n        </div>\r\n        <div class=\"section\">\r\n        <mat-list class=\"app-class\" >\r\n            <div *ngIf=\"alert\">\r\n               <mat-list-item *ngFor=\"let item of alert\"> {{item}} </mat-list-item> \r\n            </div>\r\n        </mat-list>\r\n        </div>\r\n        <div class=\"section\">\r\n            <canvas id=\"myChart\"></canvas>\r\n        </div>\r\n    </div>\r\n   </div>"
 
 /***/ }),
 
@@ -410,6 +410,9 @@ module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_header_dataservice__ = __webpack_require__("./src/app/services/header-dataservice.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js__ = __webpack_require__("./node_modules/chart.js/src/chart.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_chart_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -424,61 +427,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var AppHeaderComponent = /** @class */ (function () {
     function AppHeaderComponent(dataService, http, globals) {
         this.dataService = dataService;
         this.http = http;
         this.globals = globals;
         this.counter = 0;
-        this.chartOptions = {
-            responsive: true
-        };
-        this.chartData = [
-            { data: [8, 5, 3, 2], label: 'Forecast after 5pm' }
-        ];
-        // tslint:disable-next-line:max-line-length
-        this.chartLabels = ['5:00 PM', '7:00 PM', '9:00 PM', '11:00 PM'];
-        this.chartColors = [
-            {
-                backgroundColor: '#0062ff',
-                pointBackgroundColor: '#0062ff',
-                pointHoverBackgroundColor: '#0062ff',
-                borderColor: '#0062ff',
-                pointBorderColor: '#0062ff',
-                pointHoverBorderColor: '#0062ff',
-                fill: false /* this option hide background-color */
-            }
-        ];
         this.now = __WEBPACK_IMPORTED_MODULE_1_moment__().format('MM/DD/YYYY');
         this.getData();
+        this.loadHeaderChartData();
         this.counter = globals.currentCounter;
     }
-    AppHeaderComponent.prototype.onChartClick = function (event) {
-    };
     AppHeaderComponent.prototype.ngAfterViewInit = function () {
         this.loadFromFile();
         this.getDatas();
-        this.loadAlertData();
+        this.loadHeaderChartData();
     };
     AppHeaderComponent.prototype.loadFromFile = function () {
         var _this = this;
-        if (!this.list) {
-            this.http.get('assets/Procedure_full.json').subscribe(function (result) {
-                _this.list = result.json();
-                _this.timeDisplay = _this.list[0].CurrentTime;
-                _this.alert = _this.list[0].Alert;
-            }, function (error) { return console.error(error); });
-            console.log(this.list);
-        }
+        this.http.get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */] + '/procedure').subscribe(function (result) {
+            _this.procedure = result.json();
+            _this.alert = _this.procedure.Alert;
+        }, function (error) { return console.error(error); });
     };
     AppHeaderComponent.prototype.loadProcedure = function () {
-        var _this = this;
-        if (this.counter === 101) {
-            this.counter = 0;
-        }
-        this.timeDisplay = this.list.filter(function (pro) { return pro.Id === (_this.counter + 1); })[0].CurrentTime;
-        this.alert = this.list.filter(function (pro) { return pro.Id === (_this.counter + 1); })[0].Alert;
-        this.globals.currentCounter = this.counter++;
+        this.loadFromFile();
     };
     AppHeaderComponent.prototype.getDatas = function () {
         var _this = this;
@@ -491,12 +466,36 @@ var AppHeaderComponent = /** @class */ (function () {
         this.dataService.getData()
             .subscribe(function (r) { return _this.Header = r; });
     };
-    AppHeaderComponent.prototype.loadAlertData = function () {
+    AppHeaderComponent.prototype.loadHeaderChartData = function () {
         var _this = this;
-        this.http.get('assets/alert.json').subscribe(function (result) {
-            _this.items = result.json();
-        }, function (error) { return console.error(error); });
-        console.log(this.list);
+        this.http
+            .get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */] + '/headerchart')
+            .map(function (data) { return data.json(); })
+            .subscribe(function (data) {
+            _this.headerchart = data;
+            _this.canvas = document.getElementById('myChart');
+            _this.ctx = _this.canvas.getContext('2d');
+            // tslint:disable-next-line:prefer-const
+            var myChart = new __WEBPACK_IMPORTED_MODULE_5_chart_js__(_this.ctx, {
+                type: 'bar',
+                data: {
+                    labels: _this.headerchart.hchartlabels,
+                    datasets: [{
+                            label: _this.headerchart.hchartdatasetlabel,
+                            data: _this.headerchart.hchartdataset,
+                            backgroundColor: _this.headerchart.hchartbackgroundColor,
+                            pointBackgroundColor: _this.headerchart.hchartbackgroundColor,
+                            borderColor: _this.headerchart.hchartbackgroundColor,
+                            pointBorderColor: _this.headerchart.hchartbackgroundColor,
+                            fill: false,
+                            borderWidth: 1
+                        }]
+                },
+                options: {
+                    responsive: false,
+                }
+            });
+        });
     };
     AppHeaderComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -516,14 +515,14 @@ var AppHeaderComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-pat-footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\n        <div class=\"row\"> \n            <div class=\"column\">\n                    <img class=\"img-valign\"  src =\"../../../assets/completed.png\"  alt=\"\" >\n                    <span class=\"text2\">Complete</span>\n            </div>\n            <div class=\"column\">\n                    <img class=\"img-valign\"  src =\"../../../assets/notcompleted.png\"  alt=\"\" >\n                    <span class=\"text2\">Not completed</span>\n            </div> \n            <div class=\"column\">\n                    <img class=\"img-valign\"  src =\"../../../assets/inprogress.png\"  alt=\"\" >\n                    <span class=\"text2\">In progress</span>\n            </div>\n            <div class=\"column\">\n                    <img class=\"img-valign\"  src =\"../../../assets/pending.png\"  alt=\"\" >\n                    <span class=\"text2\">Pending</span>\n            </div>\n            <div class=\"column\">\n                    <img class=\"img-valign\"  src =\"../../../assets/notadmitted.png\"  alt=\"\" >\n                    <span class=\"text2\">Not admitted</span>\n            </div>\n            <div class=\"column\">\n                    <img class=\"img-valign\"  src =\"../../../assets/Preopholding.png\"  alt=\"\" >\n                    <span class=\"text2\">Pre-op holding</span>\n            </div> \n            <div class=\"column\">\n                    <img class=\"img-valign\"  src =\"../../../assets/inor.png\"  alt=\"\" >\n                    <span class=\"text2\">In OR</span>\n            </div>\n            <div class=\"column\">\n                    <img class=\"img-valign\"  src =\"../../../assets/leftor.png\"  alt=\"\" >\n                    <span class=\"text2\">Left OR</span>\n            </div>\n        </div>\n    </div>"
+module.exports = "<div class=\"footer\">\r\n        <div class=\"row\"> \r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/completed.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Complete</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/notcompleted.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Not completed</span>\r\n            </div> \r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/inprogress.png\"  alt=\"\" >\r\n                    <span class=\"text2\">In progress</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/pending.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Pending</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/notadmitted.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Not admitted</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/Preopholding.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Pre-op holding</span>\r\n            </div> \r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/inor.png\"  alt=\"\" >\r\n                    <span class=\"text2\">In OR</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/leftor.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Left OR</span>\r\n            </div>\r\n        </div>\r\n    </div>"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/component/app-header/app-pat-footer.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* \n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\n * Use margin-bottom\n*/\n.img-valign {\n  vertical-align: middle;\n  margin: 20px 10px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n"
+module.exports = "/* \r\n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\r\n * Use margin-bottom\r\n*/\n.img-valign {\n  vertical-align: middle;\n  margin: 20px 10px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n"
 
 /***/ }),
 
@@ -567,14 +566,14 @@ var PatFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-personel-footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\n    <div class=\"row\"> \n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/notadmitted1.png\"  alt=\"\" >\n                <span class=\"text2\">Not admitted</span>\n        </div>\n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/Preopholding.png\"  alt=\"\" >\n                <span class=\"text2\">Pre-op holding</span>\n        </div> \n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/inor.png\"  alt=\"\" >\n                <span class=\"text2\">In OR</span>\n        </div>\n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/leftor.png\"  alt=\"\" >\n                <span class=\"text2\">Left OR</span>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"footer\">\r\n    <div class=\"row\"> \r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/notadmitted1.png\"  alt=\"\" >\r\n                <span class=\"text2\">Not admitted</span>\r\n        </div>\r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/Preopholding.png\"  alt=\"\" >\r\n                <span class=\"text2\">Pre-op holding</span>\r\n        </div> \r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/inor.png\"  alt=\"\" >\r\n                <span class=\"text2\">In OR</span>\r\n        </div>\r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/leftor.png\"  alt=\"\" >\r\n                <span class=\"text2\">Left OR</span>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/component/app-header/app-personel-footer.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* \n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\n * Use margin-bottom\n*/\n.img-valign {\n  vertical-align: middle;\n  margin: 20px 10px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n"
+module.exports = "/* \r\n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\r\n * Use margin-bottom\r\n*/\n.img-valign {\n  vertical-align: middle;\n  margin: 20px 10px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n"
 
 /***/ }),
 
@@ -618,14 +617,14 @@ var PersonelFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-proc-footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\n    <div class=\"row\"> \n        <div class=\"column\">\n                <img class=\"img-valign2\"  src =\"../../../assets/laser.png\"  alt=\"\" >\n                <span class=\"text2\">Laser</span>\n        </div>\n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/c-arm.png\"  alt=\"\" >\n                <span class=\"text2\">C-arm</span>\n        </div> \n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/robot.png\"  alt=\"\" >\n                <span class=\"text2\">Robot</span>\n        </div>\n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/latex.png\"  alt=\"\" >\n                <span class=\"text2\">Latex allergy</span>\n        </div>\n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/notadmitted.png\"  alt=\"\" >\n                <span class=\"text2\">Not admitted</span>\n        </div>\n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/Preopholding.png\"  alt=\"\" >\n                <span class=\"text2\">Pre-op holding</span>\n        </div> \n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/inor.png\"  alt=\"\" >\n                <span class=\"text2\">In OR</span>\n        </div>\n        <div class=\"column\">\n                <img class=\"img-valign\"  src =\"../../../assets/leftor.png\"  alt=\"\" >\n                <span class=\"text2\">Left OR</span>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"footer\">\r\n    <div class=\"row\"> \r\n        <div class=\"column\">\r\n                <img class=\"img-valign2\"  src =\"../../../assets/laser.png\"  alt=\"\" >\r\n                <span class=\"text2\">Laser</span>\r\n        </div>\r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/c-arm.png\"  alt=\"\" >\r\n                <span class=\"text2\">C-arm</span>\r\n        </div> \r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/robot.png\"  alt=\"\" >\r\n                <span class=\"text2\">Robot</span>\r\n        </div>\r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/latex.png\"  alt=\"\" >\r\n                <span class=\"text2\">Latex allergy</span>\r\n        </div>\r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/notadmitted.png\"  alt=\"\" >\r\n                <span class=\"text2\">Not admitted</span>\r\n        </div>\r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/Preopholding.png\"  alt=\"\" >\r\n                <span class=\"text2\">Pre-op holding</span>\r\n        </div> \r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/inor.png\"  alt=\"\" >\r\n                <span class=\"text2\">In OR</span>\r\n        </div>\r\n        <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/leftor.png\"  alt=\"\" >\r\n                <span class=\"text2\">Left OR</span>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/component/app-header/app-proc-footer.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* \n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\n * Use margin-bottom\n*/\n.img-valign {\n  vertical-align: middle;\n  margin: 20px 10px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n"
+module.exports = "/* \r\n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\r\n * Use margin-bottom\r\n*/\n.img-valign {\n  vertical-align: middle;\n  margin: 20px 10px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n"
 
 /***/ }),
 
@@ -763,7 +762,7 @@ var SidenavComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/toolbar/toolbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n\n  <button mat-button class=\"sidenav-toggle\" (click)=\"toggleSidenav.emit()\">\n    <mat-icon>menu</mat-icon>\n  </button>\n\n  <span class=\"center\">Prime care</span>\n\n  <span class=\"example-spacer\"></span>\n\n\n</mat-toolbar>"
+module.exports = "<mat-toolbar color=\"primary\">\r\n\r\n  <button mat-button class=\"sidenav-toggle\" (click)=\"toggleSidenav.emit()\">\r\n    <mat-icon>menu</mat-icon>\r\n  </button>\r\n\r\n  <span class=\"center\">Prime care</span>\r\n\r\n  <span class=\"example-spacer\"></span>\r\n\r\n\r\n</mat-toolbar>"
 
 /***/ }),
 
@@ -837,14 +836,14 @@ var ToolbarComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<table style=\"width: 100%; table-layout: fixed\">\r\n    <tr>\r\n        <td style=\"width: 80%\">\r\n                <div>\r\n                        <div *ngIf=\"resource\">\r\n                            <div *ngFor=\"let operationBed of resource.OperationBeds\" >\r\n                                <svg width =\"100%\" height = \"100\" style=\"margin: 10px\">\r\n                                    <g (click)=\"clicked(operation.Patient)\" *ngFor= \"let operation of operationBed.Beds\" >\r\n                                        <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"19%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\" \r\n                                        style = \"stroke:rgb(178, 180, 180)\"/>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"20%\" dx= \"30\" alignment-baseline = \"middle\" font-weight=\"bold\" font-size = \"30px\"  text-anchor = \"middle\">{{operation.Name}}</text>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"50%\" dx= \"30\" font-size = \"20px\"  text-anchor = \"middle\">{{operation.EstDischargeTime}}</text>\r\n                                    </g>\r\n                                </svg>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n        </td>\r\n        <td>\r\n        <p class=\"text3\" align=\"center\">PACU Current Occupancy</p>\r\n        <div align=\"center\"  *ngIf=\"resource\">\r\n                <svg width=\"300\" height=\"150\">\r\n                    <g>\r\n                        <rect attr.x=\"20%\" width=\"300\" height=\"150\" y=\"0\"  rx=\"10\" ry=\"10\" style=\"fill:rgb(185,205,225);stroke-width:3;\" />\r\n                        <text class=\"text1\" x=\"50%\" y=\"20%\" alignment-baseline=\"middle\" text-anchor=\"middle\">Occupancy = {{resource.CurrentOccupancy}}</text>  \r\n                        <text class=\"text1\" x=\"50%\" y=\"50%\" alignment-baseline=\"middle\" text-anchor=\"middle\"># Beds occupied =  {{resource.BedOccupied}}</text>    \r\n                        <text class=\"text1\" x=\"50%\" y=\"75%\" alignment-baseline=\"middle\" text-anchor=\"middle\"># Empty beds =  {{resource.BedEmpty}}</text>  \r\n        \r\n                        </g>\r\n                </svg>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n\r\n</table>\r\n<p style=\"padding: 10px;\"></p>\r\n\r\n<table class=\"text2\" style=\"width: 100%; table-layout: fixed; font-size:25px\">\r\n  <tr>\r\n        <td>\r\n            <p class=\"text2\" style= \"margin-left: 150px;\">PACU Throughput </p>\r\n                <div style=\"width: 80%; margin-left: 50px;\" >\r\n                        <canvas\r\n                            baseChart\r\n                            [chartType]=\"'bar'\"\r\n                            [datasets]=\"chartData\"\r\n                            [labels]=\"chartLabels\"\r\n                            [options]=\"chartOptions\"\r\n                            [legend]=\"true\"\r\n                            [colors]=\"chartColors\"\r\n                            (chartClick)=\"onChartClick($event)\">\r\n                        </canvas>\r\n                </div>\r\n        </td>\r\n            <td>\r\n               <p class=\"text2\" style= \"margin-left: 150px;\">PACU Occupancy Forecast </p>\r\n                <div style=\"width: 80%;\">\r\n                        <canvas\r\n                            baseChart\r\n                            [chartType]=\"'bar'\"\r\n                            [datasets]=\"chartData2\"\r\n                            [labels]=\"chartLabels\"\r\n                            [options]=\"chartOptions\"\r\n                            [legend]=\"true\"\r\n                            [colors]=\"chartColors\"\r\n                            (chartClick)=\"onChartClick($event)\">\r\n                        </canvas>\r\n                </div>\r\n        </td>\r\n        \r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>"
+module.exports = "<p></p>\r\n<table style=\"width: 100%; table-layout: fixed\">\r\n    <tr>\r\n        <td style=\"width: 80%\">\r\n                <div>\r\n                        <div *ngIf=\"resource\">\r\n                            <div *ngFor=\"let operationBed of resource.OperationBeds\" >\r\n                                <svg width =\"100%\" height = \"100\" style=\"margin: 10px\">\r\n                                    <g (click)=\"clicked(operation.Patient)\" *ngFor= \"let operation of operationBed.Beds\" >\r\n                                        <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"19%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\" \r\n                                        style = \"stroke:rgb(178, 180, 180)\"/>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"20%\" dx= \"30\" alignment-baseline = \"middle\" font-weight=\"bold\" font-size = \"30px\"  text-anchor = \"middle\">{{operation.Name}}</text>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"50%\" dx= \"30\" font-size = \"20px\"  text-anchor = \"middle\">{{operation.EstDischargeTime}}</text>\r\n                                    </g>\r\n                                </svg>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n        </td>\r\n        <td>\r\n        <p class=\"text3\" align=\"center\">PACU Current Occupancy</p>\r\n        <div align=\"center\"  *ngIf=\"resource\">\r\n                <svg width=\"300\" height=\"150\">\r\n                    <g>\r\n                        <rect attr.x=\"20%\" width=\"300\" height=\"150\" y=\"0\"  rx=\"10\" ry=\"10\" style=\"fill:rgb(185,205,225);stroke-width:3;\" />\r\n                        <text class=\"text1\" x=\"50%\" y=\"20%\" alignment-baseline=\"middle\" text-anchor=\"middle\">Occupancy = {{resource.CurrentOccupancy}}</text>  \r\n                        <text class=\"text1\" x=\"50%\" y=\"50%\" alignment-baseline=\"middle\" text-anchor=\"middle\"># Beds occupied =  {{resource.BedOccupied}}</text>    \r\n                        <text class=\"text1\" x=\"50%\" y=\"75%\" alignment-baseline=\"middle\" text-anchor=\"middle\"># Empty beds =  {{resource.BedEmpty}}</text>  \r\n        \r\n                        </g>\r\n                </svg>\r\n            </div>\r\n        </td>z\r\n\r\n</table>\r\n<p style=\"padding: 10px;\"></p>\r\n\r\n<table class=\"text2\" style=\"width: 100%; table-layout: fixed; font-size:25px; border: 10px \"  >\r\n  <tr>\r\n        <td>\r\n            <p class=\"text2\" style= \"margin-left: 400px;\">PACU Throughput </p>\r\n                <div>\r\n                        <canvas  style= \"margin-left: 150px;\"\r\n                           id=\"myChart1\"></canvas>\r\n                    \r\n                </div>\r\n        </td>\r\n            <td>\r\n               <p class=\"text2\" style= \"margin-left: 400px;\">PACU Occupancy Forecast </p>\r\n               <div>\r\n                <canvas  style= \"margin-left: 150px;\" id=\"myChart2\"></canvas>\r\n            \r\n        </div>\r\n        </td>\r\n        \r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n"
+module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\nz\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n"
 
 /***/ }),
 
@@ -858,6 +857,9 @@ module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-imag
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__procedure_mat_dialogs_helper_mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js__ = __webpack_require__("./node_modules/chart.js/src/chart.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_chart_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -867,6 +869,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -883,10 +887,6 @@ var FacilityresourcesComponent = /** @class */ (function () {
         this.chartOptions = {
             responsive: true
         };
-        this.chartData = [
-            { data: [0, 1, 1, 2, 2, 3, 1, 3, 2, 1, 2, 1, 1, 1], label: 'In' },
-            { data: [0, 0, -1, -1, -2, -1, -1, -1, -1, -2, -2, -2, -2, -1], label: 'out' }
-        ];
         this.chartData2 = [
             { data: [0, 12, 12, 25, 25, 37, 37, 50, 37, 37, 25, 25, 12, 12], label: 'PACU occupancy forecast' }
         ];
@@ -913,6 +913,8 @@ var FacilityresourcesComponent = /** @class */ (function () {
             }
         ];
         this.globals1 = globals;
+        this.loadChartData();
+        this.loadChartData1();
     }
     FacilityresourcesComponent.prototype.onChartClick = function (event) {
         console.log(event);
@@ -930,21 +932,23 @@ var FacilityresourcesComponent = /** @class */ (function () {
     FacilityresourcesComponent.prototype.ngAfterViewInit = function () {
         this.loadFromFile();
         this.getDatas();
+        this.loadChartData();
+        this.loadChartData1();
     };
     FacilityresourcesComponent.prototype.loadFromFile = function () {
         var _this = this;
-        this.http.get('assets/Resource.json').subscribe(function (result) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/facilityresources').subscribe(function (result) {
             // tslint:disable-next-line:no-debugger
             // debugger;
-            _this.listResource = result.json();
-            _this.resource = _this.listResource[_this.globals1.currentCounter];
+            // this.listResource = result.json() as Resources[];
+            _this.resource = result.json();
         }, function (error) { return console.error(error); });
         console.log(this.Bed);
     };
     FacilityresourcesComponent.prototype.getDatas = function () {
         var _this = this;
         this.interval = setInterval(function () {
-            _this.loadResource();
+            _this.loadFromFile();
         }, 3000);
     };
     FacilityresourcesComponent.prototype.loadResource = function () {
@@ -954,6 +958,82 @@ var FacilityresourcesComponent = /** @class */ (function () {
         } */
         this.resource = this.listResource.filter(function (pro) { return pro.Id === (_this.globals1.currentCounter); })[0];
         // this.counter++;
+    };
+    FacilityresourcesComponent.prototype.loadChartData = function () {
+        var _this = this;
+        this.http
+            .get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUChart')
+            .map(function (data) { return data.json(); })
+            .subscribe(function (data) {
+            _this.pacuchart = data;
+            _this.canvas = document.getElementById('myChart1');
+            _this.ctx = _this.canvas.getContext('2d');
+            _this.ctx.canvas.width = 600;
+            _this.ctx.canvas.height = 350;
+            // tslint:disable-next-line:prefer-const
+            var myChart = new __WEBPACK_IMPORTED_MODULE_5_chart_js__(_this.ctx, {
+                type: 'bar',
+                data: {
+                    labels: _this.pacuchart.PacuChartlabels,
+                    datasets: [{
+                            label: _this.pacuchart.PacuChartdatasetlabel,
+                            data: _this.pacuchart.PacuChartdataset,
+                            backgroundColor: _this.pacuchart.PacuChartbackgroundColor,
+                            pointBackgroundColor: _this.pacuchart.PacuChartbackgroundColor,
+                            borderColor: _this.pacuchart.PacuChartbackgroundColor,
+                            pointBorderColor: _this.pacuchart.PacuChartbackgroundColor,
+                            fill: false,
+                            borderWidth: 1
+                        },
+                        {
+                            label: _this.pacuchart.PacuChartdatasetlabel1,
+                            data: _this.pacuchart.PacuChartdataset1,
+                            backgroundColor: _this.pacuchart.PacuChartbackgroundColor1,
+                            pointBackgroundColor: _this.pacuchart.PacuChartbackgroundColor1,
+                            borderColor: _this.pacuchart.PacuChartbackgroundColor1,
+                            pointBorderColor: _this.pacuchart.PacuChartbackgroundColor1,
+                            fill: false,
+                            borderWidth: 1
+                        }],
+                },
+                options: {
+                    responsive: false,
+                }
+            });
+        });
+    };
+    FacilityresourcesComponent.prototype.loadChartData1 = function () {
+        var _this = this;
+        this.http
+            .get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUThroughChart')
+            .map(function (data) { return data.json(); })
+            .subscribe(function (data) {
+            _this.pacuThroughChart = data;
+            _this.canvas = document.getElementById('myChart2');
+            _this.ctx = _this.canvas.getContext('2d');
+            _this.ctx.canvas.width = 600;
+            _this.ctx.canvas.height = 350;
+            // tslint:disable-next-line:prefer-const
+            var myChart = new __WEBPACK_IMPORTED_MODULE_5_chart_js__(_this.ctx, {
+                type: 'bar',
+                data: {
+                    labels: _this.pacuThroughChart.PacuThChartlabels,
+                    datasets: [{
+                            label: _this.pacuThroughChart.PacuThChartdatasetlabel,
+                            data: _this.pacuThroughChart.PacuThChartdataset,
+                            backgroundColor: _this.pacuThroughChart.PacuThChartbackgroundColor,
+                            pointBackgroundColor: _this.pacuThroughChart.PacuThChartbackgroundColor,
+                            borderColor: _this.pacuThroughChart.PacuThChartbackgroundColor,
+                            pointBorderColor: _this.pacuThroughChart.PacuThChartbackgroundColor,
+                            fill: false,
+                            borderWidth: 1
+                        }],
+                },
+                options: {
+                    responsive: false,
+                }
+            });
+        });
     };
     FacilityresourcesComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1001,7 +1081,7 @@ var Globals = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/notify/notify/notify.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\n<div style=\"margin-left:50px\"> \n  <table style=\"width: 100%; height:600px;\" >\n    <tr>\n      <td class =\"textalign\"><h1>Send notifications: </h1></td>\n      <td class =\"textalign\"><h1>Set notifications: </h1>  \n      </td>\n    </tr>\n    <tr>\n        <td>\n            <div class=\"textalign\" >\n                Select Personnel:\n            </div>\n            <div class=\"textalign\" >\n                <mat-input-container>\n                  <mat-select [(ngModel)]=\"selectedValue\">\n                    <mat-option value=\"showAnes1\">Anes1,Test </mat-option>\n                    <mat-option value=\"showAnes2\">Anes2,Test </mat-option>\n                    <mat-option value=\"showAnes3\">Anes3,Test </mat-option>\n                    <mat-option value=\"showAnes4\">Anes4,Test </mat-option>\n                    <mat-option value=\"showAnes5\">Anes5,Test </mat-option>\n                    <mat-option value=\"showAnes6\">Anes6,Test </mat-option>\n                    <mat-option value=\"showAnes7\">Surg1,Test </mat-option>\n                    <mat-option value=\"showAnes8\">Surg2,Test </mat-option>\n                    <mat-option value=\"showAnes9\">Surg3,Test </mat-option>\n                    <mat-option value=\"showAnes10\">Surg4,Test </mat-option>\n                    <mat-option value=\"showAnes11\">Surg5,Test </mat-option>\n                    <mat-option value=\"showAnes12\">Surg5,Test </mat-option>\n                    <mat-option value=\"showAnes13\">CRNA1,Test </mat-option>\n                    <mat-option value=\"showall\">CRNA2,Test </mat-option>\n                    <mat-option value=\"showAnes15\">Res1,Test </mat-option>\n                    <mat-option value=\"showAnes16\">Res2,Test </mat-option>\n                  </mat-select>\n                </mat-input-container>\n            </div>\n            <td>\n                <div class=\"textalign\" >\n                    Select Personnel:\n                </div>\n                <div class=\"textalign\" >\n                    <mat-input-container>\n                      <mat-select [(ngModel)]=\"selectedValueAnes4\">\n                          <mat-option value=\"showAnes1\">Anes1,Test </mat-option>\n                          <mat-option value=\"showAnes2\">Anes2,Test </mat-option>\n                          <mat-option value=\"showAnes3\">Anes3,Test </mat-option>\n                          <mat-option value=\"showAnes4\">Anes4,Test </mat-option>\n                          <mat-option value=\"showAnes5\">Anes5,Test </mat-option>\n                          <mat-option value=\"showAnes6\">Anes6,Test </mat-option>\n                          <mat-option value=\"showAnes7\">Surg1,Test </mat-option>\n                          <mat-option value=\"showAnes8\">Surg2,Test </mat-option>\n                          <mat-option value=\"showAnes9\">Surg3,Test </mat-option>\n                          <mat-option value=\"showAnes10\">Surg4,Test </mat-option>\n                          <mat-option value=\"showAnes11\">Surg5,Test </mat-option>\n                          <mat-option value=\"showAnes12\">Surg5,Test </mat-option>\n                          <mat-option value=\"showAnes13\">CRNA1,Test </mat-option>\n                          <mat-option value=\"showAnes14\">CRNA2,Test </mat-option>\n                          <mat-option value=\"showAnes15\">Res1,Test </mat-option>\n                          <mat-option value=\"showAnes16\">Res2,Test </mat-option>\n                      </mat-select>\n                    </mat-input-container>\n                </div>\n            </td>\n      </tr>\n      <tr>\n          <td>\n              <div class=\"textalign\" >\n                  Select Message:\n              </div>\n              <div class=\"textalign\" >\n                  <mat-input-container>\n                    <mat-select [(ngModel)]=\"selectedreadyfi\">\n                        <mat-option value=\"showreadyfi\">Ready for induction</mat-option>\n                        <mat-option value=\"showreadyfe\">Ready for Emergence</mat-option>\n                        <mat-option value=\"showreadyfi\">Ready for induction</mat-option>\n                        <mat-option value=\"showreadyfp\">Ready for Positioning</mat-option>\n                        <mat-option value=\"showreadyfc\">Closing</mat-option>\n                        <mat-option value=\"showreadyfor\">Leave OR </mat-option>\n                        <mat-option value=\"showreadyftr\">Turn over</mat-option>\n                    </mat-select>\n                  </mat-input-container>\n              </div>\n              <td>\n                  <div class=\"textalign\" >\n                      Select Trigger:\n                  </div>\n                  <div class=\"textalign\" >\n                      <mat-input-container>\n                        <mat-select [(ngModel)]=\"selectedValuetrigger\">\n                            <mat-option value=\"showtrigger\">Emergence</mat-option>\n                            <mat-option value=\"In room\">In room</mat-option>\n                            <mat-option value=\"Anesthesia Ready\">Anesthesia Ready</mat-option>\n                            <mat-option value=\"Procedure Start\">Procedure Start</mat-option>\n                            <mat-option value=\"Closing\">Closing</mat-option>\n                            <mat-option value=\"Leave OR\">Leave OR</mat-option>\n                            <mat-option value=\"Concurreny violation\">Concurreny violation</mat-option>\n                        </mat-select>\n                      </mat-input-container>\n                  </div>\n              </td>\n        </tr>\n        <tr>\n          <td>\n              <div class=\"textalign\" >\n                <mat-form-field class=\"demo-full-width\">\n                  <textarea class=\"demo-textarea\" matInput>Enter your message here </textarea>\n                </mat-form-field>\n              </div>\n            </td>\n            <td>\n                <div class=\"textalign\" >\n                    <button mat-raised-button\tclass=\"mat-button\">Confirm</button>\n                </div>\n              </td>\n        </tr>\n        <tr>\n          \n              <td>\n                  <div class=\"textalign\" >\n                      <button mat-raised-button\tclass=\"mat-button\">Send Message</button>\n                  </div>\n                </td>\n                <td>\n                    <div class=\"textalign\" >\n                        <mat-card class=\"demo-full-width demo-card\">\n                            <mat-card-title>Current set alerts</mat-card-title>\n                            <mat-card-content>\n                              <p class=\"cardcontent\">Anes3, Test for In room.</p>\n                              <p class=\"cardcontent\">Surg3, Test for Closing .</p>\n                            </mat-card-content>\n                          </mat-card>\n                    </div>\n                  </td>\n          </tr>\n  </table>  \n</div>"
+module.exports = "<p></p>\r\n<div style=\"margin-left:50px\"> \r\n  <table style=\"width: 100%; height:600px;\" >\r\n    <tr>\r\n      <td class =\"textalign\"><h1>Send notifications: </h1></td>\r\n      <td class =\"textalign\"><h1>Set notifications: </h1>  \r\n      </td>\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            <div class=\"textalign\" >\r\n                Select Personnel:\r\n            </div>\r\n            <div class=\"textalign\" >\r\n                <mat-input-container>\r\n                  <mat-select [(ngModel)]=\"selectedValue\">\r\n                    <mat-option value=\"showAnes1\">Anes1,Test </mat-option>\r\n                    <mat-option value=\"showAnes2\">Anes2,Test </mat-option>\r\n                    <mat-option value=\"showAnes3\">Anes3,Test </mat-option>\r\n                    <mat-option value=\"showAnes4\">Anes4,Test </mat-option>\r\n                    <mat-option value=\"showAnes5\">Anes5,Test </mat-option>\r\n                    <mat-option value=\"showAnes6\">Anes6,Test </mat-option>\r\n                    <mat-option value=\"showAnes7\">Surg1,Test </mat-option>\r\n                    <mat-option value=\"showAnes8\">Surg2,Test </mat-option>\r\n                    <mat-option value=\"showAnes9\">Surg3,Test </mat-option>\r\n                    <mat-option value=\"showAnes10\">Surg4,Test </mat-option>\r\n                    <mat-option value=\"showAnes11\">Surg5,Test </mat-option>\r\n                    <mat-option value=\"showAnes12\">Surg5,Test </mat-option>\r\n                    <mat-option value=\"showAnes13\">CRNA1,Test </mat-option>\r\n                    <mat-option value=\"showall\">CRNA2,Test </mat-option>\r\n                    <mat-option value=\"showAnes15\">Res1,Test </mat-option>\r\n                    <mat-option value=\"showAnes16\">Res2,Test </mat-option>\r\n                  </mat-select>\r\n                </mat-input-container>\r\n            </div>\r\n            <td>\r\n                <div class=\"textalign\" >\r\n                    Select Personnel:\r\n                </div>\r\n                <div class=\"textalign\" >\r\n                    <mat-input-container>\r\n                      <mat-select [(ngModel)]=\"selectedValueAnes4\">\r\n                          <mat-option value=\"showAnes1\">Anes1,Test </mat-option>\r\n                          <mat-option value=\"showAnes2\">Anes2,Test </mat-option>\r\n                          <mat-option value=\"showAnes3\">Anes3,Test </mat-option>\r\n                          <mat-option value=\"showAnes4\">Anes4,Test </mat-option>\r\n                          <mat-option value=\"showAnes5\">Anes5,Test </mat-option>\r\n                          <mat-option value=\"showAnes6\">Anes6,Test </mat-option>\r\n                          <mat-option value=\"showAnes7\">Surg1,Test </mat-option>\r\n                          <mat-option value=\"showAnes8\">Surg2,Test </mat-option>\r\n                          <mat-option value=\"showAnes9\">Surg3,Test </mat-option>\r\n                          <mat-option value=\"showAnes10\">Surg4,Test </mat-option>\r\n                          <mat-option value=\"showAnes11\">Surg5,Test </mat-option>\r\n                          <mat-option value=\"showAnes12\">Surg5,Test </mat-option>\r\n                          <mat-option value=\"showAnes13\">CRNA1,Test </mat-option>\r\n                          <mat-option value=\"showAnes14\">CRNA2,Test </mat-option>\r\n                          <mat-option value=\"showAnes15\">Res1,Test </mat-option>\r\n                          <mat-option value=\"showAnes16\">Res2,Test </mat-option>\r\n                      </mat-select>\r\n                    </mat-input-container>\r\n                </div>\r\n            </td>\r\n      </tr>\r\n      <tr>\r\n          <td>\r\n              <div class=\"textalign\" >\r\n                  Select Message:\r\n              </div>\r\n              <div class=\"textalign\" >\r\n                  <mat-input-container>\r\n                    <mat-select [(ngModel)]=\"selectedreadyfi\">\r\n                        <mat-option value=\"showreadyfi\">Ready for induction</mat-option>\r\n                        <mat-option value=\"showreadyfe\">Ready for Emergence</mat-option>\r\n                        <mat-option value=\"showreadyfi\">Ready for induction</mat-option>\r\n                        <mat-option value=\"showreadyfp\">Ready for Positioning</mat-option>\r\n                        <mat-option value=\"showreadyfc\">Closing</mat-option>\r\n                        <mat-option value=\"showreadyfor\">Leave OR </mat-option>\r\n                        <mat-option value=\"showreadyftr\">Turn over</mat-option>\r\n                    </mat-select>\r\n                  </mat-input-container>\r\n              </div>\r\n              <td>\r\n                  <div class=\"textalign\" >\r\n                      Select Trigger:\r\n                  </div>\r\n                  <div class=\"textalign\" >\r\n                      <mat-input-container>\r\n                        <mat-select [(ngModel)]=\"selectedValuetrigger\">\r\n                            <mat-option value=\"showtrigger\">Emergence</mat-option>\r\n                            <mat-option value=\"In room\">In room</mat-option>\r\n                            <mat-option value=\"Anesthesia Ready\">Anesthesia Ready</mat-option>\r\n                            <mat-option value=\"Procedure Start\">Procedure Start</mat-option>\r\n                            <mat-option value=\"Closing\">Closing</mat-option>\r\n                            <mat-option value=\"Leave OR\">Leave OR</mat-option>\r\n                            <mat-option value=\"Concurreny violation\">Concurreny violation</mat-option>\r\n                        </mat-select>\r\n                      </mat-input-container>\r\n                  </div>\r\n              </td>\r\n        </tr>\r\n        <tr>\r\n          <td>\r\n              <div class=\"textalign\" >\r\n                <mat-form-field class=\"demo-full-width\">\r\n                  <textarea class=\"demo-textarea\" matInput>Enter your message here </textarea>\r\n                </mat-form-field>\r\n              </div>\r\n            </td>\r\n            <td>\r\n                <div class=\"textalign\" >\r\n                    <button mat-raised-button\tclass=\"mat-button\">Confirm</button>\r\n                </div>\r\n              </td>\r\n        </tr>\r\n        <tr>\r\n          \r\n              <td>\r\n                  <div class=\"textalign\" >\r\n                      <button mat-raised-button\tclass=\"mat-button\">Send Message</button>\r\n                  </div>\r\n                </td>\r\n                <td>\r\n                    <div class=\"textalign\" >\r\n                        <mat-card class=\"demo-full-width demo-card\">\r\n                            <mat-card-title>Current set alerts</mat-card-title>\r\n                            <mat-card-content>\r\n                              <p class=\"cardcontent\">Anes3, Test for In room.</p>\r\n                              <p class=\"cardcontent\">Surg3, Test for Closing .</p>\r\n                            </mat-card-content>\r\n                          </mat-card>\r\n                    </div>\r\n                  </td>\r\n          </tr>\r\n  </table>  \r\n</div>"
 
 /***/ }),
 
@@ -1078,7 +1158,8 @@ module.exports = "/* Structure */\n.mat-table {\n  overflow: auto;\n  max-height
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/distinctUntilChanged.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_fromEvent__ = __webpack_require__("./node_modules/rxjs/_esm5/add/observable/fromEvent.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1098,6 +1179,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1130,11 +1212,11 @@ var PatientComponent = /** @class */ (function () {
     };
     PatientComponent.prototype.loadFromFile = function () {
         var _this = this;
-        this.http.get('assets/Patient1.json')
+        this.http.get(__WEBPACK_IMPORTED_MODULE_10__environments_environment__["a" /* environment */].api_url + '/Patient')
             .map(function (response) { return response.json(); })
             .subscribe(function (res) {
-            _this.myDataPatScreen = res;
-            _this.dataSource = new PatientDataSource(_this.myDataPatScreen[_this.globals1.currentCounter].Patient);
+            _this.patientscreen = res;
+            _this.dataSource = new PatientDataSource(_this.patientscreen.Patient);
         });
     };
     PatientComponent.prototype.ngOnInit = function () {
@@ -1145,7 +1227,7 @@ var PatientComponent = /** @class */ (function () {
     PatientComponent.prototype.getDatas = function () {
         var _this = this;
         this.interval = setInterval(function () {
-            _this.loadPatient();
+            _this.loadFromFile();
         }, 3000);
     };
     PatientComponent.prototype.loadPatient = function () {
@@ -1158,7 +1240,7 @@ var PatientComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/PrimeCareManager/patient/patient.component.html"),
             styles: [__webpack_require__("./src/app/PrimeCareManager/patient/patient.component.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_10__globals__["a" /* Globals */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_11__globals__["a" /* Globals */]])
     ], PatientComponent);
     return PatientComponent;
 }());
@@ -1407,7 +1489,8 @@ module.exports = ".text1 {\n  text-align: center;\n  font-family: Verdana, 'Sego
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_app_data_service__ = __webpack_require__("./src/app/services/app-data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mat_dialogs_helper_mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mat_dialogs_helper_mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1420,6 +1503,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+// tslint:disable-next-line:no-unused-expression
 
 
 var ProcedureComponent = /** @class */ (function () {
@@ -1452,23 +1537,16 @@ var ProcedureComponent = /** @class */ (function () {
     };
     ProcedureComponent.prototype.loadFromFile = function () {
         var _this = this;
-        if (!this.list) {
-            this.http.get('assets/Procedure_full.json').subscribe(function (result) {
-                _this.list = result.json();
-                _this.Proc = _this.list[_this.globals1.currentCounter];
-            }, function (error) { return console.error(error); });
-        }
+        this.http.get(__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].api_url + '/procedure').subscribe(function (result) {
+            // this.list = result.json() as Procedure;
+            _this.Proc = result.json();
+        }, function (error) { return console.error(error); });
     };
     ProcedureComponent.prototype.loadComponent = function () {
         this.allmedicaldata = this.dataService.ords;
     };
     ProcedureComponent.prototype.loadProcedure = function () {
-        var _this = this;
-        /* if (this.counter === 101) {
-          this.counter = 0;
-        } */
-        this.Proc = this.list.filter(function (pro) { return pro.Id === (_this.globals1.currentCounter); })[0];
-        // this.counter++;
+        this.loadFromFile();
     };
     ProcedureComponent.prototype.ngOnDestroy = function () {
         clearInterval(this.interval);
@@ -1486,7 +1564,7 @@ var ProcedureComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/PrimeCareManager/procedure/procedure.component.scss")]
         }),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_app_data_service__["a" /* AppDataService */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_4__mat_dialogs_helper_mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_app_data_service__["a" /* AppDataService */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_5__mat_dialogs_helper_mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]])
     ], ProcedureComponent);
     return ProcedureComponent;
 }());
@@ -1505,7 +1583,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-sidenav></app-sidenav>\n<router-outlet></router-outlet>\n\n\n"
+module.exports = "<app-sidenav></app-sidenav>\r\n<router-outlet></router-outlet>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1760,7 +1838,7 @@ var AppDataService = /** @class */ (function () {
                 ordNumber: 1,
                 ordItem: [
                     {
-                        name: 'Urethroscopy1',
+                        name: 'Urethroscopy1Nitin',
                         color: 'green',
                         height: 100,
                         width: 200,
@@ -1987,7 +2065,7 @@ var FacilityDataservice = /** @class */ (function () {
         this.http = http;
     }
     FacilityDataservice.prototype.getfacilityRessourceData = function () {
-        return this.http.get('assets/facilityresources.json').map(function (response) { return response.json(); });
+        return this.http.get('http://primecaredev.centralus.cloudapp.azure.com/api/MockFacilityresources').map(function (response) { return response.json(); });
     };
     FacilityDataservice = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -2008,6 +2086,7 @@ var FacilityDataservice = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2020,12 +2099,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HeaderDataservice = /** @class */ (function () {
     function HeaderDataservice(http) {
         this.http = http;
     }
     HeaderDataservice.prototype.getData = function () {
-        return this.http.get('assets/header.json').map(function (response) { return response.json(); });
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api_url + '/header').map(function (response) { return response.json(); });
     };
     HeaderDataservice = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -2360,7 +2440,8 @@ var User = /** @class */ (function () {
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: false
+    production: false,
+    api_url: 'http://primecaredev.centralus.cloudapp.azure.com/api/fake'
 };
 
 
@@ -2373,8 +2454,8 @@ var environment = {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("./node_modules/@angular/platform-browser-dynamic/esm5/platform-browser-dynamic.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__("./src/app/app.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_app_module__ = __webpack_require__("./src/app/app.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_hammerjs__ = __webpack_require__("./node_modules/hammerjs/hammer.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_hammerjs__);
 
@@ -2382,10 +2463,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
+if (__WEBPACK_IMPORTED_MODULE_3_environments_environment__["a" /* environment */].production) {
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
-Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
+Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2_app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });
 
 
