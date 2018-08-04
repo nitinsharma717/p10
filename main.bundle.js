@@ -442,25 +442,31 @@ var AppHeaderComponent = /** @class */ (function () {
     }
     AppHeaderComponent.prototype.ngAfterViewInit = function () {
         this.loadFromFile();
-        this.getDatas();
+        this.getDatas(this.globals.timeinterval + 3000);
         this.loadHeaderChartData();
+        this.globals.timeinterval = this.globals.timeinterval + 3000;
     };
     AppHeaderComponent.prototype.loadFromFile = function () {
         var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/procedure').subscribe(function (result) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/headeralert').subscribe(function (result) {
             _this.procedure = result.json();
+            _this.timeDisplay = _this.procedure.CurrentTime;
             _this.alert = _this.procedure.Alert;
         }, function (error) { return console.error(error); });
     };
     AppHeaderComponent.prototype.loadProcedure = function () {
+        if (this.counter === 101) {
+            this.counter = 0;
+        }
         this.loadFromFile();
+        console.log(this.counter);
+        this.globals.currentCounter = this.counter++;
     };
-    AppHeaderComponent.prototype.getDatas = function () {
+    AppHeaderComponent.prototype.getDatas = function (timeinterval) {
         var _this = this;
         this.interval = setInterval(function () {
             _this.loadProcedure();
-            _this.globals.currentCounter = _this.counter++;
-        }, 3000);
+        }, timeinterval);
     };
     AppHeaderComponent.prototype.getData = function () {
         var _this = this;
@@ -854,13 +860,12 @@ module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-imag
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FacilityresourcesComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_facility_dataservice__ = __webpack_require__("./src/app/services/facility.dataservice.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__procedure_mat_dialogs_helper_mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js__ = __webpack_require__("./node_modules/chart.js/src/chart.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_chart_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__procedure_mat_dialogs_helper_mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_chart_js__ = __webpack_require__("./node_modules/chart.js/src/chart.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_chart_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -877,49 +882,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var FacilityresourcesComponent = /** @class */ (function () {
     // tslint:disable-next-line:max-line-length
-    function FacilityresourcesComponent(dataService, http, globals, dialogs) {
-        this.dataService = dataService;
+    function FacilityresourcesComponent(http, globals, dialogs) {
         this.http = http;
         this.globals = globals;
         this.dialogs = dialogs;
-        this.chartOptions = {
-            responsive: true
-        };
-        this.chartData2 = [
-            { data: [0, 12, 12, 25, 25, 37, 37, 50, 37, 37, 25, 25, 12, 12], label: 'PACU occupancy forecast' }
-        ];
-        // tslint:disable-next-line:max-line-length
-        this.chartLabels = ['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM'];
-        this.chartColors = [
-            {
-                backgroundColor: '#ADD8E6',
-                pointBackgroundColor: '#ADD8E6',
-                pointHoverBackgroundColor: '#ADD8E6',
-                borderColor: '#ADD8E6',
-                pointBorderColor: '#ADD8E6',
-                pointHoverBorderColor: '#ADD8E6',
-                fill: false /* this option hide background-color */
-            },
-            {
-                backgroundColor: '#FF8C00',
-                pointBackgroundColor: '#FF8C00',
-                pointHoverBackgroundColor: '#FF8C00',
-                borderColor: '#FF8C00',
-                pointBorderColor: '#FF8C00',
-                pointHoverBorderColor: '#FF8C00',
-                fill: false /* this option hide background-color */
-            }
-        ];
         this.globals1 = globals;
         this.loadChartData();
         this.loadChartData1();
     }
-    FacilityresourcesComponent.prototype.onChartClick = function (event) {
-        console.log(event);
-    };
     FacilityresourcesComponent.prototype.clicked = function (data) {
         console.log(data);
         this.openConfirmDialogs(data);
@@ -938,19 +910,18 @@ var FacilityresourcesComponent = /** @class */ (function () {
     };
     FacilityresourcesComponent.prototype.loadFromFile = function () {
         var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/facilityresources').subscribe(function (result) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].api_url + '/facilityresources').subscribe(function (result) {
             // tslint:disable-next-line:no-debugger
             // debugger;
             // this.listResource = result.json() as Resources[];
             _this.resource = result.json();
         }, function (error) { return console.error(error); });
-        console.log(this.Bed);
     };
     FacilityresourcesComponent.prototype.getDatas = function () {
         var _this = this;
         this.interval = setInterval(function () {
             _this.loadFromFile();
-        }, 3000);
+        }, this.globals1.timeinterval);
     };
     FacilityresourcesComponent.prototype.loadResource = function () {
         var _this = this;
@@ -963,7 +934,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
     FacilityresourcesComponent.prototype.loadChartData = function () {
         var _this = this;
         this.http
-            .get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUChart')
+            .get(__WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUChart')
             .map(function (data) { return data.json(); })
             .subscribe(function (data) {
             _this.pacuchart = data;
@@ -972,7 +943,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
             _this.ctx.canvas.width = 600;
             _this.ctx.canvas.height = 350;
             // tslint:disable-next-line:prefer-const
-            var myChart = new __WEBPACK_IMPORTED_MODULE_5_chart_js__(_this.ctx, {
+            var myChart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__(_this.ctx, {
                 type: 'bar',
                 data: {
                     labels: _this.pacuchart.PacuChartlabels,
@@ -1006,7 +977,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
     FacilityresourcesComponent.prototype.loadChartData1 = function () {
         var _this = this;
         this.http
-            .get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUThroughChart')
+            .get(__WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUThroughChart')
             .map(function (data) { return data.json(); })
             .subscribe(function (data) {
             _this.pacuThroughChart = data;
@@ -1015,7 +986,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
             _this.ctx.canvas.width = 600;
             _this.ctx.canvas.height = 350;
             // tslint:disable-next-line:prefer-const
-            var myChart = new __WEBPACK_IMPORTED_MODULE_5_chart_js__(_this.ctx, {
+            var myChart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__(_this.ctx, {
                 type: 'bar',
                 data: {
                     labels: _this.pacuThroughChart.PacuThChartlabels,
@@ -1043,7 +1014,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/PrimeCareManager/facilityresources/facilityresources.component.scss")]
         }),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_facility_dataservice__["a" /* FacilityDataservice */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_4__procedure_mat_dialogs_helper_mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_3__procedure_mat_dialogs_helper_mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]])
     ], FacilityresourcesComponent);
     return FacilityresourcesComponent;
 }());
@@ -1068,6 +1039,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var Globals = /** @class */ (function () {
     function Globals() {
         this.currentCounter = 0;
+        this.timeinterval = 0;
     }
     Globals = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
@@ -1202,10 +1174,7 @@ var PatientComponent = /** @class */ (function () {
         this.loadFromFile();
     }
     PatientComponent.prototype.ngAfterViewInit = function () {
-        // this.loadComponent();
-        // this.getTiem();
         this.loadFromFile();
-        // this.loadProcedure();
         this.getDatas();
     };
     PatientComponent.prototype.changeBackground = function (data) {
@@ -1229,11 +1198,7 @@ var PatientComponent = /** @class */ (function () {
         var _this = this;
         this.interval = setInterval(function () {
             _this.loadFromFile();
-        }, 3000);
-    };
-    PatientComponent.prototype.loadPatient = function () {
-        var _this = this;
-        this.dataSource = new PatientDataSource(this.myDataPatScreen.filter(function (pro) { return pro.ID === (_this.globals1.currentCounter); })[0].Patient);
+        }, this.globals1.timeinterval);
     };
     PatientComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1524,10 +1489,7 @@ var ProcedureComponent = /** @class */ (function () {
         this.openConfirmDialogs(data);
     };
     ProcedureComponent.prototype.ngAfterViewInit = function () {
-        // this.loadComponent();
-        // this.getTiem();
         this.loadFromFile();
-        // this.loadProcedure();
         this.getDatas();
     };
     ProcedureComponent.prototype.openConfirmDialogs = function (data) {
@@ -1539,7 +1501,6 @@ var ProcedureComponent = /** @class */ (function () {
     ProcedureComponent.prototype.loadFromFile = function () {
         var _this = this;
         this.http.get(__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].api_url + '/procedure').subscribe(function (result) {
-            // this.list = result.json() as Procedure;
             _this.Proc = result.json();
         }, function (error) { return console.error(error); });
     };
@@ -1556,7 +1517,7 @@ var ProcedureComponent = /** @class */ (function () {
         var _this = this;
         this.interval = setInterval(function () {
             _this.loadProcedure();
-        }, 3000);
+        }, this.globals1.timeinterval);
     };
     ProcedureComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1642,33 +1603,31 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_patient_dataservice__ = __webpack_require__("./src/app/services/patient-dataservice.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_header_dataservice__ = __webpack_require__("./src/app/services/header-dataservice.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__PrimeCareManager_facilityresources_facilityresources_component__ = __webpack_require__("./src/app/PrimeCareManager/facilityresources/facilityresources.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_facility_dataservice__ = __webpack_require__("./src/app/services/facility.dataservice.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_ng2_charts__ = __webpack_require__("./node_modules/ng2-charts/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_ng2_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__users_sign_in_sign_in_component__ = __webpack_require__("./src/app/users/sign-in/sign-in.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_auth_guard_service__ = __webpack_require__("./src/app/services/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_user_service__ = __webpack_require__("./src/app/services/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__users_user_api__ = __webpack_require__("./src/app/users/user-api.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__PrimeCareManager_component_app_header_app_header_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__PrimeCareManager_component_app_header_app_pat_footer_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-pat-footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__PrimeCareManager_component_app_header_app_personel_footer_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-personel-footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__PrimeCareManager_component_app_header_app_proc_footer_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-proc-footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__PrimeCareManager_component_app_header_app_fc_footer_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-fc-footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_angular2_moment__ = __webpack_require__("./node_modules/angular2-moment/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__PrimeCareManager_globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__PrimeCareManager_personel_personel_personel_component__ = __webpack_require__("./src/app/PrimeCareManager/personel/personel/personel.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__PrimeCareManager_notify_notify_notify_component__ = __webpack_require__("./src/app/PrimeCareManager/notify/notify/notify.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__PrimeCareManager_analytics_analytics_analytics_component__ = __webpack_require__("./src/app/PrimeCareManager/analytics/analytics/analytics.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__PrimeCareManager_procedure_mat_dialogs_helper_mat_dialogs_helper_module__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ng2_charts__ = __webpack_require__("./node_modules/ng2-charts/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_ng2_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__users_sign_in_sign_in_component__ = __webpack_require__("./src/app/users/sign-in/sign-in.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_auth_guard_service__ = __webpack_require__("./src/app/services/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_user_service__ = __webpack_require__("./src/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__users_user_api__ = __webpack_require__("./src/app/users/user-api.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__PrimeCareManager_component_app_header_app_header_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__PrimeCareManager_component_app_header_app_pat_footer_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-pat-footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__PrimeCareManager_component_app_header_app_personel_footer_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-personel-footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__PrimeCareManager_component_app_header_app_proc_footer_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-proc-footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__PrimeCareManager_component_app_header_app_fc_footer_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-fc-footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_angular2_moment__ = __webpack_require__("./node_modules/angular2-moment/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26_angular2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__PrimeCareManager_globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__PrimeCareManager_personel_personel_personel_component__ = __webpack_require__("./src/app/PrimeCareManager/personel/personel/personel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__PrimeCareManager_notify_notify_notify_component__ = __webpack_require__("./src/app/PrimeCareManager/notify/notify/notify.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__PrimeCareManager_analytics_analytics_analytics_component__ = __webpack_require__("./src/app/PrimeCareManager/analytics/analytics/analytics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__PrimeCareManager_procedure_mat_dialogs_helper_mat_dialogs_helper_module__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.module.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -1712,25 +1671,24 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5__PrimeCareManager_component_sidenav_sidenav_component__["a" /* SidenavComponent */],
                 __WEBPACK_IMPORTED_MODULE_6__PrimeCareManager_component_toolbar_toolbar_component__["a" /* ToolbarComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__PrimeCareManager_facilityresources_facilityresources_component__["a" /* FacilityresourcesComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__users_sign_in_sign_in_component__["a" /* SignInComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__PrimeCareManager_component_app_header_app_header_component__["a" /* AppHeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__PrimeCareManager_component_app_header_app_pat_footer_component__["a" /* PatFooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__PrimeCareManager_component_app_header_app_personel_footer_component__["a" /* PersonelFooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__PrimeCareManager_component_app_header_app_proc_footer_component__["a" /* ProcFooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__PrimeCareManager_component_app_header_app_fc_footer_component__["a" /* FcFooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__PrimeCareManager_personel_personel_personel_component__["a" /* PersonelComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__PrimeCareManager_notify_notify_notify_component__["a" /* NotifyComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__PrimeCareManager_analytics_analytics_analytics_component__["a" /* AnalyticsComponent */]
+                __WEBPACK_IMPORTED_MODULE_16__users_sign_in_sign_in_component__["a" /* SignInComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__PrimeCareManager_component_app_header_app_header_component__["a" /* AppHeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__PrimeCareManager_component_app_header_app_pat_footer_component__["a" /* PatFooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__PrimeCareManager_component_app_header_app_personel_footer_component__["a" /* PersonelFooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__PrimeCareManager_component_app_header_app_proc_footer_component__["a" /* ProcFooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__PrimeCareManager_component_app_header_app_fc_footer_component__["a" /* FcFooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__PrimeCareManager_personel_personel_personel_component__["a" /* PersonelComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__PrimeCareManager_notify_notify_notify_component__["a" /* NotifyComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__PrimeCareManager_analytics_analytics_analytics_component__["a" /* AnalyticsComponent */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_11__services_app_data_service__["a" /* AppDataService */],
                 __WEBPACK_IMPORTED_MODULE_12__services_patient_dataservice__["a" /* PatientDataservice */],
-                __WEBPACK_IMPORTED_MODULE_15__services_facility_dataservice__["a" /* FacilityDataservice */],
                 __WEBPACK_IMPORTED_MODULE_13__services_header_dataservice__["a" /* HeaderDataservice */],
-                __WEBPACK_IMPORTED_MODULE_19__services_user_service__["a" /* UserService */],
-                { provide: __WEBPACK_IMPORTED_MODULE_20__users_user_api__["a" /* UserApi */], useExisting: __WEBPACK_IMPORTED_MODULE_19__services_user_service__["a" /* UserService */] },
-                __WEBPACK_IMPORTED_MODULE_18__services_auth_guard_service__["a" /* AuthGuard */],
-                __WEBPACK_IMPORTED_MODULE_28__PrimeCareManager_globals__["a" /* Globals */]
+                __WEBPACK_IMPORTED_MODULE_18__services_user_service__["a" /* UserService */],
+                { provide: __WEBPACK_IMPORTED_MODULE_19__users_user_api__["a" /* UserApi */], useExisting: __WEBPACK_IMPORTED_MODULE_18__services_user_service__["a" /* UserService */] },
+                __WEBPACK_IMPORTED_MODULE_17__services_auth_guard_service__["a" /* AuthGuard */],
+                __WEBPACK_IMPORTED_MODULE_27__PrimeCareManager_globals__["a" /* Globals */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_common__["b" /* CommonModule */],
@@ -1740,10 +1698,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__app_routing__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_4__shared_material_module__["a" /* MaterialModule */],
                 __WEBPACK_IMPORTED_MODULE_8__angular_http__["b" /* HttpModule */],
-                __WEBPACK_IMPORTED_MODULE_16_ng2_charts__["ChartsModule"],
-                __WEBPACK_IMPORTED_MODULE_21__angular_forms__["c" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_27_angular2_moment__["MomentModule"],
-                __WEBPACK_IMPORTED_MODULE_32__PrimeCareManager_procedure_mat_dialogs_helper_mat_dialogs_helper_module__["a" /* MatDialogsHelperModule */]
+                __WEBPACK_IMPORTED_MODULE_15_ng2_charts__["ChartsModule"],
+                __WEBPACK_IMPORTED_MODULE_20__angular_forms__["c" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_26_angular2_moment__["MomentModule"],
+                __WEBPACK_IMPORTED_MODULE_31__PrimeCareManager_procedure_mat_dialogs_helper_mat_dialogs_helper_module__["a" /* MatDialogsHelperModule */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]]
         })
@@ -2035,44 +1993,6 @@ var AuthGuard = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], AuthGuard);
     return AuthGuard;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/facility.dataservice.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FacilityDataservice; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var FacilityDataservice = /** @class */ (function () {
-    function FacilityDataservice(http) {
-        this.http = http;
-    }
-    FacilityDataservice.prototype.getfacilityRessourceData = function () {
-        return this.http.get('http://primecaredev.centralus.cloudapp.azure.com/api/MockFacilityresources').map(function (response) { return response.json(); });
-    };
-    FacilityDataservice = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
-    ], FacilityDataservice);
-    return FacilityDataservice;
 }());
 
 
