@@ -447,7 +447,7 @@ var AppHeaderComponent = /** @class */ (function () {
     };
     AppHeaderComponent.prototype.loadFromFile = function () {
         var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */] + '/procedure').subscribe(function (result) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/procedure').subscribe(function (result) {
             _this.procedure = result.json();
             _this.alert = _this.procedure.Alert;
         }, function (error) { return console.error(error); });
@@ -459,6 +459,7 @@ var AppHeaderComponent = /** @class */ (function () {
         var _this = this;
         this.interval = setInterval(function () {
             _this.loadProcedure();
+            _this.globals.currentCounter = _this.counter++;
         }, 3000);
     };
     AppHeaderComponent.prototype.getData = function () {
@@ -469,7 +470,7 @@ var AppHeaderComponent = /** @class */ (function () {
     AppHeaderComponent.prototype.loadHeaderChartData = function () {
         var _this = this;
         this.http
-            .get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */] + '/headerchart')
+            .get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/headerchart')
             .map(function (data) { return data.json(); })
             .subscribe(function (data) {
             _this.headerchart = data;
@@ -2350,6 +2351,8 @@ module.exports = "<div class=\"limiter\">\r\n   <div class=\"container-login100\
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_api__ = __webpack_require__("./src/app/users/user-api.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2362,11 +2365,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var SignInComponent = /** @class */ (function () {
-    function SignInComponent(userApi, router, route) {
+    function SignInComponent(userApi, router, route, http) {
         this.userApi = userApi;
         this.router = router;
         this.route = route;
+        this.http = http;
         this.submitting = false;
     }
     SignInComponent.prototype.onSubmit = function (signInForm) {
@@ -2374,6 +2380,8 @@ var SignInComponent = /** @class */ (function () {
         if (signInForm.valid) {
             this.submitting = true;
             this.formError = null;
+            this.http.delete(__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].api_url + '/reset').subscribe(function (result) {
+            }, function (error) { return console.error(error); });
             this.userApi.signIn(signInForm.value.username, signInForm.value.password)
                 .subscribe(function (data) {
                 _this.router.navigate([_this.route.snapshot.queryParams['returnUrl']]);
@@ -2391,7 +2399,7 @@ var SignInComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_api__["a" /* UserApi */],
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
     ], SignInComponent);
     return SignInComponent;
 }());
