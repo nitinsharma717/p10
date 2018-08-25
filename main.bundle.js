@@ -388,7 +388,7 @@ var FcFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\" >\r\n    <div class=\"container\">\r\n        <div class=\"section\">\r\n            <span class=\"logo\">Prime care</span> \r\n            <div class=\"time\">{{now}} {{timeDisplay}}</div> \r\n            <div class=\"space text2\">{{globals.currentCounter}}</div>\r\n        </div>  \r\n        <div class=\"section\">\r\n                <div class=\"space text2\">AIC: {{Header.aic}}</div>\r\n                <div class=\"space text2\">Nurse Manager: {{Header.nursemanger}}</div>\r\n                <div class=\"space text2\">PACU Manager: {{Header.pacumanager}}</div>\r\n                <div class=\"text2 subsection\">OR Utilization: {{Header.orutilization}}</div>\r\n                <div class=\"space text2\">PACU Utilization: {{Header.pacuutilization}}</div>\r\n        </div>\r\n        <div class=\"section\">\r\n        <mat-list class=\"app-class\" >\r\n            <div *ngIf=\"alert\">\r\n               <mat-list-item *ngFor=\"let item of alert\"> {{item}} </mat-list-item> \r\n            </div>\r\n        </mat-list>\r\n        </div>\r\n        <div class=\"section\">\r\n            <canvas id=\"myChart\"></canvas>\r\n        </div>\r\n    </div>\r\n   </div>"
+module.exports = "<div class=\"header\" >\r\n    <div class=\"container\">\r\n        <div class=\"section\">\r\n            <span class=\"logo\">PeriVision</span> \r\n            <div class=\"time\">{{now}} {{timeDisplay}}</div>\r\n        </div>  \r\n        <div class=\"section\">\r\n                <div class=\"space text2\">AIC: {{Header.aic}}</div>\r\n                <div class=\"space text2\">Nurse Manager: {{Header.nursemanger}}</div>\r\n                <div class=\"space text2\">PACU Manager: {{Header.pacumanager}}</div>\r\n                <div class=\"text2 subsection\">OR Utilization: {{Header.orutilization}}</div>\r\n                <div class=\"space text2\">PACU Utilization: {{Header.pacuutilization}}</div>\r\n        </div>\r\n        <div class=\"section\">\r\n        <mat-list class=\"app-class\" >\r\n            <div *ngIf=\"alert\">\r\n               <mat-list-item *ngFor=\"let item of alert\"> {{item}} </mat-list-item> \r\n            </div>\r\n        </mat-list>\r\n        </div>\r\n        <div class=\"section\">\r\n            <canvas id=\"myChart\"></canvas>\r\n        </div>\r\n    </div>\r\n   </div>"
 
 /***/ }),
 
@@ -412,7 +412,7 @@ module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js__ = __webpack_require__("./node_modules/chart.js/src/chart.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_chart_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -442,14 +442,16 @@ var AppHeaderComponent = /** @class */ (function () {
     }
     AppHeaderComponent.prototype.ngAfterViewInit = function () {
         this.loadFromFile();
-        this.getDatas(this.globals.timeinterval + 3000);
+        this.getDatas(this.globals.timeinterval + 1000);
         this.loadHeaderChartData();
-        this.globals.timeinterval = this.globals.timeinterval + 3000;
+        this.globals.timeinterval = this.globals.timeinterval + 1000;
     };
     AppHeaderComponent.prototype.loadFromFile = function () {
         var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/headeralert').subscribe(function (result) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_6_environments_environment__["a" /* environment */].api_url_real + '/procedure').subscribe(function (result) {
             _this.procedure = result.json();
+            console.log(_this.procedure);
+            _this.globals.globleProcedure = _this.procedure;
             _this.timeDisplay = _this.procedure.CurrentTime;
             _this.alert = _this.procedure.Alert;
         }, function (error) { return console.error(error); });
@@ -476,7 +478,7 @@ var AppHeaderComponent = /** @class */ (function () {
     AppHeaderComponent.prototype.loadHeaderChartData = function () {
         var _this = this;
         this.http
-            .get(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].api_url + '/headerchart')
+            .get(__WEBPACK_IMPORTED_MODULE_6_environments_environment__["a" /* environment */].api_url + '/headerchart')
             .map(function (data) { return data.json(); })
             .subscribe(function (data) {
             _this.headerchart = data;
@@ -522,7 +524,7 @@ var AppHeaderComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-pat-footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\r\n        <div class=\"row\"> \r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/completed.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Complete</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/notcompleted.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Not completed</span>\r\n            </div> \r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/inprogress.png\"  alt=\"\" >\r\n                    <span class=\"text2\">In progress</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/pending.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Pending</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/notadmitted.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Not admitted</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/Preopholding.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Pre-op holding</span>\r\n            </div> \r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/inor.png\"  alt=\"\" >\r\n                    <span class=\"text2\">In OR</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/leftor.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Left OR</span>\r\n            </div>\r\n        </div>\r\n    </div>"
+module.exports = "<div class=\"footer\">\r\n        <div class=\"row\"> \r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/completed.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Complete</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/notcompleted.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Not completed</span>\r\n            </div> \r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/inprogress.png\"  alt=\"\" >\r\n                    <span class=\"text2\">In progress</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/pending.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Pending</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                <img class=\"img-valign\"  src =\"../../../assets/na.png\"  alt=\"\" >\r\n                <span class=\"text2\">N/A</span>\r\n        </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/notadmitted.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Not admitted</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/Preopholding.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Pre-op holding</span>\r\n            </div> \r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/inor.png\"  alt=\"\" >\r\n                    <span class=\"text2\">In OR</span>\r\n            </div>\r\n            <div class=\"column\">\r\n                    <img class=\"img-valign\"  src =\"../../../assets/leftor.png\"  alt=\"\" >\r\n                    <span class=\"text2\">Left OR</span>\r\n            </div>\r\n        </div>\r\n    </div>"
 
 /***/ }),
 
@@ -675,7 +677,7 @@ var ProcFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/sidenav/sidenav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!router.url.includes('signin')\">\r\n<app-header ></app-header>\r\n</div>\r\n<mat-sidenav-container class=\"mat-sidenav-container\" style.top.px=\"{{sidetop}}\" style.margin-bottom.px =\"{{sidemarginbottom}}\">\r\n  <mat-sidenav *ngIf=\"!router.url.includes('signin')\" #sidenav \r\n              position =\"end\"\r\n               [opened]=\"true\"\r\n               mode =\"side\"\r\n               disableClose =\"true\"\r\n               fixedInViewport=\"true\" \r\n               [fixedTopGap]=\"200\"\r\n               [fixedBottomGap]=\"50\">\r\n    \r\n               <div class=\"btn-group\">\r\n                <button routerLink=\"/procedure\">Procedure</button>\r\n                <button routerLink=\"/patient\">Patient</button>\r\n                <button routerLink=\"/personel\">Personel</button>\r\n                <button routerLink=\"/facilityresources\">Recovery</button>\r\n                <button routerLink=\"/notify\"> Notify</button>\r\n                <button routerLink=\"/analytics\">Analytics</button>\r\n              </div>\r\n    \r\n  </mat-sidenav>\r\n  \r\n  <div class=\"app-sidenav-content\">\r\n    \r\n    <div class=\"wrapper\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</mat-sidenav-container>"
+module.exports = "<div *ngIf=\"!router.url.includes('signin')\">\r\n<app-header ></app-header>\r\n</div>\r\n<mat-sidenav-container class=\"mat-sidenav-container\" style.top.px=\"{{sidetop}}\" style.margin-bottom.px =\"{{sidemarginbottom}}\">\r\n  <mat-sidenav *ngIf=\"!(router.url.includes('preschassit') ||  router.url.includes('signin'))\" #sidenav \r\n              position =\"end\"\r\n               [opened]=\"true\"\r\n               mode =\"side\"\r\n               disableClose =\"true\"\r\n               fixedInViewport=\"true\" \r\n               [fixedTopGap]=\"200\"\r\n               [fixedBottomGap]=\"50\">\r\n    \r\n               <div class=\"btn-group\">\r\n                <button routerLink=\"/procedure\">Procedure</button>\r\n                <button routerLink=\"/patient\">Patient</button>\r\n                <button routerLink=\"/personel\">Personel</button>\r\n                <button routerLink=\"/facilityresources\">Recovery</button>\r\n                <button routerLink=\"/notify\"> Notify</button>\r\n                <button routerLink=\"/analytics\">Analytics</button>\r\n              </div>\r\n    \r\n  </mat-sidenav>\r\n  \r\n  <div class=\"app-sidenav-content\">\r\n    \r\n    <div class=\"wrapper\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</mat-sidenav-container>"
 
 /***/ }),
 
@@ -757,7 +759,7 @@ var SidenavComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/PrimeCareManager/component/sidenav/sidenav.component.scss")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"]])
     ], SidenavComponent);
     return SidenavComponent;
 }());
@@ -831,7 +833,7 @@ var ToolbarComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MatDialog */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["C" /* MatSnackBar */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["Router"]])
     ], ToolbarComponent);
     return ToolbarComponent;
 }());
@@ -843,14 +845,14 @@ var ToolbarComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<table style=\"width: 100%; table-layout: fixed\">\r\n    <tr>\r\n        <td style=\"width: 80%\">\r\n                <div>\r\n                        <div *ngIf=\"resource\">\r\n                            <div *ngFor=\"let operationBed of resource.OperationBeds\" >\r\n                                <svg width =\"100%\" height = \"100\" style=\"margin: 10px\">\r\n                                    <g (click)=\"clicked(operation.Patient)\" *ngFor= \"let operation of operationBed.Beds\" >\r\n                                        <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"19%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\" \r\n                                        style = \"stroke:rgb(178, 180, 180)\"/>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"20%\" dx= \"30\" alignment-baseline = \"middle\" font-weight=\"bold\" font-size = \"30px\"  text-anchor = \"middle\">{{operation.Name}}</text>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"50%\" dx= \"30\" font-size = \"20px\"  text-anchor = \"middle\">{{operation.EstDischargeTime}}</text>\r\n                                    </g>\r\n                                </svg>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n        </td>\r\n        <td>\r\n        <p class=\"text3\" align=\"center\">PACU Current Occupancy</p>\r\n        <div align=\"center\"  *ngIf=\"resource\">\r\n                <svg width=\"300\" height=\"150\">\r\n                    <g>\r\n                        <rect attr.x=\"20%\" width=\"300\" height=\"150\" y=\"0\"  rx=\"10\" ry=\"10\" style=\"fill:rgb(185,205,225);stroke-width:3;\" />\r\n                        <text class=\"text1\" x=\"50%\" y=\"20%\" alignment-baseline=\"middle\" text-anchor=\"middle\">Occupancy = {{resource.CurrentOccupancy}}</text>  \r\n                        <text class=\"text1\" x=\"50%\" y=\"50%\" alignment-baseline=\"middle\" text-anchor=\"middle\"># Beds occupied =  {{resource.BedOccupied}}</text>    \r\n                        <text class=\"text1\" x=\"50%\" y=\"75%\" alignment-baseline=\"middle\" text-anchor=\"middle\"># Empty beds =  {{resource.BedEmpty}}</text>  \r\n        \r\n                        </g>\r\n                </svg>\r\n            </div>\r\n        </td>z\r\n\r\n</table>\r\n<p style=\"padding: 10px;\"></p>\r\n\r\n<table class=\"text2\" style=\"width: 100%; table-layout: fixed; font-size:25px; border: 10px \"  >\r\n  <tr>\r\n        <td>\r\n            <p class=\"text2\" style= \"margin-left: 400px;\">PACU Throughput </p>\r\n                <div>\r\n                        <canvas  style= \"margin-left: 150px;\"\r\n                           id=\"myChart1\"></canvas>\r\n                    \r\n                </div>\r\n        </td>\r\n            <td>\r\n               <p class=\"text2\" style= \"margin-left: 400px;\">PACU Occupancy Forecast </p>\r\n               <div>\r\n                <canvas  style= \"margin-left: 150px;\" id=\"myChart2\"></canvas>\r\n            \r\n        </div>\r\n        </td>\r\n        \r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>"
+module.exports = "<p></p>\r\n\r\n<table style=\"width: 100%; table-layout: fixed\"> \r\n    <tr>\r\n        <td style=\"width: 70%\">\r\n                <div>\r\n                        <div *ngIf=\"resource\">\r\n                            <div *ngFor=\"let operationBed of resource.OperationBeds\" >\r\n                                <svg width =\"100%\" height = \"100\" style=\"margin: 10px\">\r\n                                    <g (click)=\"clicked(operation.Patient)\" *ngFor= \"let operation of operationBed.Beds\" >\r\n                                        <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"19%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\" \r\n                                        style = \"stroke:rgb(178, 180, 180)\"/>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"20%\" dx= \"30\" alignment-baseline = \"middle\" font-weight=\"bold\" font-size = \"30px\"  text-anchor = \"middle\">{{operation.Name}}</text>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"50%\" dx= \"30\" font-size = \"20px\"  text-anchor = \"middle\">{{operation.EstDischargeTime}}</text>\r\n                                    </g>\r\n                                </svg>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n        </td>\r\n        <td>\r\n        <div class=\"text5\" align=\"center\">Upcoming Patient</div>\r\n        <mat-list>\r\n            <mat-list-item *ngFor=\"let message of listResourceUpcomingPatient\">\r\n             <div  class=\"text6\">\r\n                <span>{{message.Name}} - Name [{{message.MedicalRecord}}] </span> \r\n                <br>\r\n                <span> Expected Time: {{message.ExpectedTime}} </span>\r\n            </div>\r\n            </mat-list-item>\r\n          </mat-list>\r\n        </td>\r\n\r\n</table>\r\n<p style=\"padding: 10px;\"></p>\r\n\r\n<table class=\"text2\" style=\"width: 100%; table-layout: fixed; font-size:25px; border: 10px \"  >\r\n  <tr>\r\n        <td>\r\n            <p class=\"text2\" style= \"margin-left: 400px;\">PACU Throughput </p>\r\n                <div>\r\n                        <canvas  style= \"margin-left: 150px;\"\r\n                           id=\"myChart1\"></canvas>\r\n                    \r\n                </div>\r\n        </td>\r\n            <td>\r\n               <p class=\"text2\" style= \"margin-left: 400px;\">PACU Occupancy Forecast </p>\r\n               <div>\r\n                <canvas  style= \"margin-left: 150px;\" id=\"myChart2\"></canvas>\r\n            \r\n        </div>\r\n        </td>\r\n        \r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\nz\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n"
+module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\nz\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n\nmat-list {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  height: 250px;\n  font-size: 2em;\n  font-family: Calibri;\n  text-align: center;\n  margin-top: 0em;\n  font-size: 1.5em; }\n\n.text5 {\n  font-size: 1.5em;\n  background-color: #ebf1de;\n  color: gray;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 30px; }\n\n.text6 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center;\n  margin-left: 170px; }\n"
 
 /***/ }),
 
@@ -862,10 +864,10 @@ module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-imag
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__procedure_mat_dialogs_helper_mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mat_dialogs_helper_mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/mat-dialogs-helper.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_chart_js__ = __webpack_require__("./node_modules/chart.js/src/chart.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_chart_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -891,6 +893,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
         this.globals1 = globals;
         this.loadChartData();
         this.loadChartData1();
+        this.loadResourceUpcomingPatient();
     }
     FacilityresourcesComponent.prototype.clicked = function (data) {
         console.log(data);
@@ -907,10 +910,21 @@ var FacilityresourcesComponent = /** @class */ (function () {
         this.getDatas();
         this.loadChartData();
         this.loadChartData1();
+        this.loadResourceUpcomingPatient();
+    };
+    FacilityresourcesComponent.prototype.loadResourceUpcomingPatient = function () {
+        var _this = this;
+        this.http.get(__WEBPACK_IMPORTED_MODULE_5_environments_environment__["a" /* environment */].api_url + '/facilityresources/ResourceUpcomingPatient').subscribe(function (result) {
+            // tslint:disable-next-line:no-debugger
+            // debugger;
+            // this.listResource = result.json() as Resources[];
+            _this.listResourceUpcomingPatient = result.json();
+            console.log(_this.listResourceUpcomingPatient);
+        }, function (error) { return console.error(error); });
     };
     FacilityresourcesComponent.prototype.loadFromFile = function () {
         var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].api_url + '/facilityresources').subscribe(function (result) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_5_environments_environment__["a" /* environment */].api_url_real + '/facilityresources').subscribe(function (result) {
             // tslint:disable-next-line:no-debugger
             // debugger;
             // this.listResource = result.json() as Resources[];
@@ -934,7 +948,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
     FacilityresourcesComponent.prototype.loadChartData = function () {
         var _this = this;
         this.http
-            .get(__WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUChart')
+            .get(__WEBPACK_IMPORTED_MODULE_5_environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUChart')
             .map(function (data) { return data.json(); })
             .subscribe(function (data) {
             _this.pacuchart = data;
@@ -977,7 +991,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
     FacilityresourcesComponent.prototype.loadChartData1 = function () {
         var _this = this;
         this.http
-            .get(__WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUThroughChart')
+            .get(__WEBPACK_IMPORTED_MODULE_5_environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUThroughChart')
             .map(function (data) { return data.json(); })
             .subscribe(function (data) {
             _this.pacuThroughChart = data;
@@ -1014,9 +1028,154 @@ var FacilityresourcesComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/PrimeCareManager/facilityresources/facilityresources.component.scss")]
         }),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_3__procedure_mat_dialogs_helper_mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_3__mat_dialogs_helper_mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]])
     ], FacilityresourcesComponent);
     return FacilityresourcesComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h2>\r\n  <div class=\"font textalign\">Name: {{ name }}</div>\r\n  <div class=\"font textalign\">MRN: {{ Info }}</div>\r\n</h2>\r\n\r\n<mat-dialog-content>\r\n  <div class=\"font textalign\">SurgeonName: {{ SurgeonName }}</div>\r\n  <div class=\"font textalign\">Anesthologist: {{ Anesthologist }}</div>\r\n  <div class=\"font textalign\">PainScore: {{ PainScore }}</div>\r\n  <div class=\"font textalign\">PacuNurse: {{ PacuNurse }}</div>\r\n  <div class=\"font textalign\">Others: {{ Others }}</div>\r\n</mat-dialog-content>\r\n  "
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none; }\n"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InfoDialogComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var InfoDialogComponent = /** @class */ (function () {
+    function InfoDialogComponent(dialogRef) {
+        this.dialogRef = dialogRef;
+    }
+    InfoDialogComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-info-dialog',
+            template: __webpack_require__("./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.html"),
+            styles: [__webpack_require__("./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.scss")],
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatDialogRef */]])
+    ], InfoDialogComponent);
+    return InfoDialogComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/mat-dialogs-helper.module.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatDialogsHelperModuleResource; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__ = __webpack_require__("./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/mat-dialogs-helper.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var MatDialogsHelperModuleResource = /** @class */ (function () {
+    function MatDialogsHelperModuleResource() {
+    }
+    MatDialogsHelperModuleResource = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+                __WEBPACK_IMPORTED_MODULE_3__angular_material__["i" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_material__["b" /* MatButtonModule */]
+            ],
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */]],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_4__mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]]
+        })
+    ], MatDialogsHelperModuleResource);
+    return MatDialogsHelperModuleResource;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/mat-dialogs-helper.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatDialogsHelperService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__ = __webpack_require__("./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators_map__ = __webpack_require__("./node_modules/rxjs/_esm5/operators/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var MatDialogsHelperService = /** @class */ (function () {
+    function MatDialogsHelperService(dialogs) {
+        this.dialogs = dialogs;
+        this.defaultWidth = '100vw';
+    }
+    MatDialogsHelperService.prototype.confirm = function (message) {
+        var dialogRef;
+        var patient = message;
+        dialogRef = this.dialogs.open(__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */], { panelClass: 'my-full-screen-dialog2' });
+        dialogRef.componentInstance.name = patient.Name;
+        dialogRef.componentInstance.Info = patient.Info;
+        dialogRef.componentInstance.SurgeonName = patient.SurgeonName;
+        dialogRef.componentInstance.Anesthologist = patient.Anesthologist;
+        dialogRef.componentInstance.PainScore = patient.PainScore;
+        dialogRef.componentInstance.PacuNurse = patient.PacuNurse;
+        dialogRef.componentInstance.Others = patient.Others;
+        return dialogRef.afterClosed().pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators_map__["a" /* map */])(function (res) { return !!res; })); // always return a boolean value
+    };
+    MatDialogsHelperService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MatDialog */]])
+    ], MatDialogsHelperService);
+    return MatDialogsHelperService;
 }());
 
 
@@ -1054,14 +1213,14 @@ var Globals = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/notify/notify/notify.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<div style=\"margin-left:50px\"> \r\n  <table style=\"width: 100%; height:600px;\" >\r\n    <tr>\r\n      <td class =\"textalign\"><h1>Send notifications: </h1></td>\r\n      <td class =\"textalign\"><h1>Set notifications: </h1>  \r\n      </td>\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            <div class=\"textalign\" >\r\n                Select Personnel:\r\n            </div>\r\n            <div class=\"textalign\" >\r\n                <mat-input-container>\r\n                  <mat-select [(ngModel)]=\"selectedValue\">\r\n                    <mat-option value=\"showAnes1\">Anes1,Test </mat-option>\r\n                    <mat-option value=\"showAnes2\">Anes2,Test </mat-option>\r\n                    <mat-option value=\"showAnes3\">Anes3,Test </mat-option>\r\n                    <mat-option value=\"showAnes4\">Anes4,Test </mat-option>\r\n                    <mat-option value=\"showAnes5\">Anes5,Test </mat-option>\r\n                    <mat-option value=\"showAnes6\">Anes6,Test </mat-option>\r\n                    <mat-option value=\"showAnes7\">Surg1,Test </mat-option>\r\n                    <mat-option value=\"showAnes8\">Surg2,Test </mat-option>\r\n                    <mat-option value=\"showAnes9\">Surg3,Test </mat-option>\r\n                    <mat-option value=\"showAnes10\">Surg4,Test </mat-option>\r\n                    <mat-option value=\"showAnes11\">Surg5,Test </mat-option>\r\n                    <mat-option value=\"showAnes12\">Surg5,Test </mat-option>\r\n                    <mat-option value=\"showAnes13\">CRNA1,Test </mat-option>\r\n                    <mat-option value=\"showall\">CRNA2,Test </mat-option>\r\n                    <mat-option value=\"showAnes15\">Res1,Test </mat-option>\r\n                    <mat-option value=\"showAnes16\">Res2,Test </mat-option>\r\n                  </mat-select>\r\n                </mat-input-container>\r\n            </div>\r\n            <td>\r\n                <div class=\"textalign\" >\r\n                    Select Personnel:\r\n                </div>\r\n                <div class=\"textalign\" >\r\n                    <mat-input-container>\r\n                      <mat-select [(ngModel)]=\"selectedValueAnes4\">\r\n                          <mat-option value=\"showAnes1\">Anes1,Test </mat-option>\r\n                          <mat-option value=\"showAnes2\">Anes2,Test </mat-option>\r\n                          <mat-option value=\"showAnes3\">Anes3,Test </mat-option>\r\n                          <mat-option value=\"showAnes4\">Anes4,Test </mat-option>\r\n                          <mat-option value=\"showAnes5\">Anes5,Test </mat-option>\r\n                          <mat-option value=\"showAnes6\">Anes6,Test </mat-option>\r\n                          <mat-option value=\"showAnes7\">Surg1,Test </mat-option>\r\n                          <mat-option value=\"showAnes8\">Surg2,Test </mat-option>\r\n                          <mat-option value=\"showAnes9\">Surg3,Test </mat-option>\r\n                          <mat-option value=\"showAnes10\">Surg4,Test </mat-option>\r\n                          <mat-option value=\"showAnes11\">Surg5,Test </mat-option>\r\n                          <mat-option value=\"showAnes12\">Surg5,Test </mat-option>\r\n                          <mat-option value=\"showAnes13\">CRNA1,Test </mat-option>\r\n                          <mat-option value=\"showAnes14\">CRNA2,Test </mat-option>\r\n                          <mat-option value=\"showAnes15\">Res1,Test </mat-option>\r\n                          <mat-option value=\"showAnes16\">Res2,Test </mat-option>\r\n                      </mat-select>\r\n                    </mat-input-container>\r\n                </div>\r\n            </td>\r\n      </tr>\r\n      <tr>\r\n          <td>\r\n              <div class=\"textalign\" >\r\n                  Select Message:\r\n              </div>\r\n              <div class=\"textalign\" >\r\n                  <mat-input-container>\r\n                    <mat-select [(ngModel)]=\"selectedreadyfi\">\r\n                        <mat-option value=\"showreadyfi\">Ready for induction</mat-option>\r\n                        <mat-option value=\"showreadyfe\">Ready for Emergence</mat-option>\r\n                        <mat-option value=\"showreadyfi\">Ready for induction</mat-option>\r\n                        <mat-option value=\"showreadyfp\">Ready for Positioning</mat-option>\r\n                        <mat-option value=\"showreadyfc\">Closing</mat-option>\r\n                        <mat-option value=\"showreadyfor\">Leave OR </mat-option>\r\n                        <mat-option value=\"showreadyftr\">Turn over</mat-option>\r\n                    </mat-select>\r\n                  </mat-input-container>\r\n              </div>\r\n              <td>\r\n                  <div class=\"textalign\" >\r\n                      Select Trigger:\r\n                  </div>\r\n                  <div class=\"textalign\" >\r\n                      <mat-input-container>\r\n                        <mat-select [(ngModel)]=\"selectedValuetrigger\">\r\n                            <mat-option value=\"showtrigger\">Emergence</mat-option>\r\n                            <mat-option value=\"In room\">In room</mat-option>\r\n                            <mat-option value=\"Anesthesia Ready\">Anesthesia Ready</mat-option>\r\n                            <mat-option value=\"Procedure Start\">Procedure Start</mat-option>\r\n                            <mat-option value=\"Closing\">Closing</mat-option>\r\n                            <mat-option value=\"Leave OR\">Leave OR</mat-option>\r\n                            <mat-option value=\"Concurreny violation\">Concurreny violation</mat-option>\r\n                        </mat-select>\r\n                      </mat-input-container>\r\n                  </div>\r\n              </td>\r\n        </tr>\r\n        <tr>\r\n          <td>\r\n              <div class=\"textalign\" >\r\n                <mat-form-field class=\"demo-full-width\">\r\n                  <textarea class=\"demo-textarea\" matInput>Enter your message here </textarea>\r\n                </mat-form-field>\r\n              </div>\r\n            </td>\r\n            <td>\r\n                <div class=\"textalign\" >\r\n                    <button mat-raised-button\tclass=\"mat-button\">Confirm</button>\r\n                </div>\r\n              </td>\r\n        </tr>\r\n        <tr>\r\n          \r\n              <td>\r\n                  <div class=\"textalign\" >\r\n                      <button mat-raised-button\tclass=\"mat-button\">Send Message</button>\r\n                  </div>\r\n                </td>\r\n                <td>\r\n                    <div class=\"textalign\" >\r\n                        <mat-card class=\"demo-full-width demo-card\">\r\n                            <mat-card-title>Current set alerts</mat-card-title>\r\n                            <mat-card-content>\r\n                              <p class=\"cardcontent\">Anes3, Test for In room.</p>\r\n                              <p class=\"cardcontent\">Surg3, Test for Closing .</p>\r\n                            </mat-card-content>\r\n                          </mat-card>\r\n                    </div>\r\n                  </td>\r\n          </tr>\r\n  </table>  \r\n</div>"
+module.exports = "<p></p>\r\n<div style=\"margin-left:50px\">\r\n  <table style=\"width: 100%; height:600px;\">\r\n    <tr>\r\n      <td class=\"textalign\">\r\n        <h1>Send notifications: </h1>\r\n      </td>\r\n      <td class=\"textalign\">\r\n        <h1>Set notifications: </h1>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          Select Personnel:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\">\r\n            <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Select Personnel:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\">\r\n              <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n                <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                  {{staff.viewValue}}\r\n                </mat-option>\r\n              </mat-optgroup>\r\n            </mat-select>\r\n\\          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <p></p>\r\n        <p></p>\r\n        <div class=\"textalign\">\r\n          Select Message:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\">\r\n            <mat-option *ngFor=\"let message of notifyMessage\" [value]=\"message.Value\">\r\n              {{message.Name}}\r\n            </mat-option>\r\n          </mat-select>\r\n        </div>\r\n        <td>\r\n          <p></p>\r\n          <p></p>\r\n          <div class=\"textalign\">\r\n            Select Trigger:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\">\r\n              <mat-option *ngFor=\"let trigger of notifyTrigger\" [value]=\"trigger.Value\">\r\n                {{trigger.Name}}\r\n              </mat-option>\r\n\\            </mat-select>\r\n\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-form-field class=\"demo-full-width\">\r\n            <textarea class=\"demo-textarea\" matInput>Enter your message here </textarea>\r\n          </mat-form-field>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button mat-raised-button class=\"mat-button\">Confirm</button>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button mat-raised-button class=\"mat-button\">Send Message</button>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-card class=\"demo-full-width demo-card\">\r\n            <mat-card-title>Current set alerts</mat-card-title>\r\n            <mat-card-content>\r\n              <p class=\"cardcontent\">Anes3, Test for In room.</p>\r\n              <p class=\"cardcontent\">Surg3, Test for Closing .</p>\r\n            </mat-card-content>\r\n          </mat-card>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/notify/notify/notify.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse;\n  border: 0px solid #dbeef4; }\ntable td {\n  border: 0px solid #dbeef4; }\n.cardcontent {\n  font-family: Calibri;\n  font-size: 15px;\n  color: #318f9c; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  outline: solid;\n  outline-color: #2e7d96;\n  height: 30px;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  padding-top: 8px;\n  margin-bottom: 14px; }\n.textalign1 {\n  font-family: Calibri;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 150px;\n  border: 2px solid #2e7d96;\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n.demo-basic {\n  padding: 0; }\n.demo-basic .mat-card-content {\n  padding: 16px; }\n.demo-full-width {\n  width: 70%; }\n.demo-card {\n  margin: auto;\n  border-radius: 15px;\n  border: 2px solid #7f7f7f; }\n.demo-card mat-card-content {\n    font-size: 16px; }\n.demo-text-align-end {\n  text-align: end; }\n.demo-textarea {\n  font-family: Calibri;\n  resize: none;\n  border: 2px solid #7f7f7f;\n  overflow: auto;\n  padding: 20px;\n  height: 100px;\n  border-radius: 15px; }\n.mat-button {\n  font-family: Calibri;\n  padding: 0 6px 0 6px;\n  margin: 6px 8px 6px 8px;\n  min-width: 188px;\n  border-radius: 3px;\n  font-size: 14px;\n  text-align: center;\n  text-decoration: none;\n  height: 50px;\n  border: none;\n  outline: none;\n  background-color: #c4bd97;\n  border-radius: 5px;\n  color: white; }\n.mat-card-title {\n  font-family: Calibri;\n  font-size: 27px;\n  color: #7f7f7f; }\n::ng-deep .mat-input-underline {\n  display: none; }\n::ng-deep .mat-select {\n  font-size: 17px;\n  color: #318f9c; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 17px; }\n"
+module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse;\n  border: 0px solid #dbeef4; }\ntable td {\n  border: 0px solid #dbeef4; }\n.cardcontent {\n  font-family: Calibri;\n  font-size: 15px;\n  color: #318f9c; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  height: 1.5em;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4; }\n.textalign1 {\n  font-family: Calibri;\n  font-size: 0.2em;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 200px;\n  height: 1.5em;\n  border: 2px solid #2e7d96;\n  padding-top: 10px;\n  padding-right: 7px;\n  padding-bottom: 17px;\n  padding-left: 17px; }\n.demo-basic {\n  padding: 0; }\n.demo-basic .mat-card-content {\n  padding: 16px; }\n.demo-full-width {\n  width: 70%; }\n.demo-card {\n  margin: auto;\n  border-radius: 15px;\n  border: 2px solid #7f7f7f; }\n.demo-card mat-card-content {\n    font-size: 16px; }\n.demo-text-align-end {\n  text-align: end; }\n.demo-textarea {\n  font-family: Calibri;\n  resize: none;\n  border: 2px solid #7f7f7f;\n  overflow: auto;\n  padding: 20px;\n  height: 100px;\n  border-radius: 15px; }\n.mat-button {\n  font-family: Calibri;\n  padding: 0 6px 0 6px;\n  margin: 6px 8px 6px 8px;\n  min-width: 188px;\n  border-radius: 3px;\n  font-size: 14px;\n  text-align: center;\n  text-decoration: none;\n  height: 50px;\n  border: none;\n  outline: none;\n  background-color: #c4bd97;\n  border-radius: 5px;\n  color: white; }\n.mat-card-title {\n  font-family: Calibri;\n  font-size: 27px;\n  color: #7f7f7f; }\n::ng-deep .mat-input-underline {\n  display: none; }\n::ng-deep .mat-select {\n  font-size: 17px;\n  color: #318f9c; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 17px; }\n"
 
 /***/ }),
 
@@ -1071,6 +1230,140 @@ module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 30
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotifyComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_startWith__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/startWith.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_merge__ = __webpack_require__("./node_modules/rxjs/_esm5/add/observable/merge.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/debounceTime.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/distinctUntilChanged.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_fromEvent__ = __webpack_require__("./node_modules/rxjs/_esm5/add/observable/fromEvent.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+var NotifyComponent = /** @class */ (function () {
+    // tslint:disable-next-line:max-line-length
+    function NotifyComponent(http) {
+        this.http = http;
+        this.loadStaff();
+        this.loadNM();
+        this.loadNT();
+    }
+    NotifyComponent.prototype.loadStaff = function () {
+        var _this = this;
+        this.http.get(__WEBPACK_IMPORTED_MODULE_2_environments_environment__["a" /* environment */].api_url + '/notify/personel').subscribe(function (result) {
+            _this.personelStaff = result.json();
+        }, function (error) { return console.error(error); });
+    };
+    NotifyComponent.prototype.loadNM = function () {
+        var _this = this;
+        this.http.get(__WEBPACK_IMPORTED_MODULE_2_environments_environment__["a" /* environment */].api_url + '/notify/message').subscribe(function (result) {
+            _this.notifyMessage = result.json();
+        }, function (error) { return console.error(error); });
+    };
+    NotifyComponent.prototype.loadNT = function () {
+        var _this = this;
+        this.http.get(__WEBPACK_IMPORTED_MODULE_2_environments_environment__["a" /* environment */].api_url + '/notify/trigger').subscribe(function (result) {
+            _this.notifyTrigger = result.json();
+        }, function (error) { return console.error(error); });
+    };
+    NotifyComponent.prototype.ngAfterViewInit = function () {
+        this.loadStaff();
+        this.loadNM();
+        this.loadNT();
+    };
+    NotifyComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-notify',
+            template: __webpack_require__("./src/app/PrimeCareManager/notify/notify/notify.component.html"),
+            styles: [__webpack_require__("./src/app/PrimeCareManager/notify/notify/notify.component.scss")]
+        }),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
+    ], NotifyComponent);
+    return NotifyComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\r\n\r\n<mat-dialog-content>\r\n  <div class=\"font textalign\">{{ name }}</div> \r\n  <div class=\"font textalign\">{{ mrnNumber }}</div> \r\n  <div class=\"font textalign\">{{ stats }}</div> \r\n  <div class=\"font textalign\">{{ medicalhx }}</div> \r\n  <div class=\"font textalign\">{{ allergies }}</div> \r\n  <div class=\"font textalign\">{{ diagnosis }}</div> \r\n</mat-dialog-content>"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none; }\n"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InfoDialogComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var InfoDialogComponent = /** @class */ (function () {
+    function InfoDialogComponent(dialogRef) {
+        this.dialogRef = dialogRef;
+    }
+    InfoDialogComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-info-dialog',
+            template: __webpack_require__("./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.html"),
+            styles: [__webpack_require__("./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.scss")],
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatDialogRef */]])
+    ], InfoDialogComponent);
+    return InfoDialogComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/patient/mat-dialogs-helper/mat-dialogs-helper.module.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatDialogsHelperModulePatient; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__ = __webpack_require__("./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/patient/mat-dialogs-helper/mat-dialogs-helper.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1078,23 +1371,76 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
-var NotifyComponent = /** @class */ (function () {
-    function NotifyComponent() {
-        // setting this is the key to initial select.
-        this.selectedValue = 'showall';
-        this.selectedValueEmergence = 'showemergence';
-        this.selectedValueAnes4 = 'showAnes4';
-        this.selectedreadyfi = 'showreadyfi';
-        this.selectedValuetrigger = 'showtrigger';
+
+
+
+
+var MatDialogsHelperModulePatient = /** @class */ (function () {
+    function MatDialogsHelperModulePatient() {
     }
-    NotifyComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-notify',
-            template: __webpack_require__("./src/app/PrimeCareManager/notify/notify/notify.component.html"),
-            styles: [__webpack_require__("./src/app/PrimeCareManager/notify/notify/notify.component.scss")]
+    MatDialogsHelperModulePatient = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+                __WEBPACK_IMPORTED_MODULE_3__angular_material__["i" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_material__["b" /* MatButtonModule */]
+            ],
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */]],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_4__mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]]
         })
-    ], NotifyComponent);
-    return NotifyComponent;
+    ], MatDialogsHelperModulePatient);
+    return MatDialogsHelperModulePatient;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/patient/mat-dialogs-helper/mat-dialogs-helper.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatDialogsHelperService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__ = __webpack_require__("./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators_map__ = __webpack_require__("./node_modules/rxjs/_esm5/operators/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var MatDialogsHelperService = /** @class */ (function () {
+    function MatDialogsHelperService(dialogs) {
+        this.dialogs = dialogs;
+        this.defaultWidth = '100vw';
+    }
+    MatDialogsHelperService.prototype.confirm = function (message) {
+        var dialogRef;
+        var patient = message;
+        dialogRef = this.dialogs.open(__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */], { panelClass: 'my-full-screen-dialog1' });
+        dialogRef.componentInstance.name = patient.Info.Name;
+        dialogRef.componentInstance.mrnNumber = patient.Info.MedicalRecord;
+        dialogRef.componentInstance.stats = patient.Info.Age + ', ' + patient.Info.Gender + ', ' + patient.Info.BMI;
+        dialogRef.componentInstance.medicalhx = patient.Info.MedicalHx;
+        dialogRef.componentInstance.allergies = patient.Info.Allergies;
+        dialogRef.componentInstance.diagnosis = patient.Info.Diagnosis;
+        return dialogRef.afterClosed().pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators_map__["a" /* map */])(function (res) { return !!res; })); // always return a boolean value
+    };
+    MatDialogsHelperService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MatDialog */]])
+    ], MatDialogsHelperService);
+    return MatDialogsHelperService;
 }());
 
 
@@ -1104,7 +1450,7 @@ var NotifyComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/patient/patient.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<div class=\"header\" >\r\n <mat-table [dataSource]=\"dataSource\">\r\n\r\n     <ng-container matColumnDef=\"patient\">\r\n         <mat-header-cell class=\"headertext\" *matHeaderCellDef> Patient </mat-header-cell>\r\n         <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n           <div>{{patient.Info[0]}}</div> \r\n           <div>{{patient.Info[1]}}</div> \r\n           <div>{{patient.Info[2]}}</div> \r\n           <div>{{patient.Info[3]}}</div>\r\n         </mat-cell>\r\n       </ng-container>\r\n       <ng-container matColumnDef=\"location\">\r\n           <mat-header-cell class=\"headertext\" *matHeaderCellDef> Location </mat-header-cell>\r\n           <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.Location}} </mat-cell>\r\n         </ng-container>\r\n\r\n         <ng-container matColumnDef=\"disposition\">\r\n           <mat-header-cell class=\"headertext\" *matHeaderCellDef> Disposition </mat-header-cell>\r\n           <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.Disposition}} </mat-cell>\r\n         </ng-container>\r\n\r\n         <ng-container matColumnDef=\"surgeon\">\r\n             <mat-header-cell class=\"headertext\" *matHeaderCellDef> Surgeon </mat-header-cell>\r\n             <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.SurgeonName}} </mat-cell>\r\n           </ng-container>\r\n         \r\n           <ng-container matColumnDef=\"anesthesia\">\r\n             <mat-header-cell class=\"headertext\" *matHeaderCellDef> Anesthesia </mat-header-cell>\r\n             <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.Anesthologist}} </mat-cell>\r\n           </ng-container>\r\n\r\n\r\n     <ng-container matColumnDef=\"procedure\">\r\n         <mat-header-cell class=\"headertext\" *matHeaderCellDef> Procedure </mat-header-cell>\r\n         <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.Procedure}} </mat-cell>\r\n       </ng-container>\r\n \r\n       <ng-container matColumnDef=\"start\">\r\n         <mat-header-cell class=\"headertext\" *matHeaderCellDef> Start </mat-header-cell>\r\n         <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.StartTime}} </mat-cell>\r\n       </ng-container>\r\n\r\n       <ng-container matColumnDef=\"status\">\r\n           <mat-header-cell class=\"headertext\" *matHeaderCellDef> Status </mat-header-cell>\r\n           <mat-cell class=\"columntext\" *matCellDef=\"let patient\" style=\"flex: 1; min-height: 48px; display: flex; align-items: center; margin-right: 20px\" [ngStyle]=changeBackground(patient.StatusColor)>{{patient.Status}} </mat-cell>\r\n         </ng-container>\r\n\r\n     <ng-container matColumnDef=\"cons\">\r\n         <mat-header-cell class=\"headertext\" *matHeaderCellDef> Cons </mat-header-cell>\r\n         <mat-cell class=\"columntext\" *matCellDef=\"let patient\"><img src =\"../../../assets/{{patient.Consent}}\"></mat-cell>\r\n       </ng-container>\r\n \r\n       <ng-container matColumnDef=\"hp\">\r\n         <mat-header-cell class=\"headertext\" *matHeaderCellDef> HP </mat-header-cell>\r\n         <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> <img src =\"../../../assets/{{patient.HP}}\"> </mat-cell>\r\n       </ng-container>\r\n\r\n       <ng-container matColumnDef=\"xray\">\r\n           <mat-header-cell class=\"headertext\" *matHeaderCellDef> X-ray </mat-header-cell>\r\n           <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> <img src =\"../../../assets/{{patient.XRay}}\"></mat-cell>\r\n         </ng-container>\r\n   \r\n         <ng-container matColumnDef=\"lab\">\r\n           <mat-header-cell class=\"headertext\" *matHeaderCellDef> Lab </mat-header-cell>\r\n           <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> <img src =\"../../../assets/{{patient.Lab}}\"></mat-cell>\r\n         </ng-container>\r\n   \r\n\r\n     <ng-container matColumnDef=\"ekg\">\r\n       <mat-header-cell class=\"headertext\" *matHeaderCellDef> EKG </mat-header-cell>\r\n       <mat-cell class=\"columntext\" *matCellDef=\"let patient\"><img src =\"../../../assets/{{patient.EKG}}\"></mat-cell>\r\n     </ng-container>\r\n\r\n   <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n   <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n </mat-table>\r\n</div>  \r\n<app-pat-footer></app-pat-footer>"
+module.exports = "<p></p>\r\n<div class=\"header\">\r\n  <mat-table [dataSource]=\"dataSource\">\r\n\r\n    <ng-container matColumnDef=\"patient\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Patient </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <div>{{patient.Info.Name}}</div>\r\n        <div>{{patient.Info.MedicalRecord}}</div>\r\n      </mat-cell>\r\n    </ng-container>\r\n    <ng-container matColumnDef=\"location\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Location </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.Location}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"patientclass\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Patient Class </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.PatientClass}} </mat-cell>\r\n    </ng-container>\r\n    <ng-container matColumnDef=\"disposition\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Disposition </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.Disposition}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"procedure\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Procedure </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.Procedure}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"start\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Surgery Start </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.StartTime}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"status\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Status </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\" style=\"flex: 1; min-height: 48px; display: flex; align-items: center; margin-right: 20px\"\r\n        [ngStyle]=changeBackground(patient.StatusColor)>{{patient.Status}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"cons\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Consent </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.Consent}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"hp\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> HP </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.HP}}\"> </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"xray\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> X-ray </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.XRay}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"lab\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Lab </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.Lab}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n\r\n    <ng-container matColumnDef=\"ekg\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> EKG </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.EKG}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\" (click)=\"diaglog(row)\"></mat-row>\r\n  </mat-table>\r\n</div>\r\n<app-pat-footer></app-pat-footer>\r\n"
 
 /***/ }),
 
@@ -1131,8 +1477,9 @@ module.exports = "/* Structure */\n.mat-table {\n  overflow: auto;\n  max-height
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/distinctUntilChanged.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_fromEvent__ = __webpack_require__("./node_modules/rxjs/_esm5/add/observable/fromEvent.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__mat_dialogs_helper_mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/patient/mat-dialogs-helper/mat-dialogs-helper.service.ts");
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1164,11 +1511,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PatientComponent = /** @class */ (function () {
-    function PatientComponent(http, globals) {
+    function PatientComponent(http, globals, dialogs) {
         this.http = http;
         this.globals = globals;
-        this.displayedColumns = ['patient', 'location', 'disposition', 'surgeon', 'anesthesia', 'procedure', 'start', 'status', 'cons',
+        this.dialogs = dialogs;
+        this.displayedColumns = ['patient', 'location', 'patientclass', 'disposition', , 'procedure', 'start', 'status', 'cons',
             'hp', 'xray', 'lab', 'ekg'];
         this.globals1 = globals;
         this.loadFromFile();
@@ -1180,13 +1529,22 @@ var PatientComponent = /** @class */ (function () {
     PatientComponent.prototype.changeBackground = function (data) {
         return { 'background-color': data };
     };
+    PatientComponent.prototype.diaglog = function (patient) {
+        this.openConfirmDialogs(patient);
+    };
+    PatientComponent.prototype.openConfirmDialogs = function (data) {
+        var _this = this;
+        if (data != null) {
+            this.dialogs.confirm(data).subscribe(function (res) { return (_this.confirmResult = res); });
+        }
+    };
     PatientComponent.prototype.loadFromFile = function () {
         var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_10__environments_environment__["a" /* environment */].api_url + '/Patient')
+        this.http.get(__WEBPACK_IMPORTED_MODULE_10_environments_environment__["a" /* environment */].api_url_real + '/Patient')
             .map(function (response) { return response.json(); })
             .subscribe(function (res) {
             _this.patientscreen = res;
-            _this.dataSource = new PatientDataSource(_this.patientscreen.Patient);
+            _this.dataSource = new PatientDataSource(_this.patientscreen.PatientList);
         });
     };
     PatientComponent.prototype.ngOnInit = function () {
@@ -1206,7 +1564,7 @@ var PatientComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/PrimeCareManager/patient/patient.component.html"),
             styles: [__webpack_require__("./src/app/PrimeCareManager/patient/patient.component.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_11__globals__["a" /* Globals */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_11__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_12__mat_dialogs_helper_mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]])
     ], PatientComponent);
     return PatientComponent;
 }());
@@ -1233,14 +1591,14 @@ var PatientDataSource = /** @class */ (function (_super) {
 /***/ "./src/app/PrimeCareManager/personel/personel/personel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<div style=\"margin-left:50px\"> \r\n<table class=\"table1\">\r\n  <tr>\r\n    <td class =\"textalign\">\r\n      <div>\r\n       <span class =\"text1\">OR01</span>  \r\n      </div>\r\n      <div>\r\n          <span class=\"text2\" >Total cases: 3</span>  \r\n      </div>\r\n      <div> <span class=\"text2\">Tech: Tech1, Test</span>  </div>\r\n    </td>\r\n    <td class =\"textalign gtext\" >\r\n        <div>\r\n         <span class=\"text3\">Urethroscopy</span>  \r\n        </div>\r\n        <div>\r\n            <span class=\"text3\">7:20 - 11:00</span>  \r\n        </div>\r\n        <div> <span class=\"text4\">Surgeon: Sur1, Test</span>  </div>\r\n        <div> <span class=\"text4\">Anesthesiologist: Anes1, Test</span>  </div>\r\n        <div> <span class=\"text4\">CRNA: CRNA1, Test</span>  </div>\r\n        <div> <span class=\"text4\">Circ Nurse: Nurse1, Test</span>  </div>\r\n      </td>\r\n      <td class =\"textalign\" >\r\n          <div>\r\n           <span class=\"text3\">Urethroscopy</span>  \r\n          </div>\r\n          <div>\r\n              <span class=\"text3\">12:10 - 14:40</span>  \r\n          </div>\r\n          <div> <span class=\"text4\">Surgeon: Sur1, Test</span>  </div>\r\n          <div> <span class=\"text4\">Anesthesiologist: Anes1, Test</span>  </div>\r\n          <div> <span class=\"text4\">CRNA: CRNA1, Test</span>  </div>\r\n          <div> <span class=\"text4\">Circ Nurse: Nurse1, Test</span>  </div>\r\n        </td>\r\n        <td class =\"textalign\" >\r\n            <div>\r\n             <span class=\"text3\">Laser Lithotripsy</span>  \r\n            </div>\r\n            <div>\r\n                <span class=\"text3\">15:00 - 18:05</span>  \r\n            </div>\r\n            <div> <span class=\"text4\">Surgeon: Sur1, Test</span>  </div>\r\n            <div> <span class=\"text4\">Anesthesiologist: Anes1, Test</span>  </div>\r\n            <div> <span class=\"text4\">CRNA: CRNA1, Test</span>  </div>\r\n            <div> <span class=\"text4\">Circ Nurse: Nurse1, Test</span>  </div>\r\n          </td>\r\n    </tr>\r\n\r\n    <tr >\r\n        <td class =\"textalign\" >\r\n            <div>\r\n             <span class=\"text1\">OR02</span>  \r\n            </div>\r\n            <div> \r\n                <span class=\"text2\">Total cases: 3</span>  \r\n            </div>\r\n            <div> <span class=\"text2\">Tech: Tech2, Test</span>  </div>\r\n          </td>\r\n         \r\n          <td class =\"textalign gtext1\" >\r\n              <div>\r\n               <span class=\"text3\">Microlaryngoscopy</span>  \r\n              </div>\r\n              <div>\r\n                  <span class=\"text3\">10:00 - 12:15</span>  \r\n              </div>\r\n              <div> <span class=\"text4\">Surgeon: Sur2, Test</span>  </div>\r\n              <div> <span class=\"text4\">Anesthesiologist: Anes3, Test</span>  </div>\r\n              <div> <span class=\"text4\">Resident: Res1, Test</span>  </div>\r\n              <div> <span class=\"text4\">Circ Nurse: Nurse2, Test</span>  </div>\r\n            </td>\r\n            <td class =\"textalign\" >\r\n                <div>\r\n                 <span class=\"text3\">Thyroplasty</span>  \r\n                </div>\r\n                <div>\r\n                    <span class=\"text3\">12:45 - 17:50</span>  \r\n                </div>\r\n                <div> <span class=\"text4\">Surgeon: Sur2, Test</span>  </div>\r\n                <div> <span class=\"text4\">Anesthesiologist: Anes3, Test</span>  </div>\r\n                <div> <span class=\"text4\">Resident: Res1, Test</span>  </div>\r\n                <div> <span class=\"text4\">Circ Nurse: Nurse2, Test</span>  </div>\r\n              </td>\r\n              <td class =\"textalign\" >\r\n        \r\n                </td>\r\n        </tr>\r\n\r\n        <tr >\r\n            <td class =\"textalign\" >\r\n                <div>\r\n                 <span class=\"text1\">OR03</span>  \r\n                </div>\r\n                <div>\r\n                    <span class=\"text2\">Total cases: 3</span>  \r\n                </div>\r\n                <div> <span class=\"text2\">Tech: Tech3, Test</span>  </div>\r\n              </td>\r\n              <td class =\"textalign\" >\r\n                  <div>\r\n                   <span class=\"text3\">Total knee arthroplasty </span>  \r\n                  </div>\r\n                  <div>\r\n                      <span class=\"text3\">10:30 - 16:10</span>  \r\n                  </div>\r\n                  <div> <span class=\"text4\">Surgeon: Sur3, Test</span>  </div>\r\n                  <div> <span class=\"text4\">Anesthesiologist: Anes4, Test</span>  </div>\r\n                  <div> <span class=\"text4\">CRNA: CRNA2, Test</span>  </div>\r\n                  <div> <span class=\"text4\">Circ Nurse: Nurse3, Test</span>  </div>\r\n                </td>\r\n                <td class =\"textalign\" >\r\n                 \r\n                  </td>\r\n                  <td class =\"textalign\" >\r\n                   \r\n                    </td>\r\n                              </tr>\r\n            <tr >\r\n                <td class =\"textalign\" >\r\n                    <div>\r\n                     <span class=\"text1\">OR04</span>  \r\n                    </div>\r\n                    <div>\r\n                        <span class=\"text2\">Total cases: 3</span>  \r\n                    </div>\r\n                    <div> <span class=\"text2\">Tech: Tech4, Test</span>  </div>\r\n                  </td>\r\n                  <td class =\"textalign gtext\" >\r\n                      <div>\r\n                       <span class=\"text3\">Hysterectomy</span>  \r\n                      </div>\r\n                      <div>\r\n                          <span class=\"text3\">7:20 - 12:55</span>  \r\n                      </div>\r\n                      <div> <span class=\"text4\">Surgeon: Sur4, Test</span>  </div>\r\n                      <div> <span class=\"text4\">Anesthesiologist: Anes4, Test</span>  </div>\r\n                      <div> <span class=\"text4\">Resident: Res2, Test</span>  </div>\r\n                      <div> <span class=\"text4\">Circ Nurse: Nurse4, Test</span>  </div>\r\n                    </td>\r\n                    <td class =\"textalign\" >\r\n                        <div>\r\n                         <span class=\"text3\">Incision and Drainage </span>  \r\n                        </div>\r\n                        <div>\r\n                            <span class=\"text3\">13:20 - 16:3</span>  \r\n                        </div>\r\n                        <div> <span class=\"text4\">Surgeon: Sur5, Test</span>  </div>\r\n                        <div> <span class=\"text4\">Anesthesiologist: Anes5, Test</span>  </div>\r\n                        <div> <span class=\"text4\">Resident: Res2, Test</span>  </div>\r\n                        <div> <span class=\"text4\">Circ Nurse: Nurse4, Test</span>  </div>\r\n                      </td>    <td class =\"textalign\" >\r\n                         \r\n                        </td>\r\n                </tr>\r\n\r\n   \r\n</table>\r\n<p></p>\r\n<div style=\"margin-left:200px; margin-right:200px\"> \r\n<table>\r\n  <tr>\r\n    <td>\r\n        <div class=\"textalign\" >\r\n            Personal Filter:\r\n        </div>\r\n        <td>\r\n            <div class=\"textalign\" >\r\n                Concurrency: \r\n                </div>\r\n        </td>\r\n  </tr>\r\n  <tr>\r\n    <td>\r\n      <div class=\"textalign\" >\r\n        <mat-input-container>\r\n          <mat-select [(ngModel)]=\"selectedValue\">\r\n              <mat-option value=\"showall\">Show All</mat-option>\r\n              <mat-option value=\"showAnes1\">Anes1,Test </mat-option>\r\n              <mat-option value=\"showAnes2\">Anes2,Test </mat-option>\r\n              <mat-option value=\"showAnes3\">Anes3,Test </mat-option>\r\n              <mat-option value=\"showAnes4\">Anes4,Test </mat-option>\r\n              <mat-option value=\"showAnes5\">Anes5,Test </mat-option>\r\n              <mat-option value=\"showAnes6\">Anes6,Test </mat-option>\r\n              <mat-option value=\"showAnes7\">Surg1,Test </mat-option>\r\n              <mat-option value=\"showAnes8\">Surg2,Test </mat-option>\r\n              <mat-option value=\"showAnes9\">Surg3,Test </mat-option>\r\n              <mat-option value=\"showAnes10\">Surg4,Test </mat-option>\r\n              <mat-option value=\"showAnes11\">Surg5,Test </mat-option>\r\n              <mat-option value=\"showAnes12\">Surg5,Test </mat-option>\r\n              <mat-option value=\"showAnes13\">CRNA1,Test </mat-option>\r\n              <mat-option value=\"showAnes14\">CRNA2,Test </mat-option>\r\n              <mat-option value=\"showAnes15\">Res1,Test </mat-option>\r\n              <mat-option value=\"showAnes16\">Res2,Test </mat-option>\r\n          </mat-select>\r\n        </mat-input-container>\r\n    </div>\r\n    </td>\r\n    <td >\r\n      <div class=\"textalign1\">\r\n          Anes4, Test = 2\r\n          </div>\r\n    </td>\r\n  </tr>\r\n   \r\n</table>\r\n</div>\r\n</div>  \r\n<app-personel-footer></app-personel-footer>"
+module.exports = "<p></p> \r\n<div *ngIf=\"personel\" style=\"margin-left:50px\">\r\n  <p></p>\r\n  <table class=\"table2\">\r\n    <tr>\r\n      <th>Staff</th>\r\n      <th>Surgeon</th>\r\n      <th>Anesthesiologist</th>\r\n      <th>CRNA</th>\r\n      <th>Resident</th>\r\n      <th>CIRCNurse</th>\r\n      <th>ScrubNurse</th>\r\n      <th>AnesTech</th>\r\n    </tr>\r\n    <tr>\r\n      <td rowspan=2 style=\"background-color: rgb(219, 238, 244)\">Count</td>\r\n      <td>{{personel.SurgeonCount}}</td>\r\n      <td>{{personel.AnesthesiologistCount}}</td>\r\n      <td>{{personel.CRNACount}}</td>\r\n      <td>{{personel.ResidentCount}}</td>\r\n      <td>{{personel.CIRCNurseCount}}</td>\r\n      <td>{{personel.ScrubNurseCount}}</td>\r\n      <td>{{personel.AnesTechCount}}</td>\r\n    </tr>\r\n  </table>\r\n  <p></p>\r\n  <p></p>\r\n  <table>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          Personal Filter:\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Total Case Count:\r\n          </div>\r\n        </td>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Max Concurrency:\r\n          </div>\r\n        </td>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Latest Time:\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-select placeholder =\"ShowAll\" (selectionChange)=\"selectChange($event)\">\r\n            <mat-optgroup *ngFor=\"let group of personel.PersonnelFilter\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          <label> {{personel.TotalCaseCount}} </label>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          {{personel.MaxConcurrencyCount}}\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          {{personel.LatestTime}}\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n\r\n  <table class=\"table1\">\r\n    <tr>\r\n      <td width=\"10%\">\r\n        <mat-grid-list cols=\"1\" rowHeight=\"9.5em\">\r\n          <mat-grid-tile [style.border]=\"'1px solid #dbeef4'\" *ngFor=\"let OperationRoom of personel.OperationsRooms\">\r\n            <div>\r\n              <span class=\"text4\"> &nbsp; {{OperationRoom.ORName}}</span>\r\n              <br>\r\n              <span class=\"text2\"> Total cases: {{OperationRoom.ORCount}}</span>\r\n              <br>\r\n              <span class=\"text2\"> Tech: {{OperationRoom.TechName}}</span>\r\n            </div>\r\n          </mat-grid-tile>\r\n        </mat-grid-list>\r\n      </td>\r\n\r\n      <div *ngFor=\"let OperationRoom of personel.OperationsRooms\">\r\n        <mat-grid-list cols=\"{{personel.maxPersonnelRowCount}}\" rowHeight=\"9.5em\">\r\n\r\n          <mat-grid-tile class=\"grid-test-1\" [style.border]=\"'1px solid #dbeef4'\" *ngFor=\"let Oper of OperationRoom.Personnels\" [style.background]=\"Oper.Color\">\r\n            <div>\r\n              <span class=\"text2B\"> &nbsp; &nbsp; &nbsp; &nbsp; {{Oper.OpName}}</span>\r\n              <br>\r\n              <span class=\"text2B\"> &nbsp; &nbsp; &nbsp; &nbsp; {{Oper.Time}} </span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Surgeon: {{Oper.SurgeonName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Anesthologist: {{Oper.AnesthologistName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Crna: {{Oper.CrnaName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; CircleNurse: {{Oper.CircleNurseName}}</span>\r\n            </div>\r\n          </mat-grid-tile>\r\n\r\n        </mat-grid-list>\r\n      </div>\r\n\r\n    </tr>\r\n  </table>\r\n  <p></p>\r\n  <div style=\"margin-left:200px; margin-right:200px\">\r\n\r\n  </div>\r\n</div>\r\n<app-personel-footer></app-personel-footer>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/personel/personel/personel.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  outline: solid;\n  outline-color: #2e7d96;\n  height: 30px;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  padding-top: 8px;\n  margin-bottom: 14px; }\n.textalign1 {\n  font-family: Calibri;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 150px;\n  border: 2px solid #2e7d96;\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 16px; }\n.table1 {\n  width: 100%;\n  height: 530px; }\n.table1 td,\n.table1 th {\n  border: 2px double #dbeef4; }\n.table1 tr:first-child td {\n  border-top: 0; }\n.table1 tr td:first-child {\n  border-left: 0; }\n.table1 tr:last-child td {\n  border-bottom: 0; }\n.table tr td:last-child {\n  border-right: 0; }\n"
+module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  outline: solid;\n  outline-color: #2e7d96;\n  height: 30px;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  padding-top: 8px;\n  margin-bottom: 14px; }\n.textalign1 {\n  font-family: Calibri;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 150px;\n  border: 2px solid #2e7d96;\n  padding-top: 7px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 16px; }\n.table1 {\n  width: 90%;\n  height: 200px; }\n.table2 {\n  width: 70%;\n  border: 1px solid #dbeef4;\n  font-family: Calibri;\n  font-size: 1.2em;\n  font-weight: bold; }\nth {\n  border: 1px #dbeef4;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  color: gray; }\ntd {\n  border: 1px #dbeef4;\n  font-family: Calibri;\n  color: gray;\n  text-align: center; }\n.text1 {\n  font-family: Calibri;\n  font-size: 1.2em;\n  font-weight: normal; }\n.text4 {\n  font-size: 2em;\n  font-family: Calibri;\n  font-weight: bold; }\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n.text2B {\n  font-size: 1.4em;\n  font-family: Calibri;\n  font-weight: bold;\n  text-align: left; }\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 5px; }\nmat-header-cell:nth-child(1),\nmat-cell:nth-child(1) {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 3px;\n          flex: 0 0 3px; }\n.grid-test-1 {\n  text-align: center !important; }\n"
 
 /***/ }),
 
@@ -1250,17 +1608,23 @@ module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 30
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PersonelComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_startWith__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/startWith.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_merge__ = __webpack_require__("./node_modules/rxjs/_esm5/add/observable/merge.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/debounceTime.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/distinctUntilChanged.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_fromEvent__ = __webpack_require__("./node_modules/rxjs/_esm5/add/observable/fromEvent.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_app_data_service__ = __webpack_require__("./src/app/services/app-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_startWith__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/startWith.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_merge__ = __webpack_require__("./node_modules/rxjs/_esm5/add/observable/merge.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_debounceTime__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/debounceTime.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/distinctUntilChanged.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_observable_fromEvent__ = __webpack_require__("./node_modules/rxjs/_esm5/add/observable/fromEvent.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
 
@@ -1269,19 +1633,172 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 var PersonelComponent = /** @class */ (function () {
-    function PersonelComponent() {
-        // setting this is the key to initial select.
-        this.selectedValue = 'showall';
+    // tslint:disable-next-line:max-line-length
+    function PersonelComponent(dataService, http) {
+        this.dataService = dataService;
+        this.http = http;
+        this.loadFromFile();
+        // this.loadStaff();
     }
+    PersonelComponent.prototype.ngAfterViewInit = function () {
+        this.loadFromFile();
+        // this.loadStaff();
+    };
+    PersonelComponent.prototype.loadFromFile = function () {
+        var _this = this;
+        this.http.get(__WEBPACK_IMPORTED_MODULE_3_environments_environment__["a" /* environment */].api_url + '/personel').subscribe(function (result) {
+            _this.personel = result.json();
+        }, function (error) { return console.error(error); });
+    };
+    PersonelComponent.prototype.loadStaff = function () {
+        var _this = this;
+        this.http.get(__WEBPACK_IMPORTED_MODULE_3_environments_environment__["a" /* environment */].api_url + '/personelstaff').subscribe(function (result) {
+            _this.personelStaff = result.json();
+        }, function (error) { return console.error(error); });
+    };
+    PersonelComponent.prototype.selectChange = function (ev) {
+        var _this = this;
+        this.splitted = ev.value.split(':');
+        this.http.get(__WEBPACK_IMPORTED_MODULE_3_environments_environment__["a" /* environment */].api_url + '/personel/' + this.splitted[0] + '/' + this.splitted[1]).subscribe(function (result) {
+            _this.personel = result.json();
+        }, function (error) { return console.error(error); });
+        var selectedIndex = ev.Value;
+    };
     PersonelComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-personel',
             template: __webpack_require__("./src/app/PrimeCareManager/personel/personel/personel.component.html"),
             styles: [__webpack_require__("./src/app/PrimeCareManager/personel/personel/personel.component.scss")]
-        })
+        }),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_app_data_service__["a" /* AppDataService */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */]])
     ], PersonelComponent);
     return PersonelComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/preschassit/preschassit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n</p>\r\n<table>\r\n  <tr>\r\n    <td style=\"width: 75%; margin-top: 0em\">\r\n      <div>\r\n        <!--\r\n      <table *ngIf=\"Proc\" class=\"scale\">\r\n        <tr>\r\n          <th *ngFor=\"let num of Proc.TimeList\">\r\n            {{num}}:00\r\n          </th>\r\n        </tr>\r\n      </table>-->\r\n        <div *ngIf=\"Proc\">\r\n          <div *ngFor=\"let operationRoom of Proc.OperationRooms\">\r\n            <div class=\"or-name\">\r\n              <span class=\"name-span text4\">{{operationRoom.Name}}</span>\r\n              <br>\r\n              <span class=\"name-span text1\">{{operationRoom.Type}}</span>\r\n              <br>\r\n              <span class=\"name-span text1\">{{operationRoom.SurgeonName}}</span>\r\n            </div>\r\n            <div class=\"block\">\r\n              <svg width=\"100%\" height=\"100\">\r\n                <g *ngFor=\"let operation of operationRoom.Operations\">\r\n                  <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\" attr.height=\"{{operation.Height}}\"\r\n                    attr.fill=\"{{operation.Color}}\" />\r\n                  <text class=\"text1 text3\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"20%\">{{operation.OpName}}</text>\r\n                  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"40%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                    text-anchor=\"middle\">{{operation.Patient.Name}} [{{operation.Patient.Info}}]</text>\r\n                  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"60%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                    text-anchor=\"middle\">{{operation.Status}}</text>\r\n                  <text class=\"text1\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"80%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                    text-anchor=\"middle\">{{operation.TimeDisplay}}</text>\r\n                  <image *ngIf=\"operation.ImageName\" attr.x=\"{{operation.RX + (operation.Width/12) }}%\" y=\"60%\" width=\"35px\" height=\"35px\"\r\n                    attr.xlink:href=\"../../../assets/{{operation.ImageName}}.png\"></image>\r\n                </g>\r\n              </svg>\r\n            </div>\r\n            <div class=\"clearfix\"></div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div>\r\n        <p-dataTable scrollable=\"true\" scrollHeight=\"200px\" scrollWidth=\"95%\" reorderableColumns=\"true\" resizableColumns=\"true\" [value]=\"data\"\r\n          [editable]=\"true\">\r\n          <p-column field=\"mrn\" header=\"Patient MRN\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.mrn}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.mrn\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <p-column field=\"surgeonName\" header=\"Surgeon\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.surgeonName}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.surgeonName\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n          <p-column field=\"procedure\" header=\"Procedure\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.procedure}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.procedure\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <p-column field=\"duration\" header=\"Duration\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.duration}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.duration\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <!-- \r\n        <p-column field=\"\" header=\"action\" [style]=\"{'text-align':'center'}\">\r\n          <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n             <div *ngIf=\"row.isEditable\">\r\n            <button (click)=\"save(row)\">Save</button>\r\n            </div>\r\n          </ng-template>\r\n        </p-column>\r\n     -->\r\n        </p-dataTable>\r\n        <button (click)=\"getData()\">Load Data</button>\r\n        <!--<button (click)=\"addNew()\">Add New</button> -->\r\n      </div>\r\n    </td>\r\n    <td style=\"width: 25%\">\r\n      <table>\r\n        <tr>\r\n          <td>\r\n            <img class=\"img-valign2\" src=\"../../../assets/leftor.png\" alt=\"\">\r\n          </td>\r\n          <td>\r\n            <span class=\"text2-image\">All</span>\r\n          </td>\r\n          <td>&nbsp;&nbsp;&nbsp;</td>\r\n          <td>\r\n            <img class=\"img-valign2\" src=\"../../../assets/leftor.png\" alt=\"\">\r\n          </td>\r\n          <td>\r\n            <span class=\"text2-image\">All</span>\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <td>\r\n            <img class=\"img-valign2\" src=\"../../../assets/leftor.png\" alt=\"\">\r\n          </td>\r\n          <td>\r\n            <span class=\"text2-image\">All</span>\r\n          </td>\r\n          <td>&nbsp;&nbsp;&nbsp;</td>\r\n          <td>\r\n            <img class=\"img-valign2\" src=\"../../../assets/leftor.png\" alt=\"\">\r\n          </td>\r\n          <td>\r\n            <span class=\"text2-image\">Orthopedics</span>\r\n          </td>\r\n\r\n        </tr>\r\n      </table>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n\r\n      <p-card title=\"Simple Card\" [style]=\"{height: '320px'}\">\r\n        <div>Lorem ipsum dolor</div>\r\n        <div> sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat\r\n          libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>\r\n      </p-card>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n\r\n      <p-card [style]=\"{height: '320px'}\">\r\n        <div>Lorem ipsum dolor</div>\r\n        <div> sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat\r\n          libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>\r\n      </p-card>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 2.5em;\" pButton type=\"button\" label=\"Auto Schedule\" class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 2.5em;\" pButton type=\"button\" label=\"Import case file\" class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 2.5em;\" pButton type=\"button\" label=\"Add Case\" class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 2.5em;\" pButton type=\"Danger\" label=\"Quit\" class=\"ui-button-raised ui-button-rounded ui-button-danger\">\r\n        </button>\r\n      </div>\r\n    </td>\r\n\r\n  </tr>\r\n\r\n\r\n</table>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/preschassit/preschassit.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle;\n  background-color: aqua; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.text6 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  margin-top: 1.6em;\n  top: 10px;\n  bottom: 0;\n  margin: auto; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 40px;\n  width: 5%;\n  float: left;\n  text-align: center;\n  height: 100px; }\n\n.display {\n  display: block;\n  margin-top: 20px; }\n\n.block {\n  float: left;\n  width: 95%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 5%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n\n.img-valign {\n  vertical-align: top; }\n\n.img-valign2 {\n  vertical-align: top; }\n\n.text2-image {\n  font-family: Calibri;\n  font-size: 25px;\n  text-align: center; }\n\n.centered {\n  position: absolute;\n  height: 100px;\n  top: 0;\n  bottom: 0;\n  margin: auto; }\n"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/preschassit/preschassit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PreschassitComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_app_data_service__ = __webpack_require__("./src/app/services/app-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var PreschassitComponent = /** @class */ (function () {
+    // tslint:disable-next-line:max-line-length
+    function PreschassitComponent(dataService, http, globals) {
+        this.dataService = dataService;
+        this.http = http;
+        this.globals = globals;
+        this.data = [];
+        this.count = 0;
+        this.currentAddIndex = 0;
+        this.counter = 0;
+        this.globals1 = globals;
+    }
+    PreschassitComponent.prototype.ngAfterViewInit = function () {
+        this.loadFromFile();
+        this.getDatas();
+    };
+    PreschassitComponent.prototype.loadFromFile = function () {
+        var _this = this;
+        this.http.get('http://localhost:52221/api/fake/procedure').subscribe(function (result) {
+            _this.Proc = result.json();
+        }, function (error) { return console.error(error); });
+    };
+    PreschassitComponent.prototype.loadComponent = function () {
+        this.allmedicaldata = this.dataService.ords;
+    };
+    PreschassitComponent.prototype.loadProcedure = function () {
+        this.loadFromFile();
+    };
+    PreschassitComponent.prototype.ngOnDestroy = function () {
+        clearInterval(this.interval);
+    };
+    PreschassitComponent.prototype.getDatas = function () {
+        var _this = this;
+        this.interval = setInterval(function () {
+            _this.loadProcedure();
+        }, this.globals1.timeinterval);
+    };
+    PreschassitComponent.prototype.editRow = function (row) {
+        this.data.filter(function (row1) { return row1.isEditable; }).map(function (r) { r.isEditable = false; return r; });
+        row.isEditable = true;
+    };
+    PreschassitComponent.prototype.save = function (row) {
+        row.isEditable = false;
+    };
+    PreschassitComponent.prototype.addNew = function () {
+        this.data.push({
+            mrn: '',
+            surgeonName: '',
+            procedure: '',
+            duration: ''
+        });
+        this.data[this.data.length - 1].isEditable = true;
+    };
+    PreschassitComponent.prototype.delete = function (row) {
+        console.log(row);
+        this.delRow = this.data.indexOf(row);
+        this.data.splice(this.delRow, 1);
+        console.log(this.data);
+    };
+    PreschassitComponent.prototype.getData = function () {
+        this.data = [
+            { mrn: 'Name1', surgeonName: 'value1', procedure: 'Name1', duration: 'value1' },
+            { mrn: 'Name2', surgeonName: 'value1', procedure: 'Name1', duration: 'value1' },
+            { mrn: 'Name3', surgeonName: 'value1', procedure: 'Name1', duration: 'value1' },
+            { mrn: 'Name4', surgeonName: 'value1', procedure: 'Name1', duration: 'value1' }
+        ];
+        this.data.map(function (row) {
+            row.isEditable = false;
+        });
+    };
+    PreschassitComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-preschassit',
+            template: __webpack_require__("./src/app/PrimeCareManager/preschassit/preschassit.component.html"),
+            styles: [__webpack_require__("./src/app/PrimeCareManager/preschassit/preschassit.component.scss")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_app_data_service__["a" /* AppDataService */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__globals__["a" /* Globals */]])
+    ], PreschassitComponent);
+    return PreschassitComponent;
 }());
 
 
@@ -1366,7 +1883,7 @@ var MatDialogsHelperModule = /** @class */ (function () {
     MatDialogsHelperModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
                 __WEBPACK_IMPORTED_MODULE_3__angular_material__["i" /* MatDialogModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_material__["b" /* MatButtonModule */]
             ],
@@ -1435,14 +1952,14 @@ var MatDialogsHelperService = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/procedure/procedure.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"Proc\">\r\n\r\n    <div width =\"100%\">\r\n        <img class =\"time\" [src]= \"\" [style.left]=\"Proc.TimeRX + '%'\"  width=\"5px\" height=\"100%\">\r\n    </div>\r\n    \r\n  </div>\r\n\r\n\r\n<div class =\"display\">\r\n        <table *ngIf=\"Proc\" class =\"scale\">     \r\n                <tr>\r\n                    <th *ngFor= \"let num of Proc.TimeList\">\r\n                        {{num}}:00\r\n                      </th>\r\n                </tr>\r\n            </table>\r\n  <div *ngIf=\"Proc\">  \r\n  <div *ngFor=\"let operationRoom of Proc.OperationRooms\" >\r\n  <div class =\"or-name\"><span class =\"name-span text4\">{{operationRoom.Name}}</span></div>\r\n  <div class=\"block\">\r\n  <svg width =\"100%\" height = \"100\">\r\n  <g (click)=\"clicked(operation.Patient)\" *ngFor= \"let operation of operationRoom.Operations\">\r\n  <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\" attr.height=\"{{operation.Height}}\" attr.fill=\"{{operation.Color}}\" />\r\n  <text class=\"text1 text3\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\"  y=\"20%\">{{operation.OpName}}</text>\r\n  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\"  y=\"50%\" alignment-baseline=\"middle\" font-weight=\"bold\"  text-anchor=\"middle\">{{operation.Status}}</text>\r\n  <text class=\"text1\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\"  y=\"80%\" alignment-baseline=\"middle\" font-weight=\"bold\" text-anchor=\"middle\">{{operation.TimeDisplay}}</text>\r\n  <image *ngIf=\"operation.ImageName\" attr.x=\"{{operation.RX + (operation.Width/12) }}%\"  y=\"60%\" width=\"35px\" height=\"35px\"  attr.xlink:href=\"../../../assets/{{operation.ImageName}}.png\"></image>\r\n</g>\r\n  </svg>\r\n  </div>\r\n  <div class =\"clearfix\"></div>\r\n  </div>\r\n  </div>\r\n  <app-proc-footer></app-proc-footer>\r\n</div>"
+module.exports = "<div *ngIf=\"Proc\">\r\n\r\n  <div width=\"100%\">\r\n    <img class=\"time\" [src]=\"\" [style.left]=\"Proc.TimeRX + '%'\" width=\"5px\" height=\"100%\">\r\n  </div>\r\n</div>\r\n<div class=\"display\">\r\n  <table *ngIf=\"Proc\" class=\"scale\">\r\n    <tr>\r\n      <th *ngFor=\"let num of Proc.TimeList\">\r\n        {{num}}:00\r\n      </th>\r\n    </tr>\r\n  </table>\r\n  <div *ngIf=\"Proc\">\r\n    <div *ngFor=\"let operationRoom of Proc.OperationRooms\">\r\n      <div class=\"or-name\">\r\n        <span class=\"name-span text4\">{{operationRoom.Name}}</span>\r\n        <br>\r\n        <span class=\"name-span text1\">{{operationRoom.Type}}</span>\r\n        <br>\r\n        <span class=\"name-span text1\">{{operationRoom.SurgeonName}}</span>\r\n      </div>\r\n      <div class=\"block\">\r\n        <svg width=\"100%\" height=\"100\">\r\n          <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationRoom.Operations\">\r\n            <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\" attr.height=\"{{operation.Height}}\"\r\n              attr.fill=\"{{operation.Color}}\" />\r\n            <text class=\"text1 text3\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"20%\">{{operation.OpName}}</text>\r\n            <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"40%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n            text-anchor=\"middle\">{{operation.Patient.Name}} [{{operation.Patient.Info}}]</text>\r\n            <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"60%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n              text-anchor=\"middle\">{{operation.Status}}</text>\r\n            <text class=\"text1\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"80%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n              text-anchor=\"middle\">{{operation.TimeDisplay}}</text>\r\n            <image *ngIf=\"operation.ImageName\" attr.x=\"{{operation.RX + (operation.Width/12) }}%\" y=\"60%\" width=\"35px\" height=\"35px\"\r\n              attr.xlink:href=\"../../../assets/{{operation.ImageName}}.png\"></image>\r\n          </g>\r\n        </svg>\r\n      </div>\r\n      <div class=\"clearfix\"></div>\r\n    </div>\r\n  </div>\r\n  <app-proc-footer></app-proc-footer>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/procedure/procedure.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".text1 {\n  text-align: center;\n  font-family: Verdana, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 2em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 40px;\n  width: 5%;\n  float: left;\n  text-align: center;\n  height: 100px; }\n\n.display {\n  display: block;\n  margin-top: 20px; }\n\n.block {\n  float: left;\n  width: 95%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 5%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n"
+module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 40px;\n  width: 5%;\n  float: left;\n  text-align: center;\n  height: 100px; }\n\n.display {\n  display: block;\n  margin-top: 20px; }\n\n.block {\n  float: left;\n  width: 95%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 5%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n"
 
 /***/ }),
 
@@ -1455,8 +1972,7 @@ module.exports = ".text1 {\n  text-align: center;\n  font-family: Verdana, 'Sego
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_app_data_service__ = __webpack_require__("./src/app/services/app-data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mat_dialogs_helper_mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mat_dialogs_helper_mat_dialogs_helper_service__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1469,8 +1985,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-// tslint:disable-next-line:no-unused-expression
 
 
 var ProcedureComponent = /** @class */ (function () {
@@ -1499,10 +2013,7 @@ var ProcedureComponent = /** @class */ (function () {
         }
     };
     ProcedureComponent.prototype.loadFromFile = function () {
-        var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].api_url + '/procedure').subscribe(function (result) {
-            _this.Proc = result.json();
-        }, function (error) { return console.error(error); });
+        this.Proc = this.globals.globleProcedure;
     };
     ProcedureComponent.prototype.loadComponent = function () {
         this.allmedicaldata = this.dataService.ords;
@@ -1526,7 +2037,7 @@ var ProcedureComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/PrimeCareManager/procedure/procedure.component.scss")]
         }),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_app_data_service__["a" /* AppDataService */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_5__mat_dialogs_helper_mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_app_data_service__["a" /* AppDataService */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_4__mat_dialogs_helper_mat_dialogs_helper_service__["a" /* MatDialogsHelperService */]])
     ], ProcedureComponent);
     return ProcedureComponent;
 }());
@@ -1545,7 +2056,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-sidenav></app-sidenav>\r\n<router-outlet></router-outlet>\r\n\r\n\r\n"
+module.exports = "\r\n<app-sidenav></app-sidenav>\r\n<router-outlet></router-outlet>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1622,12 +2133,24 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__PrimeCareManager_notify_notify_notify_component__ = __webpack_require__("./src/app/PrimeCareManager/notify/notify/notify.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__PrimeCareManager_analytics_analytics_analytics_component__ = __webpack_require__("./src/app/PrimeCareManager/analytics/analytics/analytics.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__PrimeCareManager_procedure_mat_dialogs_helper_mat_dialogs_helper_module__ = __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/mat-dialogs-helper.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__PrimeCareManager_patient_mat_dialogs_helper_mat_dialogs_helper_module__ = __webpack_require__("./src/app/PrimeCareManager/patient/mat-dialogs-helper/mat-dialogs-helper.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__PrimeCareManager_facilityresources_mat_dialogs_helper_mat_dialogs_helper_module__ = __webpack_require__("./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/mat-dialogs-helper.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__PrimeCareManager_preschassit_preschassit_component__ = __webpack_require__("./src/app/PrimeCareManager/preschassit/preschassit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_primeng_primeng__ = __webpack_require__("./node_modules/primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_35_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_primeng_card__ = __webpack_require__("./node_modules/primeng/card.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_primeng_card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_36_primeng_card__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
 
 
 
@@ -1679,7 +2202,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_25__PrimeCareManager_component_app_header_app_fc_footer_component__["a" /* FcFooterComponent */],
                 __WEBPACK_IMPORTED_MODULE_28__PrimeCareManager_personel_personel_personel_component__["a" /* PersonelComponent */],
                 __WEBPACK_IMPORTED_MODULE_29__PrimeCareManager_notify_notify_notify_component__["a" /* NotifyComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__PrimeCareManager_analytics_analytics_analytics_component__["a" /* AnalyticsComponent */]
+                __WEBPACK_IMPORTED_MODULE_30__PrimeCareManager_analytics_analytics_analytics_component__["a" /* AnalyticsComponent */],
+                __WEBPACK_IMPORTED_MODULE_34__PrimeCareManager_preschassit_preschassit_component__["a" /* PreschassitComponent */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_11__services_app_data_service__["a" /* AppDataService */],
@@ -1691,17 +2215,23 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_27__PrimeCareManager_globals__["a" /* Globals */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_3__angular_common__["b" /* CommonModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_common__["CommonModule"],
                 __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_9__app_routing__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_4__shared_material_module__["a" /* MaterialModule */],
                 __WEBPACK_IMPORTED_MODULE_8__angular_http__["b" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_15_ng2_charts__["ChartsModule"],
-                __WEBPACK_IMPORTED_MODULE_20__angular_forms__["c" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_forms__["FormsModule"],
                 __WEBPACK_IMPORTED_MODULE_26_angular2_moment__["MomentModule"],
-                __WEBPACK_IMPORTED_MODULE_31__PrimeCareManager_procedure_mat_dialogs_helper_mat_dialogs_helper_module__["a" /* MatDialogsHelperModule */]
+                __WEBPACK_IMPORTED_MODULE_31__PrimeCareManager_procedure_mat_dialogs_helper_mat_dialogs_helper_module__["a" /* MatDialogsHelperModule */],
+                __WEBPACK_IMPORTED_MODULE_32__PrimeCareManager_patient_mat_dialogs_helper_mat_dialogs_helper_module__["a" /* MatDialogsHelperModulePatient */],
+                __WEBPACK_IMPORTED_MODULE_33__PrimeCareManager_facilityresources_mat_dialogs_helper_mat_dialogs_helper_module__["a" /* MatDialogsHelperModuleResource */],
+                __WEBPACK_IMPORTED_MODULE_35_primeng_primeng__["DataTableModule"],
+                __WEBPACK_IMPORTED_MODULE_35_primeng_primeng__["ButtonModule"],
+                __WEBPACK_IMPORTED_MODULE_35_primeng_primeng__["SharedModule"],
+                __WEBPACK_IMPORTED_MODULE_36_primeng_card__["CardModule"]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]]
         })
@@ -1729,12 +2259,14 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__PrimeCareManager_personel_personel_personel_component__ = __webpack_require__("./src/app/PrimeCareManager/personel/personel/personel.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__PrimeCareManager_notify_notify_notify_component__ = __webpack_require__("./src/app/PrimeCareManager/notify/notify/notify.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__PrimeCareManager_analytics_analytics_analytics_component__ = __webpack_require__("./src/app/PrimeCareManager/analytics/analytics/analytics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__PrimeCareManager_preschassit_preschassit_component__ = __webpack_require__("./src/app/PrimeCareManager/preschassit/preschassit.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1754,23 +2286,24 @@ var routes = [
     { path: 'personel', component: __WEBPACK_IMPORTED_MODULE_7__PrimeCareManager_personel_personel_personel_component__["a" /* PersonelComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'notify', component: __WEBPACK_IMPORTED_MODULE_8__PrimeCareManager_notify_notify_notify_component__["a" /* NotifyComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_9__PrimeCareManager_analytics_analytics_analytics_component__["a" /* AnalyticsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
+    { path: 'preschassit', component: __WEBPACK_IMPORTED_MODULE_10__PrimeCareManager_preschassit_preschassit_component__["a" /* PreschassitComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: '', component: __WEBPACK_IMPORTED_MODULE_5__users_sign_in_sign_in_component__["a" /* SignInComponent */] },
-    { path: '**', component: __WEBPACK_IMPORTED_MODULE_5__users_sign_in_sign_in_component__["a" /* SignInComponent */] }
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_5__users_sign_in_sign_in_component__["a" /* SignInComponent */] },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
     AppRoutingModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(routes)],
-            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forRoot(routes)],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]],
         })
     ], AppRoutingModule);
     return AppRoutingModule;
 }());
 
 var routingComponents = [__WEBPACK_IMPORTED_MODULE_2__PrimeCareManager_procedure_procedure_component__["a" /* ProcedureComponent */], __WEBPACK_IMPORTED_MODULE_3__PrimeCareManager_patient_patient_component__["a" /* PatientComponent */],
-    __WEBPACK_IMPORTED_MODULE_4__PrimeCareManager_facilityresources_facilityresources_component__["a" /* FacilityresourcesComponent */], __WEBPACK_IMPORTED_MODULE_7__PrimeCareManager_personel_personel_personel_component__["a" /* PersonelComponent */], __WEBPACK_IMPORTED_MODULE_8__PrimeCareManager_notify_notify_notify_component__["a" /* NotifyComponent */], __WEBPACK_IMPORTED_MODULE_9__PrimeCareManager_analytics_analytics_analytics_component__["a" /* AnalyticsComponent */]];
+    __WEBPACK_IMPORTED_MODULE_4__PrimeCareManager_facilityresources_facilityresources_component__["a" /* FacilityresourcesComponent */], __WEBPACK_IMPORTED_MODULE_7__PrimeCareManager_personel_personel_personel_component__["a" /* PersonelComponent */], __WEBPACK_IMPORTED_MODULE_8__PrimeCareManager_notify_notify_notify_component__["a" /* NotifyComponent */], __WEBPACK_IMPORTED_MODULE_9__PrimeCareManager_analytics_analytics_analytics_component__["a" /* AnalyticsComponent */], __WEBPACK_IMPORTED_MODULE_10__PrimeCareManager_preschassit_preschassit_component__["a" /* PreschassitComponent */]];
 
 
 /***/ }),
@@ -1990,7 +2523,7 @@ var AuthGuard = /** @class */ (function () {
     };
     AuthGuard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"]])
     ], AuthGuard);
     return AuthGuard;
 }());
@@ -2007,7 +2540,7 @@ var AuthGuard = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2026,7 +2559,7 @@ var HeaderDataservice = /** @class */ (function () {
         this.http = http;
     }
     HeaderDataservice.prototype.getData = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api_url + '/header').map(function (response) { return response.json(); });
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3_environments_environment__["a" /* environment */].api_url + '/header').map(function (response) { return response.json(); });
     };
     HeaderDataservice = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -2140,7 +2673,7 @@ var UserService = /** @class */ (function () {
     };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"]])
     ], UserService);
     return UserService;
 }());
@@ -2272,7 +2805,7 @@ module.exports = "<div class=\"limiter\">\r\n   <div class=\"container-login100\
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_api__ = __webpack_require__("./src/app/users/user-api.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2300,7 +2833,7 @@ var SignInComponent = /** @class */ (function () {
         if (signInForm.valid) {
             this.submitting = true;
             this.formError = null;
-            this.http.delete(__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].api_url + '/reset').subscribe(function (result) {
+            this.http.delete(__WEBPACK_IMPORTED_MODULE_4_environments_environment__["a" /* environment */].api_url + '/reset').subscribe(function (result) {
             }, function (error) { return console.error(error); });
             this.userApi.signIn(signInForm.value.username, signInForm.value.password)
                 .subscribe(function (data) {
@@ -2318,8 +2851,8 @@ var SignInComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/users/sign-in/sign-in.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_api__["a" /* UserApi */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
     ], SignInComponent);
     return SignInComponent;
 }());
@@ -2369,7 +2902,8 @@ var User = /** @class */ (function () {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    api_url: 'https://primecaredev.centralus.cloudapp.azure.com/api/fake'
+    api_url: 'https://primecaredev.centralus.cloudapp.azure.com//api/fake',
+    api_url_real: 'https://primecaredev.centralus.cloudapp.azure.com//api/get'
 };
 
 
