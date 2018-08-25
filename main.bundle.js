@@ -1047,7 +1047,7 @@ module.exports = "<h2>\r\n  <div class=\"font textalign\">Name: {{ name }}</div>
 /***/ "./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none; }\n"
+module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none; }\n\n/deep/ .mat-dialog-content {\n  overflow-y: hidden !important; }\n"
 
 /***/ }),
 
@@ -1313,7 +1313,7 @@ module.exports = "\r\n\r\n<mat-dialog-content>\r\n  <div class=\"font textalign\
 /***/ "./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none; }\n"
+module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none; }\n\n/deep/ .mat-dialog-content {\n  overflow-y: hidden !important; }\n"
 
 /***/ }),
 
@@ -1815,7 +1815,7 @@ module.exports = "\r\n\r\n<h2>\r\n  <div class=\"font textalign thick\">{{ name 
 /***/ "./src/app/PrimeCareManager/procedure/mat-dialogs-helper/info-dialog/info-dialog.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog .mat-dialog-container {\n    max-width: none; }\n"
+module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n/deep/ .mat-dialog-content {\n  overflow-y: hidden !important; }\n"
 
 /***/ }),
 
@@ -2902,8 +2902,8 @@ var User = /** @class */ (function () {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    api_url: 'https://primecaredev.centralus.cloudapp.azure.com//api/fake',
-    api_url_real: 'https://primecaredev.centralus.cloudapp.azure.com//api/get'
+    api_url: 'https://primecaredev.centralus.cloudapp.azure.com/api/fake',
+    api_url_real: 'https://primecaredev.centralus.cloudapp.azure.com/api/get'
 };
 
 
