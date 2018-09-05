@@ -287,7 +287,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /***/ "./src/app/PrimeCareManager/analytics/analytics/analytics.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<div class=\"header\" >\r\n  <img src=\"../../../../assets/ORBIS.png\" width=\"99%\" height=\"700px\" />\r\n</div>\r\n"
+module.exports = "<p></p>\r\n<div id=\"reportContainer\" style=\"height:970px; width: 99% ; margin-left: 10px;  margin-right: 10px;\"></div>\r\n"
 
 /***/ }),
 
@@ -304,6 +304,11 @@ module.exports = ".header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n    
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnalyticsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_powerbi_client__ = __webpack_require__("./node_modules/powerbi-client/dist/powerbi.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_powerbi_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_powerbi_client__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -314,10 +319,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var AnalyticsComponent = /** @class */ (function () {
-    function AnalyticsComponent() {
+    function AnalyticsComponent(route, http) {
+        this.route = route;
+        this.http = http;
+        this.title = 'Sample Check';
     }
     AnalyticsComponent.prototype.ngOnInit = function () {
+        this.showReport();
+    };
+    AnalyticsComponent.prototype.showReport = function () {
+        var _this = this;
+        this.http.get(__WEBPACK_IMPORTED_MODULE_3_environments_environment__["a" /* environment */].api_url_real + '/report').subscribe(function (result) {
+            _this.PowerBiReport = result.json();
+            // Report's Secured Token
+            // tslint:disable-next-line:max-line-length
+            var accessToken = _this.PowerBiReport.Token;
+            // Embed URL
+            // tslint:disable-next-line:max-line-length
+            var embedUrl = _this.PowerBiReport.EmbededUrl;
+            // Report ID
+            var embedReportId = _this.PowerBiReport.Id;
+            // Configuration used to describe the what and how to embed.
+            // This object is used when calling powerbi.embed.
+            // This also includes settings and options such as filters.
+            // You can find more information at https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details.
+            var config = {
+                type: 'report',
+                accessToken: accessToken,
+                embedUrl: embedUrl,
+                id: embedReportId,
+                settings: {}
+            };
+            // Grab the reference to the div HTML element that will host the report.
+            var reportContainer = document.getElementById('reportContainer');
+            // Embed the report and display it within the div container.
+            var powerbi = new __WEBPACK_IMPORTED_MODULE_1_powerbi_client__["service"].Service(__WEBPACK_IMPORTED_MODULE_1_powerbi_client__["factories"].hpmFactory, __WEBPACK_IMPORTED_MODULE_1_powerbi_client__["factories"].wpmpFactory, __WEBPACK_IMPORTED_MODULE_1_powerbi_client__["factories"].routerFactory);
+            var report = powerbi.embed(reportContainer, config);
+            report.on('loaded', function () {
+                // tslint:disable-next-line:prefer-const
+                var logView = document.getElementById('logView');
+                logView.innerHTML = logView.innerHTML + 'Loaded<br/>';
+                // Report.off removes a given event handler if it exists.
+                report.off('loaded');
+            });
+        });
     };
     AnalyticsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -325,7 +375,7 @@ var AnalyticsComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/PrimeCareManager/analytics/analytics/analytics.component.html"),
             styles: [__webpack_require__("./src/app/PrimeCareManager/analytics/analytics/analytics.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["ActivatedRoute"], __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */]])
     ], AnalyticsComponent);
     return AnalyticsComponent;
 }());
@@ -388,14 +438,14 @@ var FcFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\" >\r\n    <div class=\"container\">\r\n        <div class=\"section\">\r\n            <span class=\"logo\">PeriVision</span> \r\n            <div class=\"time\">{{now}} {{timeDisplay}}</div>\r\n        </div>  \r\n        <div class=\"section\">\r\n                <div class=\"space text2\">AIC: {{Header.aic}}</div>\r\n                <div class=\"space text2\">Nurse Manager: {{Header.nursemanger}}</div>\r\n                <div class=\"space text2\">PACU Manager: {{Header.pacumanager}}</div>\r\n                <div class=\"text2 subsection\">OR Utilization: {{Header.orutilization}}</div>\r\n                <div class=\"space text2\">PACU Utilization: {{Header.pacuutilization}}</div>\r\n        </div>\r\n        <div class=\"section\">\r\n        <mat-list class=\"app-class\" >\r\n            <div *ngIf=\"alert\">\r\n               <mat-list-item *ngFor=\"let item of alert\"> {{item}} </mat-list-item> \r\n            </div>\r\n        </mat-list>\r\n        </div>\r\n        <div class=\"section\">\r\n            <canvas id=\"myChart\"></canvas>\r\n        </div>\r\n    </div>\r\n   </div>"
+module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision</span>\r\n      <div class=\"time\">{{now}} {{timeDisplay}}</div>\r\n    </div>\r\n    <div class=\"section\">\r\n      <div class=\"space text2\">AIC: {{Header.AIC}}</div>\r\n      <div class=\"space text2\">Nurse Manager: {{Header.NurseManager}}</div>\r\n      <div class=\"space text2\">PACU Manager: {{Header.PACUManager}}</div>\r\n\r\n    </div>\r\n    <div class=\"section\">\r\n      <mat-list class=\"app-class\">\r\n        <div *ngIf=\"Header.Alert\">\r\n          <mat-list-item *ngFor=\"let item of Header.Alert.List\"> {{item.Alert}} </mat-list-item>\r\n        </div>\r\n      </mat-list>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('procedure')\" class=\"section1\">\r\n      <div class=\"text1\"> &nbsp; &nbsp; # Cases: {{Header.ProcedureHeader.CurrentORCount}}</div>\r\n      <div class=\"text1\"> &nbsp; &nbsp; OR Utilization: {{Header.ProcedureHeader.ORUtilization}}</div>\r\n      <canvas style=\"width:100px\" id=\"myChart\"></canvas>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('patient')\" class=\"section\">\r\n      <div class=\"space text2\">#Patient: {{Header.PatientHeader.TotalPatient}}</div>\r\n      <div class=\"space text2\">InPatients: {{Header.PatientHeader.InPatient}}</div>\r\n      <div class=\"space text2\">OutPatients: {{Header.PatientHeader.OutPatient}}</div>\r\n      <div class=\"text2\">Am admit: {{Header.PatientHeader.AmAdmit}}</div>\r\n      <div class=\"space text2\">Pm admit: {{Header.PatientHeader.PmAdmit}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('personel')\" class=\"section\">\r\n      <div class=\"space text2\">OnCallAnest: {{Header.PersonnelHeader.OnCallAnest}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('facilityresources')\" class=\"section\">\r\n            <div class=\"space text5\">PACU Occupancy</div>\r\n            <br>\r\n            <div class=\"space text2\">MaxOccupancy: {{Header.RecoveryHeader.MaxOccupancy}}</div>\r\n            <div class=\"space text2\">MaxOccupancyTime: {{Header.RecoveryHeader.MaxOccupancyTime}}</div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #C9E6FF;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header .logo {\n  font-size: 3.5em;\n  font-family: Calibri; }\n\n.header .container {\n  margin-left: 25px;\n  margin-top: 10px; }\n\n.time {\n  margin-top: 50px;\n  font-size: 1.5em; }\n\n.section {\n  width: 25%;\n  float: left;\n  font-size: 1.25em; }\n\n.subsection {\n  margin-top: 30px; }\n\n.space {\n  margin: 0px 0px 0px 0px; }\n\n.header canvas {\n  height: 175px !important; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.app-class .mat-list-item {\n  width: 75%;\n  height: 1.2em;\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  border: 1px solid #909096;\n  background-color: orange; }\n\n.alert {\n  border-radius: 15px;\n  border: 1px solid #1612ec;\n  margin-right: 50px; }\n"
+module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #C9E6FF;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header .logo {\n  font-size: 3.5em;\n  font-family: Calibri; }\n\n.header .container {\n  margin-left: 25px;\n  margin-top: 10px; }\n\n.time {\n  margin-top: 50px;\n  font-size: 1.5em; }\n\n.section {\n  width: 25%;\n  float: left;\n  font-size: 1.25em; }\n\n.section1 {\n  width: 12%;\n  float: left;\n  font-size: 1.05em; }\n\n.subsection {\n  margin-top: 30px; }\n\n.space {\n  margin: 0px 0px 0px 0px; }\n\n.header canvas {\n  height: 175px !important; }\n\n.app-class .mat-list-item {\n  width: 75%;\n  height: 1.03em;\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  border: 1px solid #909096;\n  background-color: orange; }\n\n.alert {\n  border-radius: 15px;\n  border: 1px solid #1612ec;\n  margin-right: 50px; }\n\n.text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text5 {\n  font-size: 2em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 0.8em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 0px; }\n\n.text5 {\n  font-family: Calibri;\n  font-size: 2em; }\n"
 
 /***/ }),
 
@@ -413,6 +463,7 @@ module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js__ = __webpack_require__("./node_modules/chart.js/src/chart.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_chart_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -429,59 +480,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AppHeaderComponent = /** @class */ (function () {
-    function AppHeaderComponent(dataService, http, globals) {
+    function AppHeaderComponent(dataService, http, globals, router) {
         this.dataService = dataService;
         this.http = http;
         this.globals = globals;
+        this.router = router;
         this.counter = 0;
         this.now = __WEBPACK_IMPORTED_MODULE_1_moment__().format('MM/DD/YYYY');
-        this.getData();
-        this.loadHeaderChartData();
+        // this.loadHeaderChartData();
+        this.loadFromFile();
         this.counter = globals.currentCounter;
     }
     AppHeaderComponent.prototype.ngAfterViewInit = function () {
         this.loadFromFile();
         this.getDatas(this.globals.timeinterval + 1000);
-        this.loadHeaderChartData();
+        // this.loadHeaderChartData();
         this.globals.timeinterval = this.globals.timeinterval + 1000;
     };
     AppHeaderComponent.prototype.loadFromFile = function () {
         var _this = this;
         this.http.get(__WEBPACK_IMPORTED_MODULE_6_environments_environment__["a" /* environment */].api_url_real + '/procedure').subscribe(function (result) {
             _this.procedure = result.json();
-            console.log(_this.procedure);
             _this.globals.globleProcedure = _this.procedure;
             _this.timeDisplay = _this.procedure.CurrentTime;
-            _this.alert = _this.procedure.Alert;
-        }, function (error) { return console.error(error); });
-    };
-    AppHeaderComponent.prototype.loadProcedure = function () {
-        if (this.counter === 101) {
-            this.counter = 0;
-        }
-        this.loadFromFile();
-        console.log(this.counter);
-        this.globals.currentCounter = this.counter++;
-    };
-    AppHeaderComponent.prototype.getDatas = function (timeinterval) {
-        var _this = this;
-        this.interval = setInterval(function () {
-            _this.loadProcedure();
-        }, timeinterval);
-    };
-    AppHeaderComponent.prototype.getData = function () {
-        var _this = this;
-        this.dataService.getData()
-            .subscribe(function (r) { return _this.Header = r; });
-    };
-    AppHeaderComponent.prototype.loadHeaderChartData = function () {
-        var _this = this;
-        this.http
-            .get(__WEBPACK_IMPORTED_MODULE_6_environments_environment__["a" /* environment */].api_url + '/headerchart')
-            .map(function (data) { return data.json(); })
-            .subscribe(function (data) {
-            _this.headerchart = data;
+            _this.Header = _this.procedure.Header;
+            _this.headerchart = _this.Header.ProcedureHeader.HeaderChart;
+            _this.canvas = document.getElementById('myChart');
+            _this.ctx = _this.canvas.getContext('2d');
             _this.canvas = document.getElementById('myChart');
             _this.ctx = _this.canvas.getContext('2d');
             // tslint:disable-next-line:prefer-const
@@ -496,15 +523,42 @@ var AppHeaderComponent = /** @class */ (function () {
                             pointBackgroundColor: _this.headerchart.hchartbackgroundColor,
                             borderColor: _this.headerchart.hchartbackgroundColor,
                             pointBorderColor: _this.headerchart.hchartbackgroundColor,
-                            fill: false,
+                            fill: true,
                             borderWidth: 1
                         }]
                 },
                 options: {
-                    responsive: false,
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                                ticks: {
+                                    autoSkip: false,
+                                    maxRotation: 360,
+                                    minRotation: 360
+                                }
+                            }]
+                    }
                 }
             });
-        });
+        }, function (error) { return console.error(error); });
+    };
+    AppHeaderComponent.prototype.loadProcedure = function () {
+        if (this.counter === 101) {
+            this.counter = 0;
+        }
+        this.loadFromFile();
+        this.globals.currentCounter = this.counter++;
+    };
+    AppHeaderComponent.prototype.getDatas = function (timeinterval) {
+        var _this = this;
+        this.interval = setInterval(function () {
+            _this.loadProcedure();
+        }, timeinterval);
+    };
+    AppHeaderComponent.prototype.getData = function () {
+        var _this = this;
+        this.dataService.getData()
+            .subscribe(function (r) { return _this.Header = r; });
     };
     AppHeaderComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -512,7 +566,7 @@ var AppHeaderComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-header.component.html"),
             styles: [__webpack_require__("./src/app/PrimeCareManager/component/app-header/app-header.component.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_header_dataservice__["a" /* HeaderDataservice */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_4__globals__["a" /* Globals */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_header_dataservice__["a" /* HeaderDataservice */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_4__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_7__angular_router__["Router"]])
     ], AppHeaderComponent);
     return AppHeaderComponent;
 }());
@@ -623,6 +677,56 @@ var PersonelFooterComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/PrimeCareManager/component/app-header/app-presch-header.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision PreOp</span>\r\n      <div class=\"time\">{{now}}</div>\r\n    </div>\r\n  </div>\r\n  <div style=\"float:left;\" class =\"my-center-text\">\r\n   \r\n    <p-tabMenu [model]=\"items\" [activeItem]=\"items[0]\"></p-tabMenu>\r\n  \r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/component/app-header/app-presch-header.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppPreschHeaderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AppPreschHeaderComponent = /** @class */ (function () {
+    function AppPreschHeaderComponent() {
+    }
+    AppPreschHeaderComponent.prototype.ngOnInit = function () {
+        this.items = [
+            { label: 'Scheduling Assistant', icon: 'fa fa-fw fa-bar-chart' },
+            { label: 'Staff Assignment', icon: 'fa fa-fw fa-calendar' },
+            { label: 'PACU', icon: 'fa fa-fw fa-support' },
+            { label: 'Preop Planner', icon: 'fa fa-fw fa-twitter' }
+        ];
+        this.activeItem = this.items[2];
+    };
+    AppPreschHeaderComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-app-presch-header',
+            template: __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-presch-header.component.html"),
+            styles: [__webpack_require__("./src/app/PrimeCareManager/component/app-header/app-header.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AppPreschHeaderComponent);
+    return AppPreschHeaderComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/PrimeCareManager/component/app-header/app-proc-footer.component.html":
 /***/ (function(module, exports) {
 
@@ -677,7 +781,7 @@ var ProcFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/sidenav/sidenav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!router.url.includes('signin')\">\r\n<app-header ></app-header>\r\n</div>\r\n<mat-sidenav-container class=\"mat-sidenav-container\" style.top.px=\"{{sidetop}}\" style.margin-bottom.px =\"{{sidemarginbottom}}\">\r\n  <mat-sidenav *ngIf=\"!(router.url.includes('preschassit') ||  router.url.includes('signin'))\" #sidenav \r\n              position =\"end\"\r\n               [opened]=\"true\"\r\n               mode =\"side\"\r\n               disableClose =\"true\"\r\n               fixedInViewport=\"true\" \r\n               [fixedTopGap]=\"200\"\r\n               [fixedBottomGap]=\"50\">\r\n    \r\n               <div class=\"btn-group\">\r\n                <button routerLink=\"/procedure\">Procedure</button>\r\n                <button routerLink=\"/patient\">Patient</button>\r\n                <button routerLink=\"/personel\">Personel</button>\r\n                <button routerLink=\"/facilityresources\">Recovery</button>\r\n                <button routerLink=\"/notify\"> Notify</button>\r\n                <button routerLink=\"/analytics\">Analytics</button>\r\n              </div>\r\n    \r\n  </mat-sidenav>\r\n  \r\n  <div class=\"app-sidenav-content\">\r\n    \r\n    <div class=\"wrapper\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</mat-sidenav-container>"
+module.exports = "<div *ngIf=\"!(router.url.includes('signin') || router.url.includes('preschassit')) \">\r\n<app-header></app-header>\r\n</div>\r\n<div *ngIf=\"router.url.includes('preschassit') \">\r\n  <app-app-presch-header></app-app-presch-header>\r\n  </div>\r\n<mat-sidenav-container class=\"mat-sidenav-container\" style.top.px=\"{{sidetop}}\" style.margin-bottom.px =\"{{sidemarginbottom}}\">\r\n  <mat-sidenav *ngIf=\"!(router.url.includes('preschassit') ||  router.url.includes('signin'))\" #sidenav \r\n              position =\"end\"\r\n               [opened]=\"true\"\r\n               mode =\"side\"\r\n               disableClose =\"true\"\r\n               fixedInViewport=\"true\" \r\n               [fixedTopGap]=\"200\"\r\n               [fixedBottomGap]=\"50\">\r\n    \r\n               <div class=\"btn-group\">\r\n                <button routerLink=\"/procedure\">Procedure</button>\r\n                <button routerLink=\"/patient\">Patient</button>\r\n                <button routerLink=\"/personel\">Personel</button>\r\n                <button routerLink=\"/facilityresources\">Recovery</button>\r\n                <button routerLink=\"/notify\"> Notify</button>\r\n                <button routerLink=\"/analytics\">Analytics</button>\r\n              </div>\r\n    \r\n  </mat-sidenav>\r\n  \r\n  <div class=\"app-sidenav-content\">\r\n    \r\n    <div class=\"wrapper\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</mat-sidenav-container>"
 
 /***/ }),
 
@@ -845,14 +949,14 @@ var ToolbarComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n\r\n<table style=\"width: 100%; table-layout: fixed\"> \r\n    <tr>\r\n        <td style=\"width: 70%\">\r\n                <div>\r\n                        <div *ngIf=\"resource\">\r\n                            <div *ngFor=\"let operationBed of resource.OperationBeds\" >\r\n                                <svg width =\"100%\" height = \"100\" style=\"margin: 10px\">\r\n                                    <g (click)=\"clicked(operation.Patient)\" *ngFor= \"let operation of operationBed.Beds\" >\r\n                                        <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"19%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\" \r\n                                        style = \"stroke:rgb(178, 180, 180)\"/>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"20%\" dx= \"30\" alignment-baseline = \"middle\" font-weight=\"bold\" font-size = \"30px\"  text-anchor = \"middle\">{{operation.Name}}</text>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"50%\" dx= \"30\" font-size = \"20px\"  text-anchor = \"middle\">{{operation.EstDischargeTime}}</text>\r\n                                    </g>\r\n                                </svg>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n        </td>\r\n        <td>\r\n        <div class=\"text5\" align=\"center\">Upcoming Patient</div>\r\n        <mat-list>\r\n            <mat-list-item *ngFor=\"let message of listResourceUpcomingPatient\">\r\n             <div  class=\"text6\">\r\n                <span>{{message.Name}} - Name [{{message.MedicalRecord}}] </span> \r\n                <br>\r\n                <span> Expected Time: {{message.ExpectedTime}} </span>\r\n            </div>\r\n            </mat-list-item>\r\n          </mat-list>\r\n        </td>\r\n\r\n</table>\r\n<p style=\"padding: 10px;\"></p>\r\n\r\n<table class=\"text2\" style=\"width: 100%; table-layout: fixed; font-size:25px; border: 10px \"  >\r\n  <tr>\r\n        <td>\r\n            <p class=\"text2\" style= \"margin-left: 400px;\">PACU Throughput </p>\r\n                <div>\r\n                        <canvas  style= \"margin-left: 150px;\"\r\n                           id=\"myChart1\"></canvas>\r\n                    \r\n                </div>\r\n        </td>\r\n            <td>\r\n               <p class=\"text2\" style= \"margin-left: 400px;\">PACU Occupancy Forecast </p>\r\n               <div>\r\n                <canvas  style= \"margin-left: 150px;\" id=\"myChart2\"></canvas>\r\n            \r\n        </div>\r\n        </td>\r\n        \r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>"
+module.exports = "<p></p>\r\n\r\n<table style=\"width: 100%; table-layout: fixed\"> \r\n    <tr>\r\n        <td style=\"width: 70%\">\r\n                <div>\r\n                        <div *ngIf=\"resource\">\r\n                            <div *ngFor=\"let operationBed of resource.OperationBeds\" >\r\n                                <svg width =\"100%\" height = \"100\" style=\"margin: 10px\">\r\n                                    <g (click)=\"clicked(operation.Patient)\" *ngFor= \"let operation of operationBed.Beds\" >\r\n                                        <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"19%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\" \r\n                                        style = \"stroke:rgb(178, 180, 180)\"/>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"20%\" dx= \"30\" alignment-baseline = \"middle\" font-weight=\"bold\" font-size = \"30px\"  text-anchor = \"middle\">{{operation.Name}}</text>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"50%\" dx= \"30\" font-size = \"20px\"  text-anchor = \"middle\">{{operation.EstDischargeTime}}</text>\r\n                                    </g>\r\n                                </svg>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n        </td>\r\n        <td>\r\n        <div class=\"text5\">Upcoming Patient</div>\r\n        <mat-list>\r\n            <mat-list-item *ngFor=\"let message of listResourceUpcomingPatient\">\r\n             <div  class=\"text6\">\r\n                <span>{{message.Name}} - Name [{{message.MedicalRecord}}] </span> \r\n                <br>\r\n                <span> Expected Time: {{message.ExpectedTime}} </span>\r\n            </div>\r\n            </mat-list-item>\r\n          </mat-list>\r\n        </td>\r\n\r\n</table>\r\n<p style=\"padding: 10px;\"></p>\r\n\r\n<table class=\"text2\" style=\"width: 100%; table-layout: fixed; font-size:25px; border: 10px \"  >\r\n  <tr>\r\n        <td>\r\n            <p class=\"text2\" style= \"margin-left: 400px;\">PACU Throughput </p>\r\n                <div>\r\n                        <canvas  style= \"margin-left: 150px;\"\r\n                           id=\"myChart1\"></canvas>\r\n                    \r\n                </div>\r\n        </td>\r\n            <td>\r\n               <p class=\"text2\" style= \"margin-left: 400px;\">PACU Occupancy Forecast </p>\r\n               <div>\r\n                <canvas  style= \"margin-left: 150px;\" id=\"myChart2\"></canvas>\r\n            \r\n        </div>\r\n        </td>\r\n        \r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\nz\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n\nmat-list {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  height: 250px;\n  font-size: 2em;\n  font-family: Calibri;\n  text-align: center;\n  margin-top: 0em;\n  font-size: 1.5em; }\n\n.text5 {\n  font-size: 1.5em;\n  background-color: #ebf1de;\n  color: gray;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 30px; }\n\n.text6 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center;\n  margin-left: 170px; }\n"
+module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\nz\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n\nmat-list {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  height: 250px;\n  font-size: 2em;\n  font-family: Calibri;\n  text-align: center;\n  margin-top: 0em;\n  font-size: 1.5em; }\n\n.text5 {\n  font-size: 1.5em;\n  background-color: #ebf1de;\n  color: gray;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 30px;\n  text-align: center; }\n\n.text6 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center;\n  margin-left: 12em; }\n"
 
 /***/ }),
 
@@ -1687,14 +1791,14 @@ var PersonelComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/preschassit/preschassit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n</p>\r\n<table>\r\n  <tr>\r\n    <td style=\"width: 75%; margin-top: 0em\">\r\n      <div>\r\n        <!--\r\n      <table *ngIf=\"Proc\" class=\"scale\">\r\n        <tr>\r\n          <th *ngFor=\"let num of Proc.TimeList\">\r\n            {{num}}:00\r\n          </th>\r\n        </tr>\r\n      </table>-->\r\n        <div *ngIf=\"Proc\">\r\n          <div *ngFor=\"let operationRoom of Proc.OperationRooms\">\r\n            <div class=\"or-name\">\r\n              <span class=\"name-span text4\">{{operationRoom.Name}}</span>\r\n              <br>\r\n              <span class=\"name-span text1\">{{operationRoom.Type}}</span>\r\n              <br>\r\n              <span class=\"name-span text1\">{{operationRoom.SurgeonName}}</span>\r\n            </div>\r\n            <div class=\"block\">\r\n              <svg width=\"100%\" height=\"100\">\r\n                <g *ngFor=\"let operation of operationRoom.Operations\">\r\n                  <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\" attr.height=\"{{operation.Height}}\"\r\n                    attr.fill=\"{{operation.Color}}\" />\r\n                  <text class=\"text1 text3\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"20%\">{{operation.OpName}}</text>\r\n                  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"40%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                    text-anchor=\"middle\">{{operation.Patient.Name}} [{{operation.Patient.Info}}]</text>\r\n                  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"60%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                    text-anchor=\"middle\">{{operation.Status}}</text>\r\n                  <text class=\"text1\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"80%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                    text-anchor=\"middle\">{{operation.TimeDisplay}}</text>\r\n                  <image *ngIf=\"operation.ImageName\" attr.x=\"{{operation.RX + (operation.Width/12) }}%\" y=\"60%\" width=\"35px\" height=\"35px\"\r\n                    attr.xlink:href=\"../../../assets/{{operation.ImageName}}.png\"></image>\r\n                </g>\r\n              </svg>\r\n            </div>\r\n            <div class=\"clearfix\"></div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div>\r\n        <p-dataTable scrollable=\"true\" scrollHeight=\"200px\" scrollWidth=\"95%\" reorderableColumns=\"true\" resizableColumns=\"true\" [value]=\"data\"\r\n          [editable]=\"true\">\r\n          <p-column field=\"mrn\" header=\"Patient MRN\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.mrn}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.mrn\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <p-column field=\"surgeonName\" header=\"Surgeon\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.surgeonName}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.surgeonName\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n          <p-column field=\"procedure\" header=\"Procedure\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.procedure}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.procedure\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <p-column field=\"duration\" header=\"Duration\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.duration}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.duration\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <!-- \r\n        <p-column field=\"\" header=\"action\" [style]=\"{'text-align':'center'}\">\r\n          <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n             <div *ngIf=\"row.isEditable\">\r\n            <button (click)=\"save(row)\">Save</button>\r\n            </div>\r\n          </ng-template>\r\n        </p-column>\r\n     -->\r\n        </p-dataTable>\r\n        <button (click)=\"getData()\">Load Data</button>\r\n        <!--<button (click)=\"addNew()\">Add New</button> -->\r\n      </div>\r\n    </td>\r\n    <td style=\"width: 25%\">\r\n      <table>\r\n        <tr>\r\n          <td>\r\n            <img class=\"img-valign2\" src=\"../../../assets/leftor.png\" alt=\"\">\r\n          </td>\r\n          <td>\r\n            <span class=\"text2-image\">All</span>\r\n          </td>\r\n          <td>&nbsp;&nbsp;&nbsp;</td>\r\n          <td>\r\n            <img class=\"img-valign2\" src=\"../../../assets/leftor.png\" alt=\"\">\r\n          </td>\r\n          <td>\r\n            <span class=\"text2-image\">All</span>\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <td>\r\n            <img class=\"img-valign2\" src=\"../../../assets/leftor.png\" alt=\"\">\r\n          </td>\r\n          <td>\r\n            <span class=\"text2-image\">All</span>\r\n          </td>\r\n          <td>&nbsp;&nbsp;&nbsp;</td>\r\n          <td>\r\n            <img class=\"img-valign2\" src=\"../../../assets/leftor.png\" alt=\"\">\r\n          </td>\r\n          <td>\r\n            <span class=\"text2-image\">Orthopedics</span>\r\n          </td>\r\n\r\n        </tr>\r\n      </table>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n\r\n      <p-card title=\"Simple Card\" [style]=\"{height: '320px'}\">\r\n        <div>Lorem ipsum dolor</div>\r\n        <div> sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat\r\n          libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>\r\n      </p-card>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n\r\n      <p-card [style]=\"{height: '320px'}\">\r\n        <div>Lorem ipsum dolor</div>\r\n        <div> sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat\r\n          libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>\r\n      </p-card>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 2.5em;\" pButton type=\"button\" label=\"Auto Schedule\" class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 2.5em;\" pButton type=\"button\" label=\"Import case file\" class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 2.5em;\" pButton type=\"button\" label=\"Add Case\" class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 2.5em;\" pButton type=\"Danger\" label=\"Quit\" class=\"ui-button-raised ui-button-rounded ui-button-danger\">\r\n        </button>\r\n      </div>\r\n    </td>\r\n\r\n  </tr>\r\n\r\n\r\n</table>\r\n"
+module.exports = "<p>\r\n</p>\r\n\r\n<table>\r\n  <tr>\r\n    <td style=\"width: 50%; margin-top: 0em\">\r\n      <div>\r\n\r\n        <table *ngIf=\"Proc\" class=\"scale\">\r\n          <tr>\r\n            <th *ngFor=\"let num of Proc.TimeList\">\r\n              {{num}}:00\r\n            </th>\r\n          </tr>\r\n        </table>\r\n        <div *ngIf=\"Proc\">\r\n          <div *ngFor=\"let operationRoom of Proc.OperationRooms\">\r\n            <div class=\"or-name\">\r\n              <span class=\"name-span text4\">{{operationRoom.Name}}</span>\r\n            </div>\r\n            <div class=\"block\">\r\n              <svg width=\"100%\" height=\"100\">\r\n                <g *ngFor=\"let operation of operationRoom.Operations\">\r\n                  <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\"\r\n                    attr.height=\"{{operation.Height}}\" attr.fill=\"{{operation.Color}}\" />\r\n                  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"40%\"\r\n                    alignment-baseline=\"middle\" font-weight=\"bold\" text-anchor=\"middle\">{{operation.Patient.Name}}\r\n                    [{{operation.Patient.Info}}]</text>\r\n                  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"60%\"\r\n                    alignment-baseline=\"middle\" font-weight=\"bold\" text-anchor=\"middle\">{{operation.Status}}</text>\r\n                </g>\r\n              </svg>\r\n            </div>\r\n            <div class=\"clearfix\"></div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div>\r\n        <p-dataTable scrollable=\"true\" scrollHeight=\"200px\" scrollWidth=\"95%\" reorderableColumns=\"true\"\r\n          resizableColumns=\"true\" [value]=\"data\" [editable]=\"true\">\r\n          <p-column field=\"mrn\" header=\"Patient MRN\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.mrn}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.mrn\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <p-column field=\"surgeonName\" header=\"Surgeon\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.surgeonName}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.surgeonName\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n          <p-column field=\"procedure\" header=\"Procedure\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.procedure}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.procedure\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <p-column field=\"duration\" header=\"Duration\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.duration}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.duration\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <!-- \r\n        <p-column field=\"\" header=\"action\" [style]=\"{'text-align':'center'}\">\r\n          <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n             <div *ngIf=\"row.isEditable\">\r\n            <button (click)=\"save(row)\">Save</button>\r\n            </div>\r\n          </ng-template>\r\n        </p-column>\r\n     -->\r\n        </p-dataTable>\r\n        <!--<button (click)=\"addNew()\">Add New</button> -->\r\n      </div>\r\n    </td>\r\n    <td style=\"width: 25%\">\r\n      <table>\r\n        <tr>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign2\" src=\"../../../assets/All.png\" alt=\"\">\r\n          </td>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign2\" src=\"../../../assets/General.png\" alt=\"\">\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign\" src=\"../../../assets/ENT.png\" alt=\"\">\r\n          </td>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign2\" src=\"../../../assets/Orthopedics.png\" alt=\"\">\r\n          </td>\r\n        </tr>\r\n      </table>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n\r\n      <p-card class=\"myOverride\" title=\"Constraints\" [style]=\"{height: '230px'}\">\r\n        <div style=\"font-family: Calibri;font-size: 1.3em; margin-left: 15px\" *ngFor=\"let item of data1\"> {{item}}\r\n        </div>\r\n      </p-card>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n\r\n      <p-card style=\"font-size: 1.2em;\" [style]=\"{height: '150px'}\">\r\n        <p></p>\r\n        <div style=\"font-family: Calibri;font-size: 2.0em; margin-left: 15px\" >Utilization: 85%</div>\r\n        <div style=\"font-family: Calibri;font-size: 2.0em;margin-left: 15px\"> Overage: 65 min (2 ORs)\r\n        </div>\r\n      </p-card>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" pButton type=\"button\" label=\"Auto Schedule\" class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n      <div> \r\n        <button style=\"width:50%; height: 3.5em;\" (click)=\"getData()\" pButton type=\"button\" label=\"Import case file\"\r\n          class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" pButton type=\"button\" label=\"Add Case\" class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" pButton type=\"Danger\" label=\"Quit\" class=\"ui-button-raised ui-button-rounded ui-button-danger\">\r\n        </button>\r\n      </div>\r\n    </td>\r\n\r\n  </tr>\r\n\r\n\r\n</table>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/preschassit/preschassit.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle;\n  background-color: aqua; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.text6 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  margin-top: 1.6em;\n  top: 10px;\n  bottom: 0;\n  margin: auto; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 40px;\n  width: 5%;\n  float: left;\n  text-align: center;\n  height: 100px; }\n\n.display {\n  display: block;\n  margin-top: 20px; }\n\n.block {\n  float: left;\n  width: 95%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 5%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n\n.img-valign {\n  vertical-align: top; }\n\n.img-valign2 {\n  vertical-align: top; }\n\n.text2-image {\n  font-family: Calibri;\n  font-size: 25px;\n  text-align: center; }\n\n.centered {\n  position: absolute;\n  height: 100px;\n  top: 0;\n  bottom: 0;\n  margin: auto; }\n"
+module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle;\n  background-color: aqua; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.text6 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  margin-top: 1.6em;\n  top: 10px;\n  bottom: 0;\n  margin: auto; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 20px;\n  width: 5%;\n  float: left;\n  text-align: center;\n  height: 100px; }\n\n.display {\n  display: block;\n  margin-top: 20px; }\n\n.block {\n  float: left;\n  width: 95%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 5%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n\n.img-valign {\n  vertical-align: top;\n  margin-left: 10px; }\n\n.img-valign2 {\n  vertical-align: top; }\n\n.text2-image {\n  font-family: Calibri;\n  font-size: 25px;\n  text-align: center; }\n\n.centered {\n  position: absolute;\n  height: 100px;\n  top: 0;\n  bottom: 0;\n  margin: auto; }\n"
 
 /***/ }),
 
@@ -1731,6 +1835,7 @@ var PreschassitComponent = /** @class */ (function () {
         this.currentAddIndex = 0;
         this.counter = 0;
         this.globals1 = globals;
+        this.data1 = ['Robot: OR01', 'Laser: OR05', 'Pat 3: First case request', 'Surg 4: Not available before 8 am', 'OR06: Standby'];
     }
     PreschassitComponent.prototype.ngAfterViewInit = function () {
         this.loadFromFile();
@@ -1952,14 +2057,14 @@ var MatDialogsHelperService = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/procedure/procedure.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"Proc\">\r\n\r\n  <div width=\"100%\">\r\n    <img class=\"time\" [src]=\"\" [style.left]=\"Proc.TimeRX + '%'\" width=\"5px\" height=\"100%\">\r\n  </div>\r\n</div>\r\n<div class=\"display\">\r\n  <table *ngIf=\"Proc\" class=\"scale\">\r\n    <tr>\r\n      <th *ngFor=\"let num of Proc.TimeList\">\r\n        {{num}}:00\r\n      </th>\r\n    </tr>\r\n  </table>\r\n  <div *ngIf=\"Proc\">\r\n    <div *ngFor=\"let operationRoom of Proc.OperationRooms\">\r\n      <div class=\"or-name\">\r\n        <span class=\"name-span text4\">{{operationRoom.Name}}</span>\r\n        <br>\r\n        <span class=\"name-span text1\">{{operationRoom.Type}}</span>\r\n        <br>\r\n        <span class=\"name-span text1\">{{operationRoom.SurgeonName}}</span>\r\n      </div>\r\n      <div class=\"block\">\r\n        <svg width=\"100%\" height=\"100\">\r\n          <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationRoom.Operations\">\r\n            <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\" attr.height=\"{{operation.Height}}\"\r\n              attr.fill=\"{{operation.Color}}\" />\r\n            <text class=\"text1 text3\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"20%\">{{operation.OpName}}</text>\r\n            <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"40%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n            text-anchor=\"middle\">{{operation.Patient.Name}} [{{operation.Patient.Info}}]</text>\r\n            <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"60%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n              text-anchor=\"middle\">{{operation.Status}}</text>\r\n            <text class=\"text1\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"80%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n              text-anchor=\"middle\">{{operation.TimeDisplay}}</text>\r\n            <image *ngIf=\"operation.ImageName\" attr.x=\"{{operation.RX + (operation.Width/12) }}%\" y=\"60%\" width=\"35px\" height=\"35px\"\r\n              attr.xlink:href=\"../../../assets/{{operation.ImageName}}.png\"></image>\r\n          </g>\r\n        </svg>\r\n      </div>\r\n      <div class=\"clearfix\"></div>\r\n    </div>\r\n  </div>\r\n  <app-proc-footer></app-proc-footer>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"Proc\">\r\n\r\n  <div width=\"100%\">\r\n    <img class=\"time\" [src]=\"\" [style.left]=\"Proc.TimeRX + '%'\" width=\"5px\" height=\"100%\">\r\n  </div>\r\n</div>\r\n<div class=\"display\">\r\n  <table *ngIf=\"Proc\" class=\"scale\">\r\n    <tr>\r\n      <th *ngFor=\"let num of Proc.TimeList\">\r\n        {{num}}:00\r\n      </th>\r\n    </tr>\r\n  </table>\r\n  <div *ngIf=\"Proc\">\r\n    <div *ngFor=\"let operationRoom of Proc.OperationRooms\">\r\n      <div class=\"or-name\">\r\n        <span class=\"name-span text4\">{{operationRoom.Name}}</span>\r\n        <br>\r\n        <span [style.color]=\"getcolor(operationRoom.Color)\"  class=\"name-span text1-b\">{{operationRoom.Type}}</span>\r\n        <br>\r\n        <span class=\"name-span text1\">{{operationRoom.SurgeonName}}</span>\r\n      </div>\r\n      <div class=\"block\">\r\n        <svg width=\"100%\" height=\"100\">\r\n          <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationRoom.Operations\">\r\n            <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\" attr.height=\"{{operation.Height}}\"\r\n              attr.fill=\"{{operation.Color}}\" />\r\n            <text class=\"text1 text3\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"20%\">{{operation.OpDescription}}</text>\r\n            <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"40%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n            text-anchor=\"middle\">{{operation.Patient.Name}} [{{operation.Patient.Info}}]</text>\r\n            <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"60%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n              text-anchor=\"middle\">{{operation.Status}}</text>\r\n            <text class=\"text1\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"80%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n              text-anchor=\"middle\">{{operation.TimeDisplay}}</text>\r\n            <image *ngIf=\"operation.ImageName\" attr.x=\"{{operation.RX + (operation.Width/12) }}%\" y=\"60%\" width=\"35px\" height=\"35px\"\r\n              attr.xlink:href=\"../../../assets/{{operation.ImageName}}.png\"></image>\r\n          </g>\r\n        </svg>\r\n      </div>\r\n      <div class=\"clearfix\"></div>\r\n    </div>\r\n  </div>\r\n  <app-proc-footer></app-proc-footer>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/procedure/procedure.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 40px;\n  width: 5%;\n  float: left;\n  text-align: center;\n  height: 100px; }\n\n.display {\n  display: block;\n  margin-top: 20px; }\n\n.block {\n  float: left;\n  width: 95%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 5%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n"
+module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text1-b {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.2em;\n  text-anchor: middle;\n  font-weight: bold; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri;\n  font-weight: bold; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 40px;\n  width: 5%;\n  float: left;\n  text-align: center;\n  height: 100px; }\n\n.display {\n  display: block;\n  margin-top: 20px; }\n\n.block {\n  float: left;\n  width: 95%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 5%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n"
 
 /***/ }),
 
@@ -2014,6 +2119,7 @@ var ProcedureComponent = /** @class */ (function () {
     };
     ProcedureComponent.prototype.loadFromFile = function () {
         this.Proc = this.globals.globleProcedure;
+        console.log(this.Proc);
     };
     ProcedureComponent.prototype.loadComponent = function () {
         this.allmedicaldata = this.dataService.ords;
@@ -2029,6 +2135,9 @@ var ProcedureComponent = /** @class */ (function () {
         this.interval = setInterval(function () {
             _this.loadProcedure();
         }, this.globals1.timeinterval);
+    };
+    ProcedureComponent.prototype.getcolor = function (data) {
+        return data;
     };
     ProcedureComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -2140,12 +2249,17 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_35_primeng_primeng__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_primeng_card__ = __webpack_require__("./node_modules/primeng/card.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_primeng_card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_36_primeng_card__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37_primeng_tabmenu__ = __webpack_require__("./node_modules/primeng/tabmenu.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37_primeng_tabmenu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_37_primeng_tabmenu__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__PrimeCareManager_component_app_header_app_presch_header_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-presch-header.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -2203,7 +2317,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_28__PrimeCareManager_personel_personel_personel_component__["a" /* PersonelComponent */],
                 __WEBPACK_IMPORTED_MODULE_29__PrimeCareManager_notify_notify_notify_component__["a" /* NotifyComponent */],
                 __WEBPACK_IMPORTED_MODULE_30__PrimeCareManager_analytics_analytics_analytics_component__["a" /* AnalyticsComponent */],
-                __WEBPACK_IMPORTED_MODULE_34__PrimeCareManager_preschassit_preschassit_component__["a" /* PreschassitComponent */]
+                __WEBPACK_IMPORTED_MODULE_34__PrimeCareManager_preschassit_preschassit_component__["a" /* PreschassitComponent */],
+                __WEBPACK_IMPORTED_MODULE_38__PrimeCareManager_component_app_header_app_presch_header_component__["a" /* AppPreschHeaderComponent */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_11__services_app_data_service__["a" /* AppDataService */],
@@ -2231,7 +2346,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_35_primeng_primeng__["DataTableModule"],
                 __WEBPACK_IMPORTED_MODULE_35_primeng_primeng__["ButtonModule"],
                 __WEBPACK_IMPORTED_MODULE_35_primeng_primeng__["SharedModule"],
-                __WEBPACK_IMPORTED_MODULE_36_primeng_card__["CardModule"]
+                __WEBPACK_IMPORTED_MODULE_36_primeng_card__["CardModule"],
+                __WEBPACK_IMPORTED_MODULE_37_primeng_tabmenu__["TabMenuModule"]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]]
         })
@@ -2792,7 +2908,7 @@ module.exports = ":host {\r\n    display: -webkit-box;\r\n    display: -ms-flexb
 /***/ "./src/app/users/sign-in/sign-in.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"limiter\">\r\n   <div class=\"container-login100\" style=\"background-image: url('./assets/PRIMECareIntro.png'); background-size: 80em;  width: 100%;\r\n  height: 100%;\">\r\n   <div class=\"wrap-login100 p-t-30 p-b-50\">\r\n      <!-- <span class=\"login100-form-title p-b-41\">\r\n        Account Login\r\n      </span> -->\r\n      <form class=\"login100-form validate-form p-b-33 p-t-5\" #signInForm=\"ngForm\" (ngSubmit)=\"onSubmit(signInForm)\" novalidate>\r\n        <div class=\"wrap-input100 validate-input\" data-validate = \"Enter username\">\r\n          <input class=\"input100\" type=\"text\" name=\"username\" placeholder=\"User name\" ngModel #username=\"ngModel\"/>\r\n          <span class=\"focus-input100\" data-placeholder=\"&#xe82a;\"></span>\r\n        </div>\r\n\r\n        <div class=\"wrap-input100 validate-input\" data-validate=\"Enter password\">\r\n          <input class=\"input100\" type=\"password\" name=\"password\" placeholder=\"Password\" ngModel #password=\"ngModel\"/>\r\n          <span class=\"focus-input100\" data-placeholder=\"&#xe80f;\"></span>\r\n        </div>\r\n\r\n        <div class=\"container-login100-form-btn m-t-32\" *ngIf=\"!submitting\">\r\n          <button class=\"login100-form-btn\">\r\n            Login\r\n          </button>\r\n        </div>  <!-- \r\n        <div class=\"container-login100-form-btn m-t-32\" *ngIf=\"!submitting\">\r\n            <button type=\"submit\" >Sign In</button>\r\n          </div> -->\r\n\r\n      </form>\r\n    </div>\r\n  </div>\r\n\r\n</div>"
+module.exports = "<div class=\"limiter\">\r\n   <div class=\"container-login100\" style=\"background-image: url('./assets/PeriVisionIntro.png'); background-size: 80em;  width: 100%;\r\n  height: 100%;\">\r\n   <div class=\"wrap-login100 p-t-30 p-b-50\">\r\n      <!-- <span class=\"login100-form-title p-b-41\">\r\n        Account Login\r\n      </span> -->\r\n      <form class=\"login100-form validate-form p-b-33 p-t-5\" #signInForm=\"ngForm\" (ngSubmit)=\"onSubmit(signInForm)\" novalidate>\r\n        <div class=\"wrap-input100 validate-input\" data-validate = \"Enter username\">\r\n          <input class=\"input100\" type=\"text\" name=\"username\" placeholder=\"User name\" ngModel #username=\"ngModel\"/>\r\n          <span class=\"focus-input100\" data-placeholder=\"&#xe82a;\"></span>\r\n        </div>\r\n\r\n        <div class=\"wrap-input100 validate-input\" data-validate=\"Enter password\">\r\n          <input class=\"input100\" type=\"password\" name=\"password\" placeholder=\"Password\" ngModel #password=\"ngModel\"/>\r\n          <span class=\"focus-input100\" data-placeholder=\"&#xe80f;\"></span>\r\n        </div>\r\n\r\n        <div class=\"container-login100-form-btn m-t-32\" *ngIf=\"!submitting\">\r\n          <button class=\"login100-form-btn\">\r\n            Login\r\n          </button>\r\n        </div>  <!-- \r\n        <div class=\"container-login100-form-btn m-t-32\" *ngIf=\"!submitting\">\r\n            <button type=\"submit\" >Sign In</button>\r\n          </div> -->\r\n\r\n      </form>\r\n    </div>\r\n  </div>\r\n\r\n</div>"
 
 /***/ }),
 
