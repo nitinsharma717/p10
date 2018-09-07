@@ -1844,7 +1844,6 @@ var PreschassitComponent = /** @class */ (function () {
     }
     PreschassitComponent.prototype.ngAfterViewInit = function () {
         this.loadFromFile();
-        this.getDatas();
     };
     PreschassitComponent.prototype.loadFromFile = function () {
         var _this = this;
