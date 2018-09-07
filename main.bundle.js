@@ -445,7 +445,7 @@ module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #C9E6FF;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header .logo {\n  font-size: 3.5em;\n  font-family: Calibri; }\n\n.header .container {\n  margin-left: 25px;\n  margin-top: 10px; }\n\n.time {\n  margin-top: 50px;\n  font-size: 1.5em; }\n\n.section {\n  width: 25%;\n  float: left;\n  font-size: 1.25em; }\n\n.section1 {\n  width: 12%;\n  float: left;\n  font-size: 1.05em; }\n\n.subsection {\n  margin-top: 30px; }\n\n.space {\n  margin: 0px 0px 0px 0px; }\n\n.header canvas {\n  height: 175px !important; }\n\n.app-class .mat-list-item {\n  width: 75%;\n  height: 1.03em;\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  border: 1px solid #909096;\n  background-color: orange; }\n\n.alert {\n  border-radius: 15px;\n  border: 1px solid #1612ec;\n  margin-right: 50px; }\n\n.text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text5 {\n  font-size: 2em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 0.8em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 0px; }\n\n.text5 {\n  font-family: Calibri;\n  font-size: 2em; }\n"
+module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #C9E6FF;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header1 {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #4f81bd;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header .logo {\n  font-size: 3.5em;\n  font-family: Calibri; }\n\n.header .container {\n  margin-left: 25px;\n  margin-top: 10px; }\n\n.time {\n  margin-top: 50px;\n  font-size: 1.5em; }\n\n.section {\n  width: 25%;\n  float: left;\n  font-size: 1.25em; }\n\n.section1 {\n  width: 12%;\n  float: left;\n  font-size: 1.05em; }\n\n.subsection {\n  margin-top: 30px; }\n\n.space {\n  margin: 0px 0px 0px 0px; }\n\n.header canvas {\n  height: 175px !important; }\n\n.app-class .mat-list-item {\n  width: 75%;\n  height: 1.03em;\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  border: 1px solid #909096;\n  background-color: orange; }\n\n.alert {\n  border-radius: 15px;\n  border: 1px solid #1612ec;\n  margin-right: 50px; }\n\n.text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text5 {\n  font-size: 2em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 0.8em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 0px; }\n\n.text5 {\n  font-family: Calibri;\n  font-size: 2em; }\n"
 
 /***/ }),
 
@@ -572,6 +572,49 @@ var AppHeaderComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_header_dataservice__["a" /* HeaderDataservice */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_4__globals__["a" /* Globals */], __WEBPACK_IMPORTED_MODULE_7__angular_router__["Router"]])
     ], AppHeaderComponent);
     return AppHeaderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/component/app-header/app-landing-header.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision Phases</span>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/component/app-header/app-landing-header.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppLandingHeaderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AppLandingHeaderComponent = /** @class */ (function () {
+    function AppLandingHeaderComponent() {
+    }
+    AppLandingHeaderComponent.prototype.ngOnInit = function () {
+    };
+    AppLandingHeaderComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-landing-header',
+            template: __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-landing-header.component.html"),
+            styles: [__webpack_require__("./src/app/PrimeCareManager/component/app-header/app-header.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AppLandingHeaderComponent);
+    return AppLandingHeaderComponent;
 }());
 
 
@@ -781,10 +824,60 @@ var ProcFooterComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/PrimeCareManager/component/landing/landing.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n</p>>\r\n<div class=\"column\">\r\n  <img class=\"img-valign\"  src =\"../../../../assets/landing.png\"  alt=\"\" >\r\n</div> \r\n<div class=\"container\">\r\n\r\n  <div class=\"img\"> <a href=\"/preschassit\"><img src=\"../../../../assets/planningtool.png\" height=\"\" width=\"\" alt=\"Planning tools\"></a></div>\r\n  <div class=\"img\"> <a href=\"/procedure\"><img src=\"../../../../assets/trackingtool.png\" height=\"\" width=\"\" alt=\"Tracking tools\"></a></div>\r\n  <div class=\"img\"> <a href=\"/analytics\"><img src=\"../../../../assets/analyticstool.png\" height=\"\" width=\"\" alt=\"Analytics tools\"></a></div>\r\n</div>\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/component/landing/landing.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = "/* \r\n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\r\n * Use margin-bottom\r\n*/\n.img-valign {\n  vertical-align: middle;\n  margin-left: 500px;\n  height: 700px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n.container {\n  text-align: center;\n  margin-right: 200px; }\n.img {\n  display: inline-block;\n  margin: 10px 50px; }\n"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/component/landing/landing.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LandingComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LandingComponent = /** @class */ (function () {
+    function LandingComponent() {
+    }
+    LandingComponent.prototype.ngOnInit = function () {
+    };
+    LandingComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-landing',
+            template: __webpack_require__("./src/app/PrimeCareManager/component/landing/landing.component.html"),
+            styles: [__webpack_require__("./src/app/PrimeCareManager/component/landing/landing.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], LandingComponent);
+    return LandingComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/PrimeCareManager/component/sidenav/sidenav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!(router.url.includes('signin') || router.url.includes('preschassit')) \">\r\n<app-header></app-header>\r\n</div>\r\n<div *ngIf=\"router.url.includes('preschassit') \">\r\n  <app-app-presch-header></app-app-presch-header>\r\n  </div>\r\n<mat-sidenav-container class=\"mat-sidenav-container\" style.top.px=\"{{sidetop}}\" style.margin-bottom.px =\"{{sidemarginbottom}}\">\r\n  <mat-sidenav *ngIf=\"!(router.url.includes('preschassit') ||  router.url.includes('signin'))\" #sidenav \r\n              position =\"end\"\r\n               [opened]=\"true\"\r\n               mode =\"side\"\r\n               disableClose =\"true\"\r\n               fixedInViewport=\"true\" \r\n               [fixedTopGap]=\"200\"\r\n               [fixedBottomGap]=\"50\">\r\n    \r\n               <div class=\"btn-group\">\r\n                <button routerLink=\"/procedure\">Procedure</button>\r\n                <button routerLink=\"/patient\">Patient</button>\r\n                <button routerLink=\"/personel\">Personel</button>\r\n                <button routerLink=\"/facilityresources\">Recovery</button>\r\n                <button routerLink=\"/notify\"> Notify</button>\r\n                <button routerLink=\"/analytics\">Analytics</button>\r\n              </div>\r\n    \r\n  </mat-sidenav>\r\n  \r\n  <div class=\"app-sidenav-content\">\r\n    \r\n    <div class=\"wrapper\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</mat-sidenav-container>"
+module.exports = "<div *ngIf=\"!(router.url.includes('signin') || router.url.includes('preschassit') || router.url.includes('landing'))\">\r\n<app-header></app-header>\r\n</div>\r\n<div *ngIf=\"router.url.includes('preschassit') \">\r\n  <app-app-presch-header></app-app-presch-header>\r\n  </div>\r\n  <div *ngIf=\"router.url.path === '/signin?returnUrl=%2Flanding'\">\r\n    <app-landing-header></app-landing-header>\r\n    </div>\r\n    <div *ngIf=\"!(router.url.includes('signin') || router.url.includes('preschassit') || !router.url.includes('landing'))\">\r\n      <app-landing-header></app-landing-header>\r\n      </div>\r\n      \r\n<mat-sidenav-container class=\"mat-sidenav-container\" style.top.px=\"{{sidetop}}\" style.margin-bottom.px =\"{{sidemarginbottom}}\">\r\n  <mat-sidenav *ngIf=\"!(router.url.includes('preschassit') ||  router.url.includes('signin') || router.url.includes('landing'))\" #sidenav \r\n              position =\"end\"\r\n               [opened]=\"true\"\r\n               mode =\"side\"\r\n               disableClose =\"true\"\r\n               fixedInViewport=\"true\" \r\n               [fixedTopGap]=\"200\"\r\n               [fixedBottomGap]=\"50\">\r\n    \r\n               <div class=\"btn-group\">\r\n                <button routerLink=\"/procedure\">Procedure</button>\r\n                <button routerLink=\"/patient\">Patient</button>\r\n                <button routerLink=\"/personel\">Personel</button>\r\n                <button routerLink=\"/facilityresources\">Recovery</button>\r\n                <button routerLink=\"/notify\"> Notify</button>\r\n                <button routerLink=\"/analytics\">Analytics</button>\r\n              </div>\r\n    \r\n  </mat-sidenav>\r\n  \r\n  <div class=\"app-sidenav-content\">\r\n    \r\n    <div class=\"wrapper\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</mat-sidenav-container>"
 
 /***/ }),
 
@@ -959,7 +1052,7 @@ module.exports = "<p></p>\r\n\r\n<table style=\"width: 100%; table-layout: fixed
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\nz\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n\nmat-list {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  height: 250px;\n  font-size: 2em;\n  font-family: Calibri;\n  text-align: center;\n  margin-top: 0em;\n  font-size: 1.5em; }\n\n.text5 {\n  font-size: 1.5em;\n  background-color: #ebf1de;\n  color: gray;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 30px;\n  text-align: center; }\n\n.text6 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center;\n  margin-left: 12em; }\n"
+module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\nz\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n\nmat-list {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  height: 250px;\n  font-size: 2em;\n  font-family: Calibri;\n  text-align: center;\n  margin-top: 0em;\n  font-size: 1.5em; }\n\n.text5 {\n  font-size: 1.5em;\n  background-color: #ebf1de;\n  color: gray;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 70px;\n  text-align: center;\n  width: 30%; }\n\n.text6 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center;\n  margin-left: 0.1em; }\n"
 
 /***/ }),
 
@@ -2255,12 +2348,16 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37_primeng_tabmenu__ = __webpack_require__("./node_modules/primeng/tabmenu.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37_primeng_tabmenu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_37_primeng_tabmenu__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__PrimeCareManager_component_app_header_app_presch_header_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-presch-header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__PrimeCareManager_component_landing_landing_component__ = __webpack_require__("./src/app/PrimeCareManager/component/landing/landing.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__PrimeCareManager_component_app_header_app_landing_header_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-landing-header.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -2321,7 +2418,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_29__PrimeCareManager_notify_notify_notify_component__["a" /* NotifyComponent */],
                 __WEBPACK_IMPORTED_MODULE_30__PrimeCareManager_analytics_analytics_analytics_component__["a" /* AnalyticsComponent */],
                 __WEBPACK_IMPORTED_MODULE_34__PrimeCareManager_preschassit_preschassit_component__["a" /* PreschassitComponent */],
-                __WEBPACK_IMPORTED_MODULE_38__PrimeCareManager_component_app_header_app_presch_header_component__["a" /* AppPreschHeaderComponent */]
+                __WEBPACK_IMPORTED_MODULE_38__PrimeCareManager_component_app_header_app_presch_header_component__["a" /* AppPreschHeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_39__PrimeCareManager_component_landing_landing_component__["a" /* LandingComponent */],
+                __WEBPACK_IMPORTED_MODULE_40__PrimeCareManager_component_app_header_app_landing_header_component__["a" /* AppLandingHeaderComponent */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_11__services_app_data_service__["a" /* AppDataService */],
@@ -2379,6 +2478,7 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__PrimeCareManager_notify_notify_notify_component__ = __webpack_require__("./src/app/PrimeCareManager/notify/notify/notify.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__PrimeCareManager_analytics_analytics_analytics_component__ = __webpack_require__("./src/app/PrimeCareManager/analytics/analytics/analytics.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__PrimeCareManager_preschassit_preschassit_component__ = __webpack_require__("./src/app/PrimeCareManager/preschassit/preschassit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__PrimeCareManager_component_landing_landing_component__ = __webpack_require__("./src/app/PrimeCareManager/component/landing/landing.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2396,9 +2496,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
     { path: 'signin', component: __WEBPACK_IMPORTED_MODULE_5__users_sign_in_sign_in_component__["a" /* SignInComponent */] },
-    { path: '', pathMatch: 'full', redirectTo: 'procedure' },
+    { path: '', pathMatch: 'full', redirectTo: 'landing' },
     { path: 'procedure', component: __WEBPACK_IMPORTED_MODULE_2__PrimeCareManager_procedure_procedure_component__["a" /* ProcedureComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'patient', component: __WEBPACK_IMPORTED_MODULE_3__PrimeCareManager_patient_patient_component__["a" /* PatientComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'facilityresources', component: __WEBPACK_IMPORTED_MODULE_4__PrimeCareManager_facilityresources_facilityresources_component__["a" /* FacilityresourcesComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
@@ -2406,6 +2507,7 @@ var routes = [
     { path: 'notify', component: __WEBPACK_IMPORTED_MODULE_8__PrimeCareManager_notify_notify_notify_component__["a" /* NotifyComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_9__PrimeCareManager_analytics_analytics_analytics_component__["a" /* AnalyticsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'preschassit', component: __WEBPACK_IMPORTED_MODULE_10__PrimeCareManager_preschassit_preschassit_component__["a" /* PreschassitComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
+    { path: 'landing', component: __WEBPACK_IMPORTED_MODULE_11__PrimeCareManager_component_landing_landing_component__["a" /* LandingComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_6__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: '', component: __WEBPACK_IMPORTED_MODULE_5__users_sign_in_sign_in_component__["a" /* SignInComponent */] },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_5__users_sign_in_sign_in_component__["a" /* SignInComponent */] },
 ];
