@@ -497,7 +497,7 @@ var AppHeaderComponent = /** @class */ (function () {
         this.loadFromFile();
         this.getDatas(this.globals.timeinterval + 1000);
         // this.loadHeaderChartData();
-        this.globals.timeinterval = this.globals.timeinterval + 1000;
+        // this.globals.timeinterval = this.globals.timeinterval + 1000;
     };
     AppHeaderComponent.prototype.loadFromFile = function () {
         var _this = this;
@@ -1410,7 +1410,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var Globals = /** @class */ (function () {
     function Globals() {
         this.currentCounter = 0;
-        this.timeinterval = 0;
     }
     Globals = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
@@ -1425,7 +1424,7 @@ var Globals = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/notify/notify/notify.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<div style=\"margin-left:50px\">\r\n  <table style=\"width: 100%; height:600px;\">\r\n    <tr>\r\n      <td class=\"textalign\">\r\n        <h1>Send notifications: </h1>\r\n      </td>\r\n      <td class=\"textalign\">\r\n        <h1>Set notifications: </h1>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          Select Personnel:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\">\r\n            <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Select Personnel:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\">\r\n              <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n                <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                  {{staff.viewValue}}\r\n                </mat-option>\r\n              </mat-optgroup>\r\n            </mat-select>\r\n\\          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <p></p>\r\n        <p></p>\r\n        <div class=\"textalign\">\r\n          Select Message:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\">\r\n            <mat-option *ngFor=\"let message of notifyMessage\" [value]=\"message.Value\">\r\n              {{message.Name}}\r\n            </mat-option>\r\n          </mat-select>\r\n        </div>\r\n        <td>\r\n          <p></p>\r\n          <p></p>\r\n          <div class=\"textalign\">\r\n            Select Trigger:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\">\r\n              <mat-option *ngFor=\"let trigger of notifyTrigger\" [value]=\"trigger.Value\">\r\n                {{trigger.Name}}\r\n              </mat-option>\r\n\\            </mat-select>\r\n\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-form-field class=\"demo-full-width\">\r\n            <textarea class=\"demo-textarea\" matInput>Enter your message here </textarea>\r\n          </mat-form-field>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button mat-raised-button class=\"mat-button\">Confirm</button>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button mat-raised-button class=\"mat-button\">Send Message</button>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-card class=\"demo-full-width demo-card\">\r\n            <mat-card-title>Current set alerts</mat-card-title>\r\n            <mat-card-content>\r\n              <p class=\"cardcontent\">Anes3, Test for In room.</p>\r\n              <p class=\"cardcontent\">Surg3, Test for Closing .</p>\r\n            </mat-card-content>\r\n          </mat-card>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<p></p>\r\n<div style=\"margin-left:50px\">\r\n  <table style=\"width: 100%; height:600px;\">\r\n    <tr>\r\n      <td class=\"textalign\">\r\n        <h1>Send notifications: </h1>\r\n      </td>\r\n      <td class=\"textalign\">\r\n        <h1>Set notifications: </h1>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          Select Personnel:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\">\r\n            <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Select Personnel:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\">\r\n              <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n                <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                  {{staff.viewValue}}\r\n                </mat-option>\r\n              </mat-optgroup>\r\n            </mat-select>\r\n\\          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <p></p>\r\n        <p></p>\r\n        <div class=\"textalign\">\r\n          Select Message:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\">\r\n            <mat-option *ngFor=\"let message of notifyMessage\" [value]=\"message.Value\">\r\n              {{message.Name}}\r\n            </mat-option>\r\n          </mat-select>\r\n        </div>\r\n        <td>\r\n          <p></p>\r\n          <p></p>\r\n          <div class=\"textalign\">\r\n            Select Trigger:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\">\r\n              <mat-option *ngFor=\"let trigger of notifyTrigger\" [value]=\"trigger.Value\">\r\n                {{trigger.Name}}\r\n              </mat-option>\r\n\\            </mat-select>\r\n\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-form-field class=\"demo-full-width\">\r\n            <textarea class=\"demo-textarea\" matInput [(ngModel)]=\"test\">Enter your message here </textarea>\r\n          </mat-form-field>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button mat-raised-button class=\"mat-button\">Confirm</button>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button (click)=\"sendmessage()\" mat-raised-button class=\"mat-button\">Send Message</button>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-card class=\"demo-full-width demo-card\">\r\n            <mat-card-title>Current set alerts</mat-card-title>\r\n            <mat-card-content>\r\n              <p class=\"cardcontent\">Anes3, Test for In room.</p>\r\n              <p class=\"cardcontent\">Surg3, Test for Closing .</p>\r\n            </mat-card-content>\r\n          </mat-card>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1498,6 +1497,10 @@ var NotifyComponent = /** @class */ (function () {
         this.loadStaff();
         this.loadNM();
         this.loadNT();
+    };
+    NotifyComponent.prototype.sendmessage = function () {
+        this.http.get('http://www.usamobility.net/cgi-bin/wwwpage.exe?PIN=2065432071&MSSG=testmessage&Q1=0');
+        console.log('Check');
     };
     NotifyComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -3044,6 +3047,7 @@ module.exports = "<div class=\"limiter\">\r\n   <div class=\"container-login100\
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_api__ = __webpack_require__("./src/app/users/user-api.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__PrimeCareManager_globals__ = __webpack_require__("./src/app/PrimeCareManager/globals.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3058,12 +3062,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SignInComponent = /** @class */ (function () {
-    function SignInComponent(userApi, router, route, http) {
+    function SignInComponent(userApi, router, route, http, globals) {
         this.userApi = userApi;
         this.router = router;
         this.route = route;
         this.http = http;
+        this.globals = globals;
         this.submitting = false;
     }
     SignInComponent.prototype.onSubmit = function (signInForm) {
@@ -3080,6 +3086,7 @@ var SignInComponent = /** @class */ (function () {
                 _this.submitting = false;
                 _this.formError = err;
             });
+            this.globals.timeinterval = 0;
         }
     };
     SignInComponent = __decorate([
@@ -3090,7 +3097,7 @@ var SignInComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_api__["a" /* UserApi */],
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__PrimeCareManager_globals__["a" /* Globals */]])
     ], SignInComponent);
     return SignInComponent;
 }());
@@ -3140,8 +3147,8 @@ var User = /** @class */ (function () {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    api_url: 'https://primecaredev.centralus.cloudapp.azure.com/api/fake',
-    api_url_real: 'https://primecaredev.centralus.cloudapp.azure.com//api/get'
+    api_url: 'http://localhost:52221/api/fake',
+    api_url_real: 'http://localhost:52221/api/get'
 };
 
 
