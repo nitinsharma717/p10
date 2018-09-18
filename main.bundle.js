@@ -284,6 +284,41 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/PrimeCareManager/SearchFilterPipe .ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchFilterPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var SearchFilterPipe = /** @class */ (function () {
+    function SearchFilterPipe() {
+    }
+    SearchFilterPipe.prototype.transform = function (items, field, value) {
+        if (!items) {
+            return [];
+        }
+        return items.filter(function (it) { return it[field] === value; });
+    };
+    SearchFilterPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'searchfilter'
+        }),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
+    ], SearchFilterPipe);
+    return SearchFilterPipe;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/PrimeCareManager/analytics/analytics/analytics.component.html":
 /***/ (function(module, exports) {
 
@@ -438,14 +473,14 @@ var FcFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision</span>\r\n      <div class=\"time\">{{now}}</div>\r\n    </div>\r\n    <div class=\"section\">\r\n      <div class=\"space text2\">AIC: {{Header.AIC}}</div>\r\n      <div class=\"space text2\">Nurse Manager: {{Header.NurseManager}}</div>\r\n      <div class=\"space text2\">PACU Manager: {{Header.PACUManager}}</div>\r\n\r\n    </div>\r\n    <div class=\"section\">\r\n      <mat-list class=\"app-class\">\r\n        <div *ngIf=\"Header.Alert\">\r\n          <mat-list-item *ngFor=\"let item of Header.Alert.List\"> {{item.Alert}} </mat-list-item>\r\n        </div>\r\n      </mat-list>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('procedure')\" class=\"section1\">\r\n      <div class=\"text1\"> &nbsp; &nbsp; # Cases: {{Header.ProcedureHeader.CurrentORCount}}, OR Utilization: {{Header.ProcedureHeader.ORUtilization}}</div>\r\n      <canvas style=\"width:100px\" id=\"myChart\"></canvas>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('patient')\" class=\"section\">\r\n      <div class=\"space text2\">#Patient: {{Header.PatientHeader.TotalPatient}}</div>\r\n      <div class=\"space text2\">InPatients: {{Header.PatientHeader.InPatient}}</div>\r\n      <div class=\"space text2\">OutPatients: {{Header.PatientHeader.OutPatient}}</div>\r\n      <div class=\"text2\">Am admit: {{Header.PatientHeader.AmAdmit}}</div>\r\n      <div class=\"space text2\">Pm admit: {{Header.PatientHeader.PmAdmit}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('personel')\" class=\"section\">\r\n      <div class=\"space text2\">OnCallAnest: {{Header.PersonnelHeader.OnCallAnest}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('facilityresources')\" class=\"section\">\r\n            <div class=\"space text5\">PACU Occupancy</div>\r\n            <br>\r\n            <div class=\"space text2\">MaxOccupancy: {{Header.RecoveryHeader.MaxOccupancy}}</div>\r\n            <div class=\"space text2\">MaxOccupancyTime: {{Header.RecoveryHeader.MaxOccupancyTime}}</div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision</span>\r\n      <div class=\"time\">{{now}} {{timeDisplay}}</div>\r\n    </div>\r\n\r\n    <div class=\"section\">\r\n\r\n      <br>\r\n      <div class=\"space text2\">AIC: {{Header.AIC}}</div>\r\n      <br>\r\n      <div class=\"space text2\">Nurse Manager: {{Header.NurseManager}}</div>\r\n      <br>\r\n      <div class=\"space text2\">PACU Manager: {{Header.PACUManager}}</div>\r\n\r\n    </div>\r\n    <div class=\"section3\">\r\n   \r\n          <div class=\"text7\">Alerts</div>\r\n          <div *ngIf=\"router.url.includes('procedure')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter: 'AlertCategory' : 'Procedure'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n          <div *ngIf=\"router.url.includes('facilityresources')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter:'AlertCategory' : 'Resource'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"router.url.includes('procedure')\" class=\"section1\">\r\n      <div class=\"text1\"> &nbsp; &nbsp; # Cases: {{Header.ProcedureHeader.CurrentORCount}}, OR Utilization:\r\n        {{Header.ProcedureHeader.ORUtilization}}</div>\r\n      <canvas style=\"width:100px\" id=\"myChart\"></canvas>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('patient')\" class=\"section4\">\r\n\r\n      <div class=\"space text2\">#Patient: {{Header.PatientHeader.TotalPatient}}</div>\r\n      <div class=\"space text2\">InPatients: {{Header.PatientHeader.InPatient}}</div>\r\n      <div class=\"space text2\">OutPatients: {{Header.PatientHeader.OutPatient}}</div>\r\n      <div class=\"text2\">Am admit: {{Header.PatientHeader.AmAdmit}}</div>\r\n      <div class=\"space text2\">Pm admit: {{Header.PatientHeader.PmAdmit}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('personel')\" class=\"section6\">\r\n      <div class=\"space text2\">OnCallAnest: {{Header.PersonnelHeader.OnCallAnest}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('facilityresources')\" class=\"section4\">\r\n      <div class=\"space text5\">PACU Occupancy</div>\r\n      <br>\r\n      <div class=\"space text2\">MaxOccupancy: {{Header.RecoveryHeader.MaxOccupancy}}</div>\r\n      <div class=\"space text2\">MaxOccupancyTime: {{Header.RecoveryHeader.MaxOccupancyTime}}</div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #C9E6FF;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header1 {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #4f81bd;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header .logo {\n  font-size: 3.5em;\n  font-family: Calibri; }\n\n.header .container {\n  margin-left: 25px;\n  margin-top: 10px; }\n\n.time {\n  margin-top: 50px;\n  font-size: 1.5em; }\n\n.section {\n  width: 25%;\n  float: left;\n  font-size: 1.25em; }\n\n.section1 {\n  width: 14%;\n  float: left;\n  font-size: 1.0em;\n  height: 100px; }\n\n.subsection {\n  margin-top: 30px; }\n\n.space {\n  margin: 0px 0px 0px 0px; }\n\n.header canvas {\n  height: 175px !important; }\n\n.app-class .mat-list-item {\n  width: 75%;\n  height: 1.03em;\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  border: 1px solid #909096;\n  background-color: orange; }\n\n.alert {\n  border-radius: 15px;\n  border: 1px solid #1612ec;\n  margin-right: 50px; }\n\n.text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.4em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text5 {\n  font-size: 2em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 0.8em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 0px; }\n\n.text5 {\n  font-family: Calibri;\n  font-size: 2em; }\n"
+module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #C9E6FF;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header1 {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #4f81bd;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header .logo {\n  font-size: 3.5em;\n  font-family: Calibri; }\n\n.header .container {\n  margin-left: 25px;\n  margin-top: 10px; }\n\n.time {\n  margin-top: 50px;\n  font-size: 1.5em; }\n\n.section {\n  width: 25%;\n  float: left;\n  font-size: 1.25em; }\n\n.section2 {\n  width: 25%;\n  float: left;\n  font-size: 1.25em;\n  background-color: lightgray;\n  height: 9em;\n  border-radius: 25px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-align: center; }\n\n.section3 {\n  width: 25%;\n  float: left;\n  font-size: 1.25em;\n  height: 180px;\n  background-color: rgba(215, 215, 215, 0.85);\n  border-radius: 25px;\n  overflow-y: auto;\n  overflow-x: hidden; }\n\n.section1 {\n  width: 14%;\n  float: right;\n  font-size: 1.0em;\n  height: 100px;\n  margin-right: 50px; }\n\n.section4 {\n  width: 14%;\n  float: right;\n  font-size: 1.3em;\n  height: 100px;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 18px; }\n\n.section5 {\n  width: 14%;\n  float: right;\n  font-size: 1.3em;\n  height: 100px;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 18px; }\n\n.section6 {\n  width: 18%;\n  float: right;\n  font-size: 1.3em;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 20px; }\n\n.subsection {\n  margin-top: 30px; }\n\n.space {\n  margin: 0px 0px 0px 0px; }\n\n.header canvas {\n  height: 175px !important; }\n\n.app-class .mat-list-item {\n  width: 100%;\n  height: auto;\n  font-family: Calibri;\n  font-size: 25px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: bold;\n  margin-top: 0.1em !important;\n  text-align: left;\n  color: red;\n  margin-left: 5em !important; }\n\n.alert {\n  border-radius: 15px;\n  border: 1px solid #1612ec;\n  margin-right: 50px; }\n\n.text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.4em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text5 {\n  font-size: 2em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 0.8em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 0px; }\n\n.text5 {\n  font-family: Calibri;\n  font-size: 2em; }\n\n.text7 {\n  font-family: Calibri;\n  font-size: 1.8em;\n  text-anchor: middle;\n  color: gray;\n  text-align: center;\n  margin-top: 0px;\n  margin-left: 20px; }\n\n.text8 {\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  color: gray;\n  text-align: center;\n  margin-top: 1px;\n  margin-left: 5em !important; }\n"
 
 /***/ }),
 
@@ -497,7 +532,6 @@ var AppHeaderComponent = /** @class */ (function () {
         this.loadFromFile();
         this.getDatas(this.globals.timeinterval + 1000);
         // this.loadHeaderChartData();
-        // this.globals.timeinterval = this.globals.timeinterval + 1000;
     };
     AppHeaderComponent.prototype.loadFromFile = function () {
         var _this = this;
@@ -506,6 +540,7 @@ var AppHeaderComponent = /** @class */ (function () {
             _this.globals.globleProcedure = _this.procedure;
             _this.timeDisplay = _this.procedure.CurrentTime;
             _this.Header = _this.procedure.Header;
+            console.log(_this.Header);
             _this.headerchart = _this.Header.ProcedureHeader.HeaderChart;
             _this.canvas = document.getElementById('myChart');
             _this.ctx = _this.canvas.getContext('2d');
@@ -569,6 +604,7 @@ var AppHeaderComponent = /** @class */ (function () {
         this.interval = setInterval(function () {
             _this.loadProcedure();
         }, timeinterval);
+        this.globals.timeinterval = timeinterval;
     };
     AppHeaderComponent.prototype.getData = function () {
         var _this = this;
@@ -846,7 +882,7 @@ module.exports = "<p></p>\r\n<div class=\"container\">\r\n  <img class=\"img-val
 /***/ "./src/app/PrimeCareManager/component/landing/landing.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* \r\n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\r\n * Use margin-bottom\r\n*/\n.img-valign {\n  vertical-align: middle;\n  margin-left: 500px;\n  height: 900px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n.container {\n  position: relative;\n  width: 70%;\n  margin-left: 120px; }\n/* Make the image responsive */\n.container img {\n  width: 70%; }\n/* Style the button and place it in the middle of the container/image */\n.container .btn3 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 27%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn1 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 51%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  margin-right: 250px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn2 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 75%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  margin-right: 150px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn:hover {\n  background-color: black; }\n.img {\n  display: inline-block;\n  margin: 10px 50px; }\n.classic_button_next {\n  position: absolute;\n  right: 5px;\n  top: 5px; }\n.classic_button_prev {\n  position: absolute;\n  right: 88px;\n  top: 5px; }\n"
+module.exports = "/* \r\n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\r\n * Use margin-bottom\r\n*/\n.img-valign {\n  vertical-align: middle;\n  margin-left: 25%;\n  height: 900px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n.container {\n  position: relative;\n  width: 70%;\n  margin-left: 120px; }\n/* Make the image responsive */\n.container img {\n  width: 70%; }\n/* Style the button and place it in the middle of the container/image */\n.container .btn3 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 23%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn1 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 47%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  margin-right: 250px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn2 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 71.5%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  margin-right: 150px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn:hover {\n  background-color: black; }\n.img {\n  display: inline-block;\n  margin: 10px 50px; }\n.classic_button_next {\n  position: absolute;\n  right: 5px;\n  top: 5px; }\n.classic_button_prev {\n  position: absolute;\n  right: 88px;\n  top: 5px; }\n"
 
 /***/ }),
 
@@ -1057,14 +1093,14 @@ var ToolbarComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n\r\n<table style=\"width: 100%; table-layout: fixed\"> \r\n    <tr>\r\n        <td style=\"width: 70%\">\r\n                <div>\r\n                        <div *ngIf=\"resource\">\r\n                            <div *ngFor=\"let operationBed of resource.OperationBeds\" >\r\n                                <svg width =\"100%\" height = \"100\" style=\"margin: 10px\">\r\n                                    <g (click)=\"clicked(operation.Patient)\" *ngFor= \"let operation of operationBed.Beds\" >\r\n                                        <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"19%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\" \r\n                                        style = \"stroke:rgb(178, 180, 180)\"/>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"20%\" dx= \"30\" alignment-baseline = \"middle\" font-weight=\"bold\" font-size = \"30px\"  text-anchor = \"middle\">{{operation.Name}}</text>\r\n                                        <text attr.x=\"{{operation.RX + (15/2) }}%\"  y=\"50%\" dx= \"30\" font-size = \"20px\"  text-anchor = \"middle\">{{operation.EstDischargeTime}}</text>\r\n                                    </g>\r\n                                </svg>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n        </td>\r\n        <td>\r\n        <div class=\"text5\">Upcoming Patient</div>\r\n        <mat-list>\r\n            <mat-list-item *ngFor=\"let message of listResourceUpcomingPatient\">\r\n             <div  class=\"text6\">\r\n                <span>{{message.Name}} - Name [{{message.MedicalRecord}}] </span> \r\n                <br>\r\n                <span> Expected Time: {{message.ExpectedTime}} </span>\r\n            </div>\r\n            </mat-list-item>\r\n          </mat-list>\r\n        </td>\r\n\r\n</table>\r\n<p style=\"padding: 10px;\"></p>\r\n\r\n<table class=\"text2\" style=\"width: 100%; table-layout: fixed; font-size:25px; border: 10px \"  >\r\n  <tr>\r\n        <td>\r\n            <p class=\"text2\" style= \"margin-left: 400px;\">PACU Throughput </p>\r\n                <div>\r\n                        <canvas  style= \"margin-left: 150px;\"\r\n                           id=\"myChart1\"></canvas>\r\n                    \r\n                </div>\r\n        </td>\r\n            <td>\r\n               <p class=\"text2\" style= \"margin-left: 400px;\">PACU Occupancy Forecast </p>\r\n               <div>\r\n                <canvas  style= \"margin-left: 150px;\" id=\"myChart2\"></canvas>\r\n            \r\n        </div>\r\n        </td>\r\n        \r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>"
+module.exports = "<p>&nbsp;</p>\r\n<div class=\"text8\">\r\n\r\n  PACU Bed Status\r\n\r\n</div>\r\n<table style=\"width: 100%; table-layout: fixed\">\r\n  <tr>\r\n    <td style=\"width: 70%\">\r\n      <div>\r\n        <div *ngIf=\"resource\">\r\n          <div *ngFor=\"let operationBed of resource.OperationBeds\">\r\n            <svg width=\"100%\" height=\"100\" style=\"margin: 10px\">\r\n              <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationBed.Beds\">\r\n                <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"19%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\"\r\n                  style=\"stroke:rgb(178, 180, 180)\" />\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"20%\" dx=\"30\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                  font-size=\"30px\" text-anchor=\"middle\">{{operation.Name}}</text>\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"50%\" dx=\"30\" font-size=\"20px\" text-anchor=\"middle\">{{operation.EstDischargeTime}}</text>\r\n              </g>\r\n            </svg>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </td>\r\n    <td>\r\n      <div class=\"text5\">Upcoming Patient</div>\r\n      <mat-list>\r\n        <mat-list-item *ngFor=\"let message of listResourceUpcomingPatient\">\r\n          <div>\r\n            <span>{{message.PatientDetail}} </span>\r\n            <br>\r\n            <span> {{message.EstimateTime}} </span>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n    </td>\r\n\r\n</table>\r\n<p style=\"padding: 10px;\"></p>\r\n\r\n<table class=\"text2\" style=\"width: 100%; height: 5px; font-size:25px; border: 10px \">\r\n  <tr>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 28%;\">PACU Occupancy Forecast</p>\r\n      <div>\r\n        <canvas style=\"width:100px; height: 20em; margin-left: 10%;\" id=\"myChart1\"></canvas>\r\n      </div>\r\n    </td>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 32%;\">PACU Traffic</p>\r\n      <div>\r\n        <canvas style=\"width:100px;  height: 200px; margin-left: 10%;\" id=\"myChart2\"></canvas>\r\n      </div>\r\n\r\n\r\n    </td>\r\n\r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 20px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\nz\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n\nmat-list {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  height: 250px;\n  font-size: 2em;\n  font-family: Calibri;\n  text-align: center;\n  margin-top: 0em;\n  font-size: 1.5em; }\n\n.text5 {\n  font-size: 1.5em;\n  background-color: #ebf1de;\n  color: gray;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 70px;\n  text-align: center;\n  width: 30%; }\n\n.text6 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center;\n  margin-left: 0.1em; }\n"
+module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\nz\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n\nmat-list {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  height: 180px;\n  font-size: 2em;\n  font-family: Calibri;\n  text-align: left;\n  font-size: 1.5em;\n  width: 50%; }\n\n.text5 {\n  font-size: 1.5em;\n  background-color: #ebf1de;\n  color: gray;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 1px;\n  text-align: center;\n  margin-left: 5%;\n  width: 30%; }\n\n.text8 {\n  font-size: 1.8em;\n  color: black;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 1px;\n  text-align: center;\n  margin-left: 17%;\n  width: 30%; }\n\n.text6 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center; }\n\n.text7 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center; }\n"
 
 /***/ }),
 
@@ -1103,12 +1139,8 @@ var FacilityresourcesComponent = /** @class */ (function () {
         this.globals = globals;
         this.dialogs = dialogs;
         this.globals1 = globals;
-        this.loadChartData();
-        this.loadChartData1();
-        this.loadResourceUpcomingPatient();
     }
     FacilityresourcesComponent.prototype.clicked = function (data) {
-        console.log(data);
         this.openConfirmDialogs(data);
     };
     FacilityresourcesComponent.prototype.openConfirmDialogs = function (data) {
@@ -1120,19 +1152,6 @@ var FacilityresourcesComponent = /** @class */ (function () {
     FacilityresourcesComponent.prototype.ngAfterViewInit = function () {
         this.loadFromFile();
         this.getDatas();
-        this.loadChartData();
-        this.loadChartData1();
-        this.loadResourceUpcomingPatient();
-    };
-    FacilityresourcesComponent.prototype.loadResourceUpcomingPatient = function () {
-        var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_5_environments_environment__["a" /* environment */].api_url + '/facilityresources/ResourceUpcomingPatient').subscribe(function (result) {
-            // tslint:disable-next-line:no-debugger
-            // debugger;
-            // this.listResource = result.json() as Resources[];
-            _this.listResourceUpcomingPatient = result.json();
-            console.log(_this.listResourceUpcomingPatient);
-        }, function (error) { return console.error(error); });
     };
     FacilityresourcesComponent.prototype.loadFromFile = function () {
         var _this = this;
@@ -1141,6 +1160,9 @@ var FacilityresourcesComponent = /** @class */ (function () {
             // debugger;
             // this.listResource = result.json() as Resources[];
             _this.resource = result.json();
+            _this.listResourceUpcomingPatient = _this.resource.UpCommingPatientList;
+            _this.loadChartData(_this.resource.PacuTrafficChart);
+            _this.loadChartData1(_this.resource.PacuThroughPutChart);
         }, function (error) { return console.error(error); });
     };
     FacilityresourcesComponent.prototype.getDatas = function () {
@@ -1157,80 +1179,89 @@ var FacilityresourcesComponent = /** @class */ (function () {
         this.resource = this.listResource.filter(function (pro) { return pro.Id === (_this.globals1.currentCounter); })[0];
         // this.counter++;
     };
-    FacilityresourcesComponent.prototype.loadChartData = function () {
-        var _this = this;
-        this.http
-            .get(__WEBPACK_IMPORTED_MODULE_5_environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUChart')
-            .map(function (data) { return data.json(); })
-            .subscribe(function (data) {
-            _this.pacuchart = data;
-            _this.canvas = document.getElementById('myChart1');
-            _this.ctx = _this.canvas.getContext('2d');
-            _this.ctx.canvas.width = 600;
-            _this.ctx.canvas.height = 350;
-            // tslint:disable-next-line:prefer-const
-            var myChart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__(_this.ctx, {
-                type: 'bar',
-                data: {
-                    labels: _this.pacuchart.PacuChartlabels,
-                    datasets: [{
-                            label: _this.pacuchart.PacuChartdatasetlabel,
-                            data: _this.pacuchart.PacuChartdataset,
-                            backgroundColor: _this.pacuchart.PacuChartbackgroundColor,
-                            pointBackgroundColor: _this.pacuchart.PacuChartbackgroundColor,
-                            borderColor: _this.pacuchart.PacuChartbackgroundColor,
-                            pointBorderColor: _this.pacuchart.PacuChartbackgroundColor,
-                            fill: false,
-                            borderWidth: 1
-                        },
-                        {
-                            label: _this.pacuchart.PacuChartdatasetlabel1,
-                            data: _this.pacuchart.PacuChartdataset1,
-                            backgroundColor: _this.pacuchart.PacuChartbackgroundColor1,
-                            pointBackgroundColor: _this.pacuchart.PacuChartbackgroundColor1,
-                            borderColor: _this.pacuchart.PacuChartbackgroundColor1,
-                            pointBorderColor: _this.pacuchart.PacuChartbackgroundColor1,
-                            fill: false,
-                            borderWidth: 1
-                        }],
-                },
-                options: {
-                    responsive: false,
+    FacilityresourcesComponent.prototype.loadChartData = function (data) {
+        this.pacuchart = data;
+        this.canvas = document.getElementById('myChart2');
+        this.ctx = this.canvas.getContext('2d');
+        this.canvas = document.getElementById('myChart2');
+        this.ctx = this.canvas.getContext('2d');
+        this.ctx.canvas.width = 700;
+        this.ctx.canvas.height = 425;
+        // tslint:disable-next-line:prefer-const
+        var myChart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__(this.ctx, {
+            type: 'bar',
+            data: {
+                labels: this.pacuchart.PacuChartlabels,
+                datasets: [{
+                        label: this.pacuchart.PacuChartdatasetlabel,
+                        data: this.pacuchart.PacuChartdataset,
+                        backgroundColor: this.pacuchart.PacuChartbackgroundColor,
+                        pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor,
+                        borderColor: this.pacuchart.PacuChartbackgroundColor,
+                        pointBorderColor: this.pacuchart.PacuChartbackgroundColor,
+                        fill: false,
+                        borderWidth: 1
+                    },
+                    {
+                        label: this.pacuchart.PacuChartdatasetlabel1,
+                        data: this.pacuchart.PacuChartdataset1,
+                        backgroundColor: this.pacuchart.PacuChartbackgroundColor1,
+                        pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor1,
+                        borderColor: this.pacuchart.PacuChartbackgroundColor1,
+                        pointBorderColor: this.pacuchart.PacuChartbackgroundColor1,
+                        fill: false,
+                        borderWidth: 1
+                    }],
+            },
+            options: {
+                responsive: false,
+                animation: {
+                    duration: 0
                 }
-            });
+            }
         });
     };
-    FacilityresourcesComponent.prototype.loadChartData1 = function () {
-        var _this = this;
-        this.http
-            .get(__WEBPACK_IMPORTED_MODULE_5_environments_environment__["a" /* environment */].api_url + '/facilityresources/PACUThroughChart')
-            .map(function (data) { return data.json(); })
-            .subscribe(function (data) {
-            _this.pacuThroughChart = data;
-            _this.canvas = document.getElementById('myChart2');
-            _this.ctx = _this.canvas.getContext('2d');
-            _this.ctx.canvas.width = 600;
-            _this.ctx.canvas.height = 350;
-            // tslint:disable-next-line:prefer-const
-            var myChart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__(_this.ctx, {
-                type: 'bar',
-                data: {
-                    labels: _this.pacuThroughChart.PacuThChartlabels,
-                    datasets: [{
-                            label: _this.pacuThroughChart.PacuThChartdatasetlabel,
-                            data: _this.pacuThroughChart.PacuThChartdataset,
-                            backgroundColor: _this.pacuThroughChart.PacuThChartbackgroundColor,
-                            pointBackgroundColor: _this.pacuThroughChart.PacuThChartbackgroundColor,
-                            borderColor: _this.pacuThroughChart.PacuThChartbackgroundColor,
-                            pointBorderColor: _this.pacuThroughChart.PacuThChartbackgroundColor,
-                            fill: false,
-                            borderWidth: 1
-                        }],
-                },
-                options: {
-                    responsive: false,
+    FacilityresourcesComponent.prototype.loadChartData1 = function (data) {
+        console.log(data);
+        this.pacuThroughChart = data;
+        this.canvas = document.getElementById('myChart1');
+        this.ctx = this.canvas.getContext('2d');
+        this.canvas = document.getElementById('myChart1');
+        this.ctx = this.canvas.getContext('2d');
+        this.ctx.canvas.width = 700;
+        this.ctx.canvas.height = 425;
+        // tslint:disable-next-line:prefer-const
+        var myChart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__(this.ctx, {
+            type: 'line',
+            data: {
+                labels: this.pacuThroughChart.PacuChartlabels,
+                datasets: [{
+                        label: this.pacuThroughChart.PacuChartdatasetlabel,
+                        data: this.pacuThroughChart.PacuChartdataset,
+                        backgroundColor: this.pacuThroughChart.PacuChartbackgroundColor,
+                        pointBackgroundColor: this.pacuThroughChart.PacuChartbackgroundColor,
+                        borderColor: this.pacuThroughChart.PacuChartbackgroundColor,
+                        pointBorderColor: this.pacuThroughChart.PacuChartbackgroundColor,
+                        fill: false,
+                        borderWidth: 1
+                    },
+                    {
+                        label: this.pacuThroughChart.PacuChartdatasetlabel1,
+                        data: this.pacuThroughChart.PacuChartdataset1,
+                        backgroundColor: this.pacuThroughChart.PacuChartbackgroundColor1,
+                        pointBackgroundColor: this.pacuThroughChart.PacuChartbackgroundColor1,
+                        borderColor: this.pacuThroughChart.PacuChartbackgroundColor1,
+                        pointBorderColor: this.pacuThroughChart.PacuChartbackgroundColor1,
+                        fill: false,
+                        borderWidth: 1
+                    }],
+            },
+            options: {
+                responsive: false,
+                animation: {
+                    duration: 0
                 }
-            });
+            }
         });
     };
     FacilityresourcesComponent = __decorate([
@@ -1424,7 +1455,7 @@ var Globals = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/notify/notify/notify.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<div style=\"margin-left:50px\">\r\n  <table style=\"width: 100%; height:600px;\">\r\n    <tr>\r\n      <td class=\"textalign\">\r\n        <h1>Send notifications: </h1>\r\n      </td>\r\n      <td class=\"textalign\">\r\n        <h1>Set notifications: </h1>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          Select Personnel:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\">\r\n            <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Select Personnel:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\">\r\n              <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n                <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                  {{staff.viewValue}}\r\n                </mat-option>\r\n              </mat-optgroup>\r\n            </mat-select>\r\n\\          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <p></p>\r\n        <p></p>\r\n        <div class=\"textalign\">\r\n          Select Message:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\">\r\n            <mat-option *ngFor=\"let message of notifyMessage\" [value]=\"message.Value\">\r\n              {{message.Name}}\r\n            </mat-option>\r\n          </mat-select>\r\n        </div>\r\n        <td>\r\n          <p></p>\r\n          <p></p>\r\n          <div class=\"textalign\">\r\n            Select Trigger:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\">\r\n              <mat-option *ngFor=\"let trigger of notifyTrigger\" [value]=\"trigger.Value\">\r\n                {{trigger.Name}}\r\n              </mat-option>\r\n\\            </mat-select>\r\n\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-form-field class=\"demo-full-width\">\r\n            <textarea class=\"demo-textarea\" matInput [(ngModel)]=\"test\">Enter your message here </textarea>\r\n          </mat-form-field>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button mat-raised-button class=\"mat-button\">Confirm</button>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button (click)=\"sendmessage()\" mat-raised-button class=\"mat-button\">Send Message</button>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-card class=\"demo-full-width demo-card\">\r\n            <mat-card-title>Current set alerts</mat-card-title>\r\n            <mat-card-content>\r\n              <p class=\"cardcontent\">Anes3, Test for In room.</p>\r\n              <p class=\"cardcontent\">Surg3, Test for Closing .</p>\r\n            </mat-card-content>\r\n          </mat-card>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<p></p>\r\n<div style=\"margin-left:50px\">\r\n  <table style=\"width: 100%; height:600px;\">\r\n    <tr>\r\n      <td class=\"textalign\">\r\n        <h1>Send notifications: </h1>\r\n      </td>\r\n      <td class=\"textalign\">\r\n        <h1>Set notifications: </h1>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          Select Personnel:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder =\"ShowAll\" (selectionChange)=\"selectChange($event)\">\r\n            <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Select Personnel:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\">\r\n              <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n                <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                  {{staff.viewValue}}\r\n                </mat-option>\r\n              </mat-optgroup>\r\n            </mat-select>\r\n\\          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <p></p>\r\n        <p></p>\r\n        <div class=\"textalign\">\r\n          Select Message:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\" (selectionChange)=\"selectChange1($event)\">\r\n            <mat-option *ngFor=\"let message of notifyMessage\" [value]=\"message.Value\">\r\n              {{message.Name}}\r\n            </mat-option>\r\n          </mat-select>\r\n        </div>\r\n        <td>\r\n          <p></p>\r\n          <p></p>\r\n          <div class=\"textalign\">\r\n            Select Trigger:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\">\r\n              <mat-option *ngFor=\"let trigger of notifyTrigger\" [value]=\"trigger.Value\">\r\n                {{trigger.Name}}\r\n              </mat-option>\r\n\\            </mat-select>\r\n\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-form-field class=\"demo-full-width\">\r\n            <textarea class=\"demo-textarea\" matInput [(ngModel)]=\"value1\"> </textarea>\r\n          </mat-form-field>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button mat-raised-button class=\"mat-button\">Confirm</button>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button (click)=\"sendmessage()\" mat-raised-button class=\"mat-button\">Send Message</button>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-card class=\"demo-full-width demo-card\">\r\n            <mat-card-title>Current set alerts</mat-card-title>\r\n            <mat-card-content>\r\n              <p class=\"cardcontent\">Anes3, Test for In room.</p>\r\n              <p class=\"cardcontent\">Surg3, Test for Closing .</p>\r\n            </mat-card-content>\r\n          </mat-card>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1499,8 +1530,25 @@ var NotifyComponent = /** @class */ (function () {
         this.loadNT();
     };
     NotifyComponent.prototype.sendmessage = function () {
-        this.http.get('http://www.usamobility.net/cgi-bin/wwwpage.exe?PIN=2065432071&MSSG=testmessage&Q1=0');
-        console.log('Check');
+        var v1 = '';
+        var v2 = '';
+        if (this.triggermessage) {
+            v1 = this.triggermessage;
+        }
+        if (this.value1) {
+            v2 = this.value1;
+        }
+        // tslint:disable-next-line:max-line-length
+        this.http.get('http://www.usamobility.net/cgi-bin/wwwpage.exe?PIN=' + this.phonenumber + '&MSSG=' + v2 + '&Q1=0');
+        console.log('ok');
+    };
+    NotifyComponent.prototype.selectChange = function (ev) {
+        this.splitted = ev.value.split(':');
+        this.phonenumber = this.splitted[2];
+    };
+    NotifyComponent.prototype.selectChange1 = function (ev) {
+        this.triggermessage = ev.value;
+        this.value1 = this.triggermessage;
     };
     NotifyComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1665,7 +1713,7 @@ var MatDialogsHelperService = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/patient/patient.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<div class=\"header\">\r\n  <mat-table [dataSource]=\"dataSource\">\r\n\r\n    <ng-container matColumnDef=\"patient\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Patient </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <div>{{patient.Info.Name}}</div>\r\n        <div>{{patient.Info.MedicalRecord}}</div>\r\n      </mat-cell>\r\n    </ng-container>\r\n    <ng-container matColumnDef=\"location\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Location </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.Location}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"patientclass\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Patient Class </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.PatientClass}} </mat-cell>\r\n    </ng-container>\r\n    <ng-container matColumnDef=\"disposition\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Disposition </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.Disposition}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"procedure\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Procedure </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.Procedure}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"start\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Surgery Start </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> {{patient.StartTime}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"status\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Status </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\" style=\"flex: 1; min-height: 48px; display: flex; align-items: center; margin-right: 20px\"\r\n        [ngStyle]=changeBackground(patient.StatusColor)>{{patient.Status}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"cons\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Consent </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.Consent}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"hp\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> HP </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.HP}}\"> </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"xray\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> X-ray </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.XRay}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"lab\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Lab </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.Lab}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n\r\n    <ng-container matColumnDef=\"ekg\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> EKG </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.EKG}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\" (click)=\"diaglog(row)\"></mat-row>\r\n  </mat-table>\r\n</div>\r\n<app-pat-footer></app-pat-footer>\r\n"
+module.exports = "<p></p>\r\n<div class=\"header\">\r\n  <mat-table [dataSource]=\"dataSource\">\r\n\r\n    <ng-container matColumnDef=\"patient\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> &nbsp;  &nbsp; Patient </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <div>{{patient.Info.Name}}</div>\r\n        <div>{{patient.Info.MedicalRecord}}</div>\r\n      </mat-cell>\r\n    </ng-container>\r\n    <ng-container matColumnDef=\"location\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Location </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; {{patient.Location}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"patientclass\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Patient Class </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; &nbsp; &nbsp; {{patient.PatientClass}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"procedure\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef>  &nbsp; &nbsp;Procedure </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; &nbsp;{{patient.Procedure}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"start\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Surgery Start </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; &nbsp; &nbsp; {{patient.StartTime}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"status\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef>  &nbsp; &nbsp; &nbsp; &nbsp;Status </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\" style=\"flex: 1; min-height: 48px; display: flex; align-items: center; margin-right: 20px\"\r\n        [ngStyle]=changeBackground(patient.StatusColor)> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{patient.Status}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"cons\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Consent </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> &nbsp;\r\n        <img src=\"../../../assets/{{patient.Consent}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"hp\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> &nbsp; HP </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.HP}}\"> </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"xray\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> X-ray </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.XRay}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"lab\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Lab </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.Lab}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n\r\n    <ng-container matColumnDef=\"ekg\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> EKG </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.EKG}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\" (click)=\"diaglog(row)\"></mat-row>\r\n  </mat-table>\r\n</div>\r\n<app-pat-footer></app-pat-footer>\r\n"
 
 /***/ }),
 
@@ -1732,7 +1780,7 @@ var PatientComponent = /** @class */ (function () {
         this.http = http;
         this.globals = globals;
         this.dialogs = dialogs;
-        this.displayedColumns = ['patient', 'location', 'patientclass', 'disposition', , 'procedure', 'start', 'status', 'cons',
+        this.displayedColumns = ['patient', 'location', 'patientclass', 'procedure', 'start', 'status', 'cons',
             'hp', 'xray', 'lab', 'ekg'];
         this.globals1 = globals;
         this.loadFromFile();
@@ -1806,7 +1854,7 @@ var PatientDataSource = /** @class */ (function (_super) {
 /***/ "./src/app/PrimeCareManager/personel/personel/personel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p> \r\n<div *ngIf=\"personel\" style=\"margin-left:50px\">\r\n  <p></p>\r\n  <table class=\"table2\">\r\n    <tr>\r\n      <th>Staff</th>\r\n      <th>Surgeon</th>\r\n      <th>Anesthesiologist</th>\r\n      <th>CRNA</th>\r\n      <th>Resident</th>\r\n      <th>CIRCNurse</th>\r\n      <th>ScrubNurse</th>\r\n      <th>AnesTech</th>\r\n    </tr>\r\n    <tr>\r\n      <td rowspan=2 style=\"background-color: rgb(219, 238, 244)\">Count</td>\r\n      <td>{{personel.SurgeonCount}}</td>\r\n      <td>{{personel.AnesthesiologistCount}}</td>\r\n      <td>{{personel.CRNACount}}</td>\r\n      <td>{{personel.ResidentCount}}</td>\r\n      <td>{{personel.CIRCNurseCount}}</td>\r\n      <td>{{personel.ScrubNurseCount}}</td>\r\n      <td>{{personel.AnesTechCount}}</td>\r\n    </tr>\r\n  </table>\r\n  <p></p>\r\n  <p></p>\r\n  <table>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          Personal Filter:\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Total Case Count:\r\n          </div>\r\n        </td>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Max Concurrency:\r\n          </div>\r\n        </td>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Latest Time:\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-select placeholder =\"ShowAll\" (selectionChange)=\"selectChange($event)\">\r\n            <mat-optgroup *ngFor=\"let group of personel.PersonnelFilter\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          <label> {{personel.TotalCaseCount}} </label>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          {{personel.MaxConcurrencyCount}}\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          {{personel.LatestTime}}\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n\r\n  <table class=\"table1\">\r\n    <tr>\r\n      <td width=\"10%\">\r\n        <mat-grid-list cols=\"1\" rowHeight=\"9.5em\">\r\n          <mat-grid-tile [style.border]=\"'1px solid #dbeef4'\" *ngFor=\"let OperationRoom of personel.OperationsRooms\">\r\n            <div>\r\n              <span class=\"text4\"> &nbsp; {{OperationRoom.ORName}}</span>\r\n              <br>\r\n              <span class=\"text2\"> Total cases: {{OperationRoom.ORCount}}</span>\r\n              <br>\r\n              <span class=\"text2\"> Tech: {{OperationRoom.TechName}}</span>\r\n            </div>\r\n          </mat-grid-tile>\r\n        </mat-grid-list>\r\n      </td>\r\n\r\n      <div *ngFor=\"let OperationRoom of personel.OperationsRooms\">\r\n        <mat-grid-list cols=\"{{personel.maxPersonnelRowCount}}\" rowHeight=\"9.5em\">\r\n\r\n          <mat-grid-tile class=\"grid-test-1\" [style.border]=\"'1px solid #dbeef4'\" *ngFor=\"let Oper of OperationRoom.Personnels\" [style.background]=\"Oper.Color\">\r\n            <div>\r\n              <span class=\"text2B\"> &nbsp; &nbsp; &nbsp; &nbsp; {{Oper.OpName}}</span>\r\n              <br>\r\n              <span class=\"text2B\"> &nbsp; &nbsp; &nbsp; &nbsp; {{Oper.Time}} </span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Surgeon: {{Oper.SurgeonName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Anesthologist: {{Oper.AnesthologistName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Crna: {{Oper.CrnaName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; CircleNurse: {{Oper.CircleNurseName}}</span>\r\n            </div>\r\n          </mat-grid-tile>\r\n\r\n        </mat-grid-list>\r\n      </div>\r\n\r\n    </tr>\r\n  </table>\r\n  <p></p>\r\n  <div style=\"margin-left:200px; margin-right:200px\">\r\n\r\n  </div>\r\n</div>\r\n<app-personel-footer></app-personel-footer>\r\n"
+module.exports = "<p></p> \r\n<div *ngIf=\"personel\" style=\"margin-left:50px\">\r\n  <p></p>\r\n  <table class=\"table2\">\r\n    <tr>\r\n      <th>Staff</th>\r\n      <th>Surgeon</th>\r\n      <th>Anesthesiologist</th>\r\n      <th>CRNA</th>\r\n      <th>Resident</th>\r\n      <th>CIRCNurse</th>\r\n      <th>ScrubNurse</th>\r\n      <th>AnesTech</th>\r\n    </tr>\r\n    <tr>\r\n      <td rowspan=2 style=\"background-color: rgb(219, 238, 244)\">Count</td>\r\n      <td>{{personel.SurgeonCount}}</td>\r\n      <td>{{personel.AnesthesiologistCount}}</td>\r\n      <td>{{personel.CRNACount}}</td>\r\n      <td>{{personel.ResidentCount}}</td>\r\n      <td>{{personel.CIRCNurseCount}}</td>\r\n      <td>{{personel.ScrubNurseCount}}</td>\r\n      <td>{{personel.AnesTechCount}}</td>\r\n    </tr>\r\n  </table>\r\n  <p></p>\r\n  <p></p>\r\n  <table>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          Personal Filter:\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Total Case Count:\r\n          </div>\r\n        </td>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Max Concurrency:\r\n          </div>\r\n        </td>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Latest Time:\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-select placeholder =\"ShowAll\" (selectionChange)=\"selectChange($event)\">\r\n            <mat-optgroup *ngFor=\"let group of personel.PersonnelFilter\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          <label> {{personel.TotalCaseCount}} </label>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          {{personel.MaxConcurrencyCount}}\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          {{personel.LatestTime || \"0:00\"}}\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n\r\n  <table class=\"table1\">\r\n    <tr>\r\n      <td width=\"10%\">\r\n        <mat-grid-list cols=\"1\" rowHeight=\"9.5em\">\r\n          <mat-grid-tile [style.border]=\"'1px solid #dbeef4'\" *ngFor=\"let OperationRoom of personel.OperationsRooms\">\r\n            <div>\r\n              <span class=\"text4\"> &nbsp; {{OperationRoom.ORName}}</span>\r\n              <br>\r\n              <span class=\"text2\"> Total cases: {{OperationRoom.ORCount}}</span>\r\n              <br>\r\n              <span class=\"text2\"> Tech: {{OperationRoom.TechName}}</span>\r\n            </div>\r\n          </mat-grid-tile>\r\n        </mat-grid-list>\r\n      </td>\r\n\r\n      <div *ngFor=\"let OperationRoom of personel.OperationsRooms\">\r\n        <mat-grid-list cols=\"{{personel.maxPersonnelRowCount}}\" rowHeight=\"9.5em\">\r\n\r\n          <mat-grid-tile class=\"grid-test-1\" [style.border]=\"'1px solid #dbeef4'\" *ngFor=\"let Oper of OperationRoom.Personnels\" [style.background]=\"Oper.Color\">\r\n            <div>\r\n              <span class=\"text2B\"> &nbsp; &nbsp; &nbsp; &nbsp; {{Oper.OpName}}</span>\r\n              <br>\r\n              <span class=\"text2B\"> &nbsp; &nbsp; &nbsp; &nbsp; {{Oper.Time}} </span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Surgeon: {{Oper.SurgeonName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Anesthologist: {{Oper.AnesthologistName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Crna: {{Oper.CrnaName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; CircleNurse: {{Oper.CircleNurseName}}</span>\r\n            </div>\r\n          </mat-grid-tile>\r\n\r\n        </mat-grid-list>\r\n      </div>\r\n\r\n    </tr>\r\n  </table>\r\n  <p></p>\r\n  <div style=\"margin-left:200px; margin-right:200px\">\r\n\r\n  </div>\r\n</div>\r\n<app-personel-footer></app-personel-footer>\r\n"
 
 /***/ }),
 
@@ -1865,7 +1913,7 @@ var PersonelComponent = /** @class */ (function () {
     };
     PersonelComponent.prototype.loadFromFile = function () {
         var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_3_environments_environment__["a" /* environment */].api_url + '/personel').subscribe(function (result) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_3_environments_environment__["a" /* environment */].api_url_real + '/personel').subscribe(function (result) {
             _this.personel = result.json();
         }, function (error) { return console.error(error); });
     };
@@ -1878,7 +1926,7 @@ var PersonelComponent = /** @class */ (function () {
     PersonelComponent.prototype.selectChange = function (ev) {
         var _this = this;
         this.splitted = ev.value.split(':');
-        this.http.get(__WEBPACK_IMPORTED_MODULE_3_environments_environment__["a" /* environment */].api_url + '/personel/' + this.splitted[0] + '/' + this.splitted[1]).subscribe(function (result) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_3_environments_environment__["a" /* environment */].api_url_real + '/personel/' + this.splitted[0] + '/' + this.splitted[1]).subscribe(function (result) {
             _this.personel = result.json();
         }, function (error) { return console.error(error); });
         var selectedIndex = ev.Value;
@@ -1902,7 +1950,7 @@ var PersonelComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/preschassit/preschassit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n</p>\r\n\r\n<table>\r\n  <tr>\r\n    <td style=\"width: 50%;\">\r\n      <div *ngIf=\"Proc == null\">\r\n        <table style=\"height:740px; width: 100%;\">\r\n          <tr>\r\n            <td>\r\n            <svg width=\"98%\" height=\"100\">\r\n              <rect x=\"0\" y=\"0\" width=\"98%\" height=\"100\" rx=\"20\" ry=\"20\" style=\"fill:rgb(219, 238, 244);\" />\r\n              <text class=\"text1 text2\" x=\"50%\" y=\"50%\" alignment-baseline=\"middle\" text-anchor=\"middle\">Nothing\r\n                schedule yet. Click on \"Auto Schedule\"</text>\r\n            </svg>\r\n            </td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n      <div *ngIf=\"Proc != null\">\r\n        <table class=\"scale\">\r\n          <tr>\r\n            <th *ngFor=\"let num of Proc.TimeList\">\r\n              {{num}}:00\r\n            </th>\r\n          </tr>\r\n        </table>\r\n        <div *ngIf=\"Proc\">\r\n          <div *ngFor=\"let operationRoom of Proc.OperationRooms\">\r\n            <div class=\"or-name\">\r\n              <span class=\"name-span text4\">{{operationRoom.Name}}</span>\r\n            </div>\r\n            <div class=\"block\">\r\n              <svg width=\"100%\" height=\"100\">\r\n                <g *ngFor=\"let operation of operationRoom.Operations\">\r\n                  <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\"\r\n                    attr.height=\"{{operation.Height}}\" attr.fill=\"{{operation.Color}}\" />\r\n                  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"40%\"\r\n                    alignment-baseline=\"middle\" font-weight=\"bold\" text-anchor=\"middle\">{{operation.Patient.Name}}\r\n                    [{{operation.Patient.SurgeonName}}]:</text>\r\n                  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"60%\"\r\n                    alignment-baseline=\"middle\" font-weight=\"bold\" text-anchor=\"middle\">{{operation.Status}}</text>\r\n                </g>\r\n              </svg>\r\n            </div>\r\n            <div class=\"clearfix\"></div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div>\r\n        <p-dataTable scrollable=\"true\" scrollHeight=\"200px\" scrollWidth=\"95%\" reorderableColumns=\"true\"\r\n          resizableColumns=\"true\" [value]=\"data\" [editable]=\"true\">\r\n          <p-column field=\"Name\" header=\"Patient Name\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.Name}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.Name\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <p-column field=\"Surgeon\" header=\"Surgeon\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.Surgeon}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.Surgeon\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n          <p-column field=\"Procedure\" header=\"Procedure\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.Procedure}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.Procedure\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <p-column field=\"Duration\" header=\"Duration\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.Duration}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.Duration\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <!-- \r\n        <p-column field=\"\" header=\"action\" [style]=\"{'text-align':'center'}\">\r\n          <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n             <div *ngIf=\"row.isEditable\">\r\n            <button (click)=\"save(row)\">Save</button>\r\n            </div>\r\n          </ng-template>\r\n        </p-column>\r\n     -->\r\n        </p-dataTable>\r\n        <!--<button (click)=\"addNew()\">Add New</button> -->\r\n      </div>\r\n    </td>\r\n    <td style=\"width: 25%\">\r\n      <table>\r\n        <tr>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign2\" src=\"../../../assets/All.png\" alt=\"\">\r\n          </td>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign2\" src=\"../../../assets/General.png\" alt=\"\">\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign\" src=\"../../../assets/ENT.png\" alt=\"\">\r\n          </td>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign2\" src=\"../../../assets/Orthopedics.png\" alt=\"\">\r\n          </td>\r\n        </tr>\r\n      </table>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n\r\n      <p-card class=\"myOverride\" title=\"Constraints\" [style]=\"{height: '230px'}\">\r\n        <div style=\"font-family: Calibri;font-size: 1.3em; margin-left: 15px\" *ngFor=\"let item of data1\"> {{item}}\r\n        </div>\r\n      </p-card>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n\r\n      <p-card style=\"font-size: 1.2em;\" [style]=\"{height: '150px'}\">\r\n        <p></p>\r\n        <div style=\"font-family: Calibri;font-size: 2.0em; margin-left: 15px\">Utilization:{{Utilization}}</div>\r\n        <div style=\"font-family: Calibri;font-size: 2.0em;margin-left: 15px\"> Average:{{Average}}\r\n        </div>\r\n      </p-card>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" (click)=\"loadFromFile();\" pButton type=\"button\" label=\"Auto Schedule\"\r\n          class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" (click)=\"getData()\" pButton type=\"button\" label=\"Import case file\"\r\n          class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" pButton type=\"button\" label=\"Add Case\" class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" pButton type=\"Danger\" label=\"Quit\" class=\"ui-button-raised ui-button-rounded ui-button-danger\">\r\n        </button>\r\n      </div>\r\n    </td>\r\n\r\n  </tr>\r\n\r\n\r\n</table>\r\n"
+module.exports = "<p>\r\n</p>\r\n\r\n<table>\r\n  <tr>\r\n    <td style=\"width: 50%;\">\r\n      <div *ngIf=\"Proc == null\">\r\n        <table style=\"height:740px; width: 100%;\">\r\n          <tr>\r\n            <td>\r\n            <svg width=\"98%\" height=\"100\">\r\n              <rect x=\"0\" y=\"0\" width=\"98%\" height=\"100\" rx=\"20\" ry=\"20\" style=\"fill:rgb(219, 238, 244);\" />\r\n              <text class=\"text1 text2\" x=\"50%\" y=\"50%\" alignment-baseline=\"middle\" text-anchor=\"middle\">Nothing\r\n                schedule yet. Click on \"Auto Schedule\"</text>\r\n            </svg>\r\n            </td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n      <div *ngIf=\"Proc != null\">\r\n       \r\n        <table class=\"scale\">\r\n            <br>\r\n          <tr>\r\n            <th *ngFor=\"let num of Proc.TimeList\">\r\n              {{num}}:00\r\n            </th>\r\n          </tr>\r\n        </table>\r\n        <div *ngIf=\"Proc\">\r\n          <br>\r\n          <br>\r\n          <div *ngFor=\"let operationRoom of Proc.OperationRooms\">\r\n            <div class=\"or-name\">\r\n              <span class=\"name-span text4\">{{operationRoom.Name}}</span>\r\n            </div>\r\n            <div class=\"block\">\r\n              <svg width=\"100%\" height=\"100\">\r\n                <g *ngFor=\"let operation of operationRoom.Operations\">\r\n                  <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\"\r\n                    attr.height=\"{{operation.Height}}\" attr.fill=\"{{operation.Color}}\" />\r\n                  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"40%\"\r\n                    alignment-baseline=\"middle\" font-weight=\"bold\" text-anchor=\"middle\">{{operation.Patient.Name}}\r\n                    [{{operation.Patient.SurgeonName}}]:</text>\r\n                  <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"60%\"\r\n                    alignment-baseline=\"middle\" font-weight=\"bold\" text-anchor=\"middle\">{{operation.Status}}</text>\r\n                </g>\r\n              </svg>\r\n            </div>\r\n            <div class=\"clearfix\"></div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div>\r\n        <p-dataTable scrollable=\"true\" scrollHeight=\"200px\" scrollWidth=\"95%\" reorderableColumns=\"true\"\r\n          resizableColumns=\"true\" [value]=\"data\" [editable]=\"true\">\r\n          <p-column field=\"Name\" header=\"Patient Name\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.Name}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.Name\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <p-column field=\"Surgeon\" header=\"Surgeon\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.Surgeon}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.Surgeon\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n          <p-column field=\"Procedure\" header=\"Procedure\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.Procedure}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.Procedure\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <p-column field=\"Duration\" header=\"Duration\">\r\n            <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n              <div *ngIf=\"!row.isEditable\">{{row.Duration}}</div>\r\n              <div *ngIf=\"row.isEditable\">\r\n                <input type=\"text\" [(ngModel)]=\"row.Duration\">\r\n              </div>\r\n            </ng-template>\r\n          </p-column>\r\n\r\n          <!-- \r\n        <p-column field=\"\" header=\"action\" [style]=\"{'text-align':'center'}\">\r\n          <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n             <div *ngIf=\"row.isEditable\">\r\n            <button (click)=\"save(row)\">Save</button>\r\n            </div>\r\n          </ng-template>\r\n        </p-column>\r\n     -->\r\n        </p-dataTable>\r\n        <!--<button (click)=\"addNew()\">Add New</button> -->\r\n      </div>\r\n    </td>\r\n    <td style=\"width: 25%\">\r\n      <table>\r\n        <tr>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign2\" src=\"../../../assets/All.png\" alt=\"\">\r\n          </td>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign2\" src=\"../../../assets/General.png\" alt=\"\">\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign\" src=\"../../../assets/ENT.png\" alt=\"\">\r\n          </td>\r\n          <td colspan=\"2\">\r\n            <img class=\"img-valign2\" src=\"../../../assets/Orthopedics.png\" alt=\"\">\r\n          </td>\r\n        </tr>\r\n      </table>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n\r\n      <p-card class=\"myOverride\" title=\"Constraints\" [style]=\"{height: '230px'}\">\r\n        <div style=\"font-family: Calibri;font-size: 1.3em; margin-left: 15px\" *ngFor=\"let item of data1\"> {{item}}\r\n        </div>\r\n      </p-card>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n\r\n      <p-card style=\"font-size: 1.2em;\" [style]=\"{height: '150px'}\">\r\n        <p></p>\r\n        <div style=\"font-family: Calibri;font-size: 2.0em; margin-left: 15px\">Utilization:{{Utilization}}</div>\r\n        <div style=\"font-family: Calibri;font-size: 2.0em;margin-left: 15px\"> Average:{{Average}}\r\n        </div>\r\n      </p-card>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" (click)=\"loadFromFile();\" pButton type=\"button\" label=\"Auto Schedule\"\r\n          class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <p></p>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" (click)=\"getData()\" pButton type=\"button\" label=\"Import case file\"\r\n          class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" pButton type=\"button\" label=\"Add Case\" class=\"ui-button-raised ui-button-rounded\">\r\n        </button>\r\n      </div>\r\n      <p></p>\r\n      <div>\r\n        <button style=\"width:50%; height: 3.5em;\" pButton type=\"Danger\" label=\"Quit\" class=\"ui-button-raised ui-button-rounded ui-button-danger\">\r\n        </button>\r\n      </div>\r\n    </td>\r\n\r\n  </tr>\r\n\r\n\r\n</table>\r\n"
 
 /***/ }),
 
@@ -2370,12 +2418,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__PrimeCareManager_component_app_header_app_presch_header_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-presch-header.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__PrimeCareManager_component_landing_landing_component__ = __webpack_require__("./src/app/PrimeCareManager/component/landing/landing.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__PrimeCareManager_component_app_header_app_landing_header_component__ = __webpack_require__("./src/app/PrimeCareManager/component/app-header/app-landing-header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__PrimeCareManager_SearchFilterPipe___ = __webpack_require__("./src/app/PrimeCareManager/SearchFilterPipe .ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -2440,7 +2490,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_34__PrimeCareManager_preschassit_preschassit_component__["a" /* PreschassitComponent */],
                 __WEBPACK_IMPORTED_MODULE_38__PrimeCareManager_component_app_header_app_presch_header_component__["a" /* AppPreschHeaderComponent */],
                 __WEBPACK_IMPORTED_MODULE_39__PrimeCareManager_component_landing_landing_component__["a" /* LandingComponent */],
-                __WEBPACK_IMPORTED_MODULE_40__PrimeCareManager_component_app_header_app_landing_header_component__["a" /* AppLandingHeaderComponent */]
+                __WEBPACK_IMPORTED_MODULE_40__PrimeCareManager_component_app_header_app_landing_header_component__["a" /* AppLandingHeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_41__PrimeCareManager_SearchFilterPipe___["a" /* SearchFilterPipe */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_11__services_app_data_service__["a" /* AppDataService */],
@@ -3147,8 +3198,8 @@ var User = /** @class */ (function () {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    api_url: 'http://localhost:52221/api/fake',
-    api_url_real: 'http://localhost:52221/api/get'
+    api_url: 'https://primecaredev.centralus.cloudapp.azure.com//api/fake',
+    api_url_real: 'https://primecaredev.centralus.cloudapp.azure.com/api/get'
 };
 
 
