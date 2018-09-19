@@ -473,7 +473,7 @@ var FcFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision</span>\r\n      <div class=\"time\">{{now}} {{timeDisplay}}</div>\r\n    </div>\r\n\r\n    <div class=\"section\">\r\n\r\n      <br>\r\n      <div class=\"space text2\">AIC: {{Header.AIC}}</div>\r\n      <br>\r\n      <div class=\"space text2\">Nurse Manager: {{Header.NurseManager}}</div>\r\n      <br>\r\n      <div class=\"space text2\">PACU Manager: {{Header.PACUManager}}</div>\r\n\r\n    </div>\r\n    <div class=\"section3\">\r\n   \r\n          <div class=\"text7\">Alerts</div>\r\n          <div *ngIf=\"router.url.includes('procedure')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter: 'AlertCategory' : 'Procedure'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n          <div *ngIf=\"router.url.includes('facilityresources')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter:'AlertCategory' : 'Resource'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"router.url.includes('procedure')\" class=\"section1\">\r\n      <div class=\"text1\"> &nbsp; &nbsp; # Cases: {{Header.ProcedureHeader.CurrentORCount}}, OR Utilization:\r\n        {{Header.ProcedureHeader.ORUtilization}}</div>\r\n      <canvas style=\"width:100px\" id=\"myChart\"></canvas>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('patient')\" class=\"section4\">\r\n\r\n      <div class=\"space text2\">#Patient: {{Header.PatientHeader.TotalPatient}}</div>\r\n      <div class=\"space text2\">InPatients: {{Header.PatientHeader.InPatient}}</div>\r\n      <div class=\"space text2\">OutPatients: {{Header.PatientHeader.OutPatient}}</div>\r\n      <div class=\"text2\">Am admit: {{Header.PatientHeader.AmAdmit}}</div>\r\n      <div class=\"space text2\">Pm admit: {{Header.PatientHeader.PmAdmit}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('personel')\" class=\"section6\">\r\n      <div class=\"space text2\">OnCallAnest: {{Header.PersonnelHeader.OnCallAnest}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('facilityresources')\" class=\"section4\">\r\n      <div class=\"space text5\">PACU Occupancy</div>\r\n      <br>\r\n      <div class=\"space text2\">MaxOccupancy: {{Header.RecoveryHeader.MaxOccupancy}}</div>\r\n      <div class=\"space text2\">MaxOccupancyTime: {{Header.RecoveryHeader.MaxOccupancyTime}}</div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision</span>\r\n      <div class=\"time\">{{now}} {{timeDisplay}}</div>\r\n    </div>\r\n\r\n    <div class=\"section\">\r\n\r\n      <br>\r\n      <div class=\"space text2\">AIC: {{Header.AIC || ''}}</div>\r\n      <br>\r\n      <div class=\"space text2\">Nurse Manager: {{Header.NurseManager}}</div>\r\n      <br>\r\n      <div class=\"space text2\">PACU Manager: {{Header.PACUManager}}</div>\r\n\r\n    </div>\r\n    <div class=\"section3\">\r\n   \r\n          <div class=\"text7\">Alerts</div>\r\n          <div *ngIf=\"router.url.includes('procedure')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter: 'AlertCategory' : 'Procedure'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n          <div *ngIf=\"router.url.includes('facilityresources')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter:'AlertCategory' : 'Resource'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"router.url.includes('procedure')\" class=\"section1\">\r\n      <div class=\"text1\"> &nbsp; &nbsp; # Cases: {{Header.ProcedureHeader.CurrentORCount}}, OR Utilization:\r\n        {{Header.ProcedureHeader.ORUtilization}}</div>\r\n      <canvas style=\"width:100px\" id=\"myChart\"></canvas>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('patient')\" class=\"section4\">\r\n\r\n      <div class=\"space text2\">#Patient: {{Header.PatientHeader.TotalPatient}}</div>\r\n      <div class=\"space text2\">InPatients: {{Header.PatientHeader.InPatient}}</div>\r\n      <div class=\"space text2\">OutPatients: {{Header.PatientHeader.OutPatient}}</div>\r\n      <div class=\"text2\">Am admit: {{Header.PatientHeader.AmAdmit}}</div>\r\n      <div class=\"space text2\">Pm admit: {{Header.PatientHeader.PmAdmit}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('personel')\" class=\"section6\">\r\n      <div class=\"space text2\">OnCallAnest: {{Header.PersonnelHeader.OnCallAnest}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('facilityresources')\" class=\"section4\">\r\n      <div class=\"space text5\">PACU Occupancy</div>\r\n      <br>\r\n      <div class=\"space text2\">MaxOccupancy: {{Header.RecoveryHeader.MaxOccupancy}}</div>\r\n      <div class=\"space text2\">MaxOccupancyTime: {{Header.RecoveryHeader.MaxOccupancyTime}}</div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -540,10 +540,7 @@ var AppHeaderComponent = /** @class */ (function () {
             _this.globals.globleProcedure = _this.procedure;
             _this.timeDisplay = _this.procedure.CurrentTime;
             _this.Header = _this.procedure.Header;
-            console.log(_this.Header);
             _this.headerchart = _this.Header.ProcedureHeader.HeaderChart;
-            _this.canvas = document.getElementById('myChart');
-            _this.ctx = _this.canvas.getContext('2d');
             _this.canvas = document.getElementById('myChart');
             _this.ctx = _this.canvas.getContext('2d');
             // tslint:disable-next-line:prefer-const
@@ -1217,7 +1214,18 @@ var FacilityresourcesComponent = /** @class */ (function () {
                 responsive: false,
                 animation: {
                     duration: 0
-                }
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Percentage',
+                            },
+                        }],
+                },
             }
         });
     };
@@ -1260,7 +1268,18 @@ var FacilityresourcesComponent = /** @class */ (function () {
                 responsive: false,
                 animation: {
                     duration: 0
-                }
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Percentage',
+                            },
+                        }],
+                },
             }
         });
     };
@@ -1720,7 +1739,7 @@ module.exports = "<p></p>\r\n<div class=\"header\">\r\n  <mat-table [dataSource]
 /***/ "./src/app/PrimeCareManager/patient/patient.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* Structure */\n.mat-table {\n  overflow: auto;\n  max-height: 680px; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  background: #4f81bd; }\nmat-row:nth-child(even) {\n  background-color: #d0d8e8; }\nmat-row:nth-child(odd) {\n  background-color: #e9edf4; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n"
+module.exports = "/* Structure */\n.mat-table {\n  overflow: auto;\n  max-height: 680px;\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 100px;\n          flex: 0 0 100px; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: relative;\n  top: 0;\n  background: #4f81bd; }\nmat-row:nth-child(even) {\n  background-color: #d0d8e8; }\nmat-row:nth-child(odd) {\n  background-color: #e9edf4; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-column-procedure {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 12em;\n          flex: 0 0 12em; }\n"
 
 /***/ }),
 
