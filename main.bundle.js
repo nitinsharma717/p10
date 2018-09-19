@@ -1216,7 +1216,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
                     duration: 0
                 },
                 legend: {
-                    display: false
+                    display: true
                 },
                 scales: {
                     yAxes: [{
