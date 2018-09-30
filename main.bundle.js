@@ -473,14 +473,14 @@ var FcFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision</span>\r\n      <div class=\"time\">{{now}} {{timeDisplay}}</div>\r\n    </div>\r\n\r\n    <div class=\"section\">\r\n\r\n      <br>\r\n      <div class=\"space text2\">AIC: {{Header.AIC || ''}}</div>\r\n      <br>\r\n      <div class=\"space text2\">Nurse Manager: {{Header.NurseManager}}</div>\r\n      <br>\r\n      <div class=\"space text2\">PACU Manager: {{Header.PACUManager}}</div>\r\n\r\n    </div>\r\n    <div class=\"section3\">\r\n   \r\n          <div class=\"text7\">Alerts</div>\r\n          <div *ngIf=\"router.url.includes('procedure')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter: 'AlertCategory' : 'Procedure'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n          <div *ngIf=\"router.url.includes('facilityresources')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter:'AlertCategory' : 'Resource'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"router.url.includes('procedure')\" class=\"section1\">\r\n      <div class=\"text1\"> &nbsp; &nbsp; # Cases: {{Header.ProcedureHeader.CurrentORCount}}, OR Utilization:\r\n        {{Header.ProcedureHeader.ORUtilization}}</div>\r\n      <canvas style=\"width:100px\" id=\"myChart\"></canvas>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('patient')\" class=\"section4\">\r\n\r\n      <div class=\"space text2\">#Patient: {{Header.PatientHeader.TotalPatient}}</div>\r\n      <div class=\"space text2\">InPatients: {{Header.PatientHeader.InPatient}}</div>\r\n      <div class=\"space text2\">OutPatients: {{Header.PatientHeader.OutPatient}}</div>\r\n      <div class=\"text2\">Am admit: {{Header.PatientHeader.AmAdmit}}</div>\r\n      <div class=\"space text2\">Pm admit: {{Header.PatientHeader.PmAdmit}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('personel')\" class=\"section6\">\r\n      <div class=\"space text2\">OnCallAnest: {{Header.PersonnelHeader.OnCallAnest}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('facilityresources')\" class=\"section4\">\r\n      <div class=\"space text5\">PACU Occupancy</div>\r\n      <br>\r\n      <div class=\"space text2\">MaxOccupancy: {{Header.RecoveryHeader.MaxOccupancy}}</div>\r\n      <div class=\"space text2\">MaxOccupancyTime: {{Header.RecoveryHeader.MaxOccupancyTime}}</div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision</span>\r\n      <div class=\"time\">{{now}} {{timeDisplay}}</div>\r\n    </div>\r\n\r\n    <div class=\"section\">\r\n      <br>\r\n      <div class=\"space text2\">AIC: {{Header.AIC || ''}}</div>\r\n      <br>\r\n      <div class=\"space text2\">Nurse Manager: {{Header.NurseManager}}</div>\r\n      <br>\r\n      <div class=\"space text2\">PACU Manager: {{Header.PACUManager}}</div>\r\n\r\n    </div>\r\n    <div class=\"section3\">\r\n\r\n          <div class=\"text7\">Alerts</div>\r\n          <div *ngIf=\"router.url.includes('procedure')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter: 'AlertCategory' : 'Procedure'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n          <div *ngIf=\"router.url.includes('facilityresources')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter:'AlertCategory' : 'Resource'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n\r\n    </div>\r\n    <!-- <div class=\"text1\"> &nbsp; &nbsp; , </div> -->\r\n        <div *ngIf=\"router.url.includes('procedure')\" class=\"section11\">\r\n\r\n            <br>\r\n            <br>\r\n            <br>\r\n            <div class=\"space text2a\"># Cases: {{Header.ProcedureHeader.CurrentORCount}}</div>\r\n            <br>\r\n            <div class=\"space text2a\">OR Utilization: {{Header.ProcedureHeader.ORUtilization}}</div>\r\n            <br>\r\n      \r\n          </div>\r\n    <div *ngIf=\"router.url.includes('procedure')\" class=\"section1\">\r\n      <canvas style=\"width:25%\" id=\"myChart\"></canvas>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('patient')\" class=\"section1a\">\r\n      <br>\r\n      <div class=\"space text2\">#Patient: {{Header.PatientHeader.TotalPatient}}</div>\r\n      <div class=\"space text2\">InPatients: {{Header.PatientHeader.InPatient}}</div>\r\n      <div class=\"space text2\">OutPatients: {{Header.PatientHeader.OutPatient}}</div>\r\n      <div class=\"text2\">Am admit: {{Header.PatientHeader.AmAdmit}}</div>\r\n      <div class=\"space text2\">Pm admit: {{Header.PatientHeader.PmAdmit}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('personel')\" class=\"section1a\">\r\n      <br>\r\n      <div class=\"text2\">OnCallAnest: {{Header.PersonnelHeader.OnCallAnest}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('facilityresources')\" class=\"section1a\">\r\n      <br>\r\n      <div class=\"space text5\"> &nbsp; &nbsp; &nbsp;PACU Occupancy</div>\r\n      <br>\r\n      <div style=\"width: 60%; background-color:rgb(219, 238, 244); height: 50px; margin-top: 10px;\" >\r\n      <div class=\"space text2\">MaxOccupancy: {{Header.RecoveryHeader.MaxOccupancy}}</div>\r\n      <div class=\"space text2\">MaxOccupancyTime: {{Header.RecoveryHeader.MaxOccupancyTime}}</div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #C9E6FF;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header1 {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: #4f81bd;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #1612ec;\n  margin-left: 5px; }\n\n.header .logo {\n  font-size: 3.5em;\n  font-family: Calibri; }\n\n.header .container {\n  margin-left: 25px;\n  margin-top: 10px; }\n\n.time {\n  margin-top: 50px;\n  font-size: 1.5em; }\n\n.section {\n  width: 25%;\n  float: left;\n  font-size: 1.25em; }\n\n.section2 {\n  width: 25%;\n  float: left;\n  font-size: 1.25em;\n  background-color: lightgray;\n  height: 9em;\n  border-radius: 25px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-align: center; }\n\n.section3 {\n  width: 25%;\n  float: left;\n  font-size: 1.25em;\n  height: 180px;\n  background-color: rgba(215, 215, 215, 0.85);\n  border-radius: 25px;\n  overflow-y: auto;\n  overflow-x: hidden; }\n\n.section1 {\n  width: 14%;\n  float: right;\n  font-size: 1.0em;\n  height: 100px;\n  margin-right: 50px; }\n\n.section4 {\n  width: 14%;\n  float: right;\n  font-size: 1.3em;\n  height: 100px;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 18px; }\n\n.section5 {\n  width: 14%;\n  float: right;\n  font-size: 1.3em;\n  height: 100px;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 18px; }\n\n.section6 {\n  width: 18%;\n  float: right;\n  font-size: 1.3em;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 20px; }\n\n.subsection {\n  margin-top: 30px; }\n\n.space {\n  margin: 0px 0px 0px 0px; }\n\n.header canvas {\n  height: 175px !important; }\n\n.app-class .mat-list-item {\n  width: 100%;\n  height: auto;\n  font-family: Calibri;\n  font-size: 25px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: bold;\n  margin-top: 0.1em !important;\n  text-align: left;\n  color: red;\n  margin-left: 5em !important; }\n\n.alert {\n  border-radius: 15px;\n  border: 1px solid #1612ec;\n  margin-right: 50px; }\n\n.text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.4em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text5 {\n  font-size: 2em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text3 {\n  font-size: 0.8em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 0px; }\n\n.text5 {\n  font-family: Calibri;\n  font-size: 2em; }\n\n.text7 {\n  font-family: Calibri;\n  font-size: 1.8em;\n  text-anchor: middle;\n  color: gray;\n  text-align: center;\n  margin-top: 0px;\n  margin-left: 20px; }\n\n.text8 {\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  color: gray;\n  text-align: center;\n  margin-top: 1px;\n  margin-left: 5em !important; }\n"
+module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: white;\n  position: fixed;\n  z-index: 100;\n  width: 99%;\n  border-radius: 25px;\n  border: 4px solid #c6d9f1;\n  margin-left: 5px; }\n\n.header1 {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: white;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #c6d9f1;\n  margin-left: 5px; }\n\n.header .logo {\n  font-size: 3.5em;\n  font-family: Calibri;\n  color: #4f81bd; }\n\n.header .container {\n  margin-left: 25px;\n  margin-top: 10px; }\n\n.time {\n  margin-top: 50px;\n  font-size: 1.5em; }\n\n.section {\n  width: 18%;\n  float: left;\n  font-size: 1em; }\n\n.section11 {\n  width: 10%;\n  float: left;\n  font-size: 1em;\n  margin-left: 2%; }\n\n.section2 {\n  width: 25%;\n  float: left;\n  font-size: 1em;\n  background-color: lightgray;\n  height: 9em;\n  border-radius: 25px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-align: center; }\n\n.section3 {\n  width: 25%;\n  float: left;\n  font-size: 1em;\n  height: 180px;\n  background-color: rgba(215, 215, 215, 0.85);\n  border-radius: 25px;\n  overflow-y: auto;\n  overflow-x: hidden; }\n\n.section1 {\n  width: 20%;\n  float: right;\n  font-size: 1.2em;\n  height: 9em;\n  padding-right: 20px;\n  padding-top: 10px; }\n\n.section1a {\n  width: 20%;\n  float: right;\n  font-size: 1em;\n  height: 9em;\n  padding-right: 20px;\n  padding-top: 10px; }\n\n.section4 {\n  width: 14%;\n  float: right;\n  font-size: 1.3em;\n  height: 100px;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 18px; }\n\n.section5 {\n  width: 14%;\n  float: right;\n  font-size: 1.3em;\n  height: 100px;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 18px; }\n\n.section6 {\n  width: 18%;\n  float: right;\n  font-size: 1.3em;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 20px; }\n\n.subsection {\n  margin-top: 30px; }\n\n.space {\n  margin: 0px 0px 0px 0px; }\n\n.header canvas {\n  height: 175px !important; }\n\n.app-class .mat-list-item {\n  width: 100%;\n  height: auto;\n  font-family: Calibri;\n  font-size: 25px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: bold;\n  margin-top: 0.1em !important;\n  text-align: center;\n  color: red;\n  /* margin-left:22% !important; */ }\n\n.alert {\n  border-radius: 15px;\n  border: 1px solid #1612ec;\n  margin-right: 50px; }\n\n.text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.4em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text5 {\n  font-size: 2em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text2a {\n  font-size: 1.2em;\n  font-family: Calibri;\n  text-align: left; }\n\n.text3 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 0px; }\n\n.text5 {\n  font-family: Calibri;\n  font-size: 1.5em; }\n\n.text7 {\n  font-family: Calibri;\n  font-size: 1.8em;\n  text-anchor: middle;\n  color: gray;\n  text-align: center;\n  margin-top: 0px; }\n\n.text8 {\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  color: gray;\n  text-align: center;\n  margin-top: 1px;\n  margin-left: 5em !important; }\n"
 
 /***/ }),
 
@@ -872,14 +872,14 @@ var ProcFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/landing/landing.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<div class=\"container\">\r\n  <img class=\"img-valign\"  src =\"../../../../assets/perivision.png\"  alt=\"\" >\r\n  <button class=\"btn3\" routerLink=\"/preschassit\">Planning</button>\r\n  <button class=\"btn1\" routerLink=\"/procedure\">Tracking</button>\r\n  <button class=\"btn2\" routerLink=\"/analytics\">Analytics</button>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n  <img class=\"img-valign\"  src =\"../../../../assets/perivision.png\"  alt=\"\" >\r\n  <button class=\"btn3\" routerLink=\"/preschassit\">Planning</button>\r\n  <button class=\"btn1\" routerLink=\"/procedure\">Tracking</button>\r\n  <button class=\"btn2\" routerLink=\"/analytics\">Analytics</button>\r\n</div>\r\n\r\n  "
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/component/landing/landing.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* \r\n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\r\n * Use margin-bottom\r\n*/\n.img-valign {\n  vertical-align: middle;\n  margin-left: 25%;\n  height: 900px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n.container {\n  position: relative;\n  width: 70%;\n  margin-left: 120px; }\n/* Make the image responsive */\n.container img {\n  width: 70%; }\n/* Style the button and place it in the middle of the container/image */\n.container .btn3 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 23%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn1 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 47%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  margin-right: 250px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn2 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 71.5%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  margin-right: 150px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn:hover {\n  background-color: black; }\n.img {\n  display: inline-block;\n  margin: 10px 50px; }\n.classic_button_next {\n  position: absolute;\n  right: 5px;\n  top: 5px; }\n.classic_button_prev {\n  position: absolute;\n  right: 88px;\n  top: 5px; }\n"
+module.exports = "/* \r\n * http://stackoverflow.com/questions/489340/how-do-i-vertically-align-text-next-to-an-image-with-css\r\n * Use margin-bottom\r\n*/\n.img-valign {\n  vertical-align: middle;\n  margin-left: 25%;\n  height: 700px; }\n.img-valign2 {\n  margin: 10px 10px; }\n.text2 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n.text3 {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500; }\n.footer {\n  height: 50px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 100%;\n  bottom: 0px;\n  background-color: #d9d9d9; }\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0 4px; }\n/* Create four equal columns that sits next to each other */\n.column {\n  -webkit-box-flex: 12%;\n      -ms-flex: 12%;\n          flex: 12%;\n  max-width: 12%;\n  padding: 0 4px; }\n.column img {\n  margin-top: 8px;\n  vertical-align: middle; }\n/* Create four equal columns that sits next to each other */\n.column1 {\n  -webkit-box-flex: 12.5%;\n      -ms-flex: 12.5%;\n          flex: 12.5%;\n  max-width: 12.5%;\n  padding: 0 4px; }\n.column1 img {\n  margin-top: 6px;\n  vertical-align: middle; }\n/* Responsive layout - makes a two column-layout instead of four columns */\n@media (max-width: 800px) {\n  .column {\n    -webkit-box-flex: 50%;\n        -ms-flex: 50%;\n            flex: 50%;\n    max-width: 50%; } }\n/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */\n@media (max-width: 600px) {\n  .column {\n    -webkit-box-flex: 100%;\n        -ms-flex: 100%;\n            flex: 100%;\n    max-width: 100%; } }\n.container {\n  position: relative;\n  width: 75%;\n  margin-left: 120px;\n  background-color: white; }\n/* Make the image responsive */\n.container img {\n  width: 70%; }\n/* Style the button and place it in the middle of the container/image */\n.container .btn3 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 23%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn1 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 47%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 10px 50px;\n  margin-top: 10px;\n  margin-right: 250px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn2 {\n  display: inline-block;\n  position: absolute;\n  top: 69%;\n  left: 71.5%;\n  background-color: #558ed5;\n  color: white;\n  font-size: 40px;\n  padding: 12px 24px;\n  border: solid;\n  cursor: pointer;\n  border-radius: 25px;\n  margin: 2%;\n  margin-top: 10px;\n  margin-right: 150px;\n  width: 20%;\n  padding: 5px;\n  right: 5px;\n  height: 100px; }\n.container .btn:hover {\n  background-color: black; }\n.img {\n  display: inline-block;\n  margin: 10px 50px; }\n.classic_button_next {\n  position: absolute;\n  right: 5px;\n  top: 5px; }\n.classic_button_prev {\n  position: absolute;\n  right: 88px;\n  top: 5px; }\n"
 
 /***/ }),
 
@@ -922,14 +922,14 @@ var LandingComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/sidenav/sidenav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!(router.url.includes('signin') || router.url.includes('preschassit') || router.url.includes('pacu') || router.url.includes('landing'))\">\r\n<app-header></app-header>\r\n</div>\r\n<div *ngIf=\"router.url.includes('preschassit') || router.url.includes('pacu')\">\r\n  <app-app-presch-header></app-app-presch-header>\r\n  </div>\r\n  <div *ngIf=\"router.url.path === '/signin?returnUrl=%2Flanding'\">\r\n    <app-landing-header></app-landing-header>\r\n    </div>\r\n    <div *ngIf=\"!(router.url.includes('signin') || router.url.includes('preschassit') || router.url.includes('pacu') || !router.url.includes('landing'))\">\r\n      <app-landing-header></app-landing-header>\r\n      </div>\r\n      \r\n<mat-sidenav-container class=\"mat-sidenav-container\" style.top.px=\"{{sidetop}}\" style.margin-bottom.px =\"{{sidemarginbottom}}\">\r\n  <mat-sidenav *ngIf=\"!(router.url.includes('preschassit') || router.url.includes('pacu') ||  router.url.includes('signin') || router.url.includes('landing'))\" #sidenav \r\n              position =\"end\"\r\n               [opened]=\"true\"\r\n               mode =\"side\"\r\n               disableClose =\"true\"\r\n               fixedInViewport=\"true\" \r\n               [fixedTopGap]=\"200\"\r\n               [fixedBottomGap]=\"50\">\r\n    \r\n               <div class=\"btn-group\">\r\n                <button routerLink=\"/procedure\">Procedure</button>\r\n                <button routerLink=\"/patient\">Patient</button>\r\n                <button routerLink=\"/personel\">Personel</button>\r\n                <button routerLink=\"/facilityresources\">Recovery</button>\r\n                <button routerLink=\"/notify\"> Notify</button>\r\n                <button routerLink=\"/analytics\">Analytics</button>\r\n                <button routerLink=\"/landing\">Home</button>\r\n              </div>\r\n    \r\n  </mat-sidenav>\r\n  \r\n  <div class=\"app-sidenav-content\">\r\n    \r\n    <div class=\"wrapper\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</mat-sidenav-container>"
+module.exports = "<div *ngIf=\"!(router.url.includes('signin') || router.url.includes('preschassit') || router.url.includes('pacu') || router.url.includes('landing'))\">\r\n<app-header></app-header>\r\n</div>\r\n<div *ngIf=\"router.url.includes('preschassit') || router.url.includes('pacu')\">\r\n  <app-app-presch-header></app-app-presch-header>\r\n  </div>\r\n \r\n<mat-sidenav-container class=\"mat-sidenav-container\" style.top.px=\"{{sidetop}}\" style.margin-bottom.px =\"{{sidemarginbottom}}\">\r\n  <mat-sidenav *ngIf=\"!(router.url.includes('preschassit') || router.url.includes('pacu') ||  router.url.includes('signin') || router.url.includes('landing'))\" #sidenav \r\n              position =\"end\"\r\n               [opened]=\"true\"\r\n               mode =\"side\"\r\n               disableClose =\"true\"\r\n               fixedInViewport=\"true\" \r\n               [fixedTopGap]=\"200\"\r\n               [fixedBottomGap]=\"50\">\r\n    \r\n               <div class=\"btn-group\">\r\n                <button routerLink=\"/procedure\">Procedure</button>\r\n                <button routerLink=\"/patient\">Patient</button>\r\n                <button routerLink=\"/personel\">Personel</button>\r\n                <button routerLink=\"/facilityresources\">Recovery</button>\r\n                <button routerLink=\"/notify\"> Notify</button>\r\n                <button routerLink=\"/analytics\">Analytics</button>\r\n                <button routerLink=\"/landing\">Home</button>\r\n              </div>\r\n    \r\n  </mat-sidenav>\r\n  \r\n  <div class=\"app-sidenav-content\">\r\n    \r\n    <div class=\"wrapper\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</mat-sidenav-container>"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/component/sidenav/sidenav.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".btn-group button {\n  background-color: white;\n  /* Green background */\n  border: 2px solid grey;\n  /* Green border */\n  color: grey;\n  /* White text */\n  padding: 12px 10px 10px;\n  /* Some padding */\n  cursor: pointer;\n  /* Pointer/hand icon */\n  width: 75%;\n  /* Set a width if needed */\n  display: block;\n  /* Make the buttons appear below each other */\n  border-radius: 12px;\n  opacity: 1;\n  margin: 18px;\n  font-size: 1.2em;\n  /* 14px/16=0.875em */ }\n\n.example-header {\n  top: 0;\n  left: 0;\n  right: 0;\n  height: 125px;\n  opacity: 0.1;\n  background-color: aqua; }\n\n/* Add a background color on hover */\n\n.btn-group button:hover {\n  background-color: lightgreen; }\n\n.btn-group button:focus {\n  background-color: grey;\n  color: white; }\n\n.app-sidenav-container {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  position: fixed;\n  width: 100%;\n  min-width: 100%;\n  height: 100%;\n  min-height: 100%; }\n\n.app-sidenav-content {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  height: 100%;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n.app-sidenav {\n  width: 240px; }\n\nmat-sidenav-container {\n  top: 200px;\n  margin-bottom: 50px;\n  overflow-y: auto; }\n"
+module.exports = ".btn-group button {\n  background-color: white;\n  /* Green background */\n  border: 2px solid grey;\n  /* Green border */\n  color: grey;\n  /* White text */\n  padding: 12px 10px 10px;\n  /* Some padding */\n  cursor: pointer;\n  /* Pointer/hand icon */\n  width: 75%;\n  /* Set a width if needed */\n  display: block;\n  /* Make the buttons appear below each other */\n  border-radius: 12px;\n  opacity: 1;\n  margin: 18px;\n  font-size: 1.2em;\n  /* 14px/16=0.875em */\n  outline: none; }\n\n.example-header {\n  top: 0;\n  left: 0;\n  right: 0;\n  height: 125px;\n  opacity: 0.1;\n  background-color: aqua; }\n\n/* Add a background color on hover */\n\n.btn-group button:hover {\n  background-color: lightgreen; }\n\n.btn-group button:focus {\n  background-color: grey;\n  color: white; }\n\n.app-sidenav-container {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  position: fixed;\n  width: 100%;\n  min-width: 100%;\n  height: 100%;\n  min-height: 100%; }\n\n.app-sidenav-content {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  height: 100%;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n.app-sidenav {\n  width: 240px; }\n\nmat-sidenav-container {\n  top: 200px;\n  margin-bottom: 50px;\n  overflow-y: hidden; }\n\n.wrapper {\n  background-color: white; }\n\nbutton::-moz-focus-inner {\n  border: 0; }\n"
 
 /***/ }),
 
@@ -970,8 +970,8 @@ var SidenavComponent = /** @class */ (function () {
     SidenavComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.router.events.subscribe(function () {
-            if (_this.router.url.includes('signin')) {
-                _this.sidetop = 0;
+            if (_this.router.url.includes('signin') || _this.router.url.includes('landing')) {
+                _this.sidetop = 120;
                 _this.sidemarginbottom = 0;
             }
             else {
@@ -981,8 +981,8 @@ var SidenavComponent = /** @class */ (function () {
         });
     };
     SidenavComponent.prototype.ngAfterViewInit = function () {
-        if (this.router.url.includes('signin')) {
-            this.sidetop = 0;
+        if (this.router.url.includes('signin') || this.router.url.includes('landing')) {
+            this.sidetop = 120;
             this.sidemarginbottom = 0;
         }
         else {
@@ -994,8 +994,8 @@ var SidenavComponent = /** @class */ (function () {
         return this.mediaMatcher.matches;
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_2__angular_material__["y" /* MatSidenav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_material__["y" /* MatSidenav */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_2__angular_material__["z" /* MatSidenav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_material__["z" /* MatSidenav */])
     ], SidenavComponent.prototype, "sidenav", void 0);
     SidenavComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1077,7 +1077,7 @@ var ToolbarComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/PrimeCareManager/component/toolbar/toolbar.component.scss")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MatDialog */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_material__["C" /* MatSnackBar */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_material__["D" /* MatSnackBar */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["Router"]])
     ], ToolbarComponent);
     return ToolbarComponent;
@@ -1087,17 +1087,73 @@ var ToolbarComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/PrimeCareManager/confirmation-dialog/confirmation-dialog.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"close\" >\r\n  <span class=\"fa fa-times\"  (click)=\"close()\" style=\"font-size:30px\"></span>\r\n</div>\r\n<h1 mat-dialog-title>Confirm</h1>\r\n<div mat-dialog-content>{{confirmMessage}}</div>\r\n<br>\r\n<div  mat-dialog-actions>\r\n  <button mat-button style=\"color: #fff;background-color: #4F81BD;\" (click)=\"dialogRef.close(true)\">Confirm</button>\r\n  <button mat-button (click)=\"dialogRef.close(false)\">Cancel</button>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/confirmation-dialog/confirmation-dialog.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ".mat-dialog-title {\n  text-align: center;\n  font-family: 'Calibri';\n  font-size: 2em; }\n\n.font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none; }\n\n/deep/ .mat-dialog-content {\n  overflow-y: hidden !important;\n  text-align: center;\n  font-family: 'Calibri'; }\n\n.mat-dialog-actions {\n  text-align: center;\n  margin-left: 50px;\n  margin-top: 30px; }\n\n.mat-dialog-content {\n  font-size: 1.5em; }\n\n.close {\n  font-family: Calibri;\n  text-align: right;\n  vertical-align: top;\n  /* here */ }\n"
+
+/***/ }),
+
+/***/ "./src/app/PrimeCareManager/confirmation-dialog/confirmation-dialog.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmationDialogComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ConfirmationDialogComponent = /** @class */ (function () {
+    function ConfirmationDialogComponent(dialogRef) {
+        this.dialogRef = dialogRef;
+    }
+    ConfirmationDialogComponent.prototype.ngOnInit = function () {
+    };
+    ConfirmationDialogComponent.prototype.close = function () {
+        this.dialogRef.close();
+    };
+    ConfirmationDialogComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-confirmation-dialog',
+            template: __webpack_require__("./src/app/PrimeCareManager/confirmation-dialog/confirmation-dialog.component.html"),
+            styles: [__webpack_require__("./src/app/PrimeCareManager/confirmation-dialog/confirmation-dialog.component.scss")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MatDialogRef */]])
+    ], ConfirmationDialogComponent);
+    return ConfirmationDialogComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>&nbsp;</p>\r\n<div class=\"text8\">\r\n\r\n  PACU Bed Status\r\n\r\n</div>\r\n<table style=\"width: 100%; table-layout: fixed;\">\r\n  <tr>\r\n    <td style=\"width: 65%;\">\r\n      <div>\r\n        <div *ngIf=\"resource\">\r\n          <div *ngFor=\"let operationBed of resource.OperationBeds\">\r\n            <svg width=\"100%\" height=\"100\" style=\"margin: 10px\">\r\n              <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationBed.Beds\">\r\n                <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"19%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\"\r\n                  style=\"stroke:rgb(178, 180, 180)\" />\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"20%\" dx=\"30\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                  font-size=\"30px\" text-anchor=\"middle\">{{operation.Name}}</text>\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"50%\" dx=\"30\" font-size=\"20px\" text-anchor=\"middle\">{{operation.EstDischargeTime}}</text>\r\n              </g>\r\n            </svg>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </td>\r\n    <td style=\"width:35%\" >\r\n      \r\n      <!-- <mat-list>\r\n        <mat-list-item *ngFor=\"let message of listResourceUpcomingPatient\">\r\n          <div>\r\n            <span class=\"text10\" >{{message.PatientDetail}} </span>\r\n      \r\n            <span class=\"text11\"> {{message.EstimateTime}} </span>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list> -->\r\n      <div class=\"text5\">Upcoming Patients</div>\r\n      <div class= \"tableList\">\r\n      <div *ngFor=\"let message of listResourceUpcomingPatient\">\r\n              <div>\r\n                <span class=\"text10\"  >{{message.PatientDetail}} </span>\r\n                <br>\r\n                <span class=\"text11\"> {{message.EstimateTime}} </span>\r\n              </div>\r\n            </div>\r\n      \r\n      </div>\r\n    </td>\r\n    </tr>\r\n\r\n</table>\r\n<p style=\"padding: 10px;\"></p>\r\n\r\n<table class=\"text2\" style=\"width: 100%; height: 5px; font-size:25px; border: 10px \">\r\n  <tr>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 28%;\">PACU Occupancy Forecast</p>\r\n      <div>\r\n        <canvas style=\"width:100px; height: 20em; margin-left: 10%;\" id=\"myChart1\"></canvas>\r\n      </div>\r\n    </td>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 32%;\">PACU Traffic</p>\r\n      <div>\r\n        <canvas style=\"width:100px;  height: 200px; margin-left: 10%;\" id=\"myChart2\"></canvas>\r\n      </div>\r\n\r\n\r\n    </td>\r\n\r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>\r\n"
+module.exports = "<p>&nbsp;</p>\r\n<div class=\"text8\">\r\n\r\n  PACU Bed Status\r\n\r\n</div>\r\n<table style=\"width: 100%; table-layout: fixed;\">\r\n  <tr>\r\n    <td style=\"width: 75%;\">\r\n      <div>\r\n        <div *ngIf=\"resource\">\r\n          <div *ngFor=\"let operationBed of resource.OperationBeds\">\r\n            <svg width=\"100%\" height=\"100\" style=\"margin: 10px\">\r\n              <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationBed.Beds\">\r\n                <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"19%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\"\r\n                  style=\"stroke:rgb(178, 180, 180)\" />\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"20%\" dx=\"30\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                  font-size=\"30px\" text-anchor=\"middle\">{{operation.Name}}</text>\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"50%\" dx=\"30\" font-size=\"20px\" text-anchor=\"middle\">{{operation.EstDischargeTime}}</text>\r\n              </g>\r\n            </svg>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </td>\r\n    <td style=\"width:25%\" >\r\n      \r\n      <!-- <mat-list>\r\n        <mat-list-item *ngFor=\"let message of listResourceUpcomingPatient\">\r\n          <div>\r\n            <span class=\"text10\" >{{message.PatientDetail}} </span>\r\n      \r\n            <span class=\"text11\"> {{message.EstimateTime}} </span>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list> -->\r\n      <div class=\"text5\">Upcoming Patients</div>\r\n      <div class= \"tableList\">\r\n      <div *ngFor=\"let message of listResourceUpcomingPatient\">\r\n              <div>\r\n                <span class=\"text10\"  >{{message.PatientDetail}} : {{message.EstimateTime}} </span>\r\n              </div>\r\n            </div>\r\n      </div>\r\n    </td>\r\n    </tr>\r\n\r\n</table>\r\n<p style=\"padding: 10px;\"></p>\r\n\r\n<table class=\"text2\" style=\"width: 100%; height: 5px; font-size:25px; border: 10px \">\r\n  <tr>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 28%;\">PACU Occupancy Forecast</p>\r\n      <div>\r\n        <canvas style=\"width:100px; height: 20em; margin-left: 10%;\" id=\"myChart1\"></canvas>\r\n      </div>\r\n    </td>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 32%;\">PACU Traffic</p>\r\n      <div>\r\n        <canvas style=\"width:100px;  height: 200px; margin-left: 10%;\" id=\"myChart2\"></canvas>\r\n      </div>\r\n\r\n\r\n    </td>\r\n\r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text10 {\n  font-family: Calibri;\n  font-size: 25px;\n  font-style: normal;\n  width: 600px;\n  text-align: center;\n  margin-left: 125px; }\n\n.text11 {\n  font-family: Calibri;\n  font-size: 24px;\n  font-style: normal;\n  margin-top: 20px;\n  width: 600px;\n  text-align: center;\n  margin-left: 180px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n\nmat-list {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  height: 180px;\n  font-size: 2.3em;\n  font-family: Calibri;\n  text-align: left;\n  font-size: 4em;\n  width: 90%;\n  margin-left: 15%; }\n\n.tableList {\n  font-size: 1.5em;\n  font-family: Calibri;\n  text-align: left;\n  display: block;\n  height: 250px;\n  overflow-y: auto;\n  border-color: black;\n  width: 80%; }\n\n.text5 {\n  font-size: 2.0em;\n  background-color: #ebf1de;\n  color: gray;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 1px;\n  text-align: center;\n  width: 80%; }\n\n.text8 {\n  font-size: 1.8em;\n  color: black;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 1px;\n  text-align: center;\n  margin-left: 19%;\n  width: 30%; }\n\n.text6 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center; }\n\n.text7 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center; }\n"
+module.exports = ".example-card {\n  max-width: 400px; }\n\n.example-header-image {\n  background-image: url(\"https://material.angular.io/assets/img/examples/shiba1.jpg\");\n  background-size: cover; }\n\n.table td {\n  font-size: 30px; }\n\nsvg {\n  display: inline-block;\n  margin-left: 0px;\n  margin-right: 0px;\n  padding-left: 0px;\n  padding-right: 0px; }\n\n.text2 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px; }\n\n.text10 {\n  font-family: Calibri;\n  font-size: 0.8em;\n  font-style: normal;\n  text-align: center; }\n\n.text11 {\n  font-family: Calibri;\n  font-size: 24px;\n  font-style: normal;\n  margin-top: 20px;\n  width: 600px;\n  text-align: center;\n  margin-left: 180px; }\n\n.text1 {\n  font-family: Calibri;\n  font-size: 20px; }\n\n.text3 {\n  font-family: Calibri;\n  font-size: 30px;\n  font-weight: bold; }\n\n[ng\\:cloak], [ng-cloak], .ng-cloak {\n  display: none !important; }\n\nmat-list {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  height: 180px;\n  font-size: 2.3em;\n  font-family: Calibri;\n  text-align: left;\n  font-size: 4em;\n  width: 90%;\n  margin-left: 15%; }\n\n.tableList {\n  font-size: 1.3em;\n  font-family: Calibri;\n  text-align: left;\n  display: block;\n  height: 170px;\n  overflow-y: auto;\n  border-color: black; }\n\n.text5 {\n  font-size: 1.6em;\n  background-color: #ebf1de;\n  color: gray;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 1px;\n  text-align: center;\n  width: 100%; }\n\n.text8 {\n  font-size: 1.8em;\n  color: black;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 1px;\n  text-align: center;\n  margin-left: 19%;\n  width: 30%; }\n\n.text6 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center; }\n\n.text7 {\n  font-size: 1.2em;\n  color: gray;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 30px;\n  text-align: center; }\n"
 
 /***/ }),
 
@@ -1313,14 +1369,14 @@ var FacilityresourcesComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>\r\n  <div class=\"font textalign\">Name: {{ name }}</div>\r\n  <div class=\"font textalign\">MRN: {{ Info }}</div>\r\n</h2>\r\n\r\n<mat-dialog-content>\r\n  <div class=\"font textalign\">SurgeonName: {{ SurgeonName }}</div>\r\n  <div class=\"font textalign\">Anesthologist: {{ Anesthologist }}</div>\r\n  <div class=\"font textalign\">PainScore: {{ PainScore }}</div>\r\n  <div class=\"font textalign\">PacuNurse: {{ PacuNurse }}</div>\r\n  <div class=\"font textalign\">Others: {{ Others }}</div>\r\n</mat-dialog-content>\r\n  "
+module.exports = "<div class=\"close\" >\r\n    <span class=\"fa fa-times\"  (click)=\"close()\" style=\"font-size:30px\"></span>\r\n</div>\r\n<h2>\r\n  <div class=\"font textalign\">Name: {{ name }}</div>\r\n  <div class=\"font textalign\">MRN: {{ Info }}</div>\r\n</h2>\r\n\r\n<mat-dialog-content>\r\n  <div class=\"font textalign\">SurgeonName: {{ SurgeonName }}</div>\r\n  <div class=\"font textalign\">Anesthologist: {{ Anesthologist }}</div>\r\n  <div class=\"font textalign\">PainScore: {{ PainScore }}</div>\r\n  <div class=\"font textalign\">PacuNurse: {{ PacuNurse }}</div>\r\n  <div class=\"font textalign\">Others: {{ Others }}</div>\r\n</mat-dialog-content>\r\n  "
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none; }\n\n/deep/ .mat-dialog-content {\n  overflow-y: hidden !important; }\n"
+module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none; }\n\n/deep/ .mat-dialog-content {\n  overflow-y: hidden !important; }\n\n.close {\n  font-family: Calibri;\n  text-align: right;\n  vertical-align: top;\n  /* here */ }\n"
 
 /***/ }),
 
@@ -1346,13 +1402,16 @@ var InfoDialogComponent = /** @class */ (function () {
     function InfoDialogComponent(dialogRef) {
         this.dialogRef = dialogRef;
     }
+    InfoDialogComponent.prototype.close = function () {
+        this.dialogRef.close();
+    };
     InfoDialogComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-info-dialog',
             template: __webpack_require__("./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.html"),
             styles: [__webpack_require__("./src/app/PrimeCareManager/facilityresources/mat-dialogs-helper/info-dialog/info-dialog.component.scss")],
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatDialogRef */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MatDialogRef */]])
     ], InfoDialogComponent);
     return InfoDialogComponent;
 }());
@@ -1389,7 +1448,7 @@ var MatDialogsHelperModuleResource = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-                __WEBPACK_IMPORTED_MODULE_3__angular_material__["i" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_material__["j" /* MatDialogModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_material__["b" /* MatButtonModule */]
             ],
             declarations: [__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */]],
@@ -1485,14 +1544,14 @@ var Globals = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/notify/notify/notify.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<div style=\"margin-left:50px\">\r\n  <table style=\"width: 100%; height: 900px;\">\r\n    <tr>\r\n      <td class=\"textalign11\">\r\n        <span>Send notifications: </span>\r\n      </td>\r\n      <td class=\"textalign11\">\r\n        <span>Set notifications: </span>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          Select Personnel:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder =\"ShowAll\" (selectionChange)=\"selectChange($event)\">\r\n            <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Select Personnel:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\"(selectionChange)=\"selectChange2($event)\" >\r\n              <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n                <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                  {{staff.viewValue}}\r\n                </mat-option>\r\n              </mat-optgroup>\r\n            </mat-select>\r\n\\          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <p></p>\r\n        <p></p>\r\n        <div class=\"textalign\">\r\n          Select Message:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\" (selectionChange)=\"selectChange1($event)\">\r\n            <mat-option *ngFor=\"let message of notifyMessage\" [value]=\"message.Value\">\r\n              {{message.Name}}\r\n            </mat-option>\r\n          </mat-select>\r\n        </div>\r\n        <td>\r\n          <p></p>\r\n          <p></p>\r\n          <div class=\"textalign\">\r\n            Select Trigger:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n              <p-multiSelect  defaultLabel\t=\"select\" maxSelectedLabels= 1 [options]=\"notifyTrigger\" [(ngModel)]=\"selected2\"  (onChange)=\"reorderValues($event)\"  optionLabel=\"Name\"></p-multiSelect>\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-form-field class=\"demo-full-width\">\r\n            <textarea class=\"demo-textarea\" matInput [(ngModel)]=\"value1\"> </textarea>\r\n          </mat-form-field>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button style=\"width:300px; height: 70px; font-size: 0.8em;\" (click)=\"getData()\" mat-raised-button class=\"mat-button\">Confirm</button>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button style=\"width:300px; height: 70px; font-size: 0.8em;\"  (click)=\"sendmessage()\" mat-raised-button class=\"mat-button\">Send Message</button>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign3\">\r\n            <p-dataTable  [style] =\"{width:'100%', height: '100%'}\" scrollable=\"true\"  [immutable]=\"false\" [value]=\"Notify\" [editable]=\"true\">\r\n                <p-column field=\"Name\" [style]=\"{'text-align':'center', width:'80%'}\">\r\n                  <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n                    <div style=\"font-size: 1.7em\" *ngIf=\"!row.isEditable\">{{row.Name}}</div>\r\n                    <div *ngIf=\"row.isEditable\">\r\n                      <input type=\"text\" style=\"width: 70%; font-size: 1.7em\" [(ngModel)]=\"row.Name\">\r\n                    </div>\r\n                </ng-template>\r\n                </p-column>\r\n              \r\n              \r\n                <p-column field=\"\" header=\"\" [style]=\"{'text-align':'center'}\">\r\n                  <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n                      <img src =\"../../../assets/edit.png\"  alt=\"\" (click)=\"editRow(row)\">\r\n                  </ng-template>\r\n                </p-column>\r\n              \r\n                 <p-column field=\"\" header=\"\" [style]=\"{'text-align':'center'}\">\r\n                  <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n                    <img src =\"../../../assets/delete.png\"  alt=\"\" (click)=\"delete(row)\">\r\n                  </ng-template>\r\n                     \r\n            \r\n                </p-column>\r\n            </p-dataTable>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<p></p>\r\n<div style=\"margin-left:50px\">\r\n  <table style=\"width: 100%; height: 680px;\">\r\n    <tr>\r\n      <td class=\"textalign11\">\r\n        <span>Send notifications: </span>\r\n      </td>\r\n      <td class=\"textalign11\">\r\n        <span>Set notifications: </span>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          Select Personnel:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder =\"ShowAll\"  (selectionChange)=\"selectChange($event)\">\r\n            <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Select Personnel:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n            <mat-select placeholder=\"select\"  [(ngModel)]=\"selectedValue\" (selectionChange)=\"selectChange2($event)\" >\r\n              <mat-optgroup *ngFor=\"let group of personelStaff\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n                <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                  {{staff.viewValue}}\r\n                </mat-option>\r\n              </mat-optgroup>\r\n            </mat-select>\r\n\\          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <p></p>\r\n        <p></p>\r\n        <div class=\"textalign\">\r\n          Select Message:\r\n        </div>\r\n        <div class=\"textalign1\">\r\n          <mat-select placeholder=\"select\" (selectionChange)=\"selectChange1($event)\">\r\n            <mat-option *ngFor=\"let message of notifyMessage\" [value]=\"message.Value\">\r\n              {{message.Name}}\r\n            </mat-option>\r\n          </mat-select>\r\n        </div>\r\n        <td>\r\n          <p></p>\r\n          <p></p>\r\n          <div class=\"textalign\">\r\n            Select Trigger:\r\n          </div>\r\n          <div class=\"textalign1\">\r\n              <p-multiSelect  defaultLabel\t=\"select\" maxSelectedLabels= 1 [options]=\"notifyTrigger\" [(ngModel)]=\"selected2\"  (onChange)=\"reorderValues($event)\"  optionLabel=\"Name\"></p-multiSelect>\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-form-field class=\"demo-full-width\">\r\n            <textarea class=\"demo-textarea\" matInput [(ngModel)]=\"value1\"> </textarea>\r\n          </mat-form-field>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button style=\"width:300px; height: 70px; font-size: 0.8em;\" (click)=\"getData()\" mat-raised-button class=\"mat-button\">Add Auto Alert</button>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <button style=\"width:300px; height: 70px; font-size: 0.8em;\"  (click)=\"sendmessage()\" mat-raised-button class=\"mat-button\">Send Message</button>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign3\">\r\n            <p-dataTable  [style] =\"{width:'100%', height: '100%'}\" scrollable=\"true\"  [immutable]=\"false\" [value]=\"Notify\" [editable]=\"true\">\r\n                <p-header>Current auto alerts</p-header>\r\n                <p-column field=\"Name\" [style]=\"{'text-align':'center', width:'80%'}\">\r\n                  <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n                    <div style=\"font-size: 1.5em\" *ngIf=\"!row.isEditable\">{{row.Name}}</div>\r\n                    <div *ngIf=\"row.isEditable\">\r\n                      <input type=\"text\" style=\"width: 70%; font-size: 1.5em\" [(ngModel)]=\"row.Name\">\r\n                    </div>\r\n                </ng-template>\r\n                </p-column>\r\n              \r\n              \r\n                <p-column field=\"\" header=\"\" [style]=\"{'text-align':'center'}\">\r\n                  <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n                      <img src =\"../../../assets/edit.png\"  alt=\"\" (click)=\"editRow(row)\">\r\n                  </ng-template>\r\n                </p-column>\r\n              \r\n                 <p-column field=\"\" header=\"\" [style]=\"{'text-align':'center'}\">\r\n                  <ng-template let-row=\"rowData\" pTemplate=\"body\">\r\n                    <img src =\"../../../assets/delete.png\"  alt=\"\" (click)=\"delete(row)\">\r\n                  </ng-template>\r\n                     \r\n            \r\n                </p-column>\r\n            </p-dataTable>\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/notify/notify/notify.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse;\n  border: 0px solid #dbeef4; }\ntable td {\n  border: 0px solid #dbeef4; }\n.cardcontent {\n  font-family: Calibri;\n  font-size: 15px;\n  color: #318f9c; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 2em; }\n.textalign11 {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 4em; }\n.textalign3 {\n  font-family: Calibri;\n  font-size: 1.1em;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 700px;\n  height: 10em;\n  overflow: auto; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  height: 2.5em;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 1.7em;\n  border: 2px solid #2e7d96; }\n.textalign1 {\n  font-family: Calibri;\n  font-size: 0.8em;\n  text-align: center;\n  margin: auto;\n  width: 400px;\n  height: 3.0em;\n  padding-top: 10px;\n  padding-right: 7px;\n  padding-bottom: 17px;\n  padding-left: 17px; }\n.textalign2 {\n  font-family: Calibri;\n  font-size: 1.1em;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 220px;\n  height: 1.9em;\n  border: 2px solid #58757e; }\n.demo-basic {\n  padding: 0; }\n.demo-basic .mat-card-content {\n  padding: 16px; }\n.demo-full-width {\n  width: 70%; }\n.demo-card {\n  margin: auto;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border: 2px solid #7f7f7f; }\n.demo-card mat-card-content {\n    font-size: 16px; }\n.demo-text-align-end {\n  text-align: end; }\n.demo-textarea {\n  font-family: Calibri;\n  resize: none;\n  border: 2px solid #7f7f7f;\n  overflow: auto;\n  padding: 20px;\n  height: 100px; }\n.mat-button {\n  font-family: Calibri;\n  padding: 0 6px 0 6px;\n  margin: 6px 8px 6px 8px;\n  min-width: 188px;\n  border-radius: 3px;\n  font-size: 14px;\n  text-align: center;\n  text-decoration: none;\n  height: 50px;\n  border: none;\n  outline: none;\n  background-color: #c4bd97;\n  border-radius: 5px;\n  color: white; }\n.mat-card-title {\n  font-family: Calibri;\n  font-size: 27px;\n  color: #7f7f7f; }\n::ng-deep .mat-input-underline {\n  display: none; }\n::ng-deep .mat-select {\n  font-size: 17px;\n  color: #318f9c; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 1em; }\n"
+module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse;\n  border: 0px solid #dbeef4; }\ntable td {\n  border: 0px solid #dbeef4; }\n.cardcontent {\n  font-family: Calibri;\n  font-size: 15px;\n  color: #318f9c; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 1.5em; }\n.textalign11 {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 3em; }\n.textalign3 {\n  font-family: Calibri;\n  font-size: 1em;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 700px;\n  height: 10em;\n  overflow: auto; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  height: 2.5em;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 1.5em;\n  border: 2px solid #2e7d96; }\n.textalign1 {\n  font-family: Calibri;\n  font-size: 0.8em;\n  text-align: center;\n  margin: auto;\n  width: 400px;\n  height: 3.0em;\n  padding-top: 10px;\n  padding-right: 7px;\n  padding-bottom: 17px;\n  padding-left: 17px; }\n.textalign2 {\n  font-family: Calibri;\n  font-size: 1.1em;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 220px;\n  height: 1.9em;\n  border: 2px solid #58757e; }\n.demo-basic {\n  padding: 0; }\n.demo-basic .mat-card-content {\n  padding: 16px; }\n.demo-full-width {\n  width: 70%; }\n.demo-card {\n  margin: auto;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border: 2px solid #7f7f7f; }\n.demo-card mat-card-content {\n    font-size: 16px; }\n.demo-text-align-end {\n  text-align: end; }\n.demo-textarea {\n  font-family: Calibri;\n  resize: none;\n  border: 2px solid #7f7f7f;\n  overflow: auto;\n  padding: 20px;\n  height: 100px; }\n.mat-button {\n  font-family: Calibri;\n  padding: 0 6px 0 6px;\n  margin: 6px 8px 6px 8px;\n  min-width: 188px;\n  border-radius: 3px;\n  font-size: 14px;\n  text-align: center;\n  text-decoration: none;\n  height: 50px;\n  border: none;\n  outline: none;\n  background-color: #c4bd97;\n  border-radius: 5px;\n  color: white; }\n.mat-card-title {\n  font-family: Calibri;\n  font-size: 27px;\n  color: #7f7f7f; }\n::ng-deep .mat-input-underline {\n  display: none; }\n::ng-deep .mat-select {\n  font-size: 17px;\n  color: #318f9c; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 1em; }\n"
 
 /***/ }),
 
@@ -1512,6 +1571,8 @@ module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 30
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/distinctUntilChanged.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_observable_fromEvent__ = __webpack_require__("./node_modules/rxjs/_esm5/add/observable/fromEvent.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__view_models_Notify__ = __webpack_require__("./src/app/view-models/Notify.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__confirmation_dialog_confirmation_dialog_component__ = __webpack_require__("./src/app/PrimeCareManager/confirmation-dialog/confirmation-dialog.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1532,10 +1593,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var NotifyComponent = /** @class */ (function () {
     // tslint:disable-next-line:max-line-length
-    function NotifyComponent(http) {
+    function NotifyComponent(http, dialog) {
         this.http = http;
+        this.dialog = dialog;
         this.data = [];
         this.loadStaff();
         this.loadNM();
@@ -1627,14 +1691,24 @@ var NotifyComponent = /** @class */ (function () {
         }, function (error) { return console.error(error); });
     };
     NotifyComponent.prototype.getData = function () {
-        var bodyString = JSON.stringify(this.Notify); // Stringify payload
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers }); // Create a request option
-        this.http.post(__WEBPACK_IMPORTED_MODULE_2_environments_environment__["a" /* environment */].api_url_real_post + '/notification?userName=' + this.name, bodyString, options).subscribe();
-        console.log('done');
-        this.data = this.Notify;
-        this.data.map(function (row) {
-            row.isEditable = false;
+        var _this = this;
+        this.dialogRef = this.dialog.open(__WEBPACK_IMPORTED_MODULE_11__confirmation_dialog_confirmation_dialog_component__["a" /* ConfirmationDialogComponent */], {
+            disableClose: false, panelClass: 'my-full-screen-dialog1'
+        });
+        this.dialogRef.componentInstance.confirmMessage = 'Are you sure you want to save?';
+        this.dialogRef.afterClosed().subscribe(function (result) {
+            if (result) {
+                var bodyString = JSON.stringify(_this.Notify); // Stringify payload
+                var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+                var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers }); // Create a request option
+                _this.http.post(__WEBPACK_IMPORTED_MODULE_2_environments_environment__["a" /* environment */].api_url_real_post + '/notification?userName=' + _this.name, bodyString, options).subscribe();
+                console.log('done');
+                _this.data = _this.Notify;
+                _this.data.map(function (row) {
+                    row.isEditable = false;
+                });
+            }
+            _this.dialogRef = null;
         });
     };
     NotifyComponent = __decorate([
@@ -1644,7 +1718,7 @@ var NotifyComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/PrimeCareManager/notify/notify/notify.component.scss")]
         }),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_10__angular_material__["h" /* MatDialog */]])
     ], NotifyComponent);
     return NotifyComponent;
 }());
@@ -1817,14 +1891,14 @@ var PacuComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n<mat-dialog-content>\r\n  <div class=\"font textalign\">{{ name }}</div> \r\n  <div class=\"font textalign\">{{ mrnNumber }}</div> \r\n  <div class=\"font textalign\">{{ stats }}</div> \r\n  <div class=\"font textalign\">{{ medicalhx }}</div> \r\n  <div class=\"font textalign\">{{ allergies }}</div> \r\n  <div class=\"font textalign\">{{ diagnosis }}</div> \r\n</mat-dialog-content>"
+module.exports = "<div class=\"close\" >\r\n    <span class=\"fa fa-times\"  (click)=\"close()\" style=\"font-size:30px\"></span>\r\n</div>\r\n\r\n<mat-dialog-content>\r\n  <div class=\"font textalign\">{{ name }}</div> \r\n  <div class=\"font textalign\">{{ mrnNumber }}</div> \r\n  <div class=\"font textalign\">{{ stats }}</div> \r\n  <div class=\"font textalign\">{{ medicalhx }}</div> \r\n  <div class=\"font textalign\">{{ allergies }}</div> \r\n  <div class=\"font textalign\">{{ diagnosis }}</div> \r\n</mat-dialog-content>"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none; }\n\n/deep/ .mat-dialog-content {\n  overflow-y: hidden !important; }\n"
+module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n.my-full-screen-dialog1 {\n  max-width: 80vw;\n  border-radius: 10px;\n  padding: 0px !important; }\n\n.my-full-screen-dialog1 .mat-dialog-container {\n    max-width: none;\n    padding: 0px !important; }\n\n/deep/ .mat-dialog-content {\n  overflow-y: hidden !important; }\n\n.close {\n  font-family: Calibri;\n  text-align: right;\n  vertical-align: top;\n  /* here */ }\n"
 
 /***/ }),
 
@@ -1850,13 +1924,16 @@ var InfoDialogComponent = /** @class */ (function () {
     function InfoDialogComponent(dialogRef) {
         this.dialogRef = dialogRef;
     }
+    InfoDialogComponent.prototype.close = function () {
+        this.dialogRef.close();
+    };
     InfoDialogComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-info-dialog',
             template: __webpack_require__("./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.html"),
             styles: [__webpack_require__("./src/app/PrimeCareManager/patient/mat-dialogs-helper/info-dialog/info-dialog.component.scss")],
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatDialogRef */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MatDialogRef */]])
     ], InfoDialogComponent);
     return InfoDialogComponent;
 }());
@@ -1893,7 +1970,7 @@ var MatDialogsHelperModulePatient = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-                __WEBPACK_IMPORTED_MODULE_3__angular_material__["i" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_material__["j" /* MatDialogModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_material__["b" /* MatButtonModule */]
             ],
             declarations: [__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */]],
@@ -1938,7 +2015,9 @@ var MatDialogsHelperService = /** @class */ (function () {
     MatDialogsHelperService.prototype.confirm = function (message) {
         var dialogRef;
         var patient = message;
-        dialogRef = this.dialogs.open(__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */], { panelClass: 'my-full-screen-dialog1' });
+        var dialogConfig = new __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MatDialogConfig */]();
+        dialogConfig.panelClass = 'my-full-screen-dialog1';
+        dialogRef = this.dialogs.open(__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */], dialogConfig);
         dialogRef.componentInstance.name = patient.Info.Name;
         dialogRef.componentInstance.mrnNumber = patient.Info.MedicalRecord;
         dialogRef.componentInstance.stats = patient.Info.Age + ', ' + patient.Info.Gender + ', ' + patient.Info.BMI;
@@ -1961,14 +2040,14 @@ var MatDialogsHelperService = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/patient/patient.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p>\r\n<div class=\"header\">\r\n  <mat-table [dataSource]=\"dataSource\">\r\n\r\n    <ng-container matColumnDef=\"patient\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> &nbsp;  &nbsp; Patient </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <div>{{patient.Info.Name}}</div>\r\n        <div>{{patient.Info.MedicalRecord}}</div>\r\n      </mat-cell>\r\n    </ng-container>\r\n    <ng-container matColumnDef=\"location\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Location </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; {{patient.Location}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"patientclass\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Patient Class </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; &nbsp; &nbsp; {{patient.PatientClass}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"procedure\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> &nbsp; &nbsp; &nbsp; &nbsp;Procedure </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; &nbsp;{{patient.Procedure}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"start\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Surgery Start </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; &nbsp; &nbsp; {{patient.StartTime}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"status\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Status </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"\r\n        [ngStyle]=changeBackground(patient.StatusColor)> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{patient.Status}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"cons\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Consent </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> &nbsp;\r\n        <img src=\"../../../assets/{{patient.Consent}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"hp\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> &nbsp; HP </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.HP}}\"> </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"xray\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> X-ray </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.XRay}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"lab\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Lab </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.Lab}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n\r\n    <ng-container matColumnDef=\"ekg\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> EKG </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.EKG}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\" (click)=\"diaglog(row)\"></mat-row>\r\n  </mat-table>\r\n</div>\r\n<app-pat-footer></app-pat-footer>\r\n"
+module.exports = "<div class=\"header\">\r\n  <mat-table [dataSource]=\"dataSource\">\r\n\r\n    <ng-container matColumnDef=\"patient\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> &nbsp;  &nbsp; Patient </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <div>{{patient.Info.Name}}</div>\r\n        <div>{{patient.Info.MedicalRecord}}</div>\r\n      </mat-cell>\r\n    </ng-container>\r\n    <ng-container matColumnDef=\"location\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Location </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; {{patient.Location}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"patientclass\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Patient Class </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; &nbsp; &nbsp; {{patient.PatientClass}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"procedure\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> &nbsp; &nbsp; &nbsp; &nbsp;Procedure </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; &nbsp;{{patient.Procedure}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"start\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Surgery Start </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; &nbsp; &nbsp; {{patient.StartTime}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"status\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Status </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"\r\n        [ngStyle]=changeBackground(patient.StatusColor)> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{patient.Status}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"cons\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> &nbsp; Consent </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> &nbsp; &nbsp; &nbsp;\r\n        <img src=\"../../../assets/{{patient.Consent}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"hp\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> &nbsp; &nbsp; HP </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">  &nbsp; &nbsp;\r\n        <img src=\"../../../assets/{{patient.HP}}\"> </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"xray\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> X-ray </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\"> &nbsp;\r\n        <img src=\"../../../assets/{{patient.XRay}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"lab\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> Lab </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.Lab}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n\r\n    <ng-container matColumnDef=\"ekg\">\r\n      <mat-header-cell class=\"headertext\" *matHeaderCellDef> EKG </mat-header-cell>\r\n      <mat-cell class=\"columntext\" *matCellDef=\"let patient\">\r\n        <img src=\"../../../assets/{{patient.EKG}}\">\r\n      </mat-cell>\r\n    </ng-container>\r\n\r\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\" (click)=\"diaglog(row)\"></mat-row>\r\n  </mat-table>\r\n</div>\r\n<app-pat-footer></app-pat-footer>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/patient/patient.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* Structure */\n.mat-table {\n  overflow: auto;\n  max-height: 65%;\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 100px;\n          flex: 0 0 100px; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: relative;\n  top: 0;\n  background: #4f81bd; }\nmat-row:nth-child(even) {\n  background-color: #d0d8e8; }\nmat-row:nth-child(odd) {\n  background-color: #e9edf4; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 1.3em;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 1.3em;\n  color: black; }\n.mat-column-procedure {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 12em;\n          flex: 0 0 12em; }\n.mat-column-status {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 10em;\n          flex: 0 0 10em;\n  min-height: 48px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n"
+module.exports = "/* Structure */\n.mat-table {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 100px;\n          flex: 0 0 100px; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  background: #4f81bd;\n  z-index: 1; }\nmat-row:nth-child(even) {\n  background-color: #d0d8e8; }\nmat-row:nth-child(odd) {\n  background-color: #e9edf4; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px;\n  height: calc(100vh - 250px); }\n.headertext {\n  font-family: Calibri;\n  font-size: 1.3em;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 1.3em;\n  color: black; }\n.mat-column-procedure {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 12em;\n          flex: 0 0 12em; }\n.mat-column-status {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 10em;\n          flex: 0 0 10em;\n  min-height: 48px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n.mat-column-patient {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 10em;\n          flex: 0 0 10em; }\n"
 
 /***/ }),
 
@@ -2109,7 +2188,7 @@ module.exports = "<p></p> \r\n<div *ngIf=\"personel\" style=\"margin-left:50px\"
 /***/ "./src/app/PrimeCareManager/personel/personel/personel.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle; }\n.textalign11 {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  margin-bottom: 8px; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  outline: solid;\n  outline-color: #2e7d96;\n  height: 30px;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  padding-top: 8px;\n  margin-bottom: 14px; }\n.textalign1 {\n  font-family: Calibri;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 150px;\n  border: 2px solid #2e7d96;\n  padding-top: 7px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 16px; }\n.table1 {\n  width: 90%;\n  height: 200px; }\n.table2 {\n  width: 70%;\n  border: 1px solid #dbeef4;\n  font-family: Calibri;\n  font-size: 1.2em;\n  font-weight: bold; }\nth {\n  border: 1px #dbeef4;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  color: gray; }\ntd {\n  border: 1px #dbeef4;\n  font-family: Calibri;\n  text-align: center; }\n.text1 {\n  font-family: Calibri;\n  font-size: 1.2em;\n  font-weight: normal; }\n.text4 {\n  font-size: 2em;\n  font-family: Calibri;\n  font-weight: bold; }\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n.text2B {\n  font-size: 1.4em;\n  font-family: Calibri;\n  font-weight: bold;\n  text-align: left; }\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 5px; }\nmat-header-cell:nth-child(1),\nmat-cell:nth-child(1) {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 3px;\n          flex: 0 0 3px; }\n.grid-test-1 {\n  text-align: center !important; }\n"
+module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 1.5em; }\n.textalign11 {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  margin-bottom: 8px;\n  font-size: 1.5em; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  outline: solid;\n  outline-color: #2e7d96;\n  height: 30px;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  padding-top: 8px;\n  margin-bottom: 14px; }\n.textalign1 {\n  font-family: Calibri;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 150px;\n  border: 2px solid #2e7d96;\n  padding-top: 7px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 16px; }\n.table1 {\n  width: 90%;\n  height: 200px; }\n.table2 {\n  width: 70%;\n  border: 1px solid #dbeef4;\n  font-family: Calibri;\n  font-size: 1.3em;\n  font-weight: bold; }\nth {\n  border: 1px #dbeef4;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  color: gray; }\ntd {\n  border: 1px #dbeef4;\n  font-family: Calibri;\n  text-align: center; }\n.text1 {\n  font-family: Calibri;\n  font-size: 1.2em;\n  font-weight: normal; }\n.text4 {\n  font-size: 2em;\n  font-family: Calibri;\n  font-weight: bold; }\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n.text2B {\n  font-size: 1.4em;\n  font-family: Calibri;\n  font-weight: bold;\n  text-align: left; }\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 5px; }\nmat-header-cell:nth-child(1),\nmat-cell:nth-child(1) {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 3px;\n          flex: 0 0 3px; }\n.grid-test-1 {\n  text-align: center !important; }\n.mat-option {\n  font-size: 1.1em; }\n.mat-optgroup {\n  font-size: 1.1em; }\n"
 
 /***/ }),
 
@@ -2321,14 +2400,14 @@ var PreschassitComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/procedure/mat-dialogs-helper/info-dialog/info-dialog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n<h2>\r\n  <div class=\"font textalign thick\">{{ name }}</div> \r\n  <div class=\"font textalign thick\">{{ info }}</div>\r\n</h2>\r\n\r\n<mat-dialog-content>\r\n  <div class=\"font\">Surgeon         : {{surgeonName}}</div>\r\n  <div class=\"font\">Anesthesiologist: {{anesthologist}}</div>\r\n  <div class=\"font\">CRNA            : {{crna}}</div>\r\n  <div class=\"font\">Circ Nurse      : {{circleNurse}}</div>\r\n</mat-dialog-content>"
+module.exports = "<div class=\"close\" >\r\n    <span class=\"fa fa-times\"  (click)=\"close()\" style=\"font-size:30px\"></span>\r\n</div>\r\n<h2>\r\n  <div class=\"font textalign thick\">{{ name }}</div> \r\n  <div class=\"font textalign thick\">{{ info }}</div>\r\n</h2>\r\n\r\n<mat-dialog-content>\r\n  <div class=\"font\">Surgeon         : {{surgeonName}}</div>\r\n  <div class=\"font\">Anesthesiologist: {{anesthologist}}</div>\r\n  <div class=\"font\">CRNA            : {{crna}}</div>\r\n  <div class=\"font\">Circ Nurse      : {{circleNurse}}</div>\r\n</mat-dialog-content>"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/procedure/mat-dialogs-helper/info-dialog/info-dialog.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n/deep/ .mat-dialog-content {\n  overflow-y: hidden !important; }\n"
+module.exports = ".font {\n  font-family: Calibri;\n  font-size: 25px;\n  line-height: 1.2; }\n\n.textalign {\n  text-align: center; }\n\n.thick {\n  font-weight: bold; }\n\n/deep/ .mat-dialog-content {\n  overflow-y: hidden !important; }\n\n.close {\n  font-family: Calibri;\n  text-align: right;\n  vertical-align: top;\n  /* here */ }\n"
 
 /***/ }),
 
@@ -2354,13 +2433,16 @@ var InfoDialogComponent = /** @class */ (function () {
     function InfoDialogComponent(dialogRef) {
         this.dialogRef = dialogRef;
     }
+    InfoDialogComponent.prototype.close = function () {
+        this.dialogRef.close();
+    };
     InfoDialogComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-info-dialog',
             template: __webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/info-dialog/info-dialog.component.html"),
             styles: [__webpack_require__("./src/app/PrimeCareManager/procedure/mat-dialogs-helper/info-dialog/info-dialog.component.scss")],
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatDialogRef */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MatDialogRef */]])
     ], InfoDialogComponent);
     return InfoDialogComponent;
 }());
@@ -2397,7 +2479,7 @@ var MatDialogsHelperModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-                __WEBPACK_IMPORTED_MODULE_3__angular_material__["i" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_material__["j" /* MatDialogModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_material__["b" /* MatButtonModule */]
             ],
             declarations: [__WEBPACK_IMPORTED_MODULE_2__info_dialog_info_dialog_component__["a" /* InfoDialogComponent */]],
@@ -2472,7 +2554,7 @@ module.exports = "<div *ngIf=\"Proc\">\r\n\r\n  <div width=\"100%\">\r\n    <but
 /***/ "./src/app/PrimeCareManager/procedure/procedure.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text1-b {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.2em;\n  text-anchor: middle;\n  font-weight: bold; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri;\n  font-weight: bold; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 20px;\n  width: 5%;\n  float: left;\n  text-align: center;\n  height: 120px; }\n\n.display {\n  display: block;\n  margin-top: 70px; }\n\n.block {\n  float: left;\n  width: 95%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 5%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px;\n  margin-top: 40px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.time1 {\n  z-index: 2;\n  position: fixed;\n  width: 100px;\n  height: 35px;\n  opacity: 0.5;\n  border: 1;\n  margin-top: 5px;\n  border-color: gray;\n  font-weight: bold;\n  border-radius: 5px; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n"
+module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text1-b {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  font-weight: bold; }\n\n.text4 {\n  font-size: 2.0em;\n  font-family: Calibri;\n  font-weight: bold; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 10px;\n  width: 7%;\n  float: left;\n  text-align: center;\n  height: 90px; }\n\n.display {\n  display: block;\n  margin-top: 70px; }\n\n.block {\n  float: left;\n  width: 92%;\n  padding-left: 1%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 8%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px;\n  margin-top: 40px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.time1 {\n  z-index: 2;\n  position: fixed;\n  width: 100px;\n  height: 30px;\n  opacity: 0.5;\n  border: 1;\n  margin-top: 10px;\n  border-color: gray;\n  font-weight: bold;\n  border-radius: 5px; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n"
 
 /***/ }),
 
@@ -2672,12 +2754,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__PrimeCareManager_pacu_pacu_component__ = __webpack_require__("./src/app/PrimeCareManager/pacu/pacu.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44_primeng_dropdown__ = __webpack_require__("./node_modules/primeng/dropdown.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44_primeng_dropdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_44_primeng_dropdown__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__PrimeCareManager_confirmation_dialog_confirmation_dialog_component__ = __webpack_require__("./src/app/PrimeCareManager/confirmation-dialog/confirmation-dialog.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -2748,7 +2832,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_40__PrimeCareManager_component_landing_landing_component__["a" /* LandingComponent */],
                 __WEBPACK_IMPORTED_MODULE_41__PrimeCareManager_component_app_header_app_landing_header_component__["a" /* AppLandingHeaderComponent */],
                 __WEBPACK_IMPORTED_MODULE_42__PrimeCareManager_SearchFilterPipe___["a" /* SearchFilterPipe */],
-                __WEBPACK_IMPORTED_MODULE_43__PrimeCareManager_pacu_pacu_component__["a" /* PacuComponent */]
+                __WEBPACK_IMPORTED_MODULE_43__PrimeCareManager_pacu_pacu_component__["a" /* PacuComponent */],
+                __WEBPACK_IMPORTED_MODULE_45__PrimeCareManager_confirmation_dialog_confirmation_dialog_component__["a" /* ConfirmationDialogComponent */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_11__services_app_data_service__["a" /* AppDataService */],
@@ -2783,7 +2868,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_35_primeng_primeng__["InputTextModule"],
                 __WEBPACK_IMPORTED_MODULE_36_primeng_multiselect__["MultiSelectModule"]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_45__PrimeCareManager_confirmation_dialog_confirmation_dialog_component__["a" /* ConfirmationDialogComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -3266,31 +3352,31 @@ var MaterialModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatCheckboxModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatChipsModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["g" /* MatDatepickerModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MatDialogModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MatExpansionModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["l" /* MatFormFieldModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["m" /* MatGridListModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["n" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["o" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["p" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["q" /* MatMenuModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["r" /* MatNativeDateModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["s" /* MatPaginatorModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["t" /* MatProgressBarModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["u" /* MatProgressSpinnerModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["v" /* MatRadioModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["w" /* MatRippleModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["x" /* MatSelectModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["z" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["B" /* MatSliderModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["A" /* MatSlideToggleModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["D" /* MatSnackBarModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["F" /* MatStepperModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["E" /* MatSortModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["G" /* MatTableModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["H" /* MatTabsModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["I" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["J" /* MatTooltipModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["l" /* MatExpansionModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["m" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["n" /* MatGridListModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["o" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["p" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["q" /* MatListModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["r" /* MatMenuModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["s" /* MatNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["t" /* MatPaginatorModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["u" /* MatProgressBarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["v" /* MatProgressSpinnerModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["w" /* MatRadioModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["x" /* MatRippleModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["y" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["A" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["C" /* MatSliderModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["B" /* MatSlideToggleModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["E" /* MatSnackBarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["G" /* MatStepperModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["F" /* MatSortModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["H" /* MatTableModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["I" /* MatTabsModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["J" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["K" /* MatTooltipModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_cdk_table__["m" /* CdkTableModule */]
             ],
             exports: [
@@ -3301,30 +3387,30 @@ var MaterialModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatCheckboxModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatChipsModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["g" /* MatDatepickerModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MatDialogModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MatExpansionModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["m" /* MatGridListModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["n" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["o" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["p" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["q" /* MatMenuModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["r" /* MatNativeDateModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["s" /* MatPaginatorModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["t" /* MatProgressBarModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["u" /* MatProgressSpinnerModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["v" /* MatRadioModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["w" /* MatRippleModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["x" /* MatSelectModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["z" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["B" /* MatSliderModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["A" /* MatSlideToggleModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["D" /* MatSnackBarModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["F" /* MatStepperModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["E" /* MatSortModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["G" /* MatTableModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["H" /* MatTabsModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["I" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["J" /* MatTooltipModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["l" /* MatExpansionModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["n" /* MatGridListModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["o" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["p" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["q" /* MatListModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["r" /* MatMenuModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["s" /* MatNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["t" /* MatPaginatorModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["u" /* MatProgressBarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["v" /* MatProgressSpinnerModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["w" /* MatRadioModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["x" /* MatRippleModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["y" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["A" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["C" /* MatSliderModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["B" /* MatSlideToggleModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["E" /* MatSnackBarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["G" /* MatStepperModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["F" /* MatSortModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["H" /* MatTableModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["I" /* MatTabsModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["J" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["K" /* MatTooltipModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_cdk_table__["m" /* CdkTableModule */]
             ]
         })
