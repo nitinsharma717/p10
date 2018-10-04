@@ -3600,9 +3600,9 @@ var User = /** @class */ (function () {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    api_url: 'http://localhost:52221/api/fake',
-    api_url_real: 'http://localhost:52221/api/get',
-    api_url_real_post: 'http://localhost:52221/api/post'
+    api_url: 'https://primecaredev.centralus.cloudapp.azure.com/api/fake',
+    api_url_real: 'https://primecaredev.centralus.cloudapp.azure.com/api/get',
+    api_url_real_post: 'https://primecaredev.centralus.cloudapp.azure.com/api/post'
 };
 
 
