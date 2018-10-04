@@ -473,14 +473,14 @@ var FcFooterComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision</span>\r\n      <img class=\"\"  src =\"../../../assets/Perimatics-logo.png\"  alt=\"\" > \r\n      <div class=\"time\">{{now}} {{timeDisplay}}</div>\r\n    </div>\r\n\r\n    <div class=\"section\">\r\n      <br>\r\n      <div class=\"space text2\">AIC: {{Header.AIC || ''}}</div>\r\n      <br>\r\n      <div class=\"space text2\">Nurse Manager: {{Header.NurseManager}}</div>\r\n      <br>\r\n      <div class=\"space text2\">PACU Manager: {{Header.PACUManager}}</div>\r\n\r\n    </div>\r\n    <div class=\"section3\">\r\n\r\n          <div class=\"text7\">Alerts</div>\r\n          <div *ngIf=\"router.url.includes('procedure')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter: 'AlertCategory' : 'Procedure'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n          <div *ngIf=\"router.url.includes('facilityresources')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter:'AlertCategory' : 'Resource'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n\r\n    </div>\r\n    <!-- <div class=\"text1\"> &nbsp; &nbsp; , </div> -->\r\n        <div *ngIf=\"router.url.includes('procedure')\" class=\"section11\">\r\n\r\n            <br>\r\n            <br>\r\n            <br>\r\n            <div class=\"space text2a\"># Cases: {{Header.ProcedureHeader.CurrentORCount}}</div>\r\n            <br>\r\n            <div class=\"space text2a\">OR Utilization: {{Header.ProcedureHeader.ORUtilization}}</div>\r\n            <br>\r\n      \r\n          </div>\r\n    <div *ngIf=\"router.url.includes('procedure')\" class=\"section1\">\r\n      <canvas style=\"width:25%\" id=\"myChart\"></canvas>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('patient')\" class=\"section1a\">\r\n      <br>\r\n      <div class=\"space text2b\">#Patient: {{Header.PatientHeader.TotalPatient}}</div>\r\n      <div class=\"space text2b\">InPatients: {{Header.PatientHeader.InPatient}}</div>\r\n      <div class=\"space text2b\">OutPatients: {{Header.PatientHeader.OutPatient}}</div>\r\n      <div class=\"text2b\">Am admit: {{Header.PatientHeader.AmAdmit}}</div>\r\n      <div class=\"space text2b\">Pm admit: {{Header.PatientHeader.PmAdmit}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('personel')\" class=\"section1a\">\r\n      <br>\r\n      <div class=\"text2\">OnCallAnest: {{Header.PersonnelHeader.OnCallAnest}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('facilityresources')\" class=\"section1a\">\r\n      <br>\r\n      <div class=\"space text5\"> &nbsp; &nbsp; &nbsp;PACU Occupancy</div>\r\n      <br>\r\n\r\n      <div class=\"space text2\">Max Occupancy: {{Header.RecoveryHeader.MaxOccupancy}}</div>\r\n      <div class=\"space text2\">Max Occupancy Time: {{Header.RecoveryHeader.MaxOccupancyTime}}</div>\r\n      <div style=\"width: 60%; background-color:rgb(219, 238, 244); height: 50px; margin-top: 10px;\" >\r\n      \r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"header\">\r\n  <div class=\"container\">\r\n    <div class=\"section\">\r\n      <span class=\"logo\">PeriVision</span>\r\n      <img class=\"\"  src =\"../../../assets/Perimatics-logo.png\"  alt=\"\" > \r\n      <div class=\"time\">{{now}} {{timeDisplay}}</div>\r\n    </div>\r\n\r\n    <div class=\"section\">\r\n\r\n      <div class=\"space text21\">AIC: {{Header.AIC || ''}}</div>\r\n    \r\n      <div class=\"space text21\">Nurse Manager: {{Header.NurseManager}}</div>\r\n    \r\n      <div class=\"space text21\">PACU Manager: {{Header.PACUManager}}</div>\r\n    \r\n      <div class=\"space text21\">Tech Lead: {{Header.TechLead}}</div>\r\n    \r\n      <div class=\"space text21\">HA Lead: {{Header.HALead}}</div>\r\n\r\n    </div>\r\n    <div class=\"section3\">\r\n\r\n          <div class=\"text7\">Alerts</div>\r\n          <div *ngIf=\"router.url.includes('procedure')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter: 'AlertCategory' : 'Procedure'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n          <div *ngIf=\"router.url.includes('facilityresources')\">\r\n            <div *ngIf=\"Header.Alert\">\r\n              <mat-list class=\"app-class\">\r\n                <mat-list-item *ngFor=\"let item of Header.Alert.List | searchfilter:'AlertCategory' : 'Resource'\">\r\n                  {{item.Alert}} </mat-list-item>\r\n              </mat-list>\r\n            </div>\r\n          </div>\r\n\r\n    </div>\r\n    <!-- < <div class=\"space text2a\"># Cases: {{Header.ProcedureHeader.CurrentORCount}}</div> -->\r\n        <div *ngIf=\"router.url.includes('procedure')\" class=\"section11\">\r\n            <div class=\"space text2a\">\r\n                <rg-gauge-chart\r\n                [canvasWidth]=\"canvasWidth\"\r\n                [needleValue]=\"needleValue\"\r\n                [centralLabel]=\"centralLabel\"\r\n                [options]=\"options\"\r\n                [name]=\"Utilization\"></rg-gauge-chart>\r\n             </div>\r\n      \r\n          </div>\r\n    <div *ngIf=\"router.url.includes('procedure')\" class=\"section1\">\r\n      <canvas style=\"width:25%\" id=\"myChart\"></canvas>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('patient')\" class=\"section1a\">\r\n      <br>\r\n      <div class=\"space text2b\">#Patient: {{Header.PatientHeader.TotalPatient}}</div>\r\n      <div class=\"space text2b\">InPatients: {{Header.PatientHeader.InPatient}}</div>\r\n      <div class=\"space text2b\">OutPatients: {{Header.PatientHeader.OutPatient}}</div>\r\n      <div class=\"text2b\">Am admit: {{Header.PatientHeader.AmAdmit}}</div>\r\n      <div class=\"space text2b\">Pm admit: {{Header.PatientHeader.PmAdmit}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('personel')\" class=\"section1a\">\r\n      <br>\r\n      <div class=\"text2\">OnCallAnest: {{Header.PersonnelHeader.OnCallAnest}}</div>\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('facilityresources')\" class=\"section11\">\r\n      \r\n    \r\n        <!-- <div class=\"space text2\">Max Occupancy: {{Header.RecoveryHeader.MaxOccupancy}}</div> -->\r\n          <rg-gauge-chart\r\n          [canvasWidth]=\"canvasWidth\"\r\n          [needleValue]=\"needleValue1\"\r\n          [centralLabel]=\"centralLabel\"\r\n          [options]=\"options\"\r\n          [name]=\"MaxOccupancy\"></rg-gauge-chart>\r\n          <span class=\"space text2\">  &nbsp;&nbsp;  &nbsp; &nbsp; &nbsp;Max Occupancy </span>\r\n          <br>\r\n          <span class=\"space text2\"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Time: {{Header.RecoveryHeader.MaxOccupancyTime}} </span>\r\n        \r\n\r\n    </div>\r\n    <div *ngIf=\"router.url.includes('facilityresources')\" class=\"section1c\">\r\n       <table style=\"height: 150px; width: 100%\">\r\n         <tr>\r\n           <td style=\"width:50%; height: 50%\">\r\n            <div class=\"divRect\"> Nausea = 5</div>\r\n           </td>\r\n           <td style=\"width:50%;height: 50%\">\r\n            <div class=\"divRect1\"> Max Pain > 7 = 3 </div>\r\n           </td>\r\n         </tr>\r\n         <tr>\r\n          <td style=\"width:50%;height: 50%\">\r\n            <div class=\"divRect1\"> PACU Hold = 1</div>\r\n          </td>\r\n          <td style=\"width:50%;height: 50%\">\r\n            <div class=\"divRect\"> Hyperglycemia= 1 </div>\r\n          </td>\r\n        </tr>\r\n       </table>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/component/app-header/app-header.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: white;\n  position: fixed;\n  z-index: 100;\n  width: 99%;\n  border-radius: 25px;\n  border: 4px solid #c6d9f1;\n  margin-left: 5px; }\n\n.header1 {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: white;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #c6d9f1;\n  margin-left: 5px; }\n\n.header .logo {\n  font-size: 3.5em;\n  font-family: Calibri;\n  color: #4f81bd; }\n\n.header .container {\n  margin-left: 25px;\n  margin-top: 10px; }\n\n.time {\n  margin-top: 5px;\n  font-size: 1.5em; }\n\n.section {\n  width: 18%;\n  float: left;\n  font-size: 1em; }\n\n.section11 {\n  float: left;\n  font-size: 1em;\n  margin-left: 2%; }\n\n.section2 {\n  width: 25%;\n  float: left;\n  font-size: 1em;\n  background-color: lightgray;\n  height: 9em;\n  border-radius: 25px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-align: center; }\n\n.section3 {\n  width: 25%;\n  float: left;\n  font-size: 1em;\n  height: 180px;\n  background-color: rgba(215, 215, 215, 0.85);\n  border-radius: 25px;\n  overflow-y: auto;\n  overflow-x: hidden; }\n\n.section1 {\n  width: 20%;\n  float: right;\n  font-size: 1.2em;\n  height: 9em;\n  padding-right: 20px;\n  padding-top: 10px; }\n\n.section1a {\n  width: 20%;\n  float: right;\n  font-size: 1em;\n  height: 9em;\n  padding-right: 20px;\n  padding-top: 10px; }\n\n.section4 {\n  width: 14%;\n  float: right;\n  font-size: 1.3em;\n  height: 100px;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 18px; }\n\n.section5 {\n  width: 14%;\n  float: right;\n  font-size: 1.3em;\n  height: 100px;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 18px; }\n\n.section6 {\n  width: 18%;\n  float: right;\n  font-size: 1.3em;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 20px; }\n\n.subsection {\n  margin-top: 30px; }\n\n.space {\n  margin: 0px 0px 0px 0px; }\n\n.header canvas {\n  height: 175px !important; }\n\n.app-class .mat-list-item {\n  width: 100%;\n  height: auto;\n  font-family: Calibri;\n  font-size: 25px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: bold;\n  margin-top: 0.1em !important;\n  text-align: center;\n  color: red;\n  /* margin-left:22% !important; */ }\n\n.alert {\n  border-radius: 15px;\n  border: 1px solid #1612ec;\n  margin-right: 50px; }\n\n.text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.4em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text5 {\n  font-size: 2em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri; }\n\n.text2b {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  padding-top: 2px; }\n\n.text2a {\n  font-size: 1.7em;\n  font-family: Calibri;\n  text-align: left; }\n\n.text3 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 0px; }\n\n.text5 {\n  font-family: Calibri;\n  font-size: 1.5em; }\n\n.text7 {\n  font-family: Calibri;\n  font-size: 1.8em;\n  text-anchor: middle;\n  color: gray;\n  text-align: center;\n  margin-top: 0px; }\n\n.text8 {\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  color: gray;\n  text-align: center;\n  margin-top: 1px;\n  margin-left: 5em !important; }\n"
+module.exports = ".header {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: white;\n  position: fixed;\n  z-index: 100;\n  width: 99%;\n  border-radius: 25px;\n  border: 4px solid #c6d9f1;\n  margin-left: 5px; }\n\n.header1 {\n  height: 200px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  background-color: white;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  border-radius: 25px;\n  border: 1px solid #c6d9f1;\n  margin-left: 5px; }\n\n.header .logo {\n  font-size: 3.5em;\n  font-family: Calibri;\n  color: #4f81bd; }\n\n.header .container {\n  margin-left: 25px;\n  margin-top: 10px; }\n\n.time {\n  margin-top: 5px;\n  font-size: 1.5em; }\n\n.section {\n  width: 18%;\n  float: left;\n  font-size: 1em; }\n\n.section11 {\n  float: left;\n  font-size: 1em;\n  margin-left: 2%; }\n\n.section2 {\n  width: 25%;\n  float: left;\n  font-size: 1em;\n  background-color: lightgray;\n  height: 9em;\n  border-radius: 25px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-align: center; }\n\n.section3 {\n  width: 25%;\n  float: left;\n  font-size: 1em;\n  height: 180px;\n  background-color: rgba(215, 215, 215, 0.85);\n  border-radius: 25px;\n  overflow-y: auto;\n  overflow-x: hidden; }\n\n.section1 {\n  width: 20%;\n  float: right;\n  font-size: 1.2em;\n  height: 9em;\n  padding-right: 20px;\n  padding-top: 10px; }\n\n.section1c {\n  width: 20%;\n  float: right;\n  font-size: 1.2em;\n  height: 20em;\n  padding-right: 20px;\n  padding-top: 10px; }\n\n.section1a {\n  width: 20%;\n  float: right;\n  font-size: 1em;\n  height: 9em;\n  padding-right: 20px;\n  padding-top: 10px; }\n\n.section4 {\n  width: 14%;\n  float: right;\n  font-size: 1.3em;\n  height: 100px;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 18px; }\n\n.section5 {\n  width: 14%;\n  float: right;\n  font-size: 1.3em;\n  height: 100px;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 18px; }\n\n.section6 {\n  width: 18%;\n  float: right;\n  font-size: 1.3em;\n  margin-right: 50px;\n  font-family: Calibri;\n  margin-top: 20px; }\n\n.subsection {\n  margin-top: 30px; }\n\n.space {\n  margin: 0px 0px 0px 0px; }\n\n.header canvas {\n  height: 175px !important; }\n\n.app-class .mat-list-item {\n  width: 100%;\n  height: auto;\n  font-family: Calibri;\n  font-size: 25px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: bold;\n  margin-top: 0.1em !important;\n  text-align: center;\n  color: red;\n  /* margin-left:22% !important; */ }\n\n.alert {\n  border-radius: 15px;\n  border: 1px solid #1612ec;\n  margin-right: 50px; }\n\n.text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.4em;\n  text-anchor: middle; }\n\n.text4 {\n  font-size: 1.5em;\n  font-family: Calibri; }\n\n.text5 {\n  font-size: 2em;\n  font-family: Calibri; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  text-align: right; }\n\n.text21 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  padding-top: 8px; }\n\n.text2b {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  padding-top: 2px; }\n\n.text2a {\n  font-size: 1.7em;\n  font-family: Calibri;\n  text-align: left; }\n\n.text3 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 0px; }\n\n.text5 {\n  font-family: Calibri;\n  font-size: 1.5em; }\n\n.text7 {\n  font-family: Calibri;\n  font-size: 1.8em;\n  text-anchor: middle;\n  color: gray;\n  text-align: center;\n  margin-top: 0px; }\n\n.text8 {\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  color: gray;\n  text-align: center;\n  margin-top: 1px;\n  margin-left: 5em !important; }\n\n.divRect {\n  background-color: #fac090;\n  width: 90%;\n  height: 45px;\n  text-align: center;\n  padding-top: 20px;\n  border-radius: 10px;\n  font-family: 'Calibri';\n  font-size: 0.9em; }\n\n.divRect1 {\n  background-color: #d7e4bd;\n  width: 90%;\n  height: 45px;\n  text-align: center;\n  padding-top: 20px;\n  border-radius: 10px;\n  font-family: 'Calibri';\n  font-size: 0.9em; }\n"
 
 /***/ }),
 
@@ -523,6 +523,22 @@ var AppHeaderComponent = /** @class */ (function () {
         this.globals = globals;
         this.router = router;
         this.counter = 0;
+        this.canvasWidth = 200;
+        this.needleValue = 0;
+        this.centralLabel = '';
+        this.name = '';
+        this.bottomLabel = 0;
+        this.options = {
+            hasNeedle: true,
+            needleColor: 'black',
+            needleUpdateSpeed: 1000,
+            arcColors: ['rgb(255, 0, 0)', 'rgb(228, 190, 28)', 'rgb(162, 170, 86)', 'rgb(119, 147, 60)'],
+            arcDelimiters: [25, 50, 75],
+            rangeLabel: ['0', '100'],
+            needleStartValue: 0,
+        };
+        this.needleValue1 = 0;
+        this.bottomLabel1 = 0;
         this.now = __WEBPACK_IMPORTED_MODULE_1_moment__().format('MM/DD/YYYY');
         // this.loadHeaderChartData();
         this.loadFromFile();
@@ -541,6 +557,10 @@ var AppHeaderComponent = /** @class */ (function () {
             _this.timeDisplay = _this.procedure.CurrentTime;
             _this.Header = _this.procedure.Header;
             _this.headerchart = _this.Header.ProcedureHeader.HeaderChart;
+            _this.needleValue = _this.Header.ProcedureHeader.ORUtilization;
+            _this.bottomLabel = _this.Header.ProcedureHeader.ORUtilization;
+            _this.needleValue1 = _this.Header.RecoveryHeader.MaxOccupancy;
+            _this.bottomLabel1 = _this.Header.RecoveryHeader.MaxOccupancy;
             _this.canvas = document.getElementById('myChart');
             if (_this.canvas != null) {
                 _this.ctx = _this.canvas.getContext('2d');
@@ -1237,120 +1257,120 @@ var FacilityresourcesComponent = /** @class */ (function () {
     FacilityresourcesComponent.prototype.loadChartData = function (data) {
         this.pacuchart = data;
         this.canvas = document.getElementById('myChart2');
-        this.ctx = this.canvas.getContext('2d');
-        this.canvas = document.getElementById('myChart2');
-        this.ctx = this.canvas.getContext('2d');
-        this.ctx.canvas.width = 700;
-        this.ctx.canvas.height = 375;
-        // tslint:disable-next-line:prefer-const
-        var myChart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__(this.ctx, {
-            type: 'bar',
-            data: {
-                labels: this.pacuchart.PacuChartlabels,
-                datasets: [{
-                        label: this.pacuchart.PacuChartdatasetlabel,
-                        data: this.pacuchart.PacuChartdataset,
-                        backgroundColor: this.pacuchart.PacuChartbackgroundColor,
-                        pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor,
-                        borderColor: this.pacuchart.PacuChartbackgroundColor,
-                        pointBorderColor: this.pacuchart.PacuChartbackgroundColor,
-                        fill: false,
-                        borderWidth: 1
+        if (this.canvas != null) {
+            this.ctx = this.canvas.getContext('2d');
+            this.ctx.canvas.width = 700;
+            this.ctx.canvas.height = 375;
+            // tslint:disable-next-line:prefer-const
+            var myChart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__(this.ctx, {
+                type: 'bar',
+                data: {
+                    labels: this.pacuchart.PacuChartlabels,
+                    datasets: [{
+                            label: this.pacuchart.PacuChartdatasetlabel,
+                            data: this.pacuchart.PacuChartdataset,
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor,
+                            pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor,
+                            borderColor: this.pacuchart.PacuChartbackgroundColor,
+                            pointBorderColor: this.pacuchart.PacuChartbackgroundColor,
+                            fill: false,
+                            borderWidth: 1
+                        },
+                        {
+                            label: this.pacuchart.PacuChartdatasetlabel1,
+                            data: this.pacuchart.PacuChartdataset1,
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor1,
+                            pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor1,
+                            borderColor: this.pacuchart.PacuChartbackgroundColor1,
+                            pointBorderColor: this.pacuchart.PacuChartbackgroundColor1,
+                            fill: false,
+                            borderWidth: 1
+                        }],
+                },
+                options: {
+                    responsive: false,
+                    animation: {
+                        duration: 0
                     },
-                    {
-                        label: this.pacuchart.PacuChartdatasetlabel1,
-                        data: this.pacuchart.PacuChartdataset1,
-                        backgroundColor: this.pacuchart.PacuChartbackgroundColor1,
-                        pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor1,
-                        borderColor: this.pacuchart.PacuChartbackgroundColor1,
-                        pointBorderColor: this.pacuchart.PacuChartbackgroundColor1,
-                        fill: false,
-                        borderWidth: 1
-                    }],
-            },
-            options: {
-                responsive: false,
-                animation: {
-                    duration: 0
-                },
-                legend: {
-                    display: true
-                },
-                scales: {
-                    yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Admit / Discharge Counts',
-                            },
-                        }],
-                    xAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Time',
-                            },
-                        }],
-                },
-            }
-        });
+                    legend: {
+                        display: true
+                    },
+                    scales: {
+                        yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Admit / Discharge Counts',
+                                },
+                            }],
+                        xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Time',
+                                },
+                            }],
+                    },
+                }
+            });
+        }
     };
     FacilityresourcesComponent.prototype.loadChartData1 = function (data) {
         this.pacuThroughChart = data;
         this.canvas = document.getElementById('myChart1');
-        this.ctx = this.canvas.getContext('2d');
-        this.canvas = document.getElementById('myChart1');
-        this.ctx = this.canvas.getContext('2d');
-        this.ctx.canvas.width = 700;
-        this.ctx.canvas.height = 375;
-        // tslint:disable-next-line:prefer-const
-        var myChart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__(this.ctx, {
-            type: 'line',
-            data: {
-                labels: this.pacuThroughChart.PacuChartlabels,
-                datasets: [{
-                        // label: this.pacuThroughChart.PacuChartdatasetlabel,
-                        data: this.pacuThroughChart.PacuChartdataset,
-                        backgroundColor: this.pacuThroughChart.PacuChartbackgroundColor,
-                        pointBackgroundColor: this.pacuThroughChart.PacuChartbackgroundColor,
-                        borderColor: this.pacuThroughChart.PacuChartbackgroundColor,
-                        pointBorderColor: this.pacuThroughChart.PacuChartbackgroundColor,
-                        fill: false,
-                        borderWidth: 3
+        if (this.canvas != null) {
+            this.ctx = this.canvas.getContext('2d');
+            this.ctx.canvas.width = 700;
+            this.ctx.canvas.height = 375;
+            // tslint:disable-next-line:prefer-const
+            var myChart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__(this.ctx, {
+                type: 'line',
+                data: {
+                    labels: this.pacuThroughChart.PacuChartlabels,
+                    datasets: [{
+                            // label: this.pacuThroughChart.PacuChartdatasetlabel,
+                            data: this.pacuThroughChart.PacuChartdataset,
+                            backgroundColor: this.pacuThroughChart.PacuChartbackgroundColor,
+                            pointBackgroundColor: this.pacuThroughChart.PacuChartbackgroundColor,
+                            borderColor: this.pacuThroughChart.PacuChartbackgroundColor,
+                            pointBorderColor: this.pacuThroughChart.PacuChartbackgroundColor,
+                            fill: false,
+                            borderWidth: 3
+                        },
+                        {
+                            // label: this.pacuThroughChart.PacuChartdatasetlabel1,
+                            data: this.pacuThroughChart.PacuChartdataset1,
+                            backgroundColor: this.pacuThroughChart.PacuChartbackgroundColor1,
+                            pointBackgroundColor: this.pacuThroughChart.PacuChartbackgroundColor1,
+                            borderColor: this.pacuThroughChart.PacuChartbackgroundColor1,
+                            pointBorderColor: this.pacuThroughChart.PacuChartbackgroundColor1,
+                            fill: false,
+                            borderWidth: 1
+                        }],
+                },
+                options: {
+                    responsive: false,
+                    animation: {
+                        duration: 0,
                     },
-                    {
-                        // label: this.pacuThroughChart.PacuChartdatasetlabel1,
-                        data: this.pacuThroughChart.PacuChartdataset1,
-                        backgroundColor: this.pacuThroughChart.PacuChartbackgroundColor1,
-                        pointBackgroundColor: this.pacuThroughChart.PacuChartbackgroundColor1,
-                        borderColor: this.pacuThroughChart.PacuChartbackgroundColor1,
-                        pointBorderColor: this.pacuThroughChart.PacuChartbackgroundColor1,
-                        fill: false,
-                        borderWidth: 1
-                    }],
-            },
-            options: {
-                responsive: false,
-                animation: {
-                    duration: 0,
-                },
-                legend: {
-                    display: false
-                },
-                scales: {
-                    yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: '% Occupancy',
-                            },
-                        }],
-                    xAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Time',
-                            },
-                        }],
-                },
-            }
-        });
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: '% Occupancy',
+                                },
+                            }],
+                        xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Time',
+                                },
+                            }],
+                    },
+                }
+            });
+        }
     };
     FacilityresourcesComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1553,7 +1573,7 @@ module.exports = "<p></p>\r\n<div style=\"margin-left:50px\">\r\n  <table style=
 /***/ "./src/app/PrimeCareManager/notify/notify/notify.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse;\n  border: 0px solid #dbeef4; }\ntable td {\n  border: 0px solid #dbeef4; }\n.cardcontent {\n  font-family: Calibri;\n  font-size: 15px;\n  color: #318f9c; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 1.5em; }\n.textalign11 {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 3em; }\n.textalign3 {\n  font-family: Calibri;\n  font-size: 1em;\n  text-align: center;\n  background-color: #dbeef4;\n  margin-left: 120px;\n  width: 76%;\n  height: 10em;\n  overflow: auto; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  height: 3.2em;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 1.5em;\n  border: 2px solid #2e7d96; }\n.textalign1 {\n  font-family: Calibri;\n  font-size: 0.8em;\n  text-align: center;\n  margin: auto;\n  width: 76%;\n  height: 3.0em;\n  padding-top: 10px;\n  padding-right: 7px;\n  padding-bottom: 17px;\n  padding-left: 45px; }\n.textalign1a {\n  font-family: Calibri;\n  font-size: 0.8em;\n  text-align: center;\n  margin: auto;\n  width: 76%;\n  height: 3.0em;\n  padding-top: 10px;\n  padding-right: 7px;\n  padding-bottom: 17px;\n  padding-left: 45px; }\n.textalign2 {\n  font-family: Calibri;\n  font-size: 1.1em;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 220px;\n  height: 1.9em;\n  border: 2px solid #58757e; }\n.demo-basic {\n  padding: 0; }\n.demo-basic .mat-card-content {\n  padding: 16px; }\n.demo-full-width {\n  width: 70%;\n  padding-top: 30px; }\n.demo-card {\n  margin: auto;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border: 2px solid #7f7f7f; }\n.demo-card mat-card-content {\n    font-size: 16px; }\n.demo-text-align-end {\n  text-align: end; }\n.demo-textarea {\n  font-family: Calibri;\n  resize: none;\n  border: 2px solid #7f7f7f;\n  overflow: auto;\n  padding: 20px;\n  height: 100px; }\n.mat-button {\n  font-family: Calibri;\n  padding: 0 6px 0 6px;\n  margin: 6px 8px 6px 8px;\n  min-width: 188px;\n  border-radius: 3px;\n  font-size: 14px;\n  text-align: center;\n  text-decoration: none;\n  height: 50px;\n  border: none;\n  outline: none;\n  background-color: #c4bd97;\n  border-radius: 5px;\n  color: white; }\n.mat-card-title {\n  font-family: Calibri;\n  font-size: 27px;\n  color: #7f7f7f; }\n::ng-deep .mat-input-underline {\n  display: none; }\n::ng-deep .mat-select {\n  font-size: 17px;\n  color: #318f9c; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 1em; }\n"
+module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse;\n  border: 0px solid #dbeef4; }\ntable td {\n  border: 0px solid #dbeef4; }\n.cardcontent {\n  font-family: Calibri;\n  font-size: 15px;\n  color: #318f9c; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 1.5em; }\n.textalign11 {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 3em;\n  border-radius: 25px;\n  border: 4px solid #c6d9f1; }\n.textalign3 {\n  font-family: Calibri;\n  font-size: 1em;\n  text-align: center;\n  background-color: #dbeef4;\n  margin-left: 120px;\n  width: 76%;\n  height: 10em;\n  overflow: auto;\n  border-radius: 25px;\n  border: 4px solid #c6d9f1; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-optgroup {\n  padding-top: 20px; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  height: 2.0em;\n  text-align: center;\n  font-weight: bold;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 1.5em;\n  border-radius: 25px;\n  border: 4px solid #c6d9f1;\n  padding-top: 20px; }\n.textalign1 {\n  font-family: Calibri;\n  font-size: 0.8em;\n  text-align: center;\n  margin: auto;\n  width: 76%;\n  height: 3.0em;\n  padding-top: 10px;\n  padding-right: 7px;\n  padding-bottom: 17px;\n  padding-left: 45px; }\n.textalign1a {\n  font-family: Calibri;\n  font-size: 0.8em;\n  text-align: center;\n  margin: auto;\n  width: 76%;\n  height: 3.0em;\n  padding-top: 10px;\n  padding-right: 7px;\n  padding-bottom: 17px;\n  padding-left: 45px; }\n.textalign2 {\n  font-family: Calibri;\n  font-size: 1.1em;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 220px;\n  height: 1.9em;\n  border: 2px solid #58757e; }\n.demo-basic {\n  padding: 0; }\n.demo-basic .mat-card-content {\n  padding: 16px; }\n.demo-full-width {\n  width: 70%;\n  padding-top: 30px; }\n.demo-card {\n  margin: auto;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  border: 2px solid #7f7f7f; }\n.demo-card mat-card-content {\n    font-size: 16px; }\n.demo-text-align-end {\n  text-align: end; }\n.demo-textarea {\n  font-family: Calibri;\n  resize: none;\n  border: 2px solid #7f7f7f;\n  overflow: auto;\n  padding: 20px;\n  height: 100px;\n  border-radius: 25px;\n  border: 4px solid #c6d9f1; }\n.mat-button {\n  font-family: Calibri;\n  padding: 0 6px 0 6px;\n  margin: 6px 8px 6px 8px;\n  min-width: 188px;\n  font-size: 14px;\n  text-align: center;\n  text-decoration: none;\n  height: 50px;\n  border: none;\n  outline: none;\n  background-color: #c4bd97;\n  border-radius: 25px;\n  border: 4px solid #c6d9f1;\n  color: white; }\n.mat-card-title {\n  font-family: Calibri;\n  font-size: 27px;\n  color: #7f7f7f; }\n::ng-deep .mat-input-underline {\n  display: none; }\n::ng-deep .mat-select {\n  font-size: 17px;\n  color: #318f9c; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 1em; }\n"
 
 /***/ }),
 
@@ -2183,14 +2203,14 @@ var PatientDataSource = /** @class */ (function (_super) {
 /***/ "./src/app/PrimeCareManager/personel/personel/personel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p></p> \r\n<div *ngIf=\"personel\" style=\"margin-left:50px\">\r\n  <p></p>\r\n  <table class=\"table2\">\r\n    <tr>\r\n      <th>Staff</th>\r\n      <th>Surgeon</th>\r\n      <th>Anesthesiologist</th>\r\n      <th>CRNA</th>\r\n      <th>Resident</th>\r\n      <th>CIRCNurse</th>\r\n      <th>ScrubNurse</th>\r\n      <th>AnesTech</th>\r\n    </tr>\r\n    <tr>\r\n      <td rowspan=2 style=\"background-color: rgb(219, 238, 244); font-style: normal; color: gray;\">Count</td>\r\n      <td>{{personel.SurgeonCount}}</td>\r\n      <td>{{personel.AnesthesiologistCount}}</td>\r\n      <td>{{personel.CRNACount}}</td>\r\n      <td>{{personel.ResidentCount}}</td>\r\n      <td>{{personel.CIRCNurseCount}}</td>\r\n      <td>{{personel.ScrubNurseCount}}</td>\r\n      <td>{{personel.AnesTechCount}}</td>\r\n    </tr>\r\n  </table>\r\n  <p></p>\r\n  <p></p>\r\n  <table>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign11\">\r\n          Personal Filter:\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Total Case Count:\r\n          </div>\r\n        </td>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Max Concurrency:\r\n          </div>\r\n        </td>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Latest Time:\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-select placeholder =\"ShowAll\" (selectionChange)=\"selectChange($event)\">\r\n            <mat-optgroup *ngFor=\"let group of personel.PersonnelFilter\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          <label> {{personel.TotalCaseCount}} </label>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          {{personel.MaxConcurrencyCount}}\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          {{personel.LatestTime || \"0:00\"}}\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n\r\n  <table>\r\n    <tr>\r\n      <td width=\"10%\">\r\n        <mat-grid-list cols=\"1\" rowHeight=\"150px\">\r\n          <mat-grid-tile  class=\"grid-test-1\" [style.border]=\"'1px solid #dbeef4'\" *ngFor=\"let OperationRoom of personel.OperationsRooms\">\r\n            <div>\r\n              <span class=\"text4\"> &nbsp; {{OperationRoom.ORName}}</span>\r\n              <br>\r\n              <span class=\"text2\"> Total cases: {{OperationRoom.ORCount}}</span>\r\n              <br>\r\n              <span class=\"text2\"> Tech: {{OperationRoom.TechName}}</span>\r\n            </div>\r\n          </mat-grid-tile>\r\n        </mat-grid-list>\r\n      </td>\r\n      <td>\r\n      <div *ngFor=\"let OperationRoom of personel.OperationsRooms\">\r\n        <mat-grid-list cols=\"{{personel.maxPersonnelRowCount}}\" rowHeight=\"9.5em\">\r\n\r\n          <mat-grid-tile class=\"grid-test-1\" [style.border]=\"'1px solid #dbeef4'\" *ngFor=\"let Oper of OperationRoom.Personnels\" [style.background]=\"Oper.Color\">\r\n            <div>\r\n              <span class=\"text2B\"> &nbsp; &nbsp; &nbsp; &nbsp; {{Oper.OpName}}</span>\r\n              <br>\r\n              <span class=\"text2B\"> &nbsp; &nbsp; &nbsp; &nbsp; {{Oper.Time}} </span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Surgeon: {{Oper.SurgeonName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Anesthologist: {{Oper.AnesthologistName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Crna: {{Oper.CrnaName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; CircleNurse: {{Oper.CircleNurseName}}</span>\r\n            </div>\r\n          </mat-grid-tile>\r\n\r\n        </mat-grid-list>\r\n      </div>\r\n</td>\r\n    </tr>\r\n  </table>\r\n  <p></p>\r\n  <div style=\"margin-left:200px; margin-right:200px\">\r\n\r\n  </div>\r\n</div>\r\n<app-personel-footer></app-personel-footer>\r\n"
+module.exports = "<p></p> \r\n<div *ngIf=\"personel\" style=\"margin-left:50px\">\r\n  <p></p>\r\n  <table class=\"table2\">\r\n    <tr>\r\n      <th>Staff</th>\r\n      <th>Surgeon</th>\r\n      <th>Anesthesiologist</th>\r\n      <th>CRNA</th>\r\n      <th>Resident</th>\r\n      <th>CIRCNurse</th>\r\n      <th>ScrubNurse</th>\r\n      <th>Anes Tech</th>\r\n    </tr>\r\n    <tr>\r\n      <td rowspan=2 style=\"background-color: rgb(219, 238, 244); font-style: normal; color: gray;\">Count</td>\r\n      <td>{{personel.SurgeonCount}}</td>\r\n      <td>{{personel.AnesthesiologistCount}}</td>\r\n      <td>{{personel.CRNACount}}</td>\r\n      <td>{{personel.ResidentCount}}</td>\r\n      <td>{{personel.CIRCNurseCount}}</td>\r\n      <td>{{personel.ScrubNurseCount}}</td>\r\n      <td>{{personel.AnesTechCount}}</td>\r\n    </tr>\r\n  </table>\r\n  <p></p>\r\n  <p></p>\r\n  <table>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign11\">\r\n          Personnel Filter:\r\n        </div>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Total Case Count:\r\n          </div>\r\n        </td>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Max Concurrency:\r\n          </div>\r\n        </td>\r\n        <td>\r\n          <div class=\"textalign\">\r\n            Latest Time:\r\n          </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <div class=\"textalign\">\r\n          <mat-select placeholder =\"ShowAll\" (selectionChange)=\"selectChange($event)\">\r\n            <mat-optgroup *ngFor=\"let group of personel.PersonnelFilter\" [label]=\"group.DisplayName\" [disabled]=\"group.disabled\">\r\n              <mat-option *ngFor=\"let staff of group.Staffs\" [value]=\"staff.value\">\r\n                {{staff.viewValue}}\r\n              </mat-option>\r\n            </mat-optgroup>\r\n          </mat-select>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          <label> {{personel.TotalCaseCount}} </label>\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          {{personel.MaxConcurrencyCount}}\r\n        </div>\r\n      </td>\r\n      <td>\r\n        <div class=\"textalign1\">\r\n          {{personel.LatestTime || \"0:00\"}}\r\n        </div>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n\r\n  <table>\r\n    <tr>\r\n      <td width=\"10%\">\r\n        <mat-grid-list cols=\"1\" rowHeight=\"150px\">\r\n          <mat-grid-tile  class=\"grid-test-1\" [style.border]=\"'1px solid #dbeef4'\" *ngFor=\"let OperationRoom of personel.OperationsRooms\">\r\n            <div>\r\n              <span class=\"text4\"> &nbsp; {{OperationRoom.ORName}}</span>\r\n              <br>\r\n              <span class=\"text2\"> Total cases: {{OperationRoom.ORCount}}</span>\r\n              <br>\r\n              <span class=\"text2\"> Tech: {{OperationRoom.TechName}}</span>\r\n            </div>\r\n          </mat-grid-tile>\r\n        </mat-grid-list>\r\n      </td>\r\n      <td>\r\n      <div *ngFor=\"let OperationRoom of personel.OperationsRooms\">\r\n        <mat-grid-list cols=\"{{personel.maxPersonnelRowCount}}\" rowHeight=\"9.5em\">\r\n\r\n          <mat-grid-tile class=\"grid-test-1\" [style.border]=\"'1px solid #dbeef4'\" *ngFor=\"let Oper of OperationRoom.Personnels\" [style.background]=\"Oper.Color\">\r\n            <div>\r\n              <span class=\"text2B\"> &nbsp; &nbsp; &nbsp; &nbsp; {{Oper.OpName}}</span>\r\n              <br>\r\n              <span class=\"text2B\"> &nbsp; &nbsp; &nbsp; &nbsp; {{Oper.Time}} </span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Surgeon: {{Oper.SurgeonName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Anesthologist: {{Oper.AnesthologistName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; Crna: {{Oper.CrnaName}}</span>\r\n              <br>\r\n              <span class=\"text1\"> &nbsp; &nbsp; CircleNurse: {{Oper.CircleNurseName}}</span>\r\n            </div>\r\n          </mat-grid-tile>\r\n\r\n        </mat-grid-list>\r\n      </div>\r\n</td>\r\n    </tr>\r\n  </table>\r\n  <p></p>\r\n  <div style=\"margin-left:200px; margin-right:200px\">\r\n\r\n  </div>\r\n</div>\r\n<app-personel-footer></app-personel-footer>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/PrimeCareManager/personel/personel/personel.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 1.5em; }\n.textalign11 {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  margin-bottom: 8px;\n  font-size: 1.5em; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  outline: solid;\n  outline-color: #2e7d96;\n  height: 30px;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  padding-top: 8px;\n  margin-bottom: 14px; }\n.textalign1 {\n  font-family: Calibri;\n  text-align: center;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 150px;\n  border: 2px solid #2e7d96;\n  padding-top: 7px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 16px; }\n.table1 {\n  width: 90%;\n  height: 200px; }\n.table2 {\n  width: 70%;\n  border: 1px solid #dbeef4;\n  font-family: Calibri;\n  font-size: 1.3em;\n  font-weight: bold; }\nth {\n  border: 1px #dbeef4;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  color: gray; }\ntd {\n  border: 1px #dbeef4;\n  font-family: Calibri;\n  text-align: center; }\n.text1 {\n  font-family: Calibri;\n  font-size: 1.2em;\n  font-weight: normal; }\n.text4 {\n  font-size: 2em;\n  font-family: Calibri;\n  font-weight: bold; }\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n.text2B {\n  font-size: 1.4em;\n  font-family: Calibri;\n  font-weight: bold;\n  text-align: left; }\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 5px; }\nmat-header-cell:nth-child(1),\nmat-cell:nth-child(1) {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 3px;\n          flex: 0 0 3px; }\n.grid-test-1 {\n  text-align: center !important; }\n.mat-option {\n  font-size: 1.1em; }\n.mat-optgroup {\n  font-size: 1.1em; }\n"
+module.exports = "/* Structure */\n.mat-table {\n  display: table;\n  height: 3000px;\n  border: 1px solid pink; }\n.highlight {\n  background: #42A948;\n  /* green */ }\n.mat-header-row {\n  color: #4f81bd;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 20;\n  background: #4f81bd; }\n.header {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  width: 99.5%;\n  margin-left: 5px; }\n.headertext {\n  font-family: Calibri;\n  font-size: 18px;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: 500;\n  line-height: 26.4px;\n  color: white; }\n.columntext {\n  font-family: Calibri;\n  font-size: 18px;\n  color: black; }\n.mat-cell {\n  width: 30px;\n  border: 1px solid black; }\ntable {\n  width: 98%;\n  border-collapse: collapse; }\n.text1 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 19px; }\n.textalign {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  font-size: 1.5em; }\n.textalign11 {\n  font-family: Calibri;\n  text-align: center;\n  vertical-align: middle;\n  margin-bottom: 8px;\n  font-size: 1.5em; }\n.text2 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 17px; }\n.text3 {\n  font-weight: bold;\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.text4 {\n  font-family: Calibri;\n  font-style: normal;\n  font-size: 15px; }\n.gtext {\n  background-color: #dbeef4; }\n.gtext1 {\n  background-color: #ebf1de; }\n.md-select-value.md-select-placeholder {\n  color: red !important; }\n.mat-select {\n  display: inline-block;\n  width: 100%;\n  outline: solid;\n  outline-color: #2e7d96;\n  height: 30px;\n  text-align: center;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  padding-top: 8px;\n  margin-bottom: 14px; }\n.textalign1 {\n  font-family: Calibri;\n  text-align: center;\n  font-size: 1.25em;\n  background-color: #dbeef4;\n  margin: auto;\n  width: 150px;\n  border: 2px solid #2e7d96;\n  padding-top: 7px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n::ng-deep .mat-select-content {\n  font-family: Calibri;\n  background-color: #dbeef4;\n  font-size: 16px; }\n.table1 {\n  width: 90%;\n  height: 200px; }\n.table2 {\n  width: 100%;\n  border: 1px solid #dbeef4;\n  font-family: Calibri;\n  font-size: 2.5em;\n  font-weight: bold; }\nth {\n  border: 1px #dbeef4;\n  font-family: Calibri;\n  background-color: #dbeef4;\n  color: gray; }\ntd {\n  border: 1px #dbeef4;\n  font-family: Calibri;\n  text-align: center; }\n.text1 {\n  font-family: Calibri;\n  font-size: 1.2em;\n  font-weight: normal; }\n.text4 {\n  font-size: 2em;\n  font-family: Calibri;\n  font-weight: bold; }\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n.text2B {\n  font-size: 1.4em;\n  font-family: Calibri;\n  font-weight: bold;\n  text-align: left; }\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: normal;\n  margin-top: 5px; }\nmat-header-cell:nth-child(1),\nmat-cell:nth-child(1) {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 3px;\n          flex: 0 0 3px; }\n.grid-test-1 {\n  text-align: center !important; }\n.mat-option {\n  font-size: 1.1em; }\n.mat-optgroup {\n  font-size: 1.1em; }\n"
 
 /***/ }),
 
@@ -2757,12 +2777,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44_primeng_dropdown__ = __webpack_require__("./node_modules/primeng/dropdown.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44_primeng_dropdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_44_primeng_dropdown__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__PrimeCareManager_confirmation_dialog_confirmation_dialog_component__ = __webpack_require__("./src/app/PrimeCareManager/confirmation-dialog/confirmation-dialog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_angular_gauge_chart__ = __webpack_require__("./node_modules/angular-gauge-chart/fesm5/angular-gauge-chart.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -2835,7 +2857,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_41__PrimeCareManager_component_app_header_app_landing_header_component__["a" /* AppLandingHeaderComponent */],
                 __WEBPACK_IMPORTED_MODULE_42__PrimeCareManager_SearchFilterPipe___["a" /* SearchFilterPipe */],
                 __WEBPACK_IMPORTED_MODULE_43__PrimeCareManager_pacu_pacu_component__["a" /* PacuComponent */],
-                __WEBPACK_IMPORTED_MODULE_45__PrimeCareManager_confirmation_dialog_confirmation_dialog_component__["a" /* ConfirmationDialogComponent */]
+                __WEBPACK_IMPORTED_MODULE_45__PrimeCareManager_confirmation_dialog_confirmation_dialog_component__["a" /* ConfirmationDialogComponent */],
+                __WEBPACK_IMPORTED_MODULE_46_angular_gauge_chart__["a" /* GaugeChartComponent */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_11__services_app_data_service__["a" /* AppDataService */],
@@ -3577,9 +3600,9 @@ var User = /** @class */ (function () {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    api_url: 'https://primecaredev.centralus.cloudapp.azure.com/api/fake',
-    api_url_real: 'https://primecaredev.centralus.cloudapp.azure.com/api/get',
-    api_url_real_post: 'https://primecaredev.centralus.cloudapp.azure.com/api/post'
+    api_url: 'http://localhost:52221/api/fake',
+    api_url_real: 'http://localhost:52221/api/get',
+    api_url_real_post: 'http://localhost:52221/api/post'
 };
 
 
