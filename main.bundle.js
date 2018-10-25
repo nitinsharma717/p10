@@ -290,32 +290,54 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HighlightFilterPipe; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var HighlightFilterPipe = /** @class */ (function () {
-    function HighlightFilterPipe() {
+    function HighlightFilterPipe(_sanitizer) {
+        this._sanitizer = _sanitizer;
     }
     HighlightFilterPipe.prototype.transform = function (value, args) {
         if (args && value) {
             var startIndex = value.toLowerCase().indexOf(args.toLowerCase());
+            console.log(startIndex);
+            console.log(value);
             if (startIndex !== -1) {
                 var endLength = 5;
                 var matchingString = value.substr(startIndex, endLength);
-                return value.replace(matchingString, '<mark>' + matchingString + '</mark>');
+                // tslint:disable-next-line:max-line-length
+                value = value.replace(matchingString, '<tspan style="fill:red; text-anchor=middle">' + matchingString + ' </tspan>');
+                console.log(value);
+            }
+            var lastIndex = value.toLowerCase().lastIndexOf(args.toLowerCase());
+            console.log(lastIndex);
+            if (lastIndex !== -1) {
+                var endLength = 5;
+                var matchingString2 = value.substr(lastIndex, endLength);
+                console.log(matchingString2);
+                // tslint:disable-next-line:max-line-length
+                value = value.replace(matchingString2, '<tspan style="fill:red; text-anchor=middle">' + matchingString2 + ' </tspan>');
+                console.log(value);
             }
         }
-        return value;
+        console.log(value);
+        return this._sanitizer.bypassSecurityTrustHtml(value);
     };
     HighlightFilterPipe = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
             name: 'highlight'
         }),
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["DomSanitizer"]])
     ], HighlightFilterPipe);
     return HighlightFilterPipe;
 }());
@@ -2624,7 +2646,7 @@ var MatDialogsHelperService = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/procedure/procedure.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"Proc\">\r\n\r\n  <div width=\"100%\">\r\n    <button class=\"time1\" [style.left]=\"Proc.TimeRX-2 + '%'\">{{timeDisplay}}</button>\r\n    <img class=\"time\" [src]=\"\" [style.left]=\"Proc.TimeRX + '%'\" width=\"5px\" height=\"100%\">\r\n  </div>\r\n</div>\r\n\r\n<div class=\"display\">\r\n  <table *ngIf=\"Proc\" class=\"scale\">\r\n    <tr>\r\n      <th *ngFor=\"let num of Proc.TimeList\">\r\n        {{num}}:00\r\n      </th>\r\n    </tr>\r\n  </table>\r\n  <div *ngIf=\"Proc\">\r\n    <div *ngFor=\"let operationRoom of Proc.OperationRooms\">\r\n      <div class=\"or-name\">\r\n        <span class=\"name-span text4\">{{operationRoom.Name}}</span>\r\n        <br>\r\n        <span [style.color]=\"getcolor(operationRoom.Color)\"  class=\"name-span text1-b\">{{operationRoom.Type}}</span>\r\n        <br>\r\n        <span class=\"name-span text1\">{{operationRoom.SurgeonName}}</span>\r\n      </div>\r\n      <div class=\"block\">\r\n        <svg width=\"100%\" height=\"100\">\r\n          <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationRoom.Operations\">\r\n            <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\" attr.height=\"{{operation.Height}}\"\r\n              attr.fill=\"{{operation.Color}}\" />\r\n            <text class=\"text1 text3\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"20%\">{{operation.OpDescription}}</text>\r\n            <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"40%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n            text-anchor=\"middle\">{{operation.Patient.Name}} [{{operation.Patient.Info}}]</text>\r\n            <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"60%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n              text-anchor=\"middle\">{{operation.Status}}</text>\r\n            <text class=\"text1\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"80%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n              text-anchor=\"middle\">{{operation.TimeDisplay}}</text>\r\n            <image *ngIf=\"operation.ImageName\" attr.x=\"{{operation.RX + (operation.Width/12) }}%\" y=\"60%\" width=\"35px\" height=\"35px\"\r\n              attr.xlink:href=\"../../../assets/{{operation.ImageName}}.png\"></image>\r\n          </g>\r\n        </svg>\r\n      </div>\r\n      <div class=\"clearfix\"></div>\r\n    </div>\r\n  </div>\r\n  <app-proc-footer></app-proc-footer>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"Proc\">\r\n\r\n  <div width=\"100%\">\r\n    <button class=\"time1\" [style.left]=\"Proc.TimeRX-2 + '%'\">{{timeDisplay}}</button>\r\n    <img class=\"time\" [src]=\"\" [style.left]=\"Proc.TimeRX + '%'\" width=\"5px\" height=\"100%\">\r\n  </div>\r\n</div>\r\n\r\n<div class=\"display\">\r\n  <table *ngIf=\"Proc\" class=\"scale\">\r\n    <tr>\r\n      <th *ngFor=\"let num of Proc.TimeList\">\r\n        {{num}}:00\r\n      </th>\r\n    </tr>\r\n  </table>\r\n  <div *ngIf=\"Proc\">\r\n    <div *ngFor=\"let operationRoom of Proc.OperationRooms\">\r\n      <div class=\"or-name\">\r\n        <span class=\"name-span text4\">{{operationRoom.Name}}</span>\r\n        <br>\r\n        <span [style.color]=\"getcolor(operationRoom.Color)\"  class=\"name-span text1-b\">{{operationRoom.Type}}</span>\r\n        <br>\r\n        <span class=\"name-span text1\">{{operationRoom.SurgeonName}}</span>\r\n      </div>\r\n      <div class=\"block\">\r\n        <svg width=\"100%\" height=\"100\">\r\n          <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationRoom.Operations\">\r\n            <rect style=\"cursor: pointer;\" attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" attr.width=\"{{operation.Width}}%\" attr.height=\"{{operation.Height}}\"\r\n              attr.fill=\"{{operation.Color}}\" />\r\n            <text class=\"text1 text3\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"20%\">{{operation.OpDescription}}</text>\r\n            <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"40%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n            text-anchor=\"middle\">{{operation.Patient.Name}} [{{operation.Patient.Info}}]</text>\r\n            <text class=\"text1 text2\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"60%\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n              text-anchor=\"middle\">{{operation.Status}}</text>\r\n            <text class=\"text1\" attr.x=\"{{operation.RX + (operation.Width/2) }}%\" y=\"82%\" font-weight=\"bold\"\r\n              text-anchor=\"middle\" [innerHTML]=\"operation.TimeDisplay  | highlight: '(+' \" ></text>\r\n          <image *ngIf=\"operation.ImageName\" attr.x=\"{{operation.RX + (operation.Width/12) }}%\" y=\"60%\" width=\"35px\" height=\"35px\"\r\n              attr.xlink:href=\"../../../assets/{{operation.ImageName}}.png\"></image>\r\n          </g>\r\n        </svg>\r\n      </div>\r\n      <div class=\"clearfix\"></div>\r\n    </div>\r\n  </div>\r\n  <app-proc-footer></app-proc-footer>\r\n</div>\r\n"
 
 /***/ }),
 
