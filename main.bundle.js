@@ -1420,7 +1420,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
                             backgroundColor: 'Black',
                             pointBackgroundColor: 'pink',
                             borderColor: 'Black',
-                            pointBorderColor: 'yellow',
+                            pointBorderColor: 'Black',
                             fill: false,
                             borderWidth: 1
                         }],
