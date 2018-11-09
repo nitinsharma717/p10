@@ -1354,20 +1354,20 @@ var FacilityresourcesComponent = /** @class */ (function () {
                     datasets: [{
                             label: this.pacuchart.PacuChartdatasetlabel,
                             data: this.pacuchart.PacuChartdataset,
-                            backgroundColor: '#148FB6',
-                            pointBackgroundColor: '#148FB6',
-                            borderColor: '#148FB6',
-                            pointBorderColor: '#148FB6',
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor,
+                            pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor,
+                            borderColor: this.pacuchart.PacuChartbackgroundColor,
+                            pointBorderColor: this.pacuchart.PacuChartbackgroundColor,
                             fill: false,
                             borderWidth: 1
                         },
                         {
                             label: this.pacuchart.PacuChartdatasetlabel1,
                             data: this.pacuchart.PacuChartdataset1,
-                            backgroundColor: '#CE770E',
-                            pointBackgroundColor: '#CE770E',
-                            borderColor: '#CE770E',
-                            pointBorderColor: '#CE770E',
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor1,
+                            pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor1,
+                            borderColor: this.pacuchart.PacuChartbackgroundColor1,
+                            pointBorderColor: this.pacuchart.PacuChartbackgroundColor1,
                             fill: false,
                             borderWidth: 1
                         }],
@@ -2668,7 +2668,7 @@ module.exports = "<div *ngIf=\"Proc\">\r\n\r\n  <div width=\"100%\">\r\n    <but
 /***/ "./src/app/PrimeCareManager/procedure/procedure.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text1-b {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  font-weight: bold; }\n\n.text4 {\n  font-size: 2.0em;\n  font-family: Calibri;\n  font-weight: bold; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n\nmark {\n  color: red;\n  display: inline;\n  margin: 0;\n  padding: 0;\n  font-weight: 600; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 10px;\n  width: 7%;\n  float: left;\n  text-align: center;\n  height: 90px; }\n\n.display {\n  display: block;\n  margin-top: 70px; }\n\n.block {\n  float: left;\n  width: 92%;\n  padding-left: 1%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 8%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px;\n  margin-top: 40px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.time1 {\n  z-index: 2;\n  position: fixed;\n  width: 100px;\n  height: 30px;\n  opacity: 0.5;\n  border: 1;\n  margin-top: 10px;\n  border-color: gray;\n  font-weight: bold;\n  border-radius: 5px; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n"
+module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text1-b {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  font-weight: bold; }\n\n.text4 {\n  font-size: 2.0em;\n  font-family: Calibri;\n  font-weight: bold; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n\nmark {\n  color: red;\n  display: inline;\n  margin: 0;\n  padding: 0;\n  font-weight: 600; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 10px;\n  width: 7%;\n  float: left;\n  text-align: center;\n  height: 90px; }\n\n.display {\n  display: block;\n  margin-top: 70px; }\n\n.block {\n  float: left;\n  width: 92%;\n  padding-left: 1%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 8%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px;\n  margin-top: 40px; }\n\n.time {\n  z-index: 1;\n  position: fixed;\n  top: 240px; }\n\n.time1 {\n  z-index: 2;\n  position: fixed;\n  width: 100px;\n  height: 30px;\n  opacity: 0.5;\n  border: 1;\n  margin-top: 10px;\n  border-color: gray;\n  font-weight: bold;\n  border-radius: 5px;\n  top: 202px; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n"
 
 /***/ }),
 
