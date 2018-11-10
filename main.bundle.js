@@ -1352,9 +1352,19 @@ var FacilityresourcesComponent = /** @class */ (function () {
                 data: {
                     labels: this.pacuchart.PacuChartlabels,
                     datasets: [{
+                            label: 'Actual Admit',
+                            backgroundColor: '#000080',
+                            data: [],
+                        },
+                        {
+                            label: 'Actual Discharge',
+                            backgroundColor: '#8B0000',
+                            data: [],
+                        },
+                        {
                             label: this.pacuchart.PacuChartdatasetlabel,
                             data: this.pacuchart.PacuChartdataset,
-                            backgroundColor: this.pacuchart.PacuChartbackgroundColor,
+                            backgroundColor: '#ADD8E6',
                             pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor,
                             borderColor: this.pacuchart.PacuChartbackgroundColor,
                             pointBorderColor: this.pacuchart.PacuChartbackgroundColor,
@@ -1364,13 +1374,14 @@ var FacilityresourcesComponent = /** @class */ (function () {
                         {
                             label: this.pacuchart.PacuChartdatasetlabel1,
                             data: this.pacuchart.PacuChartdataset1,
-                            backgroundColor: this.pacuchart.PacuChartbackgroundColor1,
+                            backgroundColor: '#FFA500',
                             pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor1,
                             borderColor: this.pacuchart.PacuChartbackgroundColor1,
                             pointBorderColor: this.pacuchart.PacuChartbackgroundColor1,
                             fill: false,
                             borderWidth: 1
-                        }],
+                        }
+                    ],
                 },
                 options: {
                     responsive: false,
