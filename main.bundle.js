@@ -1352,19 +1352,19 @@ var FacilityresourcesComponent = /** @class */ (function () {
                 data: {
                     labels: this.pacuchart.PacuChartlabels,
                     datasets: [{
-                            label: 'Actual Admit',
-                            backgroundColor: '#000080',
+                            label: this.pacuchart.PacuChartdatasetlabel2,
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor2,
                             data: [],
                         },
                         {
-                            label: 'Actual Discharge',
-                            backgroundColor: '#8B0000',
+                            label: this.pacuchart.PacuChartdatasetlabel3,
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor3,
                             data: [],
                         },
                         {
                             label: this.pacuchart.PacuChartdatasetlabel,
                             data: this.pacuchart.PacuChartdataset,
-                            backgroundColor: '#ADD8E6',
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor,
                             pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor,
                             borderColor: this.pacuchart.PacuChartbackgroundColor,
                             pointBorderColor: this.pacuchart.PacuChartbackgroundColor,
@@ -1374,7 +1374,7 @@ var FacilityresourcesComponent = /** @class */ (function () {
                         {
                             label: this.pacuchart.PacuChartdatasetlabel1,
                             data: this.pacuchart.PacuChartdataset1,
-                            backgroundColor: '#FFA500',
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor1,
                             pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor1,
                             borderColor: this.pacuchart.PacuChartbackgroundColor1,
                             pointBorderColor: this.pacuchart.PacuChartbackgroundColor1,
