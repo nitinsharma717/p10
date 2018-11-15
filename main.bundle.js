@@ -316,12 +316,27 @@ var HighlightFilterPipe = /** @class */ (function () {
                 value = value.replace(matchingString, '<tspan style="fill:red; text-anchor=middle">' + matchingString + ' </tspan>');
             }
             var lastIndex = value.toLowerCase().lastIndexOf(args.toLowerCase());
-            console.log(lastIndex);
+            // console.log(lastIndex);
             if (lastIndex !== -1) {
                 var endLength = 5;
                 var matchingString2 = value.substr(lastIndex, endLength);
                 // tslint:disable-next-line:max-line-length
                 value = value.replace(matchingString2, '<tspan style="fill:red; text-anchor=middle">' + matchingString2 + ' </tspan>');
+            }
+            var startIndexGreen = value.toLowerCase().indexOf('(-');
+            if (startIndexGreen !== -1) {
+                var endLength = 5;
+                var matchingString3 = value.substr(startIndexGreen, endLength);
+                // tslint:disable-next-line:max-line-length
+                value = value.replace(matchingString3, '<tspan style="fill:green; text-anchor=middle">' + matchingString3 + ' </tspan>');
+            }
+            var lastIndexGreen = value.toLowerCase().lastIndexOf('(-');
+            // console.log(lastIndexGreen);
+            if (lastIndexGreen !== -1) {
+                var endLength = 5;
+                var matchingString4 = value.substr(lastIndexGreen, endLength);
+                // tslint:disable-next-line:max-line-length
+                value = value.replace(matchingString4, '<tspan style="fill:green; text-anchor=middle">' + matchingString4 + ' </tspan>');
             }
         }
         return this._sanitizer.bypassSecurityTrustHtml(value);
@@ -1253,7 +1268,7 @@ var ConfirmationDialogComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<table style=\"width: 100%; table-layout: fixed;\">\r\n  <tr>\r\n    <td style=\"width: 60%;\">\r\n      <div>\r\n        <div *ngIf=\"resource\">\r\n          <div *ngFor=\"let operationBed of resource.OperationBeds\">\r\n            <svg width=\"100%\" height=\"100\" style=\"margin-left: 10px\">\r\n              <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationBed.Beds\">\r\n                <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"22%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\"\r\n                  style=\"stroke:rgb(178, 180, 180)\" />\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"20%\" dx=\"30\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                  font-size=\"30px\" text-anchor=\"middle\">{{operation.Name}}</text>\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"50%\" dx=\"30\" font-size=\"20px\" text-anchor=\"middle\">{{operation.EstDischargeTime}}</text>\r\n              </g>\r\n            </svg>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </td>\r\n    <td style=\"width:40%\" >\r\n        <div class=\"text5\">Upcoming Patients</div>\r\n      <table class=\"tableList\">\r\n        <thead>\r\n          <tr>\r\n              <th>Or Name</th>\r\n              <th>Patient Detail</th>\r\n              <th>Estimate Time</th>\r\n              <th>Surgeon Name</th>\r\n              \r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let message of listResourceUpcomingPatient\">\r\n            <td >{{message.OrName}}</td>\r\n            <td >{{message.PatientDetail}}</td>\r\n            <td>{{message.EstimateTime}}</td>\r\n            <td >{{message.SurgeonName}}</td>\r\n            \r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n\r\n    </td> \r\n    </tr>\r\n\r\n</table>\r\n\r\n\r\n<table class=\"text2\" style=\"width: 100%; height: 5px; font-size:25px; border: 10px \">\r\n  <tr>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 15%;\">PACU Occupancy Forecast</p>\r\n      <div>\r\n        <canvas style=\"width:100px; height: 175px; margin-left: 10%;\" id=\"myChart1\"></canvas>\r\n      </div>\r\n    </td>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 15%;\">PACU Traffic</p>\r\n      <div>\r\n        <canvas style=\"width:100px;  height: 175px; margin-left: 10%;\" id=\"myChart2\"></canvas>\r\n      </div>\r\n\r\n\r\n    </td>\r\n\r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>\r\n"
+module.exports = "\r\n<table style=\"width: 100%; table-layout: fixed;\">\r\n  <tr>\r\n    <td style=\"width: 60%;\">\r\n      <div>\r\n        <div *ngIf=\"resource\">\r\n          <div *ngFor=\"let operationBed of resource.OperationBeds\">\r\n            <svg width=\"100%\" height=\"100\" style=\"margin-left: 2px\">\r\n              <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationBed.Beds\">\r\n                <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"22%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\"\r\n                  style=\"stroke:rgb(178, 180, 180)\" />\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"20%\" dx=\"30\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                  font-size=\"30px\" font-family=\"Calibri\" text-anchor=\"middle\">{{operation.Name}}</text>\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"50%\" dx=\"30\" font-size=\"20px\" font-family=\"Calibri\" text-anchor=\"middle\">{{operation.EstDischargeTime}}</text>\r\n              </g>\r\n            </svg>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </td>\r\n    <td style=\"width:40%; padding-top: 20px\" >\r\n        <div class=\"text5\">Upcoming Patients</div>\r\n      <table class=\"tableList\">\r\n        <thead>\r\n          <tr>\r\n              <th>Or Name</th>\r\n              <th>Patient Detail</th>\r\n              <th>Estimate Time</th>\r\n              <th>Surgeon Name</th>\r\n              \r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let message of listResourceUpcomingPatient\">\r\n            <td >{{message.OrName}}</td>\r\n            <td >{{message.PatientDetail}}</td>\r\n            <td>{{message.EstimateTime}}</td>\r\n            <td >{{message.SurgeonName}}</td>\r\n            \r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n\r\n    </td> \r\n    </tr>\r\n\r\n</table>\r\n\r\n\r\n<table class=\"text2\" style=\"width: 100%; height: 5px; font-size:25px; border: 10px \">\r\n  <tr>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 15%;\">PACU Occupancy Forecast</p>\r\n      <div>\r\n        <canvas style=\"width:100px; height: 175px; margin-left: 10%;\" id=\"myChart1\"></canvas>\r\n      </div>\r\n    </td>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 15%;\">PACU Traffic</p>\r\n      <div>\r\n        <canvas style=\"width:100px;  height: 175px; margin-left: 10%;\" id=\"myChart2\"></canvas>\r\n      </div>\r\n\r\n\r\n    </td>\r\n\r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>\r\n"
 
 /***/ }),
 
