@@ -316,12 +316,27 @@ var HighlightFilterPipe = /** @class */ (function () {
                 value = value.replace(matchingString, '<tspan style="fill:red; text-anchor=middle">' + matchingString + ' </tspan>');
             }
             var lastIndex = value.toLowerCase().lastIndexOf(args.toLowerCase());
-            console.log(lastIndex);
+            // console.log(lastIndex);
             if (lastIndex !== -1) {
                 var endLength = 5;
                 var matchingString2 = value.substr(lastIndex, endLength);
                 // tslint:disable-next-line:max-line-length
                 value = value.replace(matchingString2, '<tspan style="fill:red; text-anchor=middle">' + matchingString2 + ' </tspan>');
+            }
+            var startIndexGreen = value.toLowerCase().indexOf('(-');
+            if (startIndexGreen !== -1) {
+                var endLength = 5;
+                var matchingString3 = value.substr(startIndexGreen, endLength);
+                // tslint:disable-next-line:max-line-length
+                value = value.replace(matchingString3, '<tspan style="fill:green; text-anchor=middle">' + matchingString3 + ' </tspan>');
+            }
+            var lastIndexGreen = value.toLowerCase().lastIndexOf('(-');
+            // console.log(lastIndexGreen);
+            if (lastIndexGreen !== -1) {
+                var endLength = 5;
+                var matchingString4 = value.substr(lastIndexGreen, endLength);
+                // tslint:disable-next-line:max-line-length
+                value = value.replace(matchingString4, '<tspan style="fill:green; text-anchor=middle">' + matchingString4 + ' </tspan>');
             }
         }
         return this._sanitizer.bypassSecurityTrustHtml(value);
@@ -1253,7 +1268,7 @@ var ConfirmationDialogComponent = /** @class */ (function () {
 /***/ "./src/app/PrimeCareManager/facilityresources/facilityresources.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<table style=\"width: 100%; table-layout: fixed;\">\r\n  <tr>\r\n    <td style=\"width: 60%;\">\r\n      <div>\r\n        <div *ngIf=\"resource\">\r\n          <div *ngFor=\"let operationBed of resource.OperationBeds\">\r\n            <svg width=\"100%\" height=\"100\" style=\"margin-left: 10px\">\r\n              <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationBed.Beds\">\r\n                <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"22%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\"\r\n                  style=\"stroke:rgb(178, 180, 180)\" />\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"20%\" dx=\"30\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                  font-size=\"30px\" text-anchor=\"middle\">{{operation.Name}}</text>\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"50%\" dx=\"30\" font-size=\"20px\" text-anchor=\"middle\">{{operation.EstDischargeTime}}</text>\r\n              </g>\r\n            </svg>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </td>\r\n    <td style=\"width:40%\" >\r\n        <div class=\"text5\">Upcoming Patients</div>\r\n      <table class=\"tableList\">\r\n        <thead>\r\n          <tr>\r\n              <th>Or Name</th>\r\n              <th>Patient Detail</th>\r\n              <th>Estimate Time</th>\r\n              <th>Surgeon Name</th>\r\n              \r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let message of listResourceUpcomingPatient\">\r\n            <td >{{message.OrName}}</td>\r\n            <td >{{message.PatientDetail}}</td>\r\n            <td>{{message.EstimateTime}}</td>\r\n            <td >{{message.SurgeonName}}</td>\r\n            \r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n\r\n    </td> \r\n    </tr>\r\n\r\n</table>\r\n\r\n\r\n<table class=\"text2\" style=\"width: 100%; height: 5px; font-size:25px; border: 10px \">\r\n  <tr>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 15%;\">PACU Occupancy Forecast</p>\r\n      <div>\r\n        <canvas style=\"width:100px; height: 175px; margin-left: 10%;\" id=\"myChart1\"></canvas>\r\n      </div>\r\n    </td>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 15%;\">PACU Traffic</p>\r\n      <div>\r\n        <canvas style=\"width:100px;  height: 175px; margin-left: 10%;\" id=\"myChart2\"></canvas>\r\n      </div>\r\n\r\n\r\n    </td>\r\n\r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>\r\n"
+module.exports = "\r\n<table style=\"width: 100%; table-layout: fixed;\">\r\n  <tr>\r\n    <td style=\"width: 60%;\">\r\n      <div>\r\n        <div *ngIf=\"resource\">\r\n          <div *ngFor=\"let operationBed of resource.OperationBeds\">\r\n            <svg width=\"100%\" height=\"100\" style=\"margin-left: 2px\">\r\n              <g (click)=\"clicked(operation.Patient)\" *ngFor=\"let operation of operationBed.Beds\">\r\n                <rect attr.x=\"{{operation.RX}}%\" y=\"0\" rx=\"10\" ry=\"10\" width=\"22%\" attr.height=\"100px\" attr.fill=\"{{operation.Color}}\"\r\n                  style=\"stroke:rgb(178, 180, 180)\" />\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"20%\" dx=\"30\" alignment-baseline=\"middle\" font-weight=\"bold\"\r\n                  font-size=\"30px\" font-family=\"Calibri\" text-anchor=\"middle\">{{operation.Name}}</text>\r\n                <text attr.x=\"{{operation.RX + (15/2) }}%\" y=\"50%\" dx=\"30\" font-size=\"20px\" font-family=\"Calibri\" text-anchor=\"middle\">{{operation.EstDischargeTime}}</text>\r\n              </g>\r\n            </svg>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </td>\r\n    <td style=\"width:40%; padding-top: 20px\" >\r\n        <div class=\"text5\">Upcoming Patients</div>\r\n      <table class=\"tableList\">\r\n        <thead>\r\n          <tr>\r\n              <th>Or Name</th>\r\n              <th>Patient Detail</th>\r\n              <th>Estimate Time</th>\r\n              <th>Surgeon Name</th>\r\n              \r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let message of listResourceUpcomingPatient\">\r\n            <td >{{message.OrName}}</td>\r\n            <td >{{message.PatientDetail}}</td>\r\n            <td>{{message.EstimateTime}}</td>\r\n            <td >{{message.SurgeonName}}</td>\r\n            \r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n\r\n    </td> \r\n    </tr>\r\n\r\n</table>\r\n\r\n\r\n<table class=\"text2\" style=\"width: 100%; height: 5px; font-size:25px; border: 10px \">\r\n  <tr>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 15%;\">PACU Occupancy Forecast</p>\r\n      <div>\r\n        <canvas style=\"width:100px; height: 175px; margin-left: 10%;\" id=\"myChart1\"></canvas>\r\n      </div>\r\n    </td>\r\n    <td>\r\n      <p class=\"text2\" style=\"margin-left: 15%;\">PACU Traffic</p>\r\n      <div>\r\n        <canvas style=\"width:100px;  height: 175px; margin-left: 10%;\" id=\"myChart2\"></canvas>\r\n      </div>\r\n\r\n\r\n    </td>\r\n\r\n  </tr>\r\n</table>\r\n<app-fc-footer></app-fc-footer>\r\n"
 
 /***/ }),
 
@@ -1352,25 +1367,36 @@ var FacilityresourcesComponent = /** @class */ (function () {
                 data: {
                     labels: this.pacuchart.PacuChartlabels,
                     datasets: [{
+                            label: this.pacuchart.PacuChartdatasetlabel2,
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor2,
+                            data: [],
+                        },
+                        {
+                            label: this.pacuchart.PacuChartdatasetlabel3,
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor3,
+                            data: [],
+                        },
+                        {
                             label: this.pacuchart.PacuChartdatasetlabel,
                             data: this.pacuchart.PacuChartdataset,
-                            backgroundColor: '#148FB6',
-                            pointBackgroundColor: '#148FB6',
-                            borderColor: '#148FB6',
-                            pointBorderColor: '#148FB6',
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor,
+                            pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor,
+                            borderColor: this.pacuchart.PacuChartbackgroundColor,
+                            pointBorderColor: this.pacuchart.PacuChartbackgroundColor,
                             fill: false,
                             borderWidth: 1
                         },
                         {
                             label: this.pacuchart.PacuChartdatasetlabel1,
                             data: this.pacuchart.PacuChartdataset1,
-                            backgroundColor: '#CE770E',
-                            pointBackgroundColor: '#CE770E',
-                            borderColor: '#CE770E',
-                            pointBorderColor: '#CE770E',
+                            backgroundColor: this.pacuchart.PacuChartbackgroundColor1,
+                            pointBackgroundColor: this.pacuchart.PacuChartbackgroundColor1,
+                            borderColor: this.pacuchart.PacuChartbackgroundColor1,
+                            pointBorderColor: this.pacuchart.PacuChartbackgroundColor1,
                             fill: false,
                             borderWidth: 1
-                        }],
+                        }
+                    ],
                 },
                 options: {
                     responsive: false,
@@ -2668,7 +2694,7 @@ module.exports = "<div *ngIf=\"Proc\">\r\n\r\n  <div width=\"100%\">\r\n    <but
 /***/ "./src/app/PrimeCareManager/procedure/procedure.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text1-b {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  font-weight: bold; }\n\n.text4 {\n  font-size: 2.0em;\n  font-family: Calibri;\n  font-weight: bold; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n\nmark {\n  color: red;\n  display: inline;\n  margin: 0;\n  padding: 0;\n  font-weight: 600; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 10px;\n  width: 7%;\n  float: left;\n  text-align: center;\n  height: 90px; }\n\n.display {\n  display: block;\n  margin-top: 70px; }\n\n.block {\n  float: left;\n  width: 92%;\n  padding-left: 1%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 8%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px;\n  margin-top: 40px; }\n\n.time {\n  z-index: 1;\n  position: fixed; }\n\n.time1 {\n  z-index: 2;\n  position: fixed;\n  width: 100px;\n  height: 30px;\n  opacity: 0.5;\n  border: 1;\n  margin-top: 10px;\n  border-color: gray;\n  font-weight: bold;\n  border-radius: 5px; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n"
+module.exports = ".text1 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1em;\n  text-anchor: middle; }\n\n.text1-b {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.5em;\n  text-anchor: middle;\n  font-weight: bold; }\n\n.text4 {\n  font-size: 2.0em;\n  font-family: Calibri;\n  font-weight: bold; }\n\n.text2 {\n  font-size: 1.2em;\n  font-family: Calibri;\n  font-weight: normal; }\n\nmark {\n  color: red;\n  display: inline;\n  margin: 0;\n  padding: 0;\n  font-weight: 600; }\n\n.text3 {\n  font-size: 1.6em;\n  font-family: Calibri;\n  font-weight: bold;\n  margin-top: 5px; }\n\n.text5 {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 0.5em;\n  text-anchor: middle; }\n\n.or-group {\n  display: inline-block;\n  margin-right: 10px; }\n\n.or-name {\n  padding-top: 10px;\n  width: 7%;\n  float: left;\n  text-align: center;\n  height: 90px; }\n\n.display {\n  display: block;\n  margin-top: 70px; }\n\n.block {\n  float: left;\n  width: 92%;\n  padding-left: 1%; }\n\n.name-span {\n  top: 45%; }\n\n.clearfix::after {\n  content: \"\";\n  clear: both;\n  display: table; }\n\n.scale {\n  width: 100%;\n  padding-left: 8%;\n  text-align: left;\n  position: fixed;\n  top: 200px;\n  padding-right: 168px;\n  margin-top: 40px; }\n\n.time {\n  z-index: 1;\n  position: fixed;\n  top: 240px; }\n\n.time1 {\n  z-index: 2;\n  position: fixed;\n  width: 100px;\n  height: 30px;\n  opacity: 0.5;\n  border: 1;\n  margin-top: 10px;\n  border-color: gray;\n  font-weight: bold;\n  border-radius: 5px;\n  top: 202px; }\n\n.header {\n  height: 20px;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  position: fixed;\n  z-index: 100;\n  width: 99.5%;\n  margin-left: 5px; }\n"
 
 /***/ }),
 
@@ -3695,9 +3721,9 @@ var User = /** @class */ (function () {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    api_url: 'https://primecarestage.centralus.cloudapp.azure.com/api/fake',
-    api_url_real: 'https://primecarestage.centralus.cloudapp.azure.com/api/get',
-    api_url_real_post: 'https://primecarestage.centralus.cloudapp.azure.com/api/post'
+    api_url: 'http://prime.westus.cloudapp.azure.com/api/fake',
+    api_url_real: 'http://prime.westus.cloudapp.azure.com/api/get',
+    api_url_real_post: 'http://prime.westus.cloudapp.azure.com/api/post'
 };
 
 
